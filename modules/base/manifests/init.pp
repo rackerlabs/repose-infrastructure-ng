@@ -57,7 +57,7 @@ class base(
         owner   => root,
         group   => root,
         require => Package["chrony"],
-        notify  => Service["chrony"],
+        notify  => Service["chronyd"],
         backup  => false,
     }
 
