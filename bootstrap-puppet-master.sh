@@ -11,7 +11,7 @@ sudo yum install -y git &&
 
 cd /srv &&
 # once we get the stuff encrypted, we can public this repo!
-git clone https://github.com/rackerlabs/repose-infrastructure-management.git puppet &&
+git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 
 cd /etc/puppet &&
 #ensure links are clean
