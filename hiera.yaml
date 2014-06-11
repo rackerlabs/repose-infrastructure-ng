@@ -12,3 +12,7 @@
   :datadir: /etc/puppet/hieradata
 :eyaml:
   :datadir: /etc/puppet/hieradata
+
+  # using the PKCS7 encryptor -- THESE HAVE TO BE PLACED MANUALLY because secrets!
+  :pkcs7_private_key: /etc/puppet/ssl/private_key.pkcs7.pem
+  :pkcs7_public_key: /etc/puppet/ssl/public_key.pkcs7.pem
