@@ -14,6 +14,7 @@ cd /srv &&
 git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 
 cd /etc/puppet &&
+mkdir -p ssl &&
 #ensure links are clean
 rm -rf /etc/puppet/modules     &&
 rm -rf /etc/puppet/hiera.yaml  &&
