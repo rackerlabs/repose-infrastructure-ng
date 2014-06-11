@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # install the puppet primary repos
-sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm &&
+sudo rpm -ivh --force http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm &&
 
 # install the EPEL repo, because it's handy
-sudo rpm -ivh http://epel.mirror.freedomvoice.com/6/i386/epel-release-6-8.noarch.rpm &&
+sudo rpm -ivh --force http://epel.mirror.freedomvoice.com/6/i386/epel-release-6-8.noarch.rpm &&
 
 sudo yum install -y puppet &&
 sudo yum install -y git &&
