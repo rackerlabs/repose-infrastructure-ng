@@ -61,7 +61,7 @@ class base(
         backup  => false,
     }
 
-    service{"chrony":
+    service{"chronyd":
         ensure  => running,
         enable  => true,
         require => [
