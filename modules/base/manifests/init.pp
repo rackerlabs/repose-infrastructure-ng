@@ -66,7 +66,7 @@ class base(
         enable  => true,
         require => [
             Package["chrony"],
-            File["chrony-config"]
+            File["chrony_config"]
         ],
     }
 
