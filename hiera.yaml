@@ -1,0 +1,14 @@
+---
+:backend:
+  - eyaml
+  - yaml
+
+:hierarchy:
+  - "%{::clientcert}"
+  - "%{::osfamily}"
+  - common
+
+:yaml:
+  :datadir: /etc/puppet/hieradata
+:eyaml:
+  :datadir: /etc/puppet/hieradata

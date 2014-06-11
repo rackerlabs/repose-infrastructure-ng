@@ -1,0 +1,16 @@
+# Jenkins firewall rules. Allows connections for ports 22(ssh), 80(http), and 8080(http)
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [30:4280]
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT 
+-A INPUT -p icmp -j ACCEPT 
+-A INPUT -i lo -j ACCEPT 
+-A INPUT -p tcp -m conntrack --ctstate NEW -m tcp --dport 22 -j ACCEPT 
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
+# Port for JNLP jenkins slaves
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 22622 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT 
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited 
+COMMIT
