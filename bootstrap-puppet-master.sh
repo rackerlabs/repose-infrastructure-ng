@@ -9,6 +9,11 @@ sudo rpm -ivh --force http://epel.mirror.freedomvoice.com/6/i386/epel-release-6-
 sudo yum install -y puppet &&
 sudo yum install -y git &&
 
+if [[ "$(facter fqdn)" == "" ]]; then
+  echo "UNABLE TO PROCEED, puppet cannot find a hostname, ensure `facter fqdn` returns a hostname"
+  exit 1
+fi
+
 cd /srv &&
 # once we get the stuff encrypted, we can public this repo!
 git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
