@@ -23,7 +23,7 @@ Listen 8140
         SSLCipherSuite          ALL:!aNULL:!eNULL:!DES:!3DES:!IDEA:!SEED:!DSS:!PSK:!RC4:!MD5:+HIGH:+MEDIUM:!LOW:!SSLv2:!EXP
         SSLHonorCipherOrder     on
 
-        SSLCertificateFile      /var/lib/puppet/ssl/certs/<%= @fqdn %>>.pem
+        SSLCertificateFile      /var/lib/puppet/ssl/certs/<%= @fqdn %>.pem
         SSLCertificateKeyFile   /var/lib/puppet/ssl/private_keys/<%= @fqdn %>.pem
         SSLCertificateChainFile /var/lib/puppet/ssl/ca/ca_crt.pem
         SSLCACertificateFile    /var/lib/puppet/ssl/ca/ca_crt.pem
