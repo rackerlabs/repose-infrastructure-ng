@@ -20,7 +20,7 @@ cd /srv &&
 git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 
 #Using this to manage our puppet modules
-gem install librarian-puppet
+gem install librarian-puppet &&
 
 cd /etc/puppet &&
 mkdir -p ssl &&
