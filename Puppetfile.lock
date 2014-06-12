@@ -1,3 +1,8 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    puppetlabs/firewall (1.1.2)
+
 GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: base
@@ -87,6 +92,7 @@ GIT
     repose/users (0.0.1)
 
 DEPENDENCIES
+  puppetlabs/firewall (>= 0)
   repose/base (>= 0)
   repose/cloud_monitoring (>= 0)
   repose/common_utils (>= 0)
