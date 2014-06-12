@@ -26,7 +26,6 @@ cd /etc/puppet &&
 mkdir -p ssl &&
 #ensure links are clean
 rm -rf /etc/puppet/modules     &&
-mkdir -p /etc/puppet/modules   &&
 rm -rf /etc/puppet/hiera.yaml  &&
 rm -rf /etc/puppet/hieradata   &&
 rm -rf /etc/puppet/manifests   &&
@@ -34,10 +33,16 @@ rm -rf /etc/puppet/puppet.conf &&
 
 # create symlinks to the git repo
 
+ln -s /srv/puppet/modules     &&
 ln -s /srv/puppet/hiera.yaml  &&
 ln -s /srv/puppet/hieradata   &&
 ln -s /srv/puppet/manifests   &&
 ln -s /srv/puppet/puppet.conf &&
+
+# actually install the modules onto the server
+# if you ever want to use different modules, you have to update the modules, and run the install again
+cd /srv/puppet &&
+librarian-puppet install &&
 
 # I think also it uses /etc/hiera.yaml
 ln -sf /srv/puppet/hiera.yaml /etc/hiera.yaml &&
