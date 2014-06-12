@@ -11,6 +11,7 @@ sudo yum install -y git &&
 
 if [[ "$(facter fqdn)" == "" ]]; then
   echo "UNABLE TO PROCEED, puppet cannot find a hostname, ensure `facter fqdn` returns a hostname"
+  echo "Reference: http://www.rackspace.com/knowledge_center/article/centos-hostname-change"
   exit 1
 fi
 
@@ -42,4 +43,6 @@ echo "PREP DONE! Last steps:"
 echo "Put the eyaml backend cert and key onto this system"
 echo "at  /etc/puppet/ssl/private_key.pkcs7.pem"
 echo "and /etc/puppet/ssl/public_key.pkcs7.pem"
+echo "run puppet master --no-daemonize --verbose one time to generate the SSL certs it needs"
+echo "kill it after a few moments, so it's generated the ssl certs"
 echo "then run puppet apply /etc/puppet/manifests/puppet_master.pp"
