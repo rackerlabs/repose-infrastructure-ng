@@ -11,6 +11,10 @@ class puppet_master {
         ensure => present,
     }
 
+    package{"mod_ssl":
+        ensure => present,
+    }
+
     package{"httpd":
         ensure => present,
     }
@@ -52,12 +56,21 @@ class puppet_master {
         notify => Service['httpd'],
     }
 
+    file{"/etc/httpd/conf.d/welcome.conf":
+        ensure => absent,
+        backup => false,
+    }
+
     service{"httpd":
         ensure => running,
         enable => true,
         require => [
-            Package['httpd', 'mod_passenger'],
-            File['/etc/httpd/conf.d/puppetmaster.conf', '/srv/puppetmaster/public', '/srv/puppetmaster/config.ru']
+            Package['httpd', 'mod_passenger', 'mod_ssl'],
+            File['/etc/httpd/conf.d/puppetmaster.conf',
+                 '/srv/puppetmaster/public',
+                 '/srv/puppetmaster/config.ru',
+                 '/etc/httpd/conf.d/welcome.conf'
+                ]
         ]
     }
 }

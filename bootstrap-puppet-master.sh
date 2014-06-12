@@ -33,5 +33,8 @@ ln -s /srv/puppet/puppet.conf &&
 # I think also it uses /etc/hiera.yaml
 ln -sf /srv/puppet/hiera.yaml /etc/hiera.yaml &&
 
-# Finally apply the puppetmaster manifest
-puppet apply /etc/puppet/manifests/puppet_master.pp
+echo "PREP DONE! Last steps:"
+echo "Put the eyaml backend cert and key onto this system"
+echo "at  /etc/puppet/ssl/private_key.pkcs7.pem"
+echo "and /etc/puppet/ssl/public_key.pkcs7.pem"
+echo "then run puppet apply /etc/puppet/manifests/puppet_master.pp"
