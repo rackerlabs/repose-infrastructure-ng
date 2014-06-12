@@ -19,10 +19,14 @@ cd /srv &&
 # once we get the stuff encrypted, we can public this repo!
 git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 
+#Using this to manage our puppet modules
+gem install librarian-puppet
+
 cd /etc/puppet &&
 mkdir -p ssl &&
 #ensure links are clean
 rm -rf /etc/puppet/modules     &&
+mkdir -p /etc/puppet/modules   &&
 rm -rf /etc/puppet/hiera.yaml  &&
 rm -rf /etc/puppet/hieradata   &&
 rm -rf /etc/puppet/manifests   &&
@@ -30,7 +34,6 @@ rm -rf /etc/puppet/puppet.conf &&
 
 # create symlinks to the git repo
 
-ln -s /srv/puppet/modules     &&
 ln -s /srv/puppet/hiera.yaml  &&
 ln -s /srv/puppet/hieradata   &&
 ln -s /srv/puppet/manifests   &&
