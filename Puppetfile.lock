@@ -1,0 +1,101 @@
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: base
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/base (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: cloud_monitoring
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/cloud_monitoring (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: common_utils
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/common_utils (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: git
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/git (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: jenkins
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/jenkins (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: manual_gradle
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/manual_gradle (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: manual_groovy
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/manual_groovy (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: manual_java
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/manual_java (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: manual_maven
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/manual_maven (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: puppet_master
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/puppet_master (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: users
+  ref: master
+  sha: 93398ff69578207c2ba603745ded44ab1ec8a8cf
+  specs:
+    repose/users (0.0.1)
+
+DEPENDENCIES
+  repose/base (>= 0)
+  repose/cloud_monitoring (>= 0)
+  repose/common_utils (>= 0)
+  repose/git (>= 0)
+  repose/jenkins (>= 0)
+  repose/manual_gradle (>= 0)
+  repose/manual_groovy (>= 0)
+  repose/manual_java (>= 0)
+  repose/manual_maven (>= 0)
+  repose/puppet_master (>= 0)
+  repose/users (>= 0)
+

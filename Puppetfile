@@ -1,45 +1,53 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
 forge "http://forge.puppetlabs.com"
 
+# use dependencies defined in Modulefile
+#modulefile
+
+# mod 'puppetlabs/stdlib'
+
 mod "repose/base",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "base"
 
 mod "repose/cloud_monitoring",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "cloud_monitoring"
 
 mod "repose/common_utils",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "common_utils"
 
 mod "repose/git",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "git"
 
 mod "repose/jenkins",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "jenkins"
 
 mod "repose/manual_gradle",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "manual_gradle"
 
 mod "repose/manual_groovy",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "manual_groovy"
 
 mod "repose/manual_java",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "manual_java"
 
 mod "repose/manual_maven",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "manual_maven"
 
 mod "repose/puppet_master",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "puppet_master"
 
 mod "repose/users",
-    :git => "git://github.com/rackerlabs/repose-puppet-modules.git",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "users"
