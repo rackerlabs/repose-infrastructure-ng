@@ -19,6 +19,6 @@ node default {
     class { 'firewall': }
 }
 
-node 'puppet.openrepose.org' extends default {
+node 'puppet.openrepose.org' inherits default {
     include puppet_master
 }
