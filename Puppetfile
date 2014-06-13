@@ -9,6 +9,7 @@ forge "http://forge.puppetlabs.com"
 # mod 'puppetlabs/stdlib'
 
 mod 'puppetlabs/firewall'
+mod 'puppetlabs/apt'
 
 mod "repose/base",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
