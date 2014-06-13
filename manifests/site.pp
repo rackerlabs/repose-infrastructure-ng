@@ -13,6 +13,7 @@ Firewall {
 node default {
     include users
     include base
+    include cloud_monitoring
 
     # include the pre and post firewall stuff for all hosts
     class { ['base::fw_pre', 'base::fw_post']: }
