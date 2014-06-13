@@ -14,6 +14,11 @@ node default {
     include users
     include base
 
-    include firewall
+    # include the pre and post firewall stuff for all hosts
+    class { ['base::fw_pre', 'base::fw_post']: }
+    class { 'firewall': }
+}
 
+node 'puppet.openrepose.org' extends default {
+    include puppet_master
 }
