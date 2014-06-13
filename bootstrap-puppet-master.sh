@@ -5,8 +5,8 @@ wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb &&
 dpkg -i puppetlabs-release-wheezy.deb &&
 apt-get update &&
 
-aptitude install git &&
-aptitude install puppet &&
+# install needed things
+aptitude install -y git puppet ruby1.9.1-dev make &&
 
 if [[ "$(facter fqdn)" == "" ]]; then
   echo "UNABLE TO PROCEED, puppet cannot find a hostname, ensure `facter fqdn` returns a hostname"
@@ -20,9 +20,8 @@ cd /srv &&
 git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 
 #Using this to manage our puppet modules
-# have to install the ruby dev stuff to include gems
-aptitude install ruby1.9.1-dev make &&
-gem install librarian-puppet --no-rdoc --no-ri &&
+echo "Installing librarian-puppet and bundler" &&
+gem install bundler librarian-puppet --no-rdoc --no-ri &&
 
 cd /etc/puppet &&
 mkdir -p ssl &&
