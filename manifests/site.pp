@@ -9,9 +9,11 @@ Firewall {
     require => Class['base::fw_pre'],
 }
 
-class {'firewall': }
 
 node default {
     include users
     include base
+
+    include firewall
+
 }
