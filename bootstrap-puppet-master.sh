@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# install the puppet primary repos
-sudo rpm -ivh --force http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm &&
+# set it up to work with debians now
+wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb &&
+dpkg -i puppetlabs-release-wheezy.deb &&
+apt-get update &&
 
-# install the EPEL repo, because it's handy
-sudo rpm -ivh --force http://epel.mirror.freedomvoice.com/6/i386/epel-release-6-8.noarch.rpm &&
-
-sudo yum install -y puppet &&
-sudo yum install -y git &&
+aptitude install git &&
+aptitude install puppet &&
 
 if [[ "$(facter fqdn)" == "" ]]; then
   echo "UNABLE TO PROCEED, puppet cannot find a hostname, ensure `facter fqdn` returns a hostname"
-  echo "Reference: http://www.rackspace.com/knowledge_center/article/centos-hostname-change"
+  echo "CentOS Reference: http://www.rackspace.com/knowledge_center/article/centos-hostname-change"
+  echo "Debian Reference: https://wiki.debian.org/HowTo/ChangeHostname"
   exit 1
 fi
 
@@ -20,7 +20,9 @@ cd /srv &&
 git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 
 #Using this to manage our puppet modules
-gem install librarian-puppet &&
+# have to install the ruby dev stuff to include gems
+aptitude install ruby1.9.1-dev make &&
+gem install librarian-puppet --no-rdoc --no-ri &&
 
 cd /etc/puppet &&
 mkdir -p ssl &&

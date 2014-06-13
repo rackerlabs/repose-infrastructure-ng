@@ -1,5 +1,7 @@
-repose-infrastructure-management
-================================
+Repose Puppet Setup
+===================
+
+Using Debian wheezy. CentOS is too old :(
 
 # Only manual steps!
 Create the cloud box, set up it's local hostname, run the client bootstrap.sh, set it's hostname in the site.pp, fire up the puppet agent
@@ -14,8 +16,6 @@ Contains puppet manifests and related material for the repose teams project infr
 Run locally with 
 
     sudo puppet apply --modulepath ./modules manifests/jenkins-slave.pp
-    
-
     
 
 ## Useful references
