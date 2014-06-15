@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Applies to debian wheezy, not to centos any longer.
+# Since the boxes should have a proper hostname of something.openrepose.org
+# they will know how to find the puppet master already (puppet.openrepose.org)
 
 REPODEB="puppetlabs-release-wheezy.deb"
 
