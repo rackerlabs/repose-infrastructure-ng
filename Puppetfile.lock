@@ -1,6 +1,12 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    example42/java (2.0.3)
+      example42/puppi (>= 2.0.0)
+    example42/puppi (2.1.9)
+    maestrodev/maven (1.2.0)
+      maestrodev/wget (>= 1.0.0)
+    maestrodev/wget (1.4.3)
     puppetlabs/apt (1.5.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/firewall (1.1.2)
@@ -95,6 +101,8 @@ GIT
     repose/users (0.0.1)
 
 DEPENDENCIES
+  example42/java (>= 0)
+  maestrodev/maven (>= 0)
   puppetlabs/apt (>= 0)
   puppetlabs/firewall (>= 0)
   repose/base (>= 0)

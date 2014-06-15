@@ -11,6 +11,10 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs/firewall'
 mod 'puppetlabs/apt'
 
+# going to try out this one, which supports both packages and urls
+mod 'example42/java'
+mod 'maestrodev/maven'
+
 mod "repose/base",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "base"
