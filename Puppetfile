@@ -16,6 +16,8 @@ mod 'puppetlabs/apt', '1.5.0'
 mod 'example42/java', '2.0.3'
 mod 'maestrodev/maven', '1.2.0'
 
+mod 'rtyler/jenkins', '1.1.0'
+
 mod "repose/base",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "base"

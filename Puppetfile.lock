@@ -1,6 +1,7 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    darin/zypprepo (1.0.1)
     example42/java (2.0.3)
       example42/puppi (>= 2.0.0)
     example42/puppi (2.1.9)
@@ -10,7 +11,14 @@ FORGE
     puppetlabs/apt (1.5.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/firewall (1.1.2)
+    puppetlabs/java (1.1.1)
+      puppetlabs/stdlib (>= 0.1.6)
     puppetlabs/stdlib (4.2.2)
+    rtyler/jenkins (1.1.0)
+      darin/zypprepo (>= 1.0.1)
+      puppetlabs/apt (>= 0.0.3)
+      puppetlabs/java (>= 1.0.1)
+      puppetlabs/stdlib (>= 2.0.0)
 
 GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
@@ -117,4 +125,5 @@ DEPENDENCIES
   repose/manual_maven (>= 0)
   repose/puppet_master (>= 0)
   repose/users (>= 0)
+  rtyler/jenkins (= 1.1.0)
 
