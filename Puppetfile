@@ -6,7 +6,8 @@ forge "http://forge.puppetlabs.com"
 # use dependencies defined in Modulefile
 #modulefile
 
-# mod 'puppetlabs/stdlib'
+# pulling in standard lib, and I can use it now
+mod 'puppetlabs/stdlib', '4.2.2'
 
 mod 'puppetlabs/firewall', '1.1.2'
 mod 'puppetlabs/apt', '1.5.0'
