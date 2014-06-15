@@ -8,12 +8,12 @@ forge "http://forge.puppetlabs.com"
 
 # mod 'puppetlabs/stdlib'
 
-mod 'puppetlabs/firewall'
-mod 'puppetlabs/apt'
+mod 'puppetlabs/firewall', '1.1.2'
+mod 'puppetlabs/apt', '1.5.0'
 
 # going to try out this one, which supports both packages and urls
-mod 'example42/java'
-mod 'maestrodev/maven'
+mod 'example42/java', '2.0.3'
+mod 'maestrodev/maven', '1.2.0'
 
 mod "repose/base",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
