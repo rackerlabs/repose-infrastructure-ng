@@ -23,3 +23,10 @@ node default {
 node 'puppet.openrepose.org' inherits default {
     include puppet_master
 }
+
+node jenkinsSlaves inherits default {
+    # need
+    # jdk, git, maven, gradle
+    # special deploy ssh keys
+    include jenkins
+}
