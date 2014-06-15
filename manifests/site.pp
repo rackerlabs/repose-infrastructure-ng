@@ -30,3 +30,7 @@ node jenkinsSlaves inherits default {
     # special deploy ssh keys
     include jenkins
 }
+
+node "slave5.openrepose.org" inherits jenkinsSlaves {
+    
+}
