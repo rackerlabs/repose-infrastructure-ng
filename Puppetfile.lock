@@ -2,9 +2,6 @@ FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
     darin/zypprepo (1.0.1)
-    example42/java (2.0.3)
-      example42/puppi (>= 2.0.0)
-    example42/puppi (2.1.9)
     maestrodev/maven (1.2.0)
       maestrodev/wget (>= 1.0.0)
     maestrodev/wget (1.4.3)
@@ -24,7 +21,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: base
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/base (0.0.1)
 
@@ -32,7 +29,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: cloud_monitoring
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/cloud_monitoring (0.0.1)
 
@@ -40,7 +37,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: common_utils
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/common_utils (0.0.1)
 
@@ -48,7 +45,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: git
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/git (0.0.1)
 
@@ -56,7 +53,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: manual_gradle
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/manual_gradle (0.0.1)
 
@@ -64,7 +61,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: manual_groovy
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/manual_groovy (0.0.1)
 
@@ -72,7 +69,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: manual_java
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/manual_java (0.0.1)
 
@@ -80,7 +77,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: manual_maven
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/manual_maven (0.0.1)
 
@@ -88,7 +85,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: puppet_master
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/puppet_master (0.0.1)
 
@@ -96,7 +93,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: repose_jenkins
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/repose_jenkins (0.0.1)
 
@@ -104,15 +101,15 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: users
   ref: master
-  sha: db893113f6be559380724feee99a68a97a620b26
+  sha: cc017b5986ce5a559d88a14cc8e7ebc49ef14a2d
   specs:
     repose/users (0.0.1)
 
 DEPENDENCIES
-  example42/java (= 2.0.3)
   maestrodev/maven (= 1.2.0)
   puppetlabs/apt (= 1.5.0)
   puppetlabs/firewall (= 1.1.2)
+  puppetlabs/java (= 1.1.1)
   puppetlabs/stdlib (= 4.2.2)
   repose/base (>= 0)
   repose/cloud_monitoring (>= 0)

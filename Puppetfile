@@ -13,7 +13,8 @@ mod 'puppetlabs/firewall', '1.1.2'
 mod 'puppetlabs/apt', '1.5.0'
 
 # going to try out this one, which supports both packages and urls
-mod 'example42/java', '2.0.3'
+#mod 'example42/java', '2.0.3' # the jenkins one depends on a conflicting named one :(
+mod 'puppetlabs/java', '1.1.1'
 mod 'maestrodev/maven', '1.2.0'
 
 mod 'rtyler/jenkins', '1.1.0'
