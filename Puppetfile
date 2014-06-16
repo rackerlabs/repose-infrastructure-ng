@@ -34,9 +34,9 @@ mod "repose/git",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "git"
 
-mod "repose/jenkins",
+mod "repose/repose_jenkins",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "jenkins"
+    :path => "repose_jenkins"
 
 mod "repose/manual_gradle",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
