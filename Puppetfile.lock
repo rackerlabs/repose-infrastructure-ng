@@ -2,6 +2,9 @@ FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
     darin/zypprepo (1.0.1)
+    garethr/remotesyslog (0.1.1)
+      puppetlabs/ruby (>= 0)
+      puppetlabs/stdlib (>= 0)
     maestrodev/maven (1.2.0)
       maestrodev/wget (>= 1.0.0)
     maestrodev/wget (1.4.3)
@@ -10,6 +13,7 @@ FORGE
     puppetlabs/firewall (1.1.2)
     puppetlabs/java (1.1.1)
       puppetlabs/stdlib (>= 0.1.6)
+    puppetlabs/ruby (0.1.0)
     puppetlabs/stdlib (4.2.2)
     rtyler/jenkins (1.1.0)
       darin/zypprepo (>= 1.0.1)
@@ -114,6 +118,7 @@ GIT
     repose/users (0.0.1)
 
 DEPENDENCIES
+  garethr/remotesyslog (= 0.1.1)
   maestrodev/maven (= 1.2.0)
   puppetlabs/apt (= 1.5.0)
   puppetlabs/firewall (= 1.1.2)
