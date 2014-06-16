@@ -40,10 +40,6 @@ Provides support for installing multiple javas, and setting them up. The rtyler/
 [Lots of jenkins management](https://forge.puppetlabs.com/rtyler/jenkins). Plugins, slaves, and master, can all
 be configured using this.
 
-### garethr/remotesyslog
-[Manages remote_syslog for papertrail](https://forge.puppetlabs.com/garethr/remotesyslog). There are others, but this
-one only manages remote_syslog by itself, doesn't try to manage my syslog also.
-
 
 ## Useful references
 * http://ttboj.wordpress.com/2013/02/20/automatic-hiera-lookups-in-puppet-3-x/

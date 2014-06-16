@@ -19,8 +19,6 @@ mod 'maestrodev/maven', '1.2.0'
 
 mod 'rtyler/jenkins', '1.1.0'
 
-mod 'garethr/remotesyslog', '0.1.1'
-
 mod "repose/base",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "base"
