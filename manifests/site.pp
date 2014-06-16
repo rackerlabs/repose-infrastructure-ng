@@ -28,7 +28,7 @@ node jenkinsSlaves inherits default {
     # need
     # jdk, git, maven, gradle
     # special deploy ssh keys
-    include jenkins
+    include repose_jenkins
 }
 
 node "slave5.openrepose.org" inherits jenkinsSlaves {
