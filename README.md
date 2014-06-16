@@ -30,9 +30,8 @@ moderately complicated firewall rules using puppet.
 ### puppetlabs/apt
 Provides [support for debian repo management](https://forge.puppetlabs.com/puppetlabs/apt). Enough said there.
 
-### example42/java
-Documentation on this one isn't as good as I'd like, but looking at [the manifests](https://github.com/example42/puppet-java)
-directly gives you the settings. It can install from a file, or from a package.
+### puppetlabs/java
+Provides support for installing multiple javas, and setting them up. The rtyler/jenkins module depends on this guy.
 
 ### maestrodev/maven
 [Can install maven](https://forge.puppetlabs.com/maestrodev/maven) or install artifacts using maven. Quite handy.
@@ -40,6 +39,10 @@ directly gives you the settings. It can install from a file, or from a package.
 ### rtyler/jenkins
 [Lots of jenkins management](https://forge.puppetlabs.com/rtyler/jenkins). Plugins, slaves, and master, can all
 be configured using this.
+
+### garethr/remotesyslog
+[Manages remote_syslog for papertrail](https://forge.puppetlabs.com/garethr/remotesyslog). There are others, but this
+one only manages remote_syslog by itself, doesn't try to manage my syslog also.
 
 
 ## Useful references
