@@ -34,3 +34,8 @@ node jenkinsSlaves inherits default {
 node "slave5.openrepose.org" inherits jenkinsSlaves {
     
 }
+
+node "jenkins-proto.openrepose.org" inherits default {
+    include repose_jenkins
+    include repose_jenkins::master
+}
