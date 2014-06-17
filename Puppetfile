@@ -19,6 +19,10 @@ mod 'maestrodev/maven', '1.2.0'
 
 mod 'rtyler/jenkins', '1.1.0'
 
+mod 'garethr/remotesyslog',
+  :git => "https://github.com/dkowis/garethr-remotesyslog",
+  :ref => "debian_wheezy"
+
 mod "repose/base",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "base"

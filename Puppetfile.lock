@@ -10,12 +10,22 @@ FORGE
     puppetlabs/firewall (1.1.2)
     puppetlabs/java (1.1.1)
       puppetlabs/stdlib (>= 0.1.6)
+    puppetlabs/ruby (0.1.0)
     puppetlabs/stdlib (4.2.2)
     rtyler/jenkins (1.1.0)
       darin/zypprepo (>= 1.0.1)
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/java (>= 1.0.1)
       puppetlabs/stdlib (>= 2.0.0)
+
+GIT
+  remote: https://github.com/dkowis/garethr-remotesyslog
+  ref: debian_wheezy
+  sha: bed15f9e83370e921a3e723d2709ab092702bc3c
+  specs:
+    garethr/remotesyslog (0.1.1)
+      puppetlabs/ruby (>= 0)
+      puppetlabs/stdlib (>= 0)
 
 GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
@@ -114,6 +124,7 @@ GIT
     repose/users (0.0.1)
 
 DEPENDENCIES
+  garethr/remotesyslog (>= 0)
   maestrodev/maven (= 1.2.0)
   puppetlabs/apt (= 1.5.0)
   puppetlabs/firewall (= 1.1.2)
