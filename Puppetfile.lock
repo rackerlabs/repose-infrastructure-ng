@@ -21,7 +21,7 @@ FORGE
 GIT
   remote: https://github.com/dkowis/garethr-remotesyslog
   ref: debian_wheezy
-  sha: bed15f9e83370e921a3e723d2709ab092702bc3c
+  sha: f952883a3e5d7cc338f914a8264614b863429bf3
   specs:
     garethr/remotesyslog (0.1.1)
       puppetlabs/ruby (>= 0)
