@@ -31,6 +31,11 @@ node jenkinsSlaves inherits default {
     include repose_jenkins
 }
 
+#TODO: eventually make this a regexp for all numbered slaves
+node "slave4.openrepose.org" inherits jenkinsSlaves {
+
+}
+
 node "slave5.openrepose.org" inherits jenkinsSlaves {
     
 }
