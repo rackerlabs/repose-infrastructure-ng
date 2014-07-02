@@ -16,9 +16,12 @@ mod 'puppetlabs/apt', '1.5.0'
 #mod 'example42/java', '2.0.3' # the jenkins one depends on a conflicting named one :(
 mod 'puppetlabs/java', '1.1.1'
 mod 'maestrodev/maven', '1.2.0'
+mod 'maestrodev/sonarqube', '2.1.1'
 
 mod 'rtyler/jenkins', '1.1.0'
 
+# dkowis forked this to add debian support. There's a pull request open on the original
+# if/when it gets merged, you can use the original directly.
 mod 'garethr/remotesyslog',
   :git => "https://github.com/dkowis/garethr-remotesyslog",
   :ref => "debian_wheezy"
