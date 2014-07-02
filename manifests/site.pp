@@ -24,7 +24,7 @@ node default {
     # the base::swap class will base it on the size of the ram, if not specified
     base::swap { 'swapfile':
         swapfile => '/swapfile',
-        swapfilesize => 4096
+        swapsize => 4096,
     }
 
 }
