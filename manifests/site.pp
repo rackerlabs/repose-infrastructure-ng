@@ -44,3 +44,7 @@ node "jenkins-proto.openrepose.org" inherits default {
     include repose_jenkins
     include repose_jenkins::master
 }
+
+node "sonar-ng.openrepose.org" inherits default {
+    include repose_sonar
+}
