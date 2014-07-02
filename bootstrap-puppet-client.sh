@@ -14,5 +14,5 @@ apt-get update &&
 apt-get install -y puppet
 
 echo "First run of puppet agent, need to sign the cert on the puppet master!"
-echo "It'll wait 2 minutes for the cert to be signed, so go sign it!"
-puppet agent --test --waitforcert 120
+echo "It's now executing puppet agent --test as the end of the script!"
+puppet agent --test
