@@ -113,6 +113,14 @@ GIT
 
 GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: repose_sonar
+  ref: master
+  sha: 3639905c26c40ab433c0f8bb380dac884c1819d7
+  specs:
+    repose/repose_sonar (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
   path: ssl_cert
   ref: master
   sha: 3639905c26c40ab433c0f8bb380dac884c1819d7
@@ -145,6 +153,7 @@ DEPENDENCIES
   repose/manual_maven (>= 0)
   repose/puppet_master (>= 0)
   repose/repose_jenkins (>= 0)
+  repose/repose_sonar (>= 0)
   repose/ssl_cert (>= 0)
   repose/users (>= 0)
   rtyler/jenkins (= 1.1.0)
