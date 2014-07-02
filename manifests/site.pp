@@ -26,7 +26,6 @@ node default {
         swapfile => '/swapfile',
         swapsize => 4096,
     }
-
 }
 
 node 'puppet.openrepose.org' inherits default {
@@ -34,9 +33,6 @@ node 'puppet.openrepose.org' inherits default {
 }
 
 node jenkinsSlaves inherits default {
-    # need
-    # jdk, git, maven, gradle
-    # special deploy ssh keys
     include repose_jenkins
 }
 
