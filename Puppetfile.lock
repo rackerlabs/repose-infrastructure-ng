@@ -11,9 +11,16 @@ FORGE
     maestrodev/wget (1.4.4)
     puppetlabs/apt (1.5.0)
       puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/concat (1.1.0)
+      puppetlabs/stdlib (>= 4.0.0)
     puppetlabs/firewall (1.1.2)
     puppetlabs/java (1.1.1)
       puppetlabs/stdlib (>= 0.1.6)
+    puppetlabs/postgresql (3.3.3)
+      puppetlabs/apt (< 2.0.0, >= 1.1.0)
+      puppetlabs/concat (< 2.0.0, >= 1.0.0)
+      puppetlabs/firewall (>= 0.0.4)
+      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
     puppetlabs/ruby (0.1.0)
     puppetlabs/stdlib (4.2.2)
     rtyler/jenkins (1.1.0)
@@ -35,7 +42,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: base
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/base (0.0.1)
 
@@ -43,7 +50,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: cloud_monitoring
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/cloud_monitoring (0.0.1)
 
@@ -51,7 +58,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: common_utils
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/common_utils (0.0.1)
 
@@ -59,7 +66,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: git
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/git (0.0.1)
 
@@ -67,7 +74,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: manual_gradle
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/manual_gradle (0.0.1)
 
@@ -75,7 +82,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: manual_groovy
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/manual_groovy (0.0.1)
 
@@ -83,7 +90,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: manual_java
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/manual_java (0.0.1)
 
@@ -91,7 +98,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: manual_maven
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/manual_maven (0.0.1)
 
@@ -99,7 +106,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: puppet_master
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/puppet_master (0.0.1)
 
@@ -107,7 +114,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: repose_jenkins
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/repose_jenkins (0.0.1)
 
@@ -115,7 +122,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: repose_sonar
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/repose_sonar (0.0.1)
 
@@ -123,7 +130,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: ssl_cert
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/ssl_cert (0.0.1)
 
@@ -131,7 +138,7 @@ GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
   path: users
   ref: master
-  sha: 28b537be2a86ec73c8879b088d389626359e950c
+  sha: 988d6ad080c83527c74b9bcd7f6cc013a633edff
   specs:
     repose/users (0.0.1)
 
@@ -142,6 +149,7 @@ DEPENDENCIES
   puppetlabs/apt (= 1.5.0)
   puppetlabs/firewall (= 1.1.2)
   puppetlabs/java (= 1.1.1)
+  puppetlabs/postgresql (= 3.3.3)
   puppetlabs/stdlib (= 4.2.2)
   repose/base (>= 0)
   repose/cloud_monitoring (>= 0)

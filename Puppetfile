@@ -12,6 +12,8 @@ mod 'puppetlabs/stdlib', '4.2.2'
 mod 'puppetlabs/firewall', '1.1.2'
 mod 'puppetlabs/apt', '1.5.0'
 
+mod 'puppetlabs/postgresql', '3.3.3'
+
 # going to try out this one, which supports both packages and urls
 #mod 'example42/java', '2.0.3' # the jenkins one depends on a conflicting named one :(
 mod 'puppetlabs/java', '1.1.1'
