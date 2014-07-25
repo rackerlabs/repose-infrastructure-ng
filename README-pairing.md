@@ -58,8 +58,7 @@ Repose Pairing Station Setup
     cat > pre-bootstrap-pairing.sh << EOF
     #!/bin/bash
     rm -f bootstrap-puppet-pairing.sh
-    wget -O bootstrap-puppet-pairing.sh https://raw.githubusercontent.com/rackerlabs/repose-infrastructure-ng/REP-389/bootstrap-puppet-pairing.sh &&
-    sed -i 's/\/master\//\/REP-389\//g' bootstrap-puppet-pairing.sh &&
+    wget -O bootstrap-puppet-pairing.sh https://raw.githubusercontent.com/rackerlabs/repose-infrastructure-ng/master/bootstrap-puppet-pairing.sh &&
     chmod a+x bootstrap-puppet-pairing.sh &&
     sudo ./bootstrap-puppet-pairing.sh
     EOF
