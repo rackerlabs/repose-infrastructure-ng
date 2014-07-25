@@ -21,3 +21,7 @@ puppet module install maestrodev-maven             --version 1.2.0 &&
 puppet module install gini-archive                 --version 0.2.0 &&
 puppet module install gini-idea                    --version 0.2.0
 
+# NOTE: This is a patch until the pull request is merged and a new release of gini-idea is cut.
+rm -f /etc/puppet/modules/idea/manifests/ultimate.pp &&
+wget -O /etc/puppet/modules/idea/manifests/ultimate.pp https://raw.githubusercontent.com/wdschei/puppet-idea/UltimateTimeout/manifests/ultimate.pp
+
