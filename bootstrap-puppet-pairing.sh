@@ -35,11 +35,11 @@ rm -f /etc/puppet/manifests/pairing.pp &&
 wget -O /etc/puppet/manifests/pairing.pp https://raw.githubusercontent.com/rackerlabs/repose-infrastructure-ng/master/manifests/pairing.pp &&
 # Apply the desired modules.
 echo "Applying the manifest..." &&
-puppet apply /etc/puppet/manifests/pairing.pp  &&
+puppet apply /etc/puppet/manifests/pairing.pp
 EOF
 chmod a+x /usr/local/sbin/puppet-update.sh &&
 
 # Excute the initial updater.
 echo "Initial execution of the Puppet Updater..." &&
-/usr/local/sbin/puppet-update.sh &&
+/usr/local/sbin/puppet-update.sh
 

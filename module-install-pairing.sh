@@ -19,5 +19,5 @@ puppet module install maestrodev-wget              --version 1.4.5 &&
 puppet module install maestrodev-maven             --version 1.2.0 &&
 
 puppet module install gini-archive                 --version 0.2.0 &&
-puppet module install gini-idea                    --version 0.2.0 &&
+puppet module install gini-idea                    --version 0.2.0
 
