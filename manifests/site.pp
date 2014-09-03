@@ -36,7 +36,7 @@ node jenkinsSlaves inherits default {
     include repose_jenkins
 }
 
-node "slave[1-9].openrepose.org" inherits jenkinsSlaves {
+node /^slave[1-9]\.openrepose\.org$/ inherits jenkinsSlaves {
 
 }
 
