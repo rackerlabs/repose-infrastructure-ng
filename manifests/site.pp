@@ -49,6 +49,6 @@ node "sonar-ng.openrepose.org" inherits default {
     include repose_sonar
 }
 
-node "protomumble.openrepose.org" inherits default {
+node "mumble.openrepose.org" inherits default {
   include mumble_server
 }
