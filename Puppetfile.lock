@@ -70,7 +70,6 @@ GIT
   sha: 8335f67e0fdba95ced215ad1dfa16297ed3bd2e4
   specs:
     repose/git (0.0.1)
-    repose/mumble_server (0.0.1)
 
 GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
@@ -103,6 +102,14 @@ GIT
   sha: 8335f67e0fdba95ced215ad1dfa16297ed3bd2e4
   specs:
     repose/manual_maven (0.0.1)
+
+GIT
+  remote: https://github.com/rackerlabs/repose-puppet-modules
+  path: mumble_server
+  ref: master
+  sha: 8335f67e0fdba95ced215ad1dfa16297ed3bd2e4
+  specs:
+    repose/mumble_server (0.0.1)
 
 GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules

@@ -82,4 +82,4 @@ mod "repose/repose_sonar",
 
 mod "repose/mumble_server",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "git"
+    :path => "mumble_server"
