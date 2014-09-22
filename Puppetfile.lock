@@ -70,6 +70,7 @@ GIT
   sha: 8335f67e0fdba95ced215ad1dfa16297ed3bd2e4
   specs:
     repose/git (0.0.1)
+    repose/mumble_server (0.0.1)
 
 GIT
   remote: https://github.com/rackerlabs/repose-puppet-modules
@@ -160,6 +161,7 @@ DEPENDENCIES
   repose/manual_groovy (>= 0)
   repose/manual_java (>= 0)
   repose/manual_maven (>= 0)
+  repose/mumble_server (>= 0)
   repose/puppet_master (>= 0)
   repose/repose_jenkins (>= 0)
   repose/repose_sonar (>= 0)

@@ -79,3 +79,7 @@ mod "repose/ssl_cert",
 mod "repose/repose_sonar",
     :git => "https://github.com/rackerlabs/repose-puppet-modules",
     :path => "repose_sonar"
+
+mod "repose/mumble_server",
+    :git => "https://github.com/rackerlabs/repose-puppet-modules",
+    :path => "git"
