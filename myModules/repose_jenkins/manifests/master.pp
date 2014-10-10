@@ -1,14 +1,23 @@
 
 # Actually installs jenkins, rather than waiting for the master to push the JAR
 class repose_jenkins::master(
-    $jenkins_version = "1.577"
+    $jenkins_version = "1.583"
 ) {
     include repose_jenkins
 
     $jenkins_home = '/var/lib/jenkins'
 
-    # Versions are generally the latest available, not just the history of ones...
-    # If we want to do that we'll have to use manual packages...
+    include apt
+
+    # explicitly using the jenkins_repo source, so I have access to older verisons (I hope)
+    apt::source{'jenkins_repo':
+      location => "http://pkg.jenkins-ci.org/debian",
+      release => 'binary/',
+      repos => '',
+      key => 'D50582E6',
+      key_source => 'http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key',
+    }
+
     class{'jenkins':
         version => "${jenkins_version}",
         configure_firewall => false,
@@ -16,7 +25,8 @@ class repose_jenkins::master(
         repo => true,
         require => [
             Class['java'],
-            File["${jenkins_home}/.gitconfig"]
+            File["${jenkins_home}/.gitconfig"],
+            Apt::Source['jenkins_repo'],
             ],
         config_hash => {
             'JENKINS_HOME' => { 'value' => "${jenkins_home}" },

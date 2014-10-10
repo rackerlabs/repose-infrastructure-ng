@@ -1,0 +1,6 @@
+name 'repose-repose_jenkins'
+version '0.0.1'
+
+author 'David Kowis'
+
+dependency 'puppetlabs/apt'
