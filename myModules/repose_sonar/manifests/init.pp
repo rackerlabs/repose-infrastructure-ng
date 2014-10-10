@@ -121,11 +121,11 @@ class repose_sonar(
       value => "on",
       require => Class['ssl_cert'],
     }
-    postgresql::server::config_entry {'cert_file':
+    postgresql::server::config_entry {'ssl_cert_file':
       value => "/etc/ssl/certs/openrepose.crt",
       require => Class['ssl_cert'],
     }
-    postgresql::server::config_entry {'key_file':
+    postgresql::server::config_entry {'ssl_key_file':
       value => "/etc/ssl/keys/openrepose.key",
       require => Class['ssl_cert'],
     }
