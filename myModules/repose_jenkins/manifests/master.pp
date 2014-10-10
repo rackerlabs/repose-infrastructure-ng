@@ -115,8 +115,9 @@ class repose_jenkins::master(
     }
     #https://issues.jenkins-ci.org/browse/JENKINS-23426
     # 1.0.15 has failure problems, and it blows up all over the place :(
+    # 1.0.16 should be mush batter
     jenkins::plugin{'jacoco':
-        version => '1.0.14'
+        version => '1.0.16'
     }
     jenkins::plugin{'jquery':
         version => '1.7.2-1'
