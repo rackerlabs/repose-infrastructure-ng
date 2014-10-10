@@ -116,6 +116,29 @@ class repose_sonar(
         postgres_password => $postgres_password,
     }
 
+    # enable SSL on the server
+    postgresql::server::config_entry {'ssl':
+      value => "on",
+      require => Class['ssl_cert'],
+    }
+    postgresql::server::config_entry {'cert_file':
+      value => "/etc/ssl/certs/openrepose.crt",
+      require => Class['ssl_cert'],
+    }
+    postgresql::server::config_entry {'key_file':
+      value => "/etc/ssl/keys/openrepose.key",
+      require => Class['ssl_cert'],
+    }
+
+    postgresql::server::pg_hba_rule{'access to sonar database from the internet':
+      description => "Open up sonar database to the internet (all slaves)",
+      type => 'hostssl',
+      database => 'sonar',
+      user => 'sonar',
+      address => '0.0.0.0/0',
+      auth_method => 'md5',
+    }
+
     postgresql::server::db{ 'sonar':
         user => $sonar_jdbc['username'],
         password => postgresql_password($sonar_jdbc['username'], $sonar_jdbc['password']),
