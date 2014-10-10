@@ -63,6 +63,7 @@ PATH
   remote: myModules/repose_jenkins
   specs:
     repose/repose_jenkins (0.0.1)
+      puppetlabs/apt (>= 0)
 
 PATH
   remote: myModules/repose_sonar
