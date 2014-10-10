@@ -1,24 +1,16 @@
 
 # Actually installs jenkins, rather than waiting for the master to push the JAR
 class repose_jenkins::master(
-    $jenkins_version = "1.583"
+    $jenkins_version = "1.565.3"
 ) {
     include repose_jenkins
 
     $jenkins_home = '/var/lib/jenkins'
 
-    include apt
-
-    # explicitly using the jenkins_repo source, so I have access to older verisons (I hope)
-    apt::source{'jenkins_repo':
-      location => "http://pkg.jenkins-ci.org/debian",
-      release => 'binary/',
-      repos => '',
-      key => 'D50582E6',
-      key_source => 'http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key',
-    }
-
+    # this class already explicitly uses the jenkins repo, so I'm not sure why versions are vanishing
+    # switching to the LTS version of jenkins for less irritating updates
     class{'jenkins':
+        lts => "true",
         version => "${jenkins_version}",
         configure_firewall => false,
         install_java => false,
@@ -26,7 +18,6 @@ class repose_jenkins::master(
         require => [
             Class['java'],
             File["${jenkins_home}/.gitconfig"],
-            Apt::Source['jenkins_repo'],
             ],
         config_hash => {
             'JENKINS_HOME' => { 'value' => "${jenkins_home}" },

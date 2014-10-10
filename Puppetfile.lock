@@ -24,7 +24,7 @@ FORGE
     puppetlabs/ruby (0.3.0)
       puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
     puppetlabs/stdlib (4.2.2)
-    rtyler/jenkins (1.1.0)
+    rtyler/jenkins (1.2.0)
       darin/zypprepo (>= 1.0.1)
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/java (>= 1.0.1)
@@ -97,5 +97,5 @@ DEPENDENCIES
   repose/repose_sonar (>= 0)
   repose/ssl_cert (>= 0)
   repose/users (>= 0)
-  rtyler/jenkins (= 1.1.0)
+  rtyler/jenkins (= 1.2.0)
 
