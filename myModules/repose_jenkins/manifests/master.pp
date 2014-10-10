@@ -17,7 +17,7 @@ class repose_jenkins::master(
         repo => true,
         require => [
             Class['java'],
-            File["${jenkins_home}/.gitconfig"],
+            File["${jenkins_home}/.gitconfig"]
             ],
         config_hash => {
             'JENKINS_HOME' => { 'value' => "${jenkins_home}" },
