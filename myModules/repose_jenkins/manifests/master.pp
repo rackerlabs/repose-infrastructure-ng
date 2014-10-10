@@ -148,6 +148,10 @@ class repose_jenkins::master(
     jenkins::plugin{'scm-api':
         version => '0.2'
     }
+    # oops, somehow I forgot that sonar needed to exist :(
+    jenkins::plugin{'sonar':
+      version => '2.1'
+    }
 
     # adding a plugin to deal with multijob stuff
     jenkins::plugin{'envinject':
