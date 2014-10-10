@@ -29,57 +29,25 @@ mod 'garethr/remotesyslog',
   :ref => "debian_wheezy"
 
 mod "repose/base",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "base"
+    :path => "myModules/base"
 
 mod "repose/cloud_monitoring",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "cloud_monitoring"
-
-mod "repose/common_utils",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "common_utils"
-
-mod "repose/git",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "git"
+    :path => "myModules/cloud_monitoring"
 
 mod "repose/repose_jenkins",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "repose_jenkins"
-
-mod "repose/manual_gradle",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "manual_gradle"
-
-mod "repose/manual_groovy",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "manual_groovy"
-
-mod "repose/manual_java",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "manual_java"
-
-mod "repose/manual_maven",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "manual_maven"
+    :path => "myModules/repose_jenkins"
 
 mod "repose/puppet_master",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "puppet_master"
+    :path => "myModules/puppet_master"
 
 mod "repose/users",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "users"
+    :path => "myModules/users"
 
 mod "repose/ssl_cert",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "ssl_cert"
+    :path => "myModules/ssl_cert"
 
 mod "repose/repose_sonar",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "repose_sonar"
+    :path => "myModules/repose_sonar"
 
 mod "repose/mumble_server",
-    :git => "https://github.com/rackerlabs/repose-puppet-modules",
-    :path => "mumble_server"
+    :path => "myModules/mumble_server"
