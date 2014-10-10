@@ -119,16 +119,16 @@ class repose_sonar(
     # enable SSL on the server
     postgresql::server::config_entry {'ssl':
       value => "on",
-      require => Class['ssl_cert'],
     }
-    postgresql::server::config_entry {'ssl_cert_file':
-      value => "/etc/ssl/certs/openrepose.crt",
-      require => Class['ssl_cert'],
-    }
-    postgresql::server::config_entry {'ssl_key_file':
-      value => "/etc/ssl/keys/openrepose.key",
-      require => Class['ssl_cert'],
-    }
+# postgresql 9.1 doesn't support ssl_cert_file and such, it can only have ssl on
+#    postgresql::server::config_entry {'ssl_cert_file':
+#      value => "/etc/ssl/certs/openrepose.crt",
+#      require => Class['ssl_cert'],
+#    }
+#    postgresql::server::config_entry {'ssl_key_file':
+#      value => "/etc/ssl/keys/openrepose.key",
+#      require => Class['ssl_cert'],
+#    }
 
     postgresql::server::pg_hba_rule{'access to sonar database from the internet':
       description => "Open up sonar database to the internet (all slaves)",
