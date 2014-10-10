@@ -98,6 +98,12 @@ class repose_sonar(
         action => accept,
     }
 
+    firewall{'110 postgresql access':
+      port => [5432],
+      proto => tcp,
+      action => accept,
+    }
+
     # add a postgresql database for the sonars
     # don't manage the firewall, because it's only going to connect on localhost
     if($postgres_password == undef) {
@@ -106,6 +112,7 @@ class repose_sonar(
 
     class {'postgresql::server':
         manage_firewall => false,
+        listen_address => "*",
         postgres_password => $postgres_password,
     }
 
