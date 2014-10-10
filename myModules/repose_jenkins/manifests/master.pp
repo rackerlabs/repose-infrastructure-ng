@@ -113,8 +113,10 @@ class repose_jenkins::master(
     jenkins::plugin{'git':
         version => '2.2.1'
     }
+    #https://issues.jenkins-ci.org/browse/JENKINS-23426
+    # 1.0.15 has failure problems, and it blows up all over the place :(
     jenkins::plugin{'jacoco':
-        version => '1.0.15'
+        version => '1.0.14'
     }
     jenkins::plugin{'jquery':
         version => '1.7.2-1'
