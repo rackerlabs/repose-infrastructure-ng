@@ -112,7 +112,7 @@ class repose_sonar(
 
     class {'postgresql::server':
         manage_firewall => false,
-        listen_address => "*",
+        listen_addresses => "*",
         postgres_password => $postgres_password,
     }
 
