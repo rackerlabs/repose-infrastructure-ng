@@ -9,7 +9,7 @@ class repose_sonar(
 
     class{ 'java': }
     class{'sonarqube':
-        version => '4.3.2',
+        version => '4.5',
         user => 'sonar',
         group => 'sonar',
         service => 'sonar',
@@ -25,7 +25,7 @@ class repose_sonar(
     sonarqube::plugin{'sonar-scm-activity':
         groupid => 'org.codehaus.sonar-plugins.scm-activity',
         artifactid => 'sonar-scm-activity-plugin',
-        version => '1.7.1',
+        version => '1.8',
         notify => Service['sonar'],
     }
 
@@ -46,9 +46,16 @@ class repose_sonar(
     sonarqube::plugin{'sonar-tab-metrics-plugin':
         groupid => 'org.codehaus.sonar-plugins',
         artifactid => 'sonar-tab-metrics-plugin',
-        version => '1.4',
+        version => '1.4.1',
         notify => Service['sonar'],
     }
+
+  sonarqube::plugin{'sonar-findbugs-plugin':
+    groupid => 'org.codehaus.sonar-plugins',
+    artifactid => 'sonar-findbugs-plugin',
+    version => '3.0',
+    notify => Service['sonar'],
+  }
 
     package{'nginx':
         ensure => present,
