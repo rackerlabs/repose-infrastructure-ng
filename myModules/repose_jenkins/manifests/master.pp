@@ -10,7 +10,7 @@ class repose_jenkins::master(
     # this class already explicitly uses the jenkins repo, so I'm not sure why versions are vanishing
     # switching to the LTS version of jenkins for less irritating updates
     class{'jenkins':
-        lts => "true",
+        lts => true,
         version => "${jenkins_version}",
         configure_firewall => false,
         install_java => false,
