@@ -5,6 +5,8 @@ class repose_jenkins(
     $maven_version = "3.2.1",
     $deploy_key = undef,
     $deploy_key_pub = undef,
+    $repo_key = undef,
+    $repo_key_pub = undef,
     $inova_username = undef,
     $inova_password = undef,
     $research_nexus_username = undef,
@@ -123,6 +125,22 @@ class repose_jenkins(
         group => jenkins,
         content => "${deploy_key_pub}",
         require => File["${jenkins_home}/.ssh"],
+    }
+
+    file{"${jenkins_home}/.ssh/repo_key":
+      mode => 0600,
+      owner => jenkins,
+      group => jenkins,
+      content => "${repo_key}",
+      require => File["${jenkins_home}/.ssh"],
+    }
+
+    file{"${jenkins_home}/.ssh/repo_key.pub":
+      mode => 0600,
+      owner => jenkins,
+      group => jenkins,
+      content => "${repo_key_pub}",
+      require => File["${jenkins_home}/.ssh"],
     }
 
     file { ["${jenkins_home}/.m2", "${jenkins_home}/.gradle", "${jenkins_home}/plugins"]:
