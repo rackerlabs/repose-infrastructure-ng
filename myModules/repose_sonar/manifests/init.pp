@@ -131,7 +131,7 @@ class repose_sonar(
 #    }
 
     # for postgresql 9.1 I have to symlink in the ssl files... I need access to the database dir
-    $confdir = getparam(Class['postgresql::server'], 'postgresql_conf_path')
+    $confdir = getparam(Class['postgresql::server'], 'datadir')
 
     notify {$confdir: }
 
