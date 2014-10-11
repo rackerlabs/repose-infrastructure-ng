@@ -163,9 +163,11 @@ class repose_sonar(
       ],
     }
 
+    # Java cannot seem to find the SSL certs. It's only java that's upset, everything else is perfectly fine.
+    # I don't know why, but it makes me rather upset.
     postgresql::server::pg_hba_rule{'access to sonar database from the internet':
       description => "Open up sonar database to the internet (all slaves)",
-      type => 'hostssl',
+      type => 'host',
       database => 'sonar',
       user => 'sonar',
       address => '0.0.0.0/0',
