@@ -147,14 +147,18 @@ class repose_sonar(
       before => Service['postgresql'],
     }
 
-    user{'postgres':
-      ensure => present,
-      groups => "ssl-keys",
-      require => [
-        Class['ssl_cert'],
-        Class['postgresql::server']
-      ],
+    User['postgres'] {
+      groups => "ssl-keys"
     }
+
+#    user{'postgres':
+#      ensure => present,
+#      groups => "ssl-keys",
+#      require => [
+#        Class['ssl_cert'],
+#        Class['postgresql::server']
+#      ],
+#    }
 
     postgresql::server::pg_hba_rule{'access to sonar database from the internet':
       description => "Open up sonar database to the internet (all slaves)",
