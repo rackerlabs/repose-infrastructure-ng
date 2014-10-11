@@ -121,6 +121,7 @@ class repose_sonar(
       value => "on",
     }
 # postgresql 9.1 doesn't support ssl_cert_file and such, it can only have ssl on
+# it's got hardcoded ssl cert files :(
 #    postgresql::server::config_entry {'ssl_cert_file':
 #      value => "/etc/ssl/certs/openrepose.crt",
 #      require => Class['ssl_cert'],
