@@ -140,7 +140,7 @@ class repose_sonar(
         Class['ssl_cert'],
         Postgresql::Server::Db['sonar'],
       ],
-      notify => Service['postgresql'],
+      notify => Class['postgresql::server::reload'],
     }
 
     file{"${datadir}/server.key":
@@ -150,7 +150,7 @@ class repose_sonar(
         Class['ssl_cert'],
         Postgresql::Server::Db['sonar'],
       ],
-      notify => Service['postgresql'],
+      notify => Class['postgresql::server::reload'],
     }
 
     user{'postgres':
