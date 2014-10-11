@@ -130,6 +130,11 @@ class repose_sonar(
 #      require => Class['ssl_cert'],
 #    }
 
+    # for postgresql 9.1 I have to symlink in the ssl files... I need access to the database dir
+    $confdir = getparam(Class['postgresql::server'], 'postgresql_conf_path')
+
+    notify($confdir)
+
     postgresql::server::pg_hba_rule{'access to sonar database from the internet':
       description => "Open up sonar database to the internet (all slaves)",
       type => 'hostssl',
