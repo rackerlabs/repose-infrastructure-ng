@@ -136,14 +136,20 @@ class repose_sonar(
     file{"${datadir}/server.crt":
       ensure => link,
       target => "/etc/ssl/certs/openrepose.crt",
-      require => Class['postgresql::server', 'ssl_cert'],
+      require => [
+        Class['ssl_cert'],
+        Postgresql::Server::Db['sonar'],
+      ],
       before => Service['postgresql'],
     }
 
     file{"${datadir}/server.key":
       ensure => link,
       target => "/etc/ssl/keys/openrepose.key",
-      require => Class['postgresql::server', 'ssl_cert'],
+      require => [
+        Class['ssl_cert'],
+        Postgresql::Server::Db['sonar'],
+      ],
       before => Service['postgresql'],
     }
 
