@@ -156,6 +156,10 @@ class repose_jenkins::master(
     jenkins::plugin{'sonar':
       version => '2.1'
     }
+    # also forgot that we need the copy-artifact plugin to get artifacts smartly
+    jenkins::plugin{'copyartifact':
+      version => '1.31'
+    }
 
     # adding a plugin to deal with multijob stuff
     jenkins::plugin{'envinject':
