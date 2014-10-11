@@ -131,9 +131,30 @@ class repose_sonar(
 #    }
 
     # for postgresql 9.1 I have to symlink in the ssl files... I need access to the database dir
-    $confdir = getparam(Class['postgresql::server'], 'datadir')
+    $datadir = getparam(Class['postgresql::server'], 'datadir')
 
-    notify {$confdir: }
+    file{"${datadir}/server.crt":
+      ensure => link,
+      target => "/etc/ssl/certs/openrepose.crt",
+      require => Class['postgresql::server', 'ssl_cert'],
+      before => Service['postgresql'],
+    }
+
+    file{"${datadir}/server.key":
+      ensure => link,
+      target => "/etc/ssl/keys/openrepose.key",
+      require => Class['postgresql::server', 'ssl_cert'],
+      before => Service['postgresql'],
+    }
+
+    user{'postgres':
+      ensure => present,
+      groups => "ssl-keys",
+      require => [
+        Class['ssl_cert'],
+        Package['postgresql']
+      ],
+    }
 
     postgresql::server::pg_hba_rule{'access to sonar database from the internet':
       description => "Open up sonar database to the internet (all slaves)",
