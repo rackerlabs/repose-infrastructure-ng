@@ -152,7 +152,7 @@ class repose_sonar(
       groups => "ssl-keys",
       require => [
         Class['ssl_cert'],
-        Package['postgresql']
+        Class['postgresql::server']
       ],
     }
 
