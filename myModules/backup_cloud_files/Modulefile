@@ -1,0 +1,6 @@
+name 'repose-backup_cloud_files'
+version '0.0.1'
+
+author 'David Kowis'
+
+dependency 'stankevich/python'
