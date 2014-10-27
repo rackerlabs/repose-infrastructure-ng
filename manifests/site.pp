@@ -56,8 +56,7 @@ node "mumble.openrepose.org" inherits default {
 node "repo-work.openrepose.org" inherits default {
     # I think this will make this system have a shell script to do backups on!
     backup_cloud_files::target{"some_stuff":
-        target => '/srv/backup',
-        container => "repoworkbackup",
+        target => '/srv/test',
         cf_username => hiera('rs_cloud_username'),
         cf_apikey => hiera('rs_cloud_apikey'),
         cf_region => 'ORD',

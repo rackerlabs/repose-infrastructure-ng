@@ -2,7 +2,7 @@
 # Create a defined type to create targets to backup, each one should create it's own backup script
 define backup_cloud_files::target(
     $target = undef,
-    $container = undef,
+    $container = $name,
     $cf_username = undef,
     $cf_apikey = undef,
     $cf_region = undef,
@@ -12,7 +12,7 @@ define backup_cloud_files::target(
 
     # create a backup file based on targets and container and probably name?
     if ! $container {
-        fail("You must specify a container to put this stuff in")
+        fail("You must specify a container (namevar) to put this stuff in")
     }
 
     if ! $cf_username {
