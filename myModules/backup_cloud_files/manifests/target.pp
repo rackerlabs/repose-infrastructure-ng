@@ -30,23 +30,13 @@ define backup_cloud_files::target(
         fail("You really need to specify a directory to back up")
     }
 
-    # now create a backup file, somewhere, probably /usr/local/bin/backup_name.sh (so we can manipulate a backup by name)
-    file{"/usr/local/bin/backup_${name}.sh":
+    # built a ruby script to handle the delegation of commands to duplicity
+    file{"/usr/local/bin/duplicity_${name}.rb":
         ensure => present,
         owner => root,
         group => root,
         mode => 0770,
-        content => template("backup_cloud_files/backup_script.sh.erb"),
-        require => Class[Backup_cloud_files],
-    }
-
-    # a handy utility script, because it's slightly more complicated than it should be
-    file{"/usr/local/bin/utility_${name}.rb":
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 0770,
-        content => template("backup_cloud_files/utility_script.rb.erb"),
+        content => template("backup_cloud_files/duplicity_script.rb.erb"),
         require => Class[Backup_cloud_files],
     }
 
