@@ -7,7 +7,7 @@ ENV['CLOUDFILES_USERNAME']='<%= @cf_username %>'
 ENV['CLOUDFILES_APIKEY']='<%= @cf_apikey %>'
 ENV['CLOUDFILES_REGION']='<%= @cf_region %>'
 
-url = "cfpyrax+http://#{CLOUD_CONTAINER}"
+url = "cfpyrax+http://#{ENV['CLOUD_CONTAINER']}"
 
 # get the args, and figure out what to do about them
 # if the argument list contains $url then replace it with the actual url
