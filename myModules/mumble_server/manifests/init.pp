@@ -40,6 +40,42 @@ class mumble_server(
     ],
   }
 
+  #set up stuff to backup the sqlite database for mumble
+  package{"ruby-sqlite3":
+      ensure => present,
+  }
+
+  file{'/srv/mumble_database':
+      ensure => directory,
+      owner => root,
+      group => root,
+      mode => 0755
+  }
+
+  # establish a backup target
+  backup_cloud_files::target{"mumble_database":
+    target => '/srv/mumble_database',
+    cf_username => hiera('rs_cloud_username'),
+    cf_apikey => hiera('rs_cloud_apikey'),
+    cf_region => 'DFW',
+    duplicity_options => '--full-if-older-than 15D --volsize 250 --exclude-other-filesystems --no-encryption',
+    require => File['/srv/mumble_database'],
+  }
+
+  file{'/usr/local/bin/backup.rb':
+      ensure => file,
+      owner => root,
+      group => root,
+      mode => 0770,
+      source => 'puppet:///modules/mumble_server/backup.rb',
+      require => [
+        Package['ruby-sqlite3'],
+        Backup_cloud_files::Target['mumble_database']
+      ],
+  }
+
+  #TODO: add this backup.rb to cron nightly
+
   # TODO: can set the superuser passwords -- maybe
 
   # figured out how to do this from: https://www.tiredpixel.com/2013/09/02/iptables-port-forwarding-using-puppet/

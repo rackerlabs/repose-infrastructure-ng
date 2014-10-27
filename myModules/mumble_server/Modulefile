@@ -1,0 +1,6 @@
+name 'repose-mumble_server'
+version '0.0.1'
+
+author 'David Kowis'
+
+dependency 'repose/backup_cloud_files'
