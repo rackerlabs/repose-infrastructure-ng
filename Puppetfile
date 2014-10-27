@@ -52,3 +52,6 @@ mod "repose/repose_sonar",
 
 mod "repose/mumble_server",
     :path => "myModules/mumble_server"
+
+mod "repose/backup_cloud_files",
+    :path => "myModules/backup_cloud_files"

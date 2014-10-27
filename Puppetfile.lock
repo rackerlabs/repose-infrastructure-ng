@@ -29,6 +29,8 @@ FORGE
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/java (>= 1.0.1)
       puppetlabs/stdlib (>= 2.0.0)
+    stankevich/python (1.7.13)
+      puppetlabs/stdlib (>= 4.0.0)
 
 GIT
   remote: https://github.com/dkowis/garethr-remotesyslog
@@ -38,6 +40,12 @@ GIT
     garethr/remotesyslog (0.1.1)
       puppetlabs/ruby (>= 0)
       puppetlabs/stdlib (>= 0)
+
+PATH
+  remote: myModules/backup_cloud_files
+  specs:
+    repose/backup_cloud_files (0.0.1)
+      stankevich/python (>= 0)
 
 PATH
   remote: myModules/base
@@ -89,6 +97,7 @@ DEPENDENCIES
   puppetlabs/java (= 1.1.1)
   puppetlabs/postgresql (= 3.3.3)
   puppetlabs/stdlib (= 4.2.2)
+  repose/backup_cloud_files (>= 0)
   repose/base (>= 0)
   repose/cloud_monitoring (>= 0)
   repose/mumble_server (>= 0)
