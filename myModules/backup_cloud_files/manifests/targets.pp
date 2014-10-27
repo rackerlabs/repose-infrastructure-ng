@@ -31,7 +31,7 @@ define backup_cloud_files::targets(
     }
 
     # now create a backup file, somewhere, probably /usr/local/bin/duplicity_container.sh
-    file{"/usr/local/bin/duplicity_${container}.sh":
+    file{"/usr/local/bin/backup_${container}.sh":
         ensure => present,
         owner => root,
         group => root,
@@ -39,4 +39,15 @@ define backup_cloud_files::targets(
         content => template("backup_cloud_files/backup_script.sh.erb"),
         require => Class[Backup_cloud_files],
     }
+
+    # a handy utility script, because it's slightly more complicated than it should be
+    file{"/usr/local/bin/utility_${container}.rb":
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => 0770,
+        content => template("backup_cloud_files/utility_script.rb.erb"),
+        require => Class[Backup_cloud_files],
+    }
+
 }

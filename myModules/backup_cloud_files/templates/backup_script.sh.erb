@@ -1,3 +1,7 @@
+#!/bin/bash
+# A backup script ready to be run from cron
+# Managed by puppet
+
 CLOUD_CONTAINER=<%= @container %>
 # Required for RackspaceCloudFiles support
 export CLOUDFILES_USERNAME=<%= @cf_username %>
@@ -6,6 +10,7 @@ export CLOUDFILES_REGION=<%= @cf_region %>
 
 # Duplicity stuffs
 #TODO: this is where encryption would go, if we wanted to do that thing
+
 options="<%=@duplicity_options %>"
 duplicity $options <%=@targets.join(" ") %> cfpyrax+http://${CLOUD_CONTAINER}
 

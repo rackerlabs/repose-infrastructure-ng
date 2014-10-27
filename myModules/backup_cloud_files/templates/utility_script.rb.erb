@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+#stick stuff in the environment!
+ENV['CLOUD_CONTAINER']='<%= @container %>'
+# Required for RackspaceCloudFiles support
+ENV['CLOUDFILES_USERNAME']='<%= @cf_username %>'
+ENV['CLOUDFILES_APIKEY']='<%= @cf_apikey %>'
+ENV['CLOUDFILES_REGION']='<%= @cf_region %>'
+
+url = "cfpyrax+http://#{CLOUD_CONTAINER}"
+
+# get the args, and figure out what to do about them
+# if the argument list contains $url then replace it with the actual url
+# otherwise append it to the end
+
+if ARGV.include?('$url')
+    new_args = ARGV.map do |arg|
+        if arg == '$url'
+            url
+        else
+            arg
+        end
+    end
+# finally replace ourselves with duplicity
+    exec("duplicity #{new_args}")
+else
+    exec("duplicity #{ARGV.join " "} #{url}")
+end
