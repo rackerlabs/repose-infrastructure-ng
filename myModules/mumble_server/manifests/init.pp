@@ -58,7 +58,7 @@ class mumble_server(
     cf_username => hiera('rs_cloud_username'),
     cf_apikey => hiera('rs_cloud_apikey'),
     cf_region => 'DFW',
-    duplicity_options => '--full-if-older-than 29D --volsize 250 --exclude-other-filesystems --no-encryption',
+    duplicity_options => '--full-if-older-than 15D --volsize 250 --exclude-other-filesystems --no-encryption',
     require => File['/srv/mumble_database'],
   }
 
@@ -74,11 +74,12 @@ class mumble_server(
       ],
   }
 
-  # weekly backup of the mumble database
+  # nightly backup of the mumble database
   cron{'mumble_backup':
       command => '/usr/local/bin/backup.rb',
       user => root,
-      weekday => 7,
+      hour => 4,
+      minute => 0,
       require => File['/usr/local/bin/backup.rb'],
   }
 
