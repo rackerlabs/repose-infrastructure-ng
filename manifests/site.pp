@@ -61,6 +61,6 @@ node "repo-work.openrepose.org" inherits default {
         cf_username => hiera('rs_cloud_username'),
         cf_apikey => hiera('rs_cloud_apikey'),
         cf_region => 'ORD',
-        duplicity_options => "--full-if-older-than 15D --volsize 250 --exclude-other-filesystems"
+        duplicity_options => "--full-if-older-than 15D --volsize 250 --exclude-other-filesystems --no-encryption"
     }
 }
