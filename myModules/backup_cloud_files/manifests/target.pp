@@ -26,7 +26,7 @@ define backup_cloud_files::target(
         fail("A CloudFiles Region must be specified")
     }
 
-    if ! $targets {
+    if ! $target {
         fail("You really need to specify a directory to back up")
     }
 
