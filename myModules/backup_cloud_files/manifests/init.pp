@@ -38,6 +38,6 @@ class backup_cloud_files{
         path => ['/usr/bin', '/usr/sbin'],
         refreshonly => true,
         subscribe => File['pyrax-backend'],
-        require => File['prax-python-link'],
+        require => File['pyrax-python-link'],
     }
 }
