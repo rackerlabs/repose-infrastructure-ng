@@ -13,8 +13,8 @@ url = "cfpyrax+http://#{ENV['CLOUD_CONTAINER']}"
 # if the argument list contains $url then replace it with the actual url
 # otherwise append it to the end
 
-if ARGV.include?('$url')
-    new_args = ARGV.map do |arg|
+new_args = if ARGV.include?('$url')
+    ARGV.map do |arg|
         if arg == '$url'
             url
         else
@@ -22,7 +22,8 @@ if ARGV.include?('$url')
         end
     end
 # finally replace ourselves with duplicity
-    exec("duplicity #{new_args}")
 else
-    exec("duplicity #{ARGV.join " "} #{url}")
+    ARGV << url
 end
+
+exec('duplicity', *new_args)
