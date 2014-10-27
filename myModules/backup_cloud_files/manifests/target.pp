@@ -1,7 +1,7 @@
 ##
 # Create a defined type to create targets to backup, each one should create it's own backup script
-define backup_cloud_files::targets(
-    $targets = [],
+define backup_cloud_files::target(
+    $target = undef,
     $container = undef,
     $cf_username = undef,
     $cf_apikey = undef,
@@ -26,12 +26,12 @@ define backup_cloud_files::targets(
         fail("A CloudFiles Region must be specified")
     }
 
-    if $targets == [] {
-        fail("You really need to specify some stuff to back up...")
+    if ! $targets {
+        fail("You really need to specify a directory to back up")
     }
 
-    # now create a backup file, somewhere, probably /usr/local/bin/duplicity_container.sh
-    file{"/usr/local/bin/backup_${container}.sh":
+    # now create a backup file, somewhere, probably /usr/local/bin/backup_name.sh (so we can manipulate a backup by name)
+    file{"/usr/local/bin/backup_${name}.sh":
         ensure => present,
         owner => root,
         group => root,
@@ -41,7 +41,7 @@ define backup_cloud_files::targets(
     }
 
     # a handy utility script, because it's slightly more complicated than it should be
-    file{"/usr/local/bin/utility_${container}.rb":
+    file{"/usr/local/bin/utility_${name}.rb":
         ensure => present,
         owner => root,
         group => root,
