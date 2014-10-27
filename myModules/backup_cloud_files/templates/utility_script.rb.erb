@@ -9,6 +9,10 @@ ENV['CLOUDFILES_REGION']='<%= @cf_region %>'
 
 url = "cfpyrax+http://#{ENV['CLOUD_CONTAINER']}"
 
+# local directory for this container to back up
+local_target = '<%= @target %>'
+options = '<%= @duplicity_options %>'.split(' ')
+
 # get the args, and figure out what to do about them
 # if the argument list contains $url then replace it with the actual url
 # otherwise append it to the end
@@ -23,7 +27,12 @@ new_args = if ARGV.include?('$url')
     end
 # finally replace ourselves with duplicity
 else
-    ARGV << url
+    ARGV + [url]
+end
+
+# if it's empty, lets do a backup command
+if ARGV.empty?
+    new_args = options + [local_target] + new_args
 end
 
 exec('duplicity', *new_args)
