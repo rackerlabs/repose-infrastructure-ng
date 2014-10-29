@@ -1,7 +1,8 @@
 class repose_sonar(
-    $postgres_password = undef,
     $sonar_jdbc = undef
 ) {
+
+    include repose_sonar::database
 
     if($sonar_jdbc == undef) {
         fail("Must have sonar's JDBC configured")
@@ -18,7 +19,7 @@ class repose_sonar(
         jdbc => $sonar_jdbc,
         require => [
             Class['maven::maven'],
-            Postgresql::Server::Db['sonar']
+            Class['repose_sonar::database']
         ],
     }
 
@@ -67,7 +68,7 @@ class repose_sonar(
         require => Package['nginx'],
     }
 
-    class{'ssl_cert':}
+    include ssl_cert
 
     file{"/etc/nginx/conf.d/sonar.conf":
         ensure => file,
@@ -98,86 +99,6 @@ class repose_sonar(
         action => accept,
     }
 
-    firewall{'110 postgresql access':
-      port => [5432],
-      proto => tcp,
-      action => accept,
-    }
-
-    # add a postgresql database for the sonars
-    # don't manage the firewall, because it's only going to connect on localhost
-    if($postgres_password == undef) {
-        fail("Postgres password must be specified!")
-    }
-
-    class {'postgresql::server':
-        manage_firewall => false,
-        listen_addresses => "*",
-        postgres_password => $postgres_password,
-    }
-
-    # enable SSL on the server
-    postgresql::server::config_entry {'ssl':
-      value => "on",
-    }
-# postgresql 9.1 doesn't support ssl_cert_file and such, it can only have ssl on
-# it's got hardcoded ssl cert files :(
-#    postgresql::server::config_entry {'ssl_cert_file':
-#      value => "/etc/ssl/certs/openrepose.crt",
-#      require => Class['ssl_cert'],
-#    }
-#    postgresql::server::config_entry {'ssl_key_file':
-#      value => "/etc/ssl/keys/openrepose.key",
-#      require => Class['ssl_cert'],
-#    }
-
-    # for postgresql 9.1 I have to symlink in the ssl files... I need access to the database dir
-    $datadir = getparam(Class['postgresql::server'], 'datadir')
-
-    file{"${datadir}/server.crt":
-      ensure => link,
-      target => "/etc/ssl/certs/openrepose.crt",
-      require => [
-        Class['ssl_cert'],
-        Postgresql::Server::Db['sonar'],
-      ],
-      notify => Class['postgresql::server::reload'],
-    }
-
-    file{"${datadir}/server.key":
-      ensure => link,
-      target => "/etc/ssl/keys/openrepose.key",
-      require => [
-        Class['ssl_cert'],
-        Postgresql::Server::Db['sonar'],
-      ],
-      notify => Class['postgresql::server::reload'],
-    }
-
-    user{'postgres':
-      ensure => present,
-      groups => "ssl-keys",
-      require => [
-        Class['ssl_cert'],
-        Package['postgresql-server'],
-      ],
-    }
-
-    # Java cannot seem to find the SSL certs. It's only java that's upset, everything else is perfectly fine.
-    # I don't know why, but it makes me rather upset.
-    postgresql::server::pg_hba_rule{'access to sonar database from the internet':
-      description => "Open up sonar database to the internet (all slaves)",
-      type => 'host',
-      database => 'sonar',
-      user => 'sonar',
-      address => '0.0.0.0/0',
-      auth_method => 'md5',
-    }
-
-    postgresql::server::db{ 'sonar':
-        user => $sonar_jdbc['username'],
-        password => postgresql_password($sonar_jdbc['username'], $sonar_jdbc['password']),
-    }
 
     #Papertrail the sonar logs
     $papertrail_port = hiera("base::papertrail_port", 1)
