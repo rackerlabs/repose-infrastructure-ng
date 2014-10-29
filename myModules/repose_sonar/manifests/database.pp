@@ -40,7 +40,9 @@ class repose_sonar::database(
         collate => 'utf8_general_ci',
     }
 
-    $sonar_pass = hiera('repose_sonar::sonar_jdbc')['password']
+    $sonar_jdbc = hiera('repose_sonar::sonar_jdbc')
+    $sonar_pass = $sonar_jdbc['password']
+
     notify{'sonarpass':
         message => "the sonarpass: ${sonar_pass}"
     }
