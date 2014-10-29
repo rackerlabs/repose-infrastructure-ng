@@ -34,7 +34,7 @@ class repose_sonar::database(
         require => Class['ssl_cert'],
     }
 
-    mysql_database{'sonar@%':
+    mysql_database{'sonar':
         ensure => present,
         charset => 'utf8',
         collate => 'utf8_general_ci',
