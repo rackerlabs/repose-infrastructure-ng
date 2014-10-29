@@ -40,9 +40,14 @@ class repose_sonar::database(
         collate => 'utf8_general_ci',
     }
 
+    $sonar_pass = hiera('repose_sonar::sonar_jdbc')['password']
+    notify{'sonarpass':
+        message => "the sonarpass: ${sonar_pass}"
+    }
+
     mysql_user{'sonar@%/sonar.*':
         ensure => 'present',
-        password_hash => mysql_password(hiera('repose_sonar::sonar_jdbc')['password']),
+        password_hash => mysql_password($sonar_pass),
     }
 
     mysql_grant{'sonar@%/sonar.*':
