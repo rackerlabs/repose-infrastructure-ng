@@ -11,11 +11,13 @@ FORGE
     maestrodev/wget (1.5.6)
     puppetlabs/apt (1.5.0)
       puppetlabs/stdlib (>= 2.2.1)
-    puppetlabs/concat (1.1.1)
+    puppetlabs/concat (1.1.2)
       puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
     puppetlabs/firewall (1.1.2)
     puppetlabs/java (1.1.1)
       puppetlabs/stdlib (>= 0.1.6)
+    puppetlabs/mysql (2.3.1)
+      puppetlabs/stdlib (>= 3.2.0)
     puppetlabs/postgresql (3.3.3)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
       puppetlabs/concat (< 2.0.0, >= 1.0.0)
@@ -61,6 +63,7 @@ PATH
   remote: myModules/mumble_server
   specs:
     repose/mumble_server (0.0.1)
+      repose/backup_cloud_files (>= 0)
 
 PATH
   remote: myModules/puppet_master
@@ -77,6 +80,8 @@ PATH
   remote: myModules/repose_sonar
   specs:
     repose/repose_sonar (0.0.1)
+      puppetlabs/mysql (>= 0)
+      puppetlabs/stdlib (>= 0)
 
 PATH
   remote: myModules/ssl_cert
