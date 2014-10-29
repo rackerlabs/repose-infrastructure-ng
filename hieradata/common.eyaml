@@ -18,7 +18,7 @@ repose_sonar::database::mysql_root_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBa
 
 # Sonar JDBC hash
 repose_sonar::sonar_jdbc:
-  url: jdbc:postgresql://localhost/sonar
+  url: jdbc:mysql://localhost/sonar
   username: sonar
   password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAeln9Svc9inQq9wPqC89jvQDokzqxjdqXq+xsj7R5PxfjL9mA44u/q3qB1dZ3oqvMPOU3NZ7gjOLuW3jqtFE9RXr0OyYqpcivKJ+gDd1b9Gcc85gouj7tSMibZ9p52+WL1ywT79NxtVjoAR7mGmaSHvWN6SHwvlkK5kFb/8tlyaYSCrpWxtO2HHE8ezEFrumaqLBDnr11JfZ+EZH6JcDBY+JkkMbtqELyk8G+92BOPBQY9IvPw8iB/IrXtLEm6Hs5+KfsXRy3zFG6lwyVmNW9rqGWrsM/VhKl9Cb8E+npaasaTdo6arBu7v9l7pLhO4FB2EUkTN0raEXTU0Cya68jXTA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBAEvQV0hXgxizWUv2Ypt9OmgBD5h4iG7M0BXYd3EEM5QSGu]
 
