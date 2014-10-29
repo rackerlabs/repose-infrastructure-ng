@@ -43,16 +43,23 @@ class repose_sonar::database(
     $sonar_jdbc = hiera('repose_sonar::sonar_jdbc')
     $sonar_pass = $sonar_jdbc['password']
 
-    notify{'sonarpass':
-        message => "the sonarpass: ${sonar_pass}"
-    }
-
     mysql_user{'sonar@%/sonar.*':
         ensure => 'present',
         password_hash => mysql_password($sonar_pass),
     }
 
+    mysql_user{'sonar@localhost/sonar.*':
+        ensure => 'present',
+        password_hash => mysql_password($sonar_pass),
+    }
+
     mysql_grant{'sonar@%/sonar.*':
+        privileges => ['ALL'],
+        table => 'sonar.*',
+        user => 'sonar@%',
+    }
+
+    mysql_grant{'sonar@localhost/sonar.*':
         privileges => ['ALL'],
         table => 'sonar.*',
         user => 'sonar@%',
