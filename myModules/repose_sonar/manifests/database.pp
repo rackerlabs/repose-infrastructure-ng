@@ -1,5 +1,6 @@
 class repose_sonar::database(
-    $mysql_root_password = undef
+    $mysql_root_password = undef,
+    $mysql_backup_password = undef
 ) {
 
     include ssl_cert
@@ -52,5 +53,47 @@ class repose_sonar::database(
         privileges => ['ALL'],
         table => 'sonar.*',
         user => 'sonar@%',
+    }
+
+    #establish a backup script for stuff to dump it into /srv/mysql-backups
+    # set the cron time to 5 am, as nightly runs will hopefully be finished by then
+    # this only dumps the databases, I need to set up the backup cloud files to further archive this dir
+    class {'::mysql::server::backup':
+        backupuser => 'mysql_backup',
+        backuppassword => $mysql_backup_password,
+        backupdir => '/srv/mysql-backups',
+        backupdatabases => ['sonar'],
+        time => ['5', '0'],
+    }
+
+    include backup_cloud_files
+
+    backup_cloud_files::target{'sonar_mysql':
+        target => '/srv/mysql-backups',
+        cf_username => hiera('rs_cloud_username'),
+        cf_apikey => hiera('rs_cloud_apikey'),
+        cf_region => 'DFW',
+        duplicity_options => '--full-if-older-than 15D --volsize 250 --exclude-other-filesystems --no-encryption',
+        require => Class['::mysql::server::backup'],
+    }
+
+    cron{'duplicity_backup':
+        ensure => present,
+        command => '/usr/local/bin/duplicity_sonar_mysql.rb',
+        user => root,
+        hour => 6,
+        minute => 0,
+        require => Backup_cloud_files::Target['sonar_mysql'],
+    }
+
+    # schedule a clean up of the backups once a month
+    cron{'duplicity_cleanup':
+        ensure => present,
+        command => '/usr/local/bin/duplicity_sonar_mysql.rb remove-older-than 1M --force \$url',
+        user => root,
+        monthday => 1,
+        hour => 3,
+        minute => 0,
+        require => Backup_cloud_files::Target['sonar_mysql'],
     }
 }
