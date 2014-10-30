@@ -27,9 +27,10 @@ class repose_nexus::nexus(
     }
 
     file{ 'nexus-symlink':
-        path   => '/opt/nexus',
-        ensure => link,
-        target => "/opt/nexus-${version}",
+        path    => '/opt/nexus',
+        ensure  => link,
+        target  => "/opt/nexus-${version}",
+        require => Exec['nexus-untar'],
     }
 
     exec{ 'nexus-dir-perms':
@@ -45,20 +46,45 @@ class repose_nexus::nexus(
         source => "puppet:///modules/repose_nexus/nexus",
         owner  => root,
         group  => root,
-        mode   => 0744,
+        mode   => 0755,
     }
 
-    group{'nexus':
+    file{ '/opt/nexus/conf/nexus.properties':
+        ensure  => file,
+        owner   => root,
+        group   => root,
+        mode    => 0644,
+        source  => "puppet:///modules/repose_nexus/nexus.properties",
+        require => File['nexus-symlink'],
+    }
+
+    file{ '/srv/sonatype-work':
+        ensure  => directory,
+        owner   => 'nexus',
+        group   => 'nexus',
+        mode    => 0755,
+        require => [User['nexus'], Group['nexus']],
+    }
+
+    file{ '/srv/sonatype-work/nexus':
+        ensure  => directory,
+        owner   => 'nexus',
+        group   => 'nexus',
+        mode    => 0755,
+        require => File['/srv/sonatype-work'],
+    }
+
+    group{ 'nexus':
         ensure => present,
-        gid => 5000,
+        gid    => 5000,
     }
 
     user{ 'nexus':
-        ensure => present,
-        uid    => 5000,
-        gid    => 5000,
-        home   => '/srv/sonatype-work',
-        shell  => '/bin/bash',
+        ensure  => present,
+        uid     => 5000,
+        gid     => 5000,
+        home    => '/srv/sonatype-work',
+        shell   => '/bin/bash',
         require => Group['nexus'],
     }
 
@@ -67,7 +93,7 @@ class repose_nexus::nexus(
         enable  => true,
         require => [
             User['nexus'],
-            File['nexus-symlink', '/etc/init.d/nexus']
+            File['nexus-symlink', '/etc/init.d/nexus', '/opt/nexus/']
         ],
     }
 }
