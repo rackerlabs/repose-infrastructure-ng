@@ -1,4 +1,4 @@
-class repose_nexus::plugin(
+define repose_nexus::plugin(
     $bundle = $name,
     $plugin_folder = undef,
 ) {
