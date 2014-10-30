@@ -19,7 +19,6 @@ define repose_nexus::plugin(
         creates     => "/srv/sonatype-work/nexus/plugin-repository/${plugin_folder}",
         path        => ['/bin', '/usr/bin'],
         require     => Class['repose_nexus::work_directory'],
-        refreshonly => true,
         notify      => Service['nexus'],
     }
 
