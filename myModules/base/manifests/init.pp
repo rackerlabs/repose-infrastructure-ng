@@ -40,6 +40,10 @@ class base(
         ensure => present,
     }
 
+    package{'unzip':
+        ensure => present,
+    }
+
 # why wasn't less installed?!?!? I dunno
     package{ 'less':
         ensure => present,
