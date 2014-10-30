@@ -94,6 +94,7 @@ class repose_nexus::nexus(
         ensure  => running,
         enable  => true,
         require => [
+            Class['java'],
             User['nexus'],
             File['nexus-symlink', '/etc/init.d/nexus', '/opt/nexus/']
         ],
