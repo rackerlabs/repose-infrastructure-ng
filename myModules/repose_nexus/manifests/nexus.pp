@@ -5,6 +5,8 @@ class repose_nexus::nexus(
 ) {
 # a wrapper class for the sonatype nexus setup
 
+    include java
+
     include wget
 
     $archive = "/opt/nexus-${version}-bundle.tar.gz"

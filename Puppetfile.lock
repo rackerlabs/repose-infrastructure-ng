@@ -87,6 +87,7 @@ PATH
   remote: myModules/repose_sonar
   specs:
     repose/repose_sonar (0.0.1)
+      puppetlabs/java (>= 0)
       puppetlabs/mysql (>= 0)
       puppetlabs/stdlib (>= 0)
       repose/backup_cloud_files (>= 0)
