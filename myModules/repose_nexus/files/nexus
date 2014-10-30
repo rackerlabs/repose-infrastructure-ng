@@ -32,7 +32,8 @@ APP_LONG_NAME="Nexus OSS"
 PRIORITY=
 
 # Location of the pid file.
-PIDDIR="/var/run"
+# /run is only writeable by root, so that's no good
+PIDDIR="/srv/sonatype-work"
 
 # If uncommented, causes the Wrapper to be shutdown using an anchor file.
 #  When launched with the 'start' command, it will also ignore all INT and
