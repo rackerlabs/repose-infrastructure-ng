@@ -55,3 +55,6 @@ mod "repose/mumble_server",
 
 mod "repose/backup_cloud_files",
     :path => "myModules/backup_cloud_files"
+
+mod "repose/repose_nexus",
+    :path => "myModules/repose_nexus"

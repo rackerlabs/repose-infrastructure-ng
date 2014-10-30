@@ -77,6 +77,13 @@ PATH
       puppetlabs/apt (>= 0)
 
 PATH
+  remote: myModules/repose_nexus
+  specs:
+    repose/repose_nexus (0.0.1)
+      maestrodev/wget (>= 0)
+      repose/backup_cloud_files (>= 0)
+
+PATH
   remote: myModules/repose_sonar
   specs:
     repose/repose_sonar (0.0.1)
@@ -109,6 +116,7 @@ DEPENDENCIES
   repose/mumble_server (>= 0)
   repose/puppet_master (>= 0)
   repose/repose_jenkins (>= 0)
+  repose/repose_nexus (>= 0)
   repose/repose_sonar (>= 0)
   repose/ssl_cert (>= 0)
   repose/users (>= 0)

@@ -51,3 +51,7 @@ node "sonar.openrepose.org" inherits default {
 node "mumble.openrepose.org" inherits default {
     include mumble_server
 }
+
+node "nexus.openrepose.org" inherits default {
+    include repose_nexus::nexus
+}
