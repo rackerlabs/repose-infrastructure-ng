@@ -3,7 +3,7 @@ class base::fw_pre {
         require => undef,
     }
 
-    # Default firewall rules
+# Default firewall rules
     firewall { '000 accept all icmp':
         proto   => 'icmp',
         action  => 'accept',
@@ -19,8 +19,8 @@ class base::fw_pre {
         action  => 'accept',
     }->
     firewall { '003 accept ssh':
-        proto => 'tcp',
-        port => '22',
+        proto  => 'tcp',
+        port   => '22',
         action => 'accept',
     }
 }

@@ -48,7 +48,7 @@ define base::swap (
             unless  => "/sbin/swapon -s | grep ${swapfile}",
         }
 
-        } elsif $ensure == 'absent' {
+    } elsif $ensure == 'absent' {
         exec { 'Detach swap file':
             command => "/sbin/swapoff ${swapfile}",
             onlyif  => "/sbin/swapon -s | grep ${swapfile}",
@@ -56,7 +56,7 @@ define base::swap (
         file { $swapfile:
             ensure  => absent,
             require => Exec['Detach swap file'],
-            backup => false
+            backup  => false
         }
 
     }
