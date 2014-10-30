@@ -16,7 +16,7 @@ define repose_nexus::plugin(
     exec{ "extract-${bundle}":
         command     => "unzip ${bundle}",
         cwd         => "/srv/sonatype-work/nexus/plugin-repository",
-        creates     => $plugin_folder,
+        creates     => "/srv/sonatype-work/nexus/plugin-repository/${plugin_folder}",
         path        => ['/bin', '/usr/bin'],
         require     => Class['repose_nexus::work_directory'],
         refreshonly => true,
