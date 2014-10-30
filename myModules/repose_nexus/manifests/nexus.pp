@@ -9,6 +9,9 @@ class repose_nexus::nexus(
 
     include wget
 
+    include repose_nexus::user
+    include repose_nexus::work_directory
+
     $archive = "/opt/nexus-${version}-bundle.tar.gz"
 
     wget::fetch{ 'fetch-nexus':
@@ -60,42 +63,11 @@ class repose_nexus::nexus(
         require => File['nexus-symlink'],
     }
 
-    file{ '/srv/sonatype-work':
-        ensure  => directory,
-        owner   => 'nexus',
-        group   => 'nexus',
-        mode    => 0755,
-        require => [User['nexus'], Group['nexus']],
-    }
-
-    file{ '/srv/sonatype-work/nexus':
-        ensure  => directory,
-        owner   => 'nexus',
-        group   => 'nexus',
-        mode    => 0755,
-        require => File['/srv/sonatype-work'],
-    }
-
-    group{ 'nexus':
-        ensure => present,
-        gid    => 5000,
-    }
-
-    user{ 'nexus':
-        ensure  => present,
-        uid     => 5000,
-        gid     => 5000,
-        home    => '/srv/sonatype-work',
-        shell   => '/bin/bash',
-        require => Group['nexus'],
-    }
-
     service{ 'nexus':
         ensure  => running,
         enable  => true,
         require => [
-            Class['java'],
-            User['nexus'],
+            Class['java', 'repose_nexus::user', 'repose_nexus::work_directory'],
             File['nexus-symlink', '/etc/init.d/nexus', '/opt/nexus/']
         ],
     }

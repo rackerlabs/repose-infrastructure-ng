@@ -53,5 +53,5 @@ node "mumble.openrepose.org" inherits default {
 }
 
 node "nexus.openrepose.org" inherits default {
-    include repose_nexus::nexus
+    include repose_nexus
 }
