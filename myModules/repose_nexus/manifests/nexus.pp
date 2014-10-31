@@ -61,6 +61,7 @@ class repose_nexus::nexus(
         mode    => 0644,
         source  => "puppet:///modules/repose_nexus/nexus.properties",
         require => File['nexus-symlink'],
+        notify  => Service['nexus'],
     }
 
     service{ 'nexus':
@@ -74,13 +75,13 @@ class repose_nexus::nexus(
 
     include base::nginx
 
-    file{'/etc/nginx/conf.d/10-nexus.conf':
-        ensure => file,
-        owner => root,
-        group => root,
-        mode => 0644,
+    file{ '/etc/nginx/conf.d/10-nexus.conf':
+        ensure  => file,
+        owner   => root,
+        group   => root,
+        mode    => 0644,
         content => template('repose_nexus/nginx.conf.erb'),
         require => Package['nginx'],
-        notify => Service['nginx'],
+        notify  => Service['nginx'],
     }
 }
