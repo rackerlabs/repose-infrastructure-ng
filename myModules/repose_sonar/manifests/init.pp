@@ -66,7 +66,6 @@ class repose_sonar(
         owner   => root,
         group   => root,
         content => template("repose_sonar/nginx.conf.erb"),
-        require => Class['base::nginx'],
         notify  => Service['nginx'],
     }
 
