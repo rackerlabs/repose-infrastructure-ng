@@ -26,17 +26,7 @@ class repose_jenkins::master(
         },
     }
 
-    package{ 'nginx':
-        ensure => present,
-    }
-
-# Don't want the default site running.
-    file{ "/etc/nginx/sites-enabled/default":
-        ensure  => absent,
-        require => Package['nginx'],
-    }
-
-    class{ 'ssl_cert': }
+    include base::nginx
 
     file{ "/etc/nginx/conf.d/jenkins.conf":
         ensure  => file,
@@ -44,27 +34,8 @@ class repose_jenkins::master(
         owner   => root,
         group   => root,
         content => template("repose_jenkins/nginx.conf.erb"),
-        require => [
-            Package['nginx'],
-            Class['ssl_cert']
-        ],
+        require => Package['nginx'],
         notify  => Service['nginx'],
-    }
-
-    service{ 'nginx':
-        ensure  => running,
-        enable  => true,
-        require => [
-            Package['nginx'],
-            Class['ssl_cert'],
-            File['/etc/nginx/conf.d/jenkins.conf', '/etc/nginx/sites-enabled/default']
-        ]
-    }
-
-    firewall{ '100 nginx http/s access':
-        port   => [443,80],
-        proto  => tcp,
-        action => accept,
     }
 
 # define our jenkins SCM config sync plugin
