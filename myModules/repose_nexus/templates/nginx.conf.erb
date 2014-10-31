@@ -19,8 +19,8 @@ server {
 
       proxy_read_timeout 90;
 
-      proxy_pass http://app_jenkins$request_uri;
+      proxy_pass http://app_jenkins/nexus/$request_uri;
       # Fix the “It appears that your reverse proxy set up is broken" error.
-      proxy_redirect http://app_jenkins $scheme://<%= @fqdn %>;
+      proxy_redirect http://app_jenkins/nexus $scheme://<%= @fqdn %>;
    }
 }
