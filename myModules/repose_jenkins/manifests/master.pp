@@ -1,6 +1,6 @@
 # Actually installs jenkins, rather than waiting for the master to push the JAR
 class repose_jenkins::master(
-    $jenkins_version = "1.565.3"
+    $jenkins_version = "1.580.1"
 ) {
     include repose_jenkins
 
