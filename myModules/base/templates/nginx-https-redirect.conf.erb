@@ -1,0 +1,4 @@
+server {
+    server_name <%= @fqdn %>;
+    rewrite ^ https://$server_name$request_uri? permanent;
+}
