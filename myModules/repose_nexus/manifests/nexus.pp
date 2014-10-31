@@ -71,4 +71,16 @@ class repose_nexus::nexus(
             File['nexus-symlink', '/etc/init.d/nexus', '/opt/nexus/']
         ],
     }
+
+    include base::nginx
+
+    file{'/etc/nginx/conf.d/10-nexus.conf':
+        ensure => file,
+        owner => root,
+        group => root,
+        mode => 0644,
+        content => template('repose_nexus/nginx.conf.erb'),
+        require => Package['nginx'],
+        notify => Service['nginx'],
+    }
 }
