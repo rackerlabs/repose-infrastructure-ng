@@ -58,17 +58,7 @@ class repose_sonar(
         notify     => Service['sonar'],
     }
 
-    package{ 'nginx':
-        ensure => present,
-    }
-
-# Don't want the default site running.
-    file{ "/etc/nginx/sites-enabled/default":
-        ensure  => absent,
-        require => Package['nginx'],
-    }
-
-    include ssl_cert
+    include base::nginx
 
     file{ "/etc/nginx/conf.d/sonar.conf":
         ensure  => file,
@@ -78,27 +68,10 @@ class repose_sonar(
         content => template("repose_sonar/nginx.conf.erb"),
         require => [
             Package['nginx'],
-            Class['ssl_cert']
+            Class['base::nginx']
         ],
         notify  => Service['nginx'],
     }
-
-    service{ 'nginx':
-        ensure  => running,
-        enable  => true,
-        require => [
-            Package['nginx'],
-            Class['ssl_cert'],
-            File['/etc/nginx/conf.d/sonar.conf', '/etc/nginx/sites-enabled/default']
-        ]
-    }
-
-    firewall{ '100 nginx http/s access':
-        port   => [443,80],
-        proto  => tcp,
-        action => accept,
-    }
-
 
 #Papertrail the sonar logs
     $papertrail_port = hiera("base::papertrail_port", 1)
