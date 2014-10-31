@@ -7,7 +7,7 @@ server {
     listen [::]:443;
 
     # this imports the necessary SSL stuff
-    include /etc/nginx/nginx-ssl.conf
+    include /etc/nginx/nginx-ssl.conf;
 
     server_name <%= @fqdn %>>;
 
