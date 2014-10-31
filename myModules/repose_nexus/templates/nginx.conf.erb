@@ -18,11 +18,10 @@ server {
       proxy_set_header X-NginX-Proxy true;
 
       proxy_read_timeout 90;
+      port_in_redirect off;
 
       proxy_pass http://app_nexus/$request_uri;
       # Fix the “It appears that your reverse proxy set up is broken" error.
-      #proxy_redirect http://app_nexus $scheme://<%= @fqdn %>;
-      # For some reason, nexus wants this to be off
-      proxy_redirect off;
+      proxy_redirect http://app_nexus $scheme://<%= @fqdn %>;
    }
 }
