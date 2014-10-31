@@ -1,6 +1,6 @@
 #MANAGED BY PUPPET
 
-upstream app_jenkins {
+upstream app_nexus {
     server 127.0.0.1:8081;
 }
 server {
@@ -19,8 +19,10 @@ server {
 
       proxy_read_timeout 90;
 
-      proxy_pass http://app_jenkins/$request_uri;
+      proxy_pass http://app_nexus/$request_uri;
       # Fix the “It appears that your reverse proxy set up is broken" error.
-      proxy_redirect http://app_jenkins $scheme://<%= @fqdn %>;
+      #proxy_redirect http://app_nexus $scheme://<%= @fqdn %>;
+      # For some reason, nexus wants this to be off
+      proxy_redirect off;
    }
 }
