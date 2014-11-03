@@ -26,7 +26,7 @@ class repose_jenkins::master(
         },
     }
 
-    include base::nginx
+    include base::nginx::autohttps
 
     file{ "/etc/nginx/conf.d/jenkins.conf":
         ensure  => file,

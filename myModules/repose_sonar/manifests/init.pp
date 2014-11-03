@@ -58,7 +58,7 @@ class repose_sonar(
         notify     => Service['sonar'],
     }
 
-    include base::nginx
+    include base::nginx::autohttps
 
     file{ "/etc/nginx/conf.d/sonar.conf":
         ensure  => file,
