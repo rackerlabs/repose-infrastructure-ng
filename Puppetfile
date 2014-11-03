@@ -58,3 +58,6 @@ mod "repose/backup_cloud_files",
 
 mod "repose/repose_nexus",
     :path => "myModules/repose_nexus"
+
+mod "repose/repose_redirects",
+    :path => "myModules/repose_redirects"
