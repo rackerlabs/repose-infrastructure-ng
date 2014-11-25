@@ -10,7 +10,8 @@ class repose_jenkins(
     $inova_username = undef,
     $inova_password = undef,
     $research_nexus_username = undef,
-    $research_nexus_password = undef
+    $research_nexus_password = undef,
+    $saxon_ee_license = undef
 ) {
 
 # ensure maven is installed
@@ -158,4 +159,22 @@ class repose_jenkins(
         content => template("repose_jenkins/m2settings.xml.erb"),
         require => File["${jenkins_home}/.m2"]
     }
+
+    file{ "${jenkins_home}/saxon_ee":
+        ensure  => directory,
+        owner   => jenkins,
+        group   => jenkins,
+        mode    => 0750,
+        require => User['jenkins'],
+    }
+
+    file { "${jenkins_home}/saxon_ee/saxon-license.lic":
+        ensure  => file,
+        owner   => jenkins,
+        group   => jenkins,
+        mode    => 0440,
+        content => "${saxon_ee_license}",
+        require => File["${jenkins_home}/saxon_ee"],
+    }
+
 }
