@@ -3,8 +3,7 @@ class repose_nagios {
     class { 'ssl_cert':
     }
 
-# debian uses the package "monitoring-plugins" as a meta package for nagios compatible plugins
-    package { 'monitoring-plugins':
+    package { 'nagios-plugins':
         ensure => present,
     }
 
