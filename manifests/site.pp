@@ -60,3 +60,7 @@ node "nexus.openrepose.org" inherits default {
 node "redirects.openrepose.org" inherits default {
     include repose_redirects
 }
+
+node "nagios.openrepose.org" inherits default {
+    include repose_nagios::server
+}

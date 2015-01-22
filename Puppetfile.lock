@@ -77,6 +77,11 @@ PATH
       puppetlabs/apt (>= 0)
 
 PATH
+  remote: myModules/repose_nagios
+  specs:
+    repose/repose_nagios (0.0.1)
+
+PATH
   remote: myModules/repose_nexus
   specs:
     repose/repose_nexus (0.0.1)
@@ -122,6 +127,7 @@ DEPENDENCIES
   repose/mumble_server (>= 0)
   repose/puppet_master (>= 0)
   repose/repose_jenkins (>= 0)
+  repose/repose_nagios (>= 0)
   repose/repose_nexus (>= 0)
   repose/repose_redirects (>= 0)
   repose/repose_sonar (>= 0)
