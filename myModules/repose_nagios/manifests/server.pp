@@ -26,5 +26,14 @@ class repose_nagios::server {
         require => Package['nginx', 'postfix']
     }
 
+#nagios3 is going to bring along a pile of apache dependencies I don't want.
+# but it also makes dependency hell. Disk space is cheap, we just won't run apache2 at all
+    service{ 'apache2':
+        ensure => stopped,
+        enable => false,
+        require => Package['nagios3'],
+        before => Service['nginx'],
+    }
+
 #TODO: papertrail logs, beyond default syslog stuff
 }
