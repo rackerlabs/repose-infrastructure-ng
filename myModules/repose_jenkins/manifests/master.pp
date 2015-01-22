@@ -1,6 +1,6 @@
 # Actually installs jenkins, rather than waiting for the master to push the JAR
 class repose_jenkins::master(
-    $jenkins_version = "1.580.1"
+    $jenkins_version = "1.580.2"
 ) {
     include repose_jenkins
 
@@ -66,28 +66,28 @@ class repose_jenkins::master(
     }
 
     jenkins::plugin{ 'dashboard-view':
-        version => '2.9.2'
+        version => '2.9.4'
     }
     jenkins::plugin{ 'github-api':
-        version => '1.54'
+        version => '1.59'
     }
     jenkins::plugin{ 'github':
-        version => '1.8'
+        version => '1.10'
     }
     jenkins::plugin{ 'ghprb':
-        version => '1.12'
+        version => '1.16-8'
     }
     jenkins::plugin{ 'git-client':
-        version => '1.9.1'
+        version => '1.15.0'
     }
     jenkins::plugin{ 'git':
-        version => '2.2.1'
+        version => '2.3.4'
     }
 #https://issues.jenkins-ci.org/browse/JENKINS-23426
 # 1.0.15 has failure problems, and it blows up all over the place :(
 # 1.0.16 should be mush batter
     jenkins::plugin{ 'jacoco':
-        version => '1.0.16'
+        version => '1.0.18'
     }
     jenkins::plugin{ 'jquery':
         version => '1.7.2-1'
@@ -102,7 +102,7 @@ class repose_jenkins::master(
         version => '2.4'
     }
     jenkins::plugin{ 'publish-over-ssh':
-        version => '1.11'
+        version => '1.12'
     }
     jenkins::plugin{ 'simple-theme-plugin':
         version => '0.3'
@@ -128,22 +128,22 @@ class repose_jenkins::master(
     }
 # also forgot that we need the copy-artifact plugin to get artifacts smartly
     jenkins::plugin{ 'copyartifact':
-        version => '1.31'
+        version => '1.33'
     }
 
 # adding a plugin to deal with multijob stuff
     jenkins::plugin{ 'envinject':
-        version => '1.83'
+        version => '1.90'
     }
 
     jenkins::plugin { 'jenkins-multijob-plugin':
-        version => '1.13'
+        version => '1.16'
     }
 
 
 # to use the slave logic that the jenkins puppet module uses, we need the swarm plugin
     jenkins::plugin{ 'swarm':
-        version => '1.15',
+        version => '1.22',
     }
 
 #lets add back in my hax
