@@ -1,0 +1,29 @@
+## MANAGED BY PUPPET
+
+
+server {
+    listen       [::]:443;
+    server_name  <%= @fqdn %>>;
+
+    # need to import our baseline SSL stuff for nginx
+    include /etc/nginx/nginx-ssl.conf;
+
+    root         /usr/share/nagios3/htdocs/;
+
+    index index.php;
+
+    #TODO: accesslog/errorlog?
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    #I'm pretty sure this is the right way to do php with nginx....
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_index index.php;
+        fastcgi_pass php5-fpm-sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include /etc/nginx/fastcgi_params;
+    }
+}
