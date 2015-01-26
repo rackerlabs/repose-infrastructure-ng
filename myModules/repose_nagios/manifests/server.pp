@@ -22,14 +22,25 @@ class repose_nagios::server(
         notify  => Service['nginx'],
     }
 
+    file{ '/etc/conf.d/nagios_htpasswd':
+        ensure  => file,
+        mode    => 0640,
+        owner   => root,
+        group   => 'www-data',
+        require => Package['nginx'],
+    }
+
     htpasswd { $nagios_admin_user:
         cryptpasswd => ht_crypt($nagios_admin_pass, $nagios_ht_salt),
         target      => '/etc/nginx/conf.d/nagios_htpasswd',
-        require     => Package['nginx'],
+        require     => [
+            Package['nginx'],
+            File['/etc/conf.d/nagios_htpasswd']
+        ],
         notify      => Service['nginx'],
     }
 
-# TODO: ensure that there's a mailserver on this box too
+#TODO: ensure that there's a mailserver on this box too
 #TODO: configure postfix for sending only
 #TODO: should probably have this in base
     package{ 'postfix':
