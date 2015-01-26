@@ -22,7 +22,7 @@ class repose_nagios::server(
         notify  => Service['nginx'],
     }
 
-    file{ '/etc/conf.d/nagios_htpasswd':
+    file{ '/etc/nagios/conf.d/nagios_htpasswd':
         ensure  => file,
         mode    => 0640,
         owner   => root,
@@ -35,7 +35,7 @@ class repose_nagios::server(
         target      => '/etc/nginx/conf.d/nagios_htpasswd',
         require     => [
             Package['nginx'],
-            File['/etc/conf.d/nagios_htpasswd']
+            File['/etc/nagios/conf.d/nagios_htpasswd']
         ],
         notify      => Service['nginx'],
     }
