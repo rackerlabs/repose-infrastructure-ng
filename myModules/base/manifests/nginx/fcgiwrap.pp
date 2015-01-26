@@ -25,5 +25,4 @@ class base::nginx::fcgiwrap {
         ],
         notify  => Service['nginx'],
     }
-
 }
