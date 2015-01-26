@@ -18,11 +18,12 @@ class repose_nagios::server(
         require => [
             Package['nginx', 'nagios3', 'fcgiwrap', 'php5-fpm'],
             Htpasswd[$nagios_admin_user],
+            File['/etc/nginx/conf.d/nagios_htpasswd']
         ],
         notify  => Service['nginx'],
     }
 
-    file{ '/etc/nagios/conf.d/nagios_htpasswd':
+    file{ '/etc/nginx/conf.d/nagios_htpasswd':
         ensure  => file,
         mode    => 0640,
         owner   => root,
