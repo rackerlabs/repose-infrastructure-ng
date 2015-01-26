@@ -7,13 +7,24 @@ class base::nginx::php {
         ensure => present,
     }
 
-    file{ '/etc/nginx/conf.d/php5-fpm.conf':
+
+    # fortunately the default debian php5-fpm configs are sufficient
+    service{ 'php5-fpm':
+        ensure => running,
+        enable => true,
+        require => Package['php5-fpm'],
+    }
+
+    file{ '/etc/nginx/conf.d/20-php5-fpm.conf':
         ensure  => file,
         mode    => 0644,
         owner   => root,
         group   => root,
         source  => 'puppet:///modules/base/nginx/php5-fpm-sock.conf',
-        require => Package['nginx', 'php5-fpm'],
+        require => [
+            Package['nginx', 'php5-fpm'],
+            Service['php5-fpm'],
+        ],
         notify  => Service['nginx'],
     }
 
