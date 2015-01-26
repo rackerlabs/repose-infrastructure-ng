@@ -2,6 +2,7 @@ FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
     darin/zypprepo (1.0.1)
+    leinaddm/htpasswd (0.0.3)
     maestrodev/maven (1.2.0)
       maestrodev/wget (>= 1.0.0)
     maestrodev/sonarqube (2.1.1)
@@ -80,6 +81,7 @@ PATH
   remote: myModules/repose_nagios
   specs:
     repose/repose_nagios (0.0.1)
+      leinaddm/htpasswd (>= 0)
 
 PATH
   remote: myModules/repose_nexus
