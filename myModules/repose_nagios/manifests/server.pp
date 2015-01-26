@@ -27,16 +27,16 @@ class repose_nagios::server(
         mode    => 0640,
         owner   => root,
         group   => 'www-data',
-        require => Package['nginx'],
+        require => [
+            Package['nginx'],
+            Htpasswd[$nagios_admin_user]
+        ],
     }
 
     htpasswd { $nagios_admin_user:
         cryptpasswd => ht_crypt($nagios_admin_pass, $nagios_ht_salt),
         target      => '/etc/nginx/conf.d/nagios_htpasswd',
-        require     => [
-            Package['nginx'],
-            File['/etc/nagios/conf.d/nagios_htpasswd']
-        ],
+        require     => Package['nginx'],
         notify      => Service['nginx'],
     }
 
