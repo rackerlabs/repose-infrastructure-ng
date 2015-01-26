@@ -30,7 +30,7 @@ class base::nginx {
         owner   => root,
         group   => root,
         mode    => 0644,
-        source  => "puppet:///modules/base/nginx-ssl-config.conf",
+        source  => "puppet:///modules/base/nginx/ssl-config.conf",
         require => [
             Class['ssl_cert'],
             Package['nginx']

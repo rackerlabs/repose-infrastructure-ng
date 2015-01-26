@@ -6,7 +6,7 @@ class base::nginx::autohttps{
         mode    => 0644,
         owner   => root,
         group   => root,
-        content => template('base/nginx-https-redirect.conf.erb'),
+        content => template('base/nginx/https-redirect.conf.erb'),
         require => Package['nginx'],
         notify  => Service['nginx'],
     }

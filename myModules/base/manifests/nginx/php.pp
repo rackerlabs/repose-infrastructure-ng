@@ -12,7 +12,7 @@ class base::nginx::php {
         mode    => 0644,
         owner   => root,
         group   => root,
-        source  => 'puppet:///modules/base/nginx-php5-fpm-sock.conf',
+        source  => 'puppet:///modules/base/nginx/php5-fpm-sock.conf',
         require => Package['nginx', 'php5-fpm'],
         notify  => Service['nginx'],
     }
