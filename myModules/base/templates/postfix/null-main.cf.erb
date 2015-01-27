@@ -6,7 +6,7 @@ smtp_tls_cert_file = /etc/ssl/certs/openrepose.crt
 smtp_tls_key_file = /etc/ssl/keys/openrepose.key
 smtp_use_tls = yes
 
-myhostname = <% @fqdn %>
+myhostname = <%= @fqdn %>
 myorigin = $mydomain
 relayhost = $mydomain
 inet_interfaces = loopback-only
