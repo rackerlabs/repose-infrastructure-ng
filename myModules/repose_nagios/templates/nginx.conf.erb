@@ -14,7 +14,13 @@ server {
 
     #TODO: accesslog/errorlog?
 
+    auth_basic "Nagios Command and Control";
+    auth_basic_user_file /etc/nginx/conf.d/nagios_htpasswd;
 
+    # the stylesheets are in an odd place on debians
+    location /stylesheets {
+        alias /etc/nagios3/stylesheets;
+    }
 
     location / {
         try_files $uri $uri/ /index.php?$args;
@@ -33,12 +39,9 @@ server {
 
     # Pass the CGI files to fcgiwrap to process!
     location ~ \.cgi$ {
-        auth_basic "Nagios Command and Control";
-        auth_basic_user_file /etc/nginx/conf.d/nagios_htpasswd;
-
         root /usr/lib/cgi-bin/nagios3;
 
-        rewrite ^/cgi-bin/nagios3/(.*)$ \$1;
+        rewrite ^/cgi-bin/nagios3/(.*)$ /$1;
 
         include /etc/nginx/fastcgi_params;
 
