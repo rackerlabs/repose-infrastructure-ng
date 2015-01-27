@@ -66,6 +66,10 @@ class repose_nagios::server(
         require => Package['nginx', 'postfix']
     }
 
+    package{'nagios-nrpe-plugin':
+        ensure => present,
+    }
+
 #nagios3 is going to bring along a pile of apache dependencies I don't want.
 # but it also makes dependency hell. Disk space is cheap, we just won't run apache2 at all
     service{ 'apache2':
@@ -84,7 +88,7 @@ class repose_nagios::server(
         source       => "puppet:///modules/repose_nagios/nagios_config",
         purge        => true,
         recurselimit => 1,
-        require      => Package['nagios3'],
+        require      => Package['nagios3', 'nagios-nrpe-plugin'],
         notify       => Service['nagios3']
     }
 
