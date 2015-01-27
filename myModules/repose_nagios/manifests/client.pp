@@ -15,7 +15,7 @@ class repose_nagios::client {
 
 # Bah, nrpe doesn't use /etc/nagios3
     file{ 'nrpe-config':
-        path    => '/etc/nagios/nrpe_local.conf',
+        path    => '/etc/nagios/nrpe_local.cfg',
         owner   => root,
         group   => root,
         mode    => 0644,
