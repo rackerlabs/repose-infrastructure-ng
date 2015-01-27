@@ -20,7 +20,8 @@ class repose_nagios::client {
         group   => root,
         mode    => 0644,
         source  => 'puppet:///modules/repose_nagios/client_nrpe.conf',
-        require => Package['nagios-nrpe-server']
+        require => Package['nagios-nrpe-server'],
+        notify  => Service['nagios-nrpe-server'],
     }
 
     service{ 'nagios-nrpe-server':
