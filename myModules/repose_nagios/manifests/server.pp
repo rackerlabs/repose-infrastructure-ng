@@ -9,6 +9,8 @@ class repose_nagios::server(
     include base::nginx::php
     include base::nginx::fcgiwrap
 
+    include base::mail_sender
+
     file{ '/etc/nginx/conf.d/nagios.conf':
         ensure  => file,
         mode    => 0644,
@@ -57,13 +59,6 @@ class repose_nagios::server(
         ensure  => running,
         enable  => true,
         require => Package['nagios3'],
-    }
-
-#TODO: ensure that there's a mailserver on this box too
-#TODO: configure postfix for sending only
-#TODO: should probably have this in base
-    package{ 'postfix':
-        ensure => present,
     }
 
     package{ 'nagios3':
