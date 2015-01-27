@@ -64,3 +64,7 @@ node "redirects.openrepose.org" inherits default {
 node "nagios.openrepose.org" inherits default {
     include repose_nagios::server
 }
+
+node "clientbox.openrepose.org" inherits default {
+    include repose_nagios::client
+}
