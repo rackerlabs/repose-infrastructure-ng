@@ -80,7 +80,7 @@ class repose_nagios::server(
         mode         => 0755,
         owner        => root,
         group        => root,
-        recurse      => remote,
+        recurse      => true,
         source       => "puppet:///modules/repose_nagios/nagios_config",
         purge        => true,
         recurselimit => 1,
