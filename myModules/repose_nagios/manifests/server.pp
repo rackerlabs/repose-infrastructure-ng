@@ -50,7 +50,7 @@ class repose_nagios::server(
         require => [
             Package['nagios3']
         ],
-        notify => Service['nagios3'],
+        notify => Service['nagios'],
     }
 
 
