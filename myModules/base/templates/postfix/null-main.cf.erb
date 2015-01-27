@@ -1,0 +1,14 @@
+# MANAGED BY PUPPET
+# Only for relaying mail sent locally, that's the only purpose
+# Set up TLS for sending
+
+smtp_tls_cert_file = /etc/ssl/certs/openrepose.crt
+smtp_tls_key_file = /etc/ssl/keys/openrepose.key
+smtp_use_tls = yes
+
+myhostname = <% @fqdn %>
+myorigin = $mydomain
+relayhost = $mydomain
+inet_interfaces = loopback-only
+# this is supposed to be blank
+mydestination =
