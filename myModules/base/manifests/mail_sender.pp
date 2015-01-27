@@ -19,7 +19,7 @@ class base::mail_sender {
         owner   => root,
         group   => root,
         mode    => 0640,
-        content => template('base/postfix/null-main.cf.erb'),
+        content => template('base/postfix/local-only-main.cf.erb'),
         require => [
             Package['postfix'],
             Class['ssl_cert']
