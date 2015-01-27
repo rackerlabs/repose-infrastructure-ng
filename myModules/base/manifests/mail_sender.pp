@@ -18,7 +18,7 @@ class base::mail_sender {
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0640,
+        mode    => 0644,
         content => template('base/postfix/local-only-main.cf.erb'),
         require => [
             Package['postfix'],
