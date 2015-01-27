@@ -50,9 +50,15 @@ class repose_nagios::server(
         require => [
             Package['nagios3']
         ],
-        notify => Service['nagios'],
+        notify  => Service['nagios3'],
     }
 
+
+    service{ 'nagios3':
+        ensure  => running,
+        enable  => true,
+        require => Package['nagios3'],
+    }
 
 #TODO: ensure that there's a mailserver on this box too
 #TODO: configure postfix for sending only
