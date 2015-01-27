@@ -88,6 +88,33 @@ class repose_nagios::server(
         notify       => Service['nagios3']
     }
 
+    file{ '/etc/nagios3/nagios.cfg':
+        ensure  => file,
+        owner   => root,
+        group   => root,
+        mode    => 0644,
+        source  => "puppet:///modules/repose_nagios/nagios.cfg",
+        require => Package['nagios3'],
+        notify  => Service['nagios3'],
+    }
+
+#these guys are needed to enable external commands
+    file{ '/var/lib/nagios3/rw':
+        ensure  => directory,
+        owner   => nagios,
+        group   => www-data,
+        mode    => 2710,
+        require => Package['nagios3'],
+    }
+
+    file{ '/var/lib/nagios3':
+        ensure  => directory,
+        owner   => nagios,
+        group   => nagios,
+        mode    => 0751,
+        require => Package['nagios3'],
+    }
+
 #TODO: papertrail logs, beyond default syslog stuff
 
 }
