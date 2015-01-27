@@ -75,6 +75,18 @@ class repose_nagios::server(
         before  => Service['nginx'],
     }
 
+    file{ '/etc/nagios3/conf.d':
+        ensure       => directory,
+        mode         => 0755,
+        owner        => root,
+        group        => root,
+        recurse      => remote,
+        source       => "puppet:///modules/repose_nagios/nagios_config",
+        purge        => true,
+        recurselimit => 1,
+        require      => Package['nagios3'],
+        notify       => Service['nagios3']
+    }
 
 #TODO: papertrail logs, beyond default syslog stuff
 
