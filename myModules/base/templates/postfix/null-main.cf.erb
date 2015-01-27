@@ -7,8 +7,14 @@ smtp_tls_key_file = /etc/ssl/keys/openrepose.key
 smtp_use_tls = yes
 
 myhostname = <%= @fqdn %>
-myorigin = $mydomain
-relayhost = $mydomain
+# I want to be explicit that it comes from this host
+myorigin = $myhostname
+
+# we don't have a relay host for our mail
+# Make sure we don't relay any mail for other hosts
+mynetworks_style = host
+relay_domains =
+
 inet_interfaces = loopback-only
 # this is supposed to be blank
 mydestination =
