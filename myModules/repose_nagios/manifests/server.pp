@@ -53,14 +53,6 @@ class repose_nagios::server(
         notify  => Service['nagios3'],
     }
 
-# have to stick the nagios user in the www-data group so that it can do cgi?
-    user{ 'nagios':
-        ensure  => present,
-        groups  => ['www-data'],
-        require => Package['nagios3'],
-    }
-
-
     service{ 'nagios3':
         ensure  => running,
         enable  => true,
