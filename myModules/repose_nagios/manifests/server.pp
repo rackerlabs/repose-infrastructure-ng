@@ -41,6 +41,19 @@ class repose_nagios::server(
         notify      => Service['nginx'],
     }
 
+    file{ '/etc/nagios3/cgi.cfg':
+        ensure  => file,
+        owner   => root,
+        group   => root,
+        mode    => 0644,
+        content => template('repose_nagios/cgi.cfg.erb'),
+        require => [
+            Package['nagios3']
+        ],
+        notify => Service['nagios3'],
+    }
+
+
 #TODO: ensure that there's a mailserver on this box too
 #TODO: configure postfix for sending only
 #TODO: should probably have this in base
