@@ -66,7 +66,7 @@ class repose_nagios::server(
         require => Package['nginx', 'postfix']
     }
 
-    package{'nagios-nrpe-plugin':
+    package{ 'nagios-nrpe-plugin':
         ensure => present,
     }
 
@@ -117,6 +117,13 @@ class repose_nagios::server(
         group   => nagios,
         mode    => 0751,
         require => Package['nagios3'],
+    }
+
+# set up ruby-nagios, because I can aggregate stuff and have less noise!
+    package{ 'ruby-nagios':
+        ensure   => present,
+        provider => 'gem',
+        before   => File['/etc/nagios3/conf.d'],
     }
 
 #TODO: papertrail logs, beyond default syslog stuff
