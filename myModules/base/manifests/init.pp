@@ -215,4 +215,14 @@ class base(
         group   => root,
         require => Sshkey["github.com", "repo.openrepose.org"],
     }
+
+  # schedule a cron update every 4 hours to get the latest package information
+    cron{ 'cron-apt-get-update':
+        ensure  => present,
+        command => '/usr/bin/apt-get update',
+        user    => root,
+        hour    => '*/4',
+        minute  => 0,
+    }
+
 }
