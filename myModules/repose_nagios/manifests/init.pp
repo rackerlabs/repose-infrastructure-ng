@@ -6,4 +6,12 @@ class repose_nagios {
         ensure => present,
     }
 
+    file{ '/usr/lib/nagios/plugins/check_debian_packages':
+        ensure  => file,
+        owner   => root,
+        group   => root,
+        mode    => 0755,
+        source  => "puppet:///modules/repose_nagios/check_debian_packages",
+        require => Package['nagios-plugins'],
+    }
 }
