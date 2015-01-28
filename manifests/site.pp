@@ -25,6 +25,9 @@ node default {
         swapfile => '/swapfile',
         swapsize => 4096,
     }
+
+    # have to actually include it!
+    include repose_nagios::client
 }
 
 node 'puppet.openrepose.org' inherits default {
