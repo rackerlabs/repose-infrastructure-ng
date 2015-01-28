@@ -3,7 +3,7 @@ class mumble_server(
 )
 {
 #Get the SSL Certs on the machine
-    class{ 'ssl_cert': }
+    include ssl_cert
 
     package { "mumble-server":
         ensure => present
