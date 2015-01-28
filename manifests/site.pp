@@ -25,11 +25,6 @@ node default {
         swapfile => '/swapfile',
         swapsize => 4096,
     }
-
-# don't include nagios::client on the nagios server, everything else gets it
-    if $fqdn != "nagios.openrepose.org" {
-        include repose_nagios::client
-    }
 }
 
 node 'puppet.openrepose.org' inherits default {
