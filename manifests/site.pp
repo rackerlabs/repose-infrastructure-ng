@@ -28,7 +28,7 @@ node default {
 
 # don't include nagios::client on the nagios server, everything else gets it
     if $fqdn != "nagios.openrepose.org" {
-        include nagios::client
+        include repose_nagios::client
     }
 }
 
