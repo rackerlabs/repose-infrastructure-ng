@@ -147,14 +147,13 @@ class repose_jenkins::master(
     }
 
 #lets add back in my hax
+  # Explicitly not including the jenkins access logs, because they're chatty.
     $papertrail_port = hiera("base::papertrail_port", 1)
     class{ 'remotesyslog':
         port => $papertrail_port,
         logs => [
             '/var/log/jenkins/jenkins.log',
-            '/var/log/nginx/access.log',
             '/var/log/nginx/error.log'
         ],
     }
-
 }
