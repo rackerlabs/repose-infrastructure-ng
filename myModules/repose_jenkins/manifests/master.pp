@@ -74,6 +74,9 @@ class repose_jenkins::master(
     jenkins::plugin{ 'github':
         version => '1.10'
     }
+    jenkins::plugin{ 'ssh-agent':
+        version => '1.5'
+    }
     jenkins::plugin{ 'ghprb':
         version => '1.16-8'
     }
