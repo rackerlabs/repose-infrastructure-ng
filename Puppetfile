@@ -20,9 +20,6 @@ mod 'puppetlabs/java', '1.1.1'
 mod 'maestrodev/maven', '1.2.0'
 mod 'maestrodev/sonarqube', '2.1.1'
 
-# Eventually this is going to add the ability to manage job config.xml files !
-mod 'rtyler/jenkins', '1.2.0'
-
 # dkowis forked this to add debian support. There's a pull request open on the original
 # if/when it gets merged, you can use the original directly.
 mod 'garethr/remotesyslog',
