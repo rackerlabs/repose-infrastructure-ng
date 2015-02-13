@@ -1,6 +1,7 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    camptocamp/archive (0.3.6)
     darin/zypprepo (1.0.1)
     leinaddm/htpasswd (0.0.3)
     maestrodev/maven (1.2.0)
@@ -75,6 +76,7 @@ PATH
   remote: myModules/repose_jenkins
   specs:
     repose/repose_jenkins (0.0.1)
+      camptocamp/archive (>= 0)
       puppetlabs/apt (>= 0)
 
 PATH
