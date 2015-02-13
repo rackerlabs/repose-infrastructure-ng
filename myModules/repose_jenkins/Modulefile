@@ -3,4 +3,5 @@ version '0.0.1'
 
 author 'David Kowis'
 
-dependency 'puppetlabs/apt', 'camptocamp/archive'
+dependency 'puppetlabs/apt'
+dependency 'camptocamp/archive'
