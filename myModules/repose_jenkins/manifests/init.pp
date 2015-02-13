@@ -14,6 +14,9 @@ class repose_jenkins(
     $saxon_ee_license = undef
 ) {
 
+    # class to ensure jenkins is installed
+    include repose_jenkins::gradle
+
 # ensure maven is installed
 # see https://forge.puppetlabs.com/maestrodev/maven for many examples, including how to set up ~/.m2/settings.xml
     class{ "maven::maven":
