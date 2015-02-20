@@ -38,7 +38,7 @@ class users {
     ensure  => present,
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCteXpnTualvy4cAgsVUcC76GvjB9LtW9YkjnfeJOlLMFlP1r9JJW3UpIe3vmKvjK8asb7L72N1PyGf3wCNhwQJOGXWmDL39R+/TGa8gE9XhtTjzJgSE9iUlCy1SrQyDWz0n6SpP44t2+aUI6esP7LMKZ+pR/YJig1ndWZPIy586LCkQTAEz0hk96OnIv/umRVLR+CE6kc9Z3akZ8Yg7KcdvbNRZ2657oct2YWkCm5yh7Zg1/46XK42yZzjKnoHbDp1rXIFrS4XOqmx0ahVGU3HputJVGV76EyEHlf9O5kmqgobtu6tMj6m/VF7FFhAt7lHtsH3u7+5DS5FwInFNgLP',
-    name    => 'Bill.Scheidegger@rackspace.com',
+    name    => 'bill7601@Scheidegger',
     user    => 'root'
   }
 }
