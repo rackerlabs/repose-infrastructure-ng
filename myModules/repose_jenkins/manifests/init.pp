@@ -18,6 +18,7 @@ class repose_jenkins(
     # this will default to gradle 2.1, have to use a different syntax to get it with other versions
     # or set the values in hiera
     include repose_jenkins::gradle
+    include repose_jenkins::gpgkey
 
 # ensure maven is installed
 # see https://forge.puppetlabs.com/maestrodev/maven for many examples, including how to set up ~/.m2/settings.xml
@@ -181,5 +182,4 @@ class repose_jenkins(
         content => "${saxon_ee_license}",
         require => File["${jenkins_home}/saxon_ee"],
     }
-
 }
