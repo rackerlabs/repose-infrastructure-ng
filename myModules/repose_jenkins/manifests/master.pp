@@ -152,6 +152,12 @@ class repose_jenkins::master(
         version => '1.22',
     }
 
+# Need to have this to be able to mask passwords from the jenkins output
+    jenkins::plugin { 'mask-passwords':
+        version => '2.7.2'
+    }
+
+
 #lets add back in my hax
   # Explicitly not including the jenkins access logs, because they're chatty.
     $papertrail_port = hiera("base::papertrail_port", 1)
