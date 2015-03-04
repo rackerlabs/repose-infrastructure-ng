@@ -3,6 +3,7 @@ FORGE
   specs:
     camptocamp/archive (0.3.6)
     darin/zypprepo (1.0.2)
+    golja/gnupg (1.1.0)
     leinaddm/htpasswd (0.0.3)
     maestrodev/maven (1.2.0)
       maestrodev/wget (>= 1.0.0)
@@ -77,6 +78,7 @@ PATH
   specs:
     repose/repose_jenkins (0.0.1)
       camptocamp/archive (>= 0)
+      golja/gnupg (>= 0)
       puppetlabs/apt (>= 0)
       rtyler/jenkins (= 1.3.0)
 
