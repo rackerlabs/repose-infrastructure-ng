@@ -1,6 +1,9 @@
 # Actually installs jenkins, rather than waiting for the master to push the JAR
+# Using installed will not automatically update jenkins for us, just make sure it's actually there.
+# Since the apt-repo doesn't keep around older versions it makes for a mess, using installed will keep puppet from
+# doing silly things
 class repose_jenkins::master(
-    $jenkins_version = "1.580.3"
+    $jenkins_version = "installed"
 ) {
     include repose_jenkins
 
