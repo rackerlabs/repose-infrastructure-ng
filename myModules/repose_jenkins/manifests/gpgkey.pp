@@ -3,7 +3,9 @@ class repose_jenkins::gpgkey(
     $repose_signing_privkey = undef
 ) {
 
-    include '::gnupg'
+    class{'::gnupg':
+        package_name => 'gnupg2'
+    }
 
     gnupg_key { 'repose_signing_pubkey':
         ensure      => present,
