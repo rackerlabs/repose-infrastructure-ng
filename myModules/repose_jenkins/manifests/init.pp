@@ -69,6 +69,11 @@ class repose_jenkins(
         ensure => present,
     }
 
+    package { 'expect':
+    # This is needed by the rpm-maven-plugin
+        ensure => present,
+    }
+
     package { 'git':
         ensure => present,
     }
