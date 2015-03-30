@@ -74,6 +74,11 @@ class repose_jenkins(
         ensure => present,
     }
 
+    package { 'dpkg-sig':
+    # This is needed by the jdeb maven plugin
+        ensure => present,
+    }
+
     package { 'git':
         ensure => present,
     }
