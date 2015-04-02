@@ -29,10 +29,6 @@ class repose_jenkins::master(
         },
     }
 
-    Service['jenkins'] {
-      restart => "/usr/bin/logger 'TODO: Not actually restarting jenkins, because annoying'"
-    }
-
     include base::nginx::autohttps
 
     file{ "/etc/nginx/conf.d/jenkins.conf":
