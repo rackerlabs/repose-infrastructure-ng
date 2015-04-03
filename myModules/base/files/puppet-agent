@@ -7,4 +7,5 @@
 START=yes
 
 # Startup options
-DAEMON_OPTS=""
+# doing debug for a temporary time trying to figure out why the jenkins master is being stupid
+DAEMON_OPTS="--debug"
