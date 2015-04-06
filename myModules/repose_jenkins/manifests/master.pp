@@ -102,6 +102,16 @@ class repose_jenkins::master(
         require => File["${jenkins_home}/log"],
     }
 
+    jenkins::plugin{'htmlpublisher':
+        version => '1.3',
+    }
+    jenkins::plugin{'instant-messaging':
+        version => '1.34',
+    }
+    jenkins::plugin{'ircbot':
+        version => '2.26',
+    }
+
     jenkins::plugin{ 'gradle':
         version => '1.24'
     }
