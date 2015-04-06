@@ -1,0 +1,156 @@
+#!/bin/bash
+# /etc/init.d/jenkins
+# debian-compatible jenkins startup script.
+# Amelia A Lewis <alewis@ibco.com>
+# MANAGED BY PUPPET
+# THIS IS A HACK TO PREVENT THE PUPPET-JENKINS MODULE FROM RESTARTING JENKINS ALL THE TIME
+#
+### BEGIN INIT INFO
+# Provides:          jenkins
+# Required-Start:    $remote_fs $syslog $network
+# Required-Stop:     $remote_fs $syslog $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start jenkins at boot time
+# Description:       Controls the jenkins continuous integration engine.
+### END INIT INFO
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+DESC="FAKE Jenkins Continuous Integration Server"
+NAME=jenkins
+SCRIPTNAME=/etc/init.d/$NAME
+
+if [ -n "$UMASK" ]; then
+    DAEMON_ARGS="$DAEMON_ARGS --umask=$UMASK"
+fi
+
+SU=/bin/su
+
+# load environments
+if [ -r /etc/default/locale ]; then
+  . /etc/default/locale
+  export LANG LANGUAGE
+elif [ -r /etc/environment ]; then
+  . /etc/environment
+  export LANG LANGUAGE
+fi
+
+# Load the VERBOSE setting and other rcS variables
+. /lib/init/vars.sh
+
+# Define LSB log_* functions.
+# Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
+. /lib/lsb/init-functions
+
+# Make sure we run as root, since setting the max open files through
+# ulimit requires root access
+if [ `id -u` -ne 0 ]; then
+    echo "The $NAME init script can only be run as root"
+    exit 1
+fi
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+    return 0
+}
+
+force_stop()
+{
+    return 0
+}
+
+# Get the status of the daemon process
+get_daemon_status()
+{
+   return 0
+}
+
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+    return 0
+}
+
+case "$1" in
+  start)
+    log_daemon_msg "Starting $DESC" "$NAME"
+    do_start
+    case "$?" in
+        0|1) log_end_msg 0 ;;
+        2) log_end_msg 1 ;;
+    esac
+    ;;
+  stop)
+    log_daemon_msg "Stopping $DESC" "$NAME"
+    do_stop
+    case "$?" in
+        0|1) log_end_msg 0 ;;
+        2) log_end_msg 1 ;;
+    esac
+    ;;
+  restart|force-reload)
+    #
+    # If the "reload" option is implemented then remove the
+    # 'force-reload' alias
+    #
+    log_daemon_msg "Restarting $DESC" "$NAME"
+    do_stop
+    case "$?" in
+      0|1)
+        do_start
+        case "$?" in
+          0) log_end_msg 0 ;;
+          1) log_end_msg 1 ;; # Old process is still running
+          *) log_end_msg 1 ;; # Failed to start
+        esac
+        ;;
+      *)
+  	# Failed to stop
+	log_end_msg 1
+	;;
+    esac
+    ;;
+  status)
+	get_daemon_status
+	case "$?" in 
+	 0) 
+		echo "$DESC is running with the pid NOT REALLY THIS IS FAKE"
+		rc=0
+		;;
+	*) 
+		get_running
+		procs=$?
+		if [ $procs -eq 0 ]; then 
+			echo -n "$DESC is not running"
+			if [ -f $PIDFILE ]; then 
+				echo ", but the pidfile ($PIDFILE) still exists"
+				rc=1
+			else 
+				echo
+				rc=3
+			fi
+		
+		else 
+			echo "$procs instances of jenkins are running at the moment"
+			echo "but the pidfile $PIDFILE is missing"
+			rc=0
+		fi
+		
+		exit $rc
+		;;
+	esac
+	;;
+  *)
+    echo "Usage: $SCRIPTNAME {start|stop|status|restart|force-reload}" >&2
+    exit 3
+    ;;
+esac
+
+exit 0

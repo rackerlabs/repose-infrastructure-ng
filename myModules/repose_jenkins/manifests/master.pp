@@ -9,6 +9,40 @@ class repose_jenkins::master(
 
     $jenkins_home = '/var/lib/jenkins'
 
+
+# This is kind of nasty hax.
+# The repose-jenkins puppet module gets a little too restart happy, which causes our builds to be terminated
+# every single time the puppet agent runs, that's no good.
+# this takes a much larger hammer to it, by replacing the original jenkins init script with one that does nothing
+# creating a second jenkins-real that is the one we actually want.
+    file{ '/etc/init.d/jenkins':
+        ensure  => file,
+        owner   => root,
+        group   => root,
+        mode    => 0754,
+        source  => 'puppet:///modules/repose_jenkins/jenkins-fake',
+        require => Package['jenkins'],
+        before  => Service['jenkins'],
+    }
+
+    file{ '/etc/init.d/jenkins-real':
+        ensure  => file,
+        owner   => root,
+        group   => root,
+        mode    => 0754,
+        source  => 'puppet:///modules/repose_jenkins/jenkins-real',
+        require => Package['jenkins'],
+    }
+
+    service{ 'jenkins-real':
+        ensure  => running,
+        enable  => true,
+        require => [
+            File['/etc/init.d/jenkins-real'],
+            Class['jenkins'],
+        ],
+    }
+
 # this class already explicitly uses the jenkins repo, so I'm not sure why versions are vanishing
 # switching to the LTS version of jenkins for less irritating updates
     class{ 'jenkins':
@@ -159,7 +193,7 @@ class repose_jenkins::master(
 
 
 #lets add back in my hax
-  # Explicitly not including the jenkins access logs, because they're chatty.
+# Explicitly not including the jenkins access logs, because they're chatty.
     $papertrail_port = hiera("base::papertrail_port", 1)
     class{ 'remotesyslog':
         port => $papertrail_port,
