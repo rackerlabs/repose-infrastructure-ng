@@ -102,6 +102,9 @@ class repose_jenkins::master(
         require => File["${jenkins_home}/log"],
     }
 
+    jenkins::plugin{ 'gradle':
+        version => '1.24'
+    }
     jenkins::plugin{ 'dashboard-view':
         version => '2.9.4'
     }
