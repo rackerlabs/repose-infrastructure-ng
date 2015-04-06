@@ -105,6 +105,9 @@ class repose_jenkins::master(
     jenkins::plugin{ 'gradle':
         version => '1.24'
     }
+    jenkins::plugin{ 'veracode-scanner':
+        version => '1.4'
+    }
     jenkins::plugin{ 'dashboard-view':
         version => '2.9.4'
     }
