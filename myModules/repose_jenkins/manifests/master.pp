@@ -79,7 +79,7 @@ class repose_jenkins::master(
 # I think this is the only one we need, as it manages all the other configs
 # the base class provides the ssh key for github.com, so it should be good to go
     jenkins::plugin{ 'scm-sync-configuration':
-        version         => '0.0.7.3',
+        version         => '0.0.8',
         manage_config   => true,
         config_filename => "scm-sync-configuration.xml",
         config_content  => template("repose_jenkins/scm-sync-configuration.xml.erb"),
@@ -106,22 +106,22 @@ class repose_jenkins::master(
         version => '2.9.4'
     }
     jenkins::plugin{ 'github-api':
-        version => '1.59'
+        version => '1.66'
     }
     jenkins::plugin{ 'github':
-        version => '1.10'
+        version => '1.11.2'
     }
     jenkins::plugin{ 'ssh-agent':
         version => '1.5'
     }
     jenkins::plugin{ 'ghprb':
-        version => '1.16-8'
+        version => '1.17'
     }
     jenkins::plugin{ 'git-client':
-        version => '1.15.0'
+        version => '1.16.1'
     }
     jenkins::plugin{ 'git':
-        version => '2.3.4'
+        version => '2.3.5'
     }
 #https://issues.jenkins-ci.org/browse/JENKINS-23426
 # 1.0.15 has failure problems, and it blows up all over the place :(
@@ -136,7 +136,7 @@ class repose_jenkins::master(
         version => '0.14.0'
     }
     jenkins::plugin{ 'parameterized-trigger':
-        version => '2.25'
+        version => '2.26'
     }
     jenkins::plugin{ 'ssh':
         version => '2.4'
@@ -164,16 +164,16 @@ class repose_jenkins::master(
     }
 # oops, somehow I forgot that sonar needed to exist :(
     jenkins::plugin{ 'sonar':
-        version => '2.1'
+        version => '2.2'
     }
 # also forgot that we need the copy-artifact plugin to get artifacts smartly
     jenkins::plugin{ 'copyartifact':
-        version => '1.33'
+        version => '1.35'
     }
 
 # adding a plugin to deal with multijob stuff
     jenkins::plugin{ 'envinject':
-        version => '1.90'
+        version => '1.91.1'
     }
 
     jenkins::plugin { 'jenkins-multijob-plugin':
