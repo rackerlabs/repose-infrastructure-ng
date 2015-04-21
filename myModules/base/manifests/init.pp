@@ -102,6 +102,7 @@ class base(
         group  => root,
         mode   => "0644",
         source => "puppet:///modules/base/puppet-agent",
+        notify => Service['puppet'],
     }
 
     service{ "puppet":
