@@ -49,4 +49,12 @@ class users {
     name    => 'tyler@tyler-laptop',
     user    => 'root'
   }
+  
+  ssh_authorized_key { 'mknocke':
+    ensure  => present,
+    type    => 'ssh-rsa',
+    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yMjwIkV3i3IsmXIf4mJg3UlcRX0epZQw5hEpnDrZRAUe7SU42lB5nt/Q9GtyuZNXZuqnPLKBvm87cluvgtE6OK1ZBDxaUavofJlWIpsNhNzWZpDBeETFR3BnOL4yklBnEHqdf6zlfzX02J1GvYdNK3ZDHx2lpHPdvUQkLx1DUcCdCqzRCJcTX55N3k5HMzcnaFgcCJr8URK6Lo0LX34y3RLY4opmuhh5Dn+sdnxja3JRzAuEuD4kXWRd2HSSUMYNCOoTUNTH20yldHvpKETGT7bmWI7am60waS6pbIfJPaOpD5opGQHVpuh3y3RdKgvIXNozpBR8gGgMJO5/aeDEwuG+s8uSQdizsE9naoTDEsNPkwsJU2avLNr9L9VFTPnGotyJQcEiGKLQJl/vi/+Rps3B+55rhYAOMHsXK4MYR2WTkexFSL84XX6gFqNStXT4L3rwiOaNbtOr4Dyt9sp9JPYoQm3aJ/MHDETP4Ta6YGTgCYyVw+S6VSysq2IEfKoP7FNdlvLIfjullMdnNO1BbVW84XGRTouPc146qx/Vw5u8sNaLvhkxoUMy8WVvLQ1d8sV2COLoNrWU9J5GQ+DVQ+noK46d8/g4dhUsgIfhPlE/qCNndvPE7JyqSzcEev4pp6Y7JRyid2mCuQf56UyDQSS8kJPM7aK7oh/ubAAxpQ==',
+    name    => 'megan.knocke@rackspace.com',
+    user    => 'root'
+  }
 }
