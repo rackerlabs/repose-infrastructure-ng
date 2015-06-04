@@ -19,7 +19,7 @@ class users {
   }
 
   ssh_authorized_key { 'dkowis':
-    ensure  => present,
+    ensure  => absent,
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAABIwAAAQEA9NcNiDKjl/K5R4Qk3F6IaF9dx2ZrUGlr5tdhwiqmfOWq6eZ+I60ZL0tKzhuE37tF9VMN8U89nHgQa/wOWkfDmLX20TuT3XHMXxc+3WS2g/iocS7JdBacayhgmcYDdDlUwHgvWvKk0wPO2/6UjmO4EXNwZHsdFR0JA40tAScuY9/Mf5ECB/dgxgNtVRfbjLNTFBF5ExAjoI15w1GhqONCOmAXH9CqlBokARqm8kPPuYKM6iCwmPeerhsVD5oR3DrEqHebCNVSevN2j21Nzoz8C1y1m7UMZ55VaQC8AM3f90mo4Tqw9ZTJbp4ctGYdhI/DyFS2APgvEua94aPwLjPLSQ==',
     name    => 'dkowis@dkowis-desktop',
@@ -43,7 +43,7 @@ class users {
   }
 
   ssh_authorized_key { 'troyal':
-    ensure  => present,
+    ensure  => absent,
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDgcUdZ2PvIMbX/7hnsLCWLuOrLD75uWKxoFxJZqlcjx789SjyticqMuDydK5z9f82BCtTs8sFdH3+nm9O4v3JdGeYYIKNaYxXcG/IIEZZ7bs99rTzBsexkGHODYb8/PcAqMcivSeYqfoy3qqgDwP49S/K6Vbv+/yEQVCUL1E/fUpTjd6ZDt8nS3ohfcmf8dOLKHKety+jumrQwoHsAwYhVjAGrF+DmGhlCCTd7twtbd5L7nQRjwAhW8A7EZDXTIdrWh4rM2vmNYDbzgoSPVGkwAG8GlQk3QgA2/CN0epEr179SP3ArZhQ96n3KhEooifoRD/ACTDbjK8MsCwTagmB9',
     name    => 'tyler@tyler-laptop',
