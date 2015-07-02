@@ -65,4 +65,12 @@ class users {
     name    => 'dimitry.ushakov@rackspace.com',
     user    => 'root'
   }
+
+  ssh_authorized_key { 'mari9064':
+    ensure  => present,
+    type    => 'ssh-rsa',
+    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQC7WTU/1utwo99vNlhF2zji5vk66eaXtc96CQipDuVzO8t3kiB9zOCai65hT1etgaDYaDqUVKYS3daiAJ6gtiqpuIqMxFWXSCLQfK01Zn0mJbmx1+8X+ZTMuxNN6FuTxUeBmC7ISc8ziloMCVbQTQ62uJxal/2RZekTcABXc2kLen7O9HynQOIvxmw9cVhiIYJUPm7WIoGfSEcXuHyhHYbnQCa6Kdk4Kw/kjJSeCxq1ak8ZlkeLuRqcdlAyS5jgGnKOkxuLnUW1IBzB98wR5E6ZkAM5RXEQIqhmuK+FKZvQkM08fDm6u7aOIUER0/z+WTI8q6ya3Ms5ML6bxPI/p5+KEIfFivHre4SpLOZp7fiB/qL0PEfWjLmvLSJJfA97nDj6TJSZSWT3iCQW9qlYTnBxb5IQAV5qaUjj1jBgJY7NVlc+bqt+onGd2T2JqtUyWbSSQhIeCRZ8TejRNVggRaTi113ZMyjI9k9QlrUoKpazRLaA3j+QjTu7tUszPmLb157e7V1/MkUl7mpnpdTLrz+3gyVWBbOPacQtgdORvsMTOzvjivmrCbvWhS9mcjLE39ADHJwS0tOfEKYaCFI6lB90VBcRdNXuyJXtNEOsM/XX1aZeFrJy1YRcBRxlv0nk3VmDSs9rE5WSUcXMXpUvzLMr2jcCCcQ7TOhl4Xza32P5YQ==',
+    name    => 'Mario.Lopez@rackspace.com',
+    user    => 'root'
+  }
 }
