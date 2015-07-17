@@ -189,7 +189,7 @@ class repose_jenkins::master(
 
 # adding a plugin to deal with multijob stuff
     jenkins::plugin{ 'envinject':
-        version => '1.91.1'
+        version => '1.90'
     }
 
     jenkins::plugin { 'jenkins-multijob-plugin':
