@@ -4,10 +4,17 @@ Repose Puppet Setup
 Using Debian wheezy. CentOS is too old :(
 
 # Only manual steps!
-Create the cloud box, set up it's local hostname, run the client bootstrap.sh, set it's hostname in the site.pp, fire up the puppet agent
+1. Create a Debian Wheezy cloud box
+2. Set up it's local hostname if necessary
+3. Run the client bootstrap.sh from this repository
+4. Set it's hostname in the site.pp if necessary
+5. Fire up the puppet agent
+6. Update any DNS records to point to your new box
 
 # Manual steps for master
-Set hostname, Set up the eyaml backend key/cert, run bootstrap script!
+1. Set hostname
+2. Set up the eyaml backend key/cert
+3. Run the master bootstrap script
 
 # TODO: UPDATE THIS
 
