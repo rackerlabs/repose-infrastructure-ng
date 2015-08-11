@@ -10,6 +10,7 @@ Using Debian wheezy. CentOS is too old :(
 4. Set it's hostname in the site.pp if necessary
 5. Fire up the puppet agent
 6. Update any DNS records to point to your new box
+7. If Jenkins slave, update Jenkins node list
 
 # Manual steps for master
 1. Set hostname
