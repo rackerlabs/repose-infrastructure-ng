@@ -79,3 +79,7 @@ node "adrian-home-laptop-vm.openrepose.org" {
 node "adrian-new-work-laptop.openrepose.org" {
     include adrian_workstation
 }
+
+node "et.openrepose.org" inherits default {
+    include repose_phone_home
+}

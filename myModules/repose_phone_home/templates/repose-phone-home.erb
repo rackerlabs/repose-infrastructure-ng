@@ -1,0 +1,141 @@
+#! /bin/sh
+#
+# MANAGED BY PUPPET
+#
+### BEGIN INIT INFO
+# Provides: repose-phone-home
+# Required-Start: $network
+# Required-Stop:  $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short Description: Startup script for Repose Phone Home service
+# Description: Script for starting Repose Phone Home service as a daemon on system startup
+### END INIT INFO
+#
+# Required ENV vars:
+# ------------------
+#   JAVA_HOME - location of a JRE/JDK home dir
+#
+# Optional ENV vars
+# -----------------
+#   PHONE_HOME_OPTS - parameters passed to the Java VM when running the Repose Phone Home service
+#     e.g. to debug Maven itself, use
+#       set PHONE_HOME_OPTS=-showversion -verbose -Xdebug -Djava.compiler=NONE
+
+set -e
+
+# Source function library.
+. /lib/lsb/init-functions
+
+# Set sensible defaults
+
+NAME=repose-phone-home
+CONFIG_DIRECTORY_DEFAULT=/etc/${NAME}
+USER=<%= @daemon_user %>
+GROUP=<%= @daemon_group %>
+DAEMON_HOME=/usr/share/${NAME}
+PID_FILE=/var/run/${NAME}.pid
+PHONE_HOME_JAR=${DAEMON_HOME}/${NAME}.jar
+START_ARGS="--start --quiet --oknodo --make-pidfile --pidfile ${PID_FILE} --background"
+
+# Can override the defaults in /etc/sysconfig
+. /etc/sysconfig/${NAME}
+
+###########################
+# Start daemon
+###########################
+start_daemon()
+{
+  if [ -z "$CONFIG_DIRECTORY" ]; then
+    CONFIG_DIRECTORY="$CONFIG_DIRECTORY_DEFAULT"
+    export CONFIG_DIRECTORY
+  fi
+
+  if [ -z "$PHONE_HOME_OPTS" ]; then
+    PHONE_HOME_OPTS=""
+    export PHONE_HOME_OPTS
+  fi
+
+  if [ -z "$JAVA_HOME" ]; then
+    javaExecutable="`which javac`"
+    if [ -n "$javaExecutable" -a ! "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
+      # readlink(1) is not available as standard on Solaris 10.
+      readLink=`which readlink`
+      if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
+        javaExecutable="`readlink -f \"$javaExecutable\"`"
+        javaHome="`dirname \"$javaExecutable\"`"
+        javaHome=`expr "$javaHome" : '\(.*\)/bin'`
+        JAVA_HOME="$javaHome"
+        export JAVA_HOME
+      fi
+    fi
+  fi
+
+  if [ -z "$JAVACMD" ] ; then
+    if [ -n "$JAVA_HOME"  ] ; then
+        JAVACMD="$JAVA_HOME/bin/java"
+    else
+      JAVACMD="`which java`"
+    fi
+  fi
+
+  if [ ! -x "$JAVACMD" ] ; then
+    echo "Error: JAVA_HOME is not defined correctly."
+    echo "  We cannot execute $JAVACMD"
+    exit 1
+  fi
+
+  if [ -z "$JAVA_HOME" ] ; then
+    echo "Warning: JAVA_HOME environment variable is not set."
+  fi
+
+  start-stop-daemon $START_ARGS --chuid $USER:$GROUP --exec $JAVA -- $PHONE_HOME_OPTS -jar $PHONE_HOME_JAR -c $CONFIG_DIRECTORY
+
+  log_progress_msg "started"
+}
+
+###########################
+# Stop daemon
+###########################
+stop_daemon()
+{
+  start-stop-daemon -p $PID_FILE --stop --user $USER --retry 5 --exec $JAVA
+  log_progress_msg "stopped"
+}
+
+# -----------------------------------------------------------------------------
+# Script entry point...
+# -----------------------------------------------------------------------------
+# Switch to the daemon's home directory to do all of this...
+cd $DAEMON_HOME
+
+if [ $? -ne 0 ]; then
+  echo "Unable to find $NAME's directory."
+  exit 1
+fi
+
+case "$1" in
+  start)
+    log_daemon_msg "Starting $NAME"
+    start_daemon
+    log_end_msg 0
+    ;;
+  stop)
+    log_daemon_msg "Stopping $NAME"
+    stop_daemon
+    log_end_msg 0
+    ;;
+  restart)
+    log_daemon_msg "Restarting $NAME"
+    stop_daemon
+    start_daemon
+    log_end_msg 0
+    ;;
+  status)
+    status_of_proc -p $PID_FILE $JAVA $NAME && exit 0 || exit $?
+    ;;
+
+  *)
+    echo "Usage: /etc/init.d/$NAME {start|stop|restart|status}"
+    exit 1
+esac
