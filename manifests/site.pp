@@ -80,6 +80,6 @@ node "adrian-new-work-laptop.openrepose.org" {
     include adrian_workstation
 }
 
-node "et.openrepose.org" inherits default {
+node "phone-home.openrepose.org" inherits default {
     include repose_phone_home
 }

@@ -12,13 +12,13 @@
 
 ### Copy from development machine to test server
 `cd <REPOSE_INFRASTRUCTURE_NG_DIR>`
-`ssh root@et.openrepose.org.bast 'gem install hiera-eyaml'`
-`ssh root@et.openrepose.org.bast 'mkdir -p /etc/puppet/ssl/'`
-`scp -p  ~/keys/eyaml/public_key.pkcs7.pem                           root@et.openrepose.org.bast:/etc/puppet/ssl/`
-`scp -p  ~/keys/eyaml/private_key.pkcs7.pem                          root@et.openrepose.org.bast:/etc/puppet/ssl/`
-`scp -p  <REPOSE_INFRASTRUCTURE_NG_DIR>/hiera.yaml                   root@et.openrepose.org.bast:/etc/puppet/`
-`scp -rp <REPOSE_INFRASTRUCTURE_NG_DIR>/hieradata/                   root@et.openrepose.org.bast:/etc/puppet/`
-`scp -rp <REPOSE_INFRASTRUCTURE_NG_DIR>/myModules/repose_phone_home/ root@et.openrepose.org.bast:/etc/puppet/modules/`
+`ssh root@phone-home.openrepose.org.bast 'gem install hiera-eyaml'`
+`ssh root@phone-home.openrepose.org.bast 'mkdir -p /etc/puppet/ssl/'`
+`scp -p  ~/keys/eyaml/public_key.pkcs7.pem                           root@phone-home.openrepose.org.bast:/etc/puppet/ssl/`
+`scp -p  ~/keys/eyaml/private_key.pkcs7.pem                          root@phone-home.openrepose.org.bast:/etc/puppet/ssl/`
+`scp -p  <REPOSE_INFRASTRUCTURE_NG_DIR>/hiera.yaml                   root@phone-home.openrepose.org.bast:/etc/puppet/`
+`scp -rp <REPOSE_INFRASTRUCTURE_NG_DIR>/hieradata/                   root@phone-home.openrepose.org.bast:/etc/puppet/`
+`scp -rp <REPOSE_INFRASTRUCTURE_NG_DIR>/myModules/repose_phone_home/ root@phone-home.openrepose.org.bast:/etc/puppet/modules/`
 
 ## Remote test server
 
