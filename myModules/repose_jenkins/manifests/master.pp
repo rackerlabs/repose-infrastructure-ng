@@ -106,7 +106,7 @@ class repose_jenkins::master(
         version => '1.3',
     }
     jenkins::plugin{'instant-messaging':
-        version => '1.34',
+        version => '1.35',
     }
     jenkins::plugin{'ircbot':
         version => '2.26',
@@ -122,16 +122,16 @@ class repose_jenkins::master(
         version => '2.9.4'
     }
     jenkins::plugin{ 'github-api':
-        version => '1.66'
+        version => '1.69'
     }
     jenkins::plugin{ 'github':
-        version => '1.11.2'
+        version => '1.14.0'
     }
     jenkins::plugin{ 'ssh-agent':
         version => '1.5'
     }
     jenkins::plugin{ 'ghprb':
-        version => '1.17'
+        version => '1.29.2'
     }
     jenkins::plugin{ 'git-client':
         version => '1.16.1'
