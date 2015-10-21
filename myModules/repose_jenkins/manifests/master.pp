@@ -134,10 +134,10 @@ class repose_jenkins::master(
         version => '1.29.2'
     }
     jenkins::plugin{ 'git-client':
-        version => '1.16.1'
+        version => '1.19.0'
     }
     jenkins::plugin{ 'git':
-        version => '2.3.5'
+        version => '2.4.0'
     }
 #https://issues.jenkins-ci.org/browse/JENKINS-23426
 # 1.0.15 has failure problems, and it blows up all over the place :(
