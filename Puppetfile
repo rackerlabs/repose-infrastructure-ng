@@ -64,3 +64,6 @@ mod "repose/repose_nagios",
 
 mod "repose/repose_maven",
     :path => "myModules/repose_maven"
+
+mod "repose/repose_gradle",
+    :path => "myModules/repose_gradle"
