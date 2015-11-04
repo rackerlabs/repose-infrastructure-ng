@@ -61,3 +61,6 @@ mod "repose/repose_redirects",
 
 mod "repose/repose_nagios",
     :path => "myModules/repose_nagios"
+
+mod "repose/repose_maven",
+    :path => "myModules/repose_maven"
