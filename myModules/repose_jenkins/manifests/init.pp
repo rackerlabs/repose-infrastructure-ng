@@ -15,9 +15,9 @@ class repose_jenkins(
 ) {
 
     # class to ensure jenkins is installed
-    # this will default to gradle 2.1, have to use a different syntax to get it with other versions
+    # this will default to gradle 2.8, have to use a different syntax to get it with other versions
     # or set the values in hiera
-    include repose_jenkins::gradle
+    include repose_gradle
     include repose_jenkins::gpgkey
 
     $jenkins_home = '/var/lib/jenkins'
