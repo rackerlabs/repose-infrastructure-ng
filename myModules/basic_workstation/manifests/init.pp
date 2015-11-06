@@ -13,6 +13,10 @@ class basic_workstation(
     user_home => "${user_home}",
   }
 
+  class {'basic_workstation::personal_networking':
+    sso => "${sso}",
+  }
+
   include apt
   apt::ppa { 'ppa:mumble/release': }
 

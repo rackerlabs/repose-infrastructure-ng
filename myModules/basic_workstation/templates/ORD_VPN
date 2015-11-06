@@ -1,0 +1,22 @@
+[connection]
+id=ORD VPN
+uuid=ba8c8fc8-7958-44b0-afdd-ba6b6ab4eb75
+type=vpn
+autoconnect=false
+
+[vpn]
+service-type=org.freedesktop.NetworkManager.vpnc
+NAT Traversal Mode=natt
+ipsec-secret-type=save
+IPSec secret-flags=1
+xauth-password-type=ask
+Vendor=cisco
+Xauth username=<%= @sso %>
+IPSec gateway=vpn1.ord1.rackspace.com
+Xauth password-flags=3
+IPSec ID=rackspace
+Perfect Forward Secrecy=server
+IKE DH Group=dh2
+
+[ipv4]
+method=auto
