@@ -1,0 +1,12 @@
+[user]
+	name = <%= @name %>
+	email = <%= @email %>
+[color]
+	ui = true
+[mergetool]
+	prompt = false
+[core]
+	autocrlf = input
+	editor = vi
+[push]
+	default = current

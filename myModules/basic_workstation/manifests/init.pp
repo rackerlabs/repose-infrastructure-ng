@@ -6,6 +6,13 @@ class basic_workstation(
   $sso = undef
 ) {
 
+  class {'basic_workstation::dev_tools':
+    user      => "${user}",
+    name      => "${name}",
+    email     => "${email}",
+    user_home => "${user_home}",
+  }
+
   include apt
   apt::ppa { 'ppa:mumble/release': }
 
