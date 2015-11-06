@@ -17,6 +17,10 @@ class basic_workstation(
     sso => "${sso}",
   }
 
+  class {'basic_workstation::hosts':
+    username => "${user}",
+  }
+
   include apt
   apt::ppa { 'ppa:mumble/release': }
 
