@@ -131,7 +131,7 @@ class repose_jenkins::master(
         version => '1.5'
     }
     jenkins::plugin{ 'ghprb':
-        version => '1.29.2'
+        version => '1.29.4'
     }
     jenkins::plugin{ 'git-client':
         version => '1.19.0'
