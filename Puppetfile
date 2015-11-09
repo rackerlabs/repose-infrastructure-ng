@@ -74,3 +74,6 @@ mod "repose/repose_gradle",
 
 mod "repose/basic_workstation",
     :path => "myModules/basic_workstation"
+
+mod "repose/adrian_workstation",
+    :path => "myModules/adrian_workstation"
