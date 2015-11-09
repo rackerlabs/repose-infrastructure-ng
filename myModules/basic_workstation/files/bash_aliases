@@ -1,0 +1,10 @@
+export HISTSIZE=10000
+
+alias proj="cd ~/dev/projects"
+alias rep="cd ~/dev/projects/repose"
+
+mkcd () { mkdir -p $1; cd $1; }
+
+function clone {
+  git clone git@github.com:rackerlabs/$1
+}

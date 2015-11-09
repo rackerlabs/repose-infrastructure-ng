@@ -67,3 +67,6 @@ mod "repose/repose_maven",
 
 mod "repose/repose_gradle",
     :path => "myModules/repose_gradle"
+
+mod "repose/basic_workstation",
+    :path => "myModules/basic_workstation"
