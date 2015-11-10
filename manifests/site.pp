@@ -67,3 +67,11 @@ node "redirects.openrepose.org" inherits default {
 node "nagios.openrepose.org" inherits default {
     include repose_nagios::server
 }
+
+node "adrian-home-desktop-vm.openrepose.org" {
+    include adrian_workstation
+}
+
+node "adrian-new-work-laptop.openrepose.org" {
+    include adrian_workstation
+}
