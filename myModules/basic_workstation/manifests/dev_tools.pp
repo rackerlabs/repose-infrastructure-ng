@@ -30,8 +30,8 @@ class basic_workstation::dev_tools(
 
   #intellij idea
   class{ 'idea::ultimate':
-    version => '15.0',
-    build   => '143.381.42',
+    version => '15.0.1',
+    build   => '143.382',
   }
 
   #network tools
