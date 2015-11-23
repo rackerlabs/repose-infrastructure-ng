@@ -15,38 +15,17 @@ class repose_jenkins(
 ) {
 
     # class to ensure jenkins is installed
-    # this will default to gradle 2.1, have to use a different syntax to get it with other versions
+    # this will default to gradle 2.8, have to use a different syntax to get it with other versions
     # or set the values in hiera
-    include repose_jenkins::gradle
+    include repose_gradle
     include repose_jenkins::gpgkey
-
-# ensure maven is installed
-# see https://forge.puppetlabs.com/maestrodev/maven for many examples, including how to set up ~/.m2/settings.xml
-    class{ "maven::maven":
-        version => "${maven_version}",
-    }
 
     $jenkins_home = '/var/lib/jenkins'
 
-# specify some maven options for jenkins
-# had to specify the user home, because it doesn't facter it :|
-    maven::environment { 'maven-jenkins':
-        user       => 'jenkins',
-        home       => "${jenkins_home}",
-        maven_opts => '-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m -XX:-UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled',
-        require    => [
-            User["jenkins"],
-            Class['java']
-        ],
-    }
-
-# adding a symlink to make other things happier
-# the jenkins config relies on a simple /opt/maven symlink to whatever version of mave is installed
-# easy to type, easy to implement
-    file{ "/opt/maven":
-        ensure  => link,
-        target  => "/opt/apache-maven-${maven_version}",
-        require => Class['java'],
+    class{"repose_maven":
+        user      => 'jenkins',
+        user_home => "${jenkins_home}",
+        requires  => User["jenkins"],
     }
 
 # this should ensure we've got java on the system at jdk7. Installed via package

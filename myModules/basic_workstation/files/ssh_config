@@ -1,0 +1,23 @@
+Host jenkins-*
+User root
+
+Host mumble
+User root
+
+Host nagios
+User root
+
+Host performance
+User root
+
+Host phone-home
+User root
+
+Host puppet-master
+User root
+
+Host nginx
+User root
+
+Host sonar
+User root

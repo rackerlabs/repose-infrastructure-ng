@@ -1,0 +1,2 @@
+jenkins jenkins-master jenkins-slave-1 jenkins-slave-2 jenkins-slave-3 jenkins-slave-4 jenkins-slave-5
+all jenkins mumble nagios performance phone-home puppet-master nginx sonar
