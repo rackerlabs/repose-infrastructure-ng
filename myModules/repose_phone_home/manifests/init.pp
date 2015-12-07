@@ -1,6 +1,7 @@
 class repose_phone_home(
   $daemon_user    = undef,
   $daemon_group   = undef,
+  $mongo_host     = "localhost",
   $mongo_port     = 27017,
   $mongo_username = undef,
   $mongo_password = undef,
