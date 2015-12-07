@@ -21,8 +21,8 @@ mod 'maestrodev/maven', '1.2.0'
 mod 'maestrodev/sonarqube', '2.1.1'
 mod 'rtyler/groovy', '1.0.3'
 mod 'garethr/scala', '0.1.2'
-mod 'danzilio/virtualbox', '1.5.0'
-mod 'mjanser/vagrant', '1.1.0'
+#mod 'danzilio/virtualbox', '1.5.0'
+#mod 'mjanser/vagrant', '1.1.0'
 
 # dkowis forked this to add debian support. There's a pull request open on the original
 # if/when it gets merged, you can use the original directly.
