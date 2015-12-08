@@ -180,7 +180,7 @@ class repose_jenkins::master(
     }
 # oops, somehow I forgot that sonar needed to exist :(
     jenkins::plugin{ 'sonar':
-        version => '2.2'
+        version => '2.3'
     }
 # also forgot that we need the copy-artifact plugin to get artifacts smartly
     jenkins::plugin{ 'copyartifact':
