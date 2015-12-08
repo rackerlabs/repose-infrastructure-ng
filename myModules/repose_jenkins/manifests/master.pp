@@ -103,7 +103,7 @@ class repose_jenkins::master(
     }
 
     jenkins::plugin{'htmlpublisher':
-        version => '1.3',
+        version => '1.9',
     }
     jenkins::plugin{'instant-messaging':
         version => '1.35',
@@ -116,22 +116,22 @@ class repose_jenkins::master(
         version => '1.24'
     }
     jenkins::plugin{ 'veracode-scanner':
-        version => '1.4'
+        version => '1.5'
     }
     jenkins::plugin{ 'dashboard-view':
-        version => '2.9.4'
+        version => '2.9.6'
     }
     jenkins::plugin{ 'github-api':
-        version => '1.69'
+        version => '1.71'
     }
     jenkins::plugin{ 'github':
         version => '1.14.0'
     }
     jenkins::plugin{ 'ssh-agent':
-        version => '1.5'
+        version => '1.8'
     }
     jenkins::plugin{ 'ghprb':
-        version => '1.29.4'
+        version => '1.29.6'
     }
     jenkins::plugin{ 'git-client':
         version => '1.19.0'
@@ -146,7 +146,7 @@ class repose_jenkins::master(
         version => '1.0.18'
     }
     jenkins::plugin{ 'jquery':
-        version => '1.7.2-1'
+        version => '1.11.2-0'
     }
     jenkins::plugin{ 'm2release':
         version => '0.14.0'
@@ -158,7 +158,7 @@ class repose_jenkins::master(
         version => '2.4'
     }
     jenkins::plugin{ 'publish-over-ssh':
-        version => '1.12'
+        version => '1.13'
     }
     jenkins::plugin{ 'simple-theme-plugin':
         version => '0.3'
@@ -173,10 +173,10 @@ class repose_jenkins::master(
         version => '1.0'
     }
     jenkins::plugin{ 'token-macro':
-        version => '1.10'
+        version => '1.11'
     }
     jenkins::plugin{ 'scm-api':
-        version => '0.2'
+        version => '1.0'
     }
 # oops, somehow I forgot that sonar needed to exist :(
     jenkins::plugin{ 'sonar':
@@ -184,7 +184,7 @@ class repose_jenkins::master(
     }
 # also forgot that we need the copy-artifact plugin to get artifacts smartly
     jenkins::plugin{ 'copyartifact':
-        version => '1.35'
+        version => '1.37'
     }
 
 # adding a plugin to deal with multijob stuff
@@ -199,7 +199,7 @@ class repose_jenkins::master(
 
 # to use the slave logic that the jenkins puppet module uses, we need the swarm plugin
     jenkins::plugin{ 'swarm':
-        version => '1.22',
+        version => '2.0',
     }
 
 # Need to have this to be able to mask passwords from the jenkins output
