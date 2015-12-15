@@ -1,0 +1,7 @@
+#override this setting in jenkins builds, because they recommend no daemon in ci
+#and i don't want to do two props right now
+org.gradle.daemon=true
+
+
+maven.repo.username=<%= @research_nexus_username %>
+maven.repo.password=<%= @research_nexus_password %>
