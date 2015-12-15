@@ -1,7 +1,7 @@
 # Aggregates all the various dev tools we use
 class basic_workstation::dev_tools(
   $user = undef,
-  $name = undef,
+  $fullName = undef,
   $email = undef,
   $user_home = "/home/$user"
 ) {

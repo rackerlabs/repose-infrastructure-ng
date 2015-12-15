@@ -1,9 +1,9 @@
 class adrian_workstation {
   class{'basic_workstation':
-    user  => 'adrian',
-    name  => 'Adrian George',
-    email => 'adrian.george@rackspace.com',
-    sso   => 'adrian.george',
+    user      => 'adrian',
+    fullName  => 'Adrian George',
+    email     => 'adrian.george@rackspace.com',
+    sso       => 'adrian.george',
   }
 
   include google_chrome

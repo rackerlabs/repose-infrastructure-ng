@@ -1,6 +1,6 @@
 class basic_workstation(
   $user = undef,
-  $name = undef,
+  $fullName = undef,
   $email = undef,
   $user_home = "/home/$user",
   $sso = undef
@@ -8,7 +8,7 @@ class basic_workstation(
 
   class {'basic_workstation::dev_tools':
     user      => "${user}",
-    name      => "${name}",
+    fullName  => "${fullName}",
     email     => "${email}",
     user_home => "${user_home}",
   }
