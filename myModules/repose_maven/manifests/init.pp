@@ -1,6 +1,6 @@
 #Installs maven and settings for uploading to our repo
 class repose_maven(
-  $maven_version = "3.3.3",
+  $maven_version = "3.2.2",
   $user = undef,
   $user_home = "/home/${user}"
 ) {
