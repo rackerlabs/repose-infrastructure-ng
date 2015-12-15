@@ -25,13 +25,13 @@ class repose_jenkins(
         user      => 'jenkins',
         user_home => "${jenkins_home}",
         daemon    => false,
-        requires  => User["jenkins"],
+        require  => User["jenkins"],
     }
 
     class{"repose_maven":
         user      => 'jenkins',
         user_home => "${jenkins_home}",
-        requires  => User["jenkins"],
+        require  => User["jenkins"],
     }
 
 # this should ensure we've got java on the system at jdk7. Installed via package
