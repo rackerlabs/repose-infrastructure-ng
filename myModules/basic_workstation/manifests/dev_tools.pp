@@ -26,7 +26,9 @@ class basic_workstation::dev_tools(
   }
 
   #gradle
-  include repose_gradle
+  class{ "repose_gradle":
+    user => "${user}",
+  }
 
   #intellij idea
   class{ 'idea::ultimate':
