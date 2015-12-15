@@ -30,6 +30,7 @@ class repose_jenkins(
     class{"repose_maven":
         user      => 'jenkins',
         user_home => "${jenkins_home}",
+        daemon    => false,
         requires  => User["jenkins"],
     }
 

@@ -4,7 +4,8 @@ class repose_gradle(
   $base_url = 'http://downloads.gradle.org/distributions',
   $sha256 = '65f3880dcb5f728b9d198b14d7f0a678d35ecd33668efc219815a9b4713848be',
   $user = undef,
-  $user_home = "/home/${user}"
+  $user_home = "/home/${user}",
+  $daemon = true
 ) {
 
   #downloads and explodes the given version
