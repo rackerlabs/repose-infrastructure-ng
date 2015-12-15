@@ -21,6 +21,7 @@ class repose_jenkins(
 
     $jenkins_home = '/var/lib/jenkins'
 
+    include repose_gradle
     repose_gradle { 'gradle install':
         user      => 'jenkins',
         user_home => "${jenkins_home}",
@@ -28,6 +29,7 @@ class repose_jenkins(
         require  => User["jenkins"],
     }
 
+    include repose_maven
     repose_maven { 'maven install':
         user      => 'jenkins',
         user_home => "${jenkins_home}",
