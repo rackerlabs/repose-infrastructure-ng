@@ -20,11 +20,19 @@ class repose_gradle(
     digest_string    => $sha256,
   }
 
+  file { "${user_home}/.gradle":
+      ensure  => directory,
+      owner   => $user,
+      group   => $user,
+      mode    => '0755',
+  }
+
   file {"$user_home/.gradle/gradle.properties":
     content => template("repose_gradle/gradle.properties.erb"),
-    owner   => "$user",
-    group   => "$user",
+    owner   => $user,
+    group   => $user,
     mode    => 0600,
+    require => File["${user_home}/.gradle"]
   }
 
   #links it for conveince

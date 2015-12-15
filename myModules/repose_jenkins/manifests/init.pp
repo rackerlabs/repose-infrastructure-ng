@@ -145,20 +145,12 @@ class repose_jenkins(
         require => File["${jenkins_home}/.ssh"],
     }
 
-    file { ["${jenkins_home}/.m2", "${jenkins_home}/.gradle", "${jenkins_home}/plugins"]:
+    file { "${jenkins_home}/plugins":
         ensure  => directory,
         owner   => jenkins,
         group   => jenkins,
         mode    => '0755',
         require => User['jenkins']
-    }
-
-    file{ "${jenkins_home}/.m2/settings.xml":
-        mode    => 0600,
-        owner   => jenkins,
-        group   => jenkins,
-        content => template("repose_jenkins/m2settings.xml.erb"),
-        require => File["${jenkins_home}/.m2"]
     }
 
     file{ "${jenkins_home}/saxon_ee":

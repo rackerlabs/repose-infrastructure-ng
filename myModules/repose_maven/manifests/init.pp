@@ -25,4 +25,18 @@ class repose_maven(
     require => Class['java'],
   }
 
+  file { "${user_home}/.m2":
+      ensure  => directory,
+      owner   => $user,
+      group   => $user,
+      mode    => '0755',
+  }
+
+  file{ "${user_home}/.m2/settings.xml":
+      mode    => 0600,
+      owner   => $user,
+      group   => $user,
+      content => template("repose_maven/m2settings.xml.erb"),
+      require => File["${user_home}/.m2"]
+  }
 }
