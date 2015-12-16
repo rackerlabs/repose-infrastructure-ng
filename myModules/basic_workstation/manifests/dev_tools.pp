@@ -59,8 +59,8 @@ class basic_workstation::dev_tools(
   }
 
   #VMs for testing
-  #include virtualbox
-  #include vagrant
+  include virtualbox
+  include vagrant
 
   #vim
   package {'vim-gnome':
