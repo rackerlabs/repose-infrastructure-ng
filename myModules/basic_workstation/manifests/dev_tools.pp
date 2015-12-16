@@ -32,8 +32,8 @@ class basic_workstation::dev_tools(
 
   #intellij idea
   class{ 'idea::ultimate':
-    version => '15.0.1',
-    build   => '143.382',
+    version => '15.0.2',
+    build   => '143.1184',
   }
 
   #network tools
@@ -59,8 +59,8 @@ class basic_workstation::dev_tools(
   }
 
   #VMs for testing
-  #include virtualbox
-  #include vagrant
+  include virtualbox
+  include vagrant
 
   #vim
   package {'vim-gnome':
