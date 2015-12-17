@@ -5,6 +5,7 @@ class repose_phone_home(
   $mongo_port     = 27017,
   $mongo_username = undef,
   $mongo_password = undef,
+  $mongo_dbname   = undef,
 ) {
 
 #  class {'::mongodb::globals':
@@ -16,7 +17,7 @@ class repose_phone_home(
     auth => true,
   }
 
-  mongodb::db { 'phoneHomeReports':
+  mongodb::db { $mongo_dbname:
     user     => $mongo_username,
     password => $mongo_password,
   }
@@ -29,19 +30,19 @@ class repose_phone_home(
     ensure => present,
   }
 
-#  package{ "repose-phone-home":
-#    ensure => present,
-#  }
+  package{ "repose-phone-home":
+    ensure => present,
+  }
 
-  file{ '/etc/repose-phone-home/repose-phone-home.cfg':
+  file{ '/opt/repose-phone-home/application.properties':
     ensure  => file,
     owner   => $daemon_user,
     group   => $daemon_group,
     mode    => 0600,
-    content => template('repose_phone_home/repose-phone-home.cfg.erb'),
-#    require => [
-#      Package['repose-phone-home']
-#    ],
+    content => template('repose_phone_home/application.properties.erb'),
+    require => [
+      Package['repose-phone-home']
+    ],
     notify  => Service['repose-phone-home'],
   }
 
