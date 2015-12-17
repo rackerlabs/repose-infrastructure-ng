@@ -104,6 +104,11 @@ cDYHTOX6dALLiEi+KlaQCi8vBH6L2vlDLu+Me5z+=3vhD
   service{ "repose-phone-home":
     ensure  => running,
     enable  => true,
+    require => [
+      Mongodb::Db["$mongo_dbname"],
+      Package['repose-phone-home'],
+      File['/opt/repose-phone-home/application.properties'],
+    ],
   }
 
   firewall {'102 forward port 80 to 8080':
