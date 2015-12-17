@@ -9,13 +9,14 @@ class repose_phone_home(
 ) {
 
   class {'::mongodb::globals':
-    version => '2.6.9',
+    manage_package_repo => true,
+    version             => '2.6.9',
   }
 
   class {'::mongodb::server':
     port    => $mongo_port,
     verbose => true,
-    auth => true,
+    auth    => true,
   }
 
   mongodb::db { $mongo_dbname:
@@ -36,7 +37,7 @@ class repose_phone_home(
     release  => 'stable',
     repos    => 'main',
     key      => {
-      'id'     => '7DE3B25953451D589081071ED823DD83CE616558',
+      'id'      => '7DE3B25953451D589081071ED823DD83CE616558',
       'content' => '-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 mQENBE8qvagBCADqKqQNREjRibpmK5uw3+esNFJeq0L6xTQ7p6wCJVLTRKNadk4L
@@ -83,7 +84,7 @@ cDYHTOX6dALLiEi+KlaQCi8vBH6L2vlDLu+Me5z+=3vhD
   }
 
   package{ "repose-phone-home":
-    ensure => present,
+    ensure  => present,
     require => Apt::Source['repose'],
   }
 
