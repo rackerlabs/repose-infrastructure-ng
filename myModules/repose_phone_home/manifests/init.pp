@@ -36,7 +36,7 @@ class repose_phone_home(
     release  => 'stable',
     repos    => 'main',
     key      => {
-      'id'     => '389195C8E7C89BBB',
+      'id'     => '52F39F131FE73BBC5AFCB3D0389195C8E7C89BBB',
       'server' => 'pgp.mit.edu',
     },
   }
