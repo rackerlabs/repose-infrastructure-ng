@@ -33,7 +33,8 @@ class repose_phone_home(
 
   apt::source { 'repose':
     location => 'http://repo.openrepose.org/debian',
-    repos    => 'stable main',
+    release  => 'stable',
+    repos    => 'main',
     key      => {
       'id'     => '389195C8E7C89BBB',
       'server' => 'pgp.mit.edu',
