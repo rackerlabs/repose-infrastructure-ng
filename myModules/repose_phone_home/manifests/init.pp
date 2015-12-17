@@ -9,7 +9,7 @@ class repose_phone_home(
 ) {
 
   class {'::mongodb::globals':
-    version => 2.6,
+    version => '2.6.9',
   }
 
   class {'::mongodb::server':
