@@ -23,6 +23,7 @@ class repose_phone_home(
   mongodb::db { $mongo_dbname:
     user     => $mongo_username,
     password => $mongo_password,
+    roles    => 'readWrite',
   }
 
   package{ "openjdk-6-jre-headless":
