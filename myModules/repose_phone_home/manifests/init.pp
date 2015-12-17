@@ -10,6 +10,7 @@ class repose_phone_home(
 
   class {'::mongodb::globals':
     manage_package_repo => true,
+    server_package_name => 'mongodb-org',
     version             => '2.6.9',
   }
 
