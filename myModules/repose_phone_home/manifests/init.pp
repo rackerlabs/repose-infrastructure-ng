@@ -8,9 +8,10 @@ class repose_phone_home(
   $mongo_dbname   = undef,
 ) {
 
-#  class {'::mongodb::globals':
-#    manage_package_repo => true,
-#  } ->
+  class {'::mongodb::globals':
+    version => 2.6,
+  }
+
   class {'::mongodb::server':
     port    => $mongo_port,
     verbose => true,
@@ -30,8 +31,18 @@ class repose_phone_home(
     ensure => present,
   }
 
+  apt::source { 'repose':
+    location => 'http://repo.openrepose.org/debian',
+    repos    => 'stable main',
+    key      => {
+      'id'     => '389195C8E7C89BBB',
+      'server' => 'pgp.mit.edu',
+    },
+  }
+
   package{ "repose-phone-home":
     ensure => present,
+    require => Apt::Source['repose'],
   }
 
   file{ '/opt/repose-phone-home/application.properties':
