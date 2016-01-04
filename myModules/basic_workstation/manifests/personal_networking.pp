@@ -34,7 +34,7 @@ class basic_workstation::personal_networking(
   }
 
   file {"$destination/Auto Ethernet":
-    content => template("basic_workstation/Auto_ethernet"),
+    content => template("basic_workstation/Auto_Ethernet"),
     replace => false,
     owner   => root,
     group   => root,
