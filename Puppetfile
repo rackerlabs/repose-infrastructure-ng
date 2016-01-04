@@ -10,7 +10,7 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs/stdlib', '4.10.0'
 
 mod 'puppetlabs/firewall', '1.7.2'
-mod 'puppetlabs/apt', '2.2.1'
+mod 'puppetlabs/apt', '2.2.0'
 
 mod 'puppetlabs/postgresql', '4.6.1'
 
