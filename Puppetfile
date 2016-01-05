@@ -25,7 +25,7 @@ mod 'rtyler/groovy', '1.0.3'
 mod 'garethr/scala', '0.1.2'
 mod 'danzilio/virtualbox', '1.6.0'
 mod 'mjanser/vagrant', '1.1.0'
-mod 'gini/idea', '0.3.0'
+#mod 'gini/idea', '0.3.0'
 mod 'jamesnetherton/google_chrome', '0.2.1'
 
 # dkowis forked this to add debian support. There's a pull request open on the original

@@ -31,10 +31,10 @@ class basic_workstation::dev_tools(
   }
 
   #intellij idea
-  class{ 'idea::ultimate':
-    version => '15.0.2',
-    build   => '143.1184',
-  }
+#  class{ 'idea::ultimate':
+#    version => '15.0.2',
+#    build   => '143.1184',
+#  }
 
   #network tools
   package {['stunnel4', 'wireshark']:
