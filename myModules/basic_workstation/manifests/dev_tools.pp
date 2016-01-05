@@ -59,7 +59,9 @@ class basic_workstation::dev_tools(
   }
 
   #VMs for testing
-  include virtualbox
+  class{'virtualbox':
+    version => '5.0'
+  }
   include vagrant
 
   #vim
