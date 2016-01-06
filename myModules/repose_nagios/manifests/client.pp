@@ -8,7 +8,7 @@ class repose_nagios::client {
 
 # add a firewall rule
     firewall{ '100 accept TCP 5666':
-        port   => 5666,
+        dport  => 5666,
         proto  => tcp,
         action => accept,
     }

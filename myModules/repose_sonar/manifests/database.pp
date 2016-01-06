@@ -6,7 +6,7 @@ class repose_sonar::database(
     include ssl_cert
 
     firewall{ '110 mysql access':
-        port   => [3306],
+        dport  => [3306],
         proto  => tcp,
         action => accept,
     }

@@ -122,7 +122,7 @@ cDYHTOX6dALLiEi+KlaQCi8vBH6L2vlDLu+Me5z+=3vhD
   }
 
   firewall{ '100 http access':
-    port   => 80,
+    dport  => 80,
     proto  => tcp,
     action => accept,
   }

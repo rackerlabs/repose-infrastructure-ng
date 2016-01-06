@@ -105,13 +105,13 @@ class mumble_server(
     }
 
     firewall{ '100 accept TCP 64738':
-        port   => 64738,
+        dport  => 64738,
         proto  => tcp,
         action => accept,
     }
 
     firewall{ '101 accept UDP 64738':
-        port   => 64738,
+        dport  => 64738,
         proto  => udp,
         action => accept,
     }
