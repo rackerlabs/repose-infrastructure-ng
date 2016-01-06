@@ -120,4 +120,11 @@ cDYHTOX6dALLiEi+KlaQCi8vBH6L2vlDLu+Me5z+=3vhD
     jump        => 'REDIRECT',
     toports     => '8080'
   }
+
+  firewall{ '100 http access':
+    port   => 80,
+    proto  => tcp,
+    action => accept,
+  }
+
 }
