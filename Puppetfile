@@ -85,3 +85,6 @@ mod "repose/adrian_workstation",
 
 mod "repose/repose_phone_home",
     :path => "myModules/repose_phone_home"
+
+mod "repose/repose_groovy",
+    :path => "myModules/repose_groovy"

@@ -40,6 +40,7 @@ class repose_gradle(
     require => Archive["gradle-${version}"]
   }
 
+  #adds it to the path
   file {'/etc/profile.d/append-gradle-path.sh':
     mode    => 644,
     content => 'PATH=$PATH:/opt/gradle/bin',

@@ -13,9 +13,7 @@ class basic_workstation::dev_tools(
   }
 
   #groovy
-  class{'groovy':
-    version => '2.4',
-  }
+  include 'repose_groovy'
 
   #scala
   include 'scala'
