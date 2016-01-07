@@ -1,8 +1,7 @@
 #Installs gradle
 class repose_gradle(
-  $version = '2.8',
+  $version = '2.10',
   $base_url = 'http://downloads.gradle.org/distributions',
-  $sha256 = '65f3880dcb5f728b9d198b14d7f0a678d35ecd33668efc219815a9b4713848be',
   $user = undef,
   $user_home = "/home/${user}",
   $daemon = true
@@ -16,15 +15,13 @@ class repose_gradle(
     target           => "/opt",
     extension        => "zip",
     checksum         => false,
-    digest_type      => 'sha256',
-    digest_string    => $sha256,
   }
 
   file { "${user_home}/.gradle":
-      ensure  => directory,
-      owner   => $user,
-      group   => $user,
-      mode    => '0755',
+    ensure => directory,
+    owner  => $user,
+    group  => $user,
+    mode   => '0755',
   }
 
   file {"$user_home/.gradle/gradle.properties":
@@ -36,10 +33,16 @@ class repose_gradle(
   }
 
   #links it for conveince
-  file{'gradle-symlink':
-    path => '/opt/gradle',
-    ensure => link,
-    target => "/opt/gradle-${version}",
+  file {'gradle-symlink':
+    path    => '/opt/gradle',
+    ensure  => link,
+    target  => "/opt/gradle-${version}",
     require => Archive["gradle-${version}"]
+  }
+
+  file {'/etc/profile.d/append-gradle-path.sh':
+    mode    => 644,
+    content => 'PATH=$PATH:/opt/gradle/bin',
+    require => File['gradle-symlink'],
   }
 }
