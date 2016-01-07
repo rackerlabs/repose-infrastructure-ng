@@ -20,7 +20,7 @@ class base::nginx {
     }
 
     firewall{ '100 nginx http/s access':
-        port   => [443,80],
+        dport  => [443,80],
         proto  => tcp,
         action => accept,
     }

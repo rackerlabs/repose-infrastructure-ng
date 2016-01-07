@@ -73,7 +73,7 @@ class puppet_master {
     }
 
     firewall{ '100 puppetmaster port':
-        port   => 8140,
+        dport  => 8140,
         proto  => 'tcp',
         action => 'accept',
     }

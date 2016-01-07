@@ -112,6 +112,12 @@ cDYHTOX6dALLiEi+KlaQCi8vBH6L2vlDLu+Me5z+=3vhD
     ],
   }
 
+  firewall{ '101 http access':
+    dport  => [80, 8080],
+    proto  => tcp,
+    action => accept,
+  }
+
   firewall {'102 forward port 80 to 8080':
     table       => 'nat',
     chain       => 'PREROUTING',

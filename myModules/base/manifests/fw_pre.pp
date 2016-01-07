@@ -20,7 +20,7 @@ class base::fw_pre {
     }->
     firewall { '003 accept ssh':
         proto  => 'tcp',
-        port   => '22',
+        dport  => '22',
         action => 'accept',
     }
 }
