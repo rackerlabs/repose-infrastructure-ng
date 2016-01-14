@@ -8,12 +8,7 @@ class adrian_workstation {
 
   include google_chrome
 
-  apt::ppa { 'ppa:gwendal-lebihan-dev/hexchat-stable':
-    require => Class['basic_workstation']
-  }
-
-  package { 'hexchat':
+  package { ['hexchat', 'dropbox', 'quicksynergy']:
     ensure  => present,
-    require => Apt::Ppa['ppa:gwendal-lebihan-dev/hexchat-stable'],
   }
 }
