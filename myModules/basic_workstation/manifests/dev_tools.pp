@@ -8,7 +8,7 @@ class basic_workstation::dev_tools(
   #java
   class{ 'java':
     distribution => 'jdk',
-    package      => 'openjdk-7-jdk',
+    package      => 'openjdk-8-jdk',
     version      => 'present',
   }
 
