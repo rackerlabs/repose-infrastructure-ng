@@ -18,10 +18,9 @@ mod 'puppetlabs/postgresql', '4.6.1'
 #mod 'example42/java', '2.0.3' # the jenkins one depends on a conflicting named one :(
 #going to the git version because it supports ubuntu wily, once a released version catches up go back to a hard number
 mod 'puppetlabs/java',
-    :git => "git://github.com/puppetlabs/puppetlabs-java.git"
+    :git => "https://github.com/puppetlabs/puppetlabs-java.git"
 mod 'maestrodev/maven', '1.4.0'
 mod 'maestrodev/sonarqube', '2.6.6'
-mod 'rtyler/groovy', '1.0.3'
 mod 'garethr/scala', '0.1.2'
 mod 'danzilio/virtualbox', '1.6.0'
 mod 'mjanser/vagrant', '1.1.0'
