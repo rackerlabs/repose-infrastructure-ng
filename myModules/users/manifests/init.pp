@@ -26,6 +26,14 @@ class users {
     user    => 'root'
   }
 
+  ssh_authorized_key { 'also-ageorge':
+    ensure  => present,
+    type    => 'ssh-rsa',
+    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC6fxFsPwiURedznpuhCTHC3wsJAU5OxgFgD//wtWSJm5ePCJ1KvYD8eXZt79sIK+B17rAmLwGhkeS1YR3LQYnxuSdA9IQ6ioZP4XX5tsotMKo696ZtDVfsl/APtUSUyXcTqPy3tCSiq8MFVT1DYwaChJzLUZx8uan2Hoaq+vLx+aXpMRHUvOkEkqyQryHJFRTOXKQVDzN/9FV6rEo5wqC+7SUrOV0pvzOH4SGotHW/COoPdxJzqs1oFg7AAoVLqCo/SkChGgTeiLZMLwe1Z/KorBYzpsECprEZBe6B4dRxTjTooCgLl8O+5/CPgpjksRzeLlbgW1IGwIsPa02YJ7Xr',
+    name    => 'adrian@work-desktop',
+    user    => 'root'
+  }
+
   ssh_authorized_key { 'dkowis':
     ensure  => absent,
     type    => 'ssh-rsa',
