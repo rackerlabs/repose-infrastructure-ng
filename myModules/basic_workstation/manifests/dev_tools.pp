@@ -63,4 +63,9 @@ class basic_workstation::dev_tools(
   package {'vim-gnome':
     ensure => present
   }
+
+  #dot file viewer
+  package {'xdot':
+    ensure => present
+  }
 }
