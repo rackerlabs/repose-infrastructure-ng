@@ -45,7 +45,7 @@ class users {
   ssh_authorized_key { 'dmnjohns':
     ensure  => present,
     type    => 'ssh-rsa',
-    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDO94bgx7CIosH5VH81mD6IGadg7x7KilWj/qMd6kdyC+9+1Q6Eg8vGO4d2nNCVZl9fFspcp87wPXFGrtbfcAqNicI6Q9gZD1z1rdLe+qw980Yd3vX6ncupM4GK94DUmLMjVXXk2ZOCyhqYkdIsO8zv3hCktqEfiez4Y1dRLCC9wq8Evh7FuTxvoE3pZpBANUAHOlnmZtFc/6pOyIz0vbnqYY8ih82pI1vLURialEkh3u3g0axm6L+zqoz5OvvTgmmUqExo32zYEycs9Fb9RpffjWzbYlPLj3zkHF+rB3hSJ8ivebuqofoVIvUdXS+CsHoqcnzGSGw5B7VqlBo3Blqd',
+    key     => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpVUcqEZdhmjjzyk+X33mxs7P09zUxwcQjC5wXtZ+7ij/0RYf9Y7dLmm5tsGJjN3R3NLj69oek4oyZ1dtGWuMkpioUvpyQAmy/nQQxEuz+/cqOOnKdGPflMq/vfHD9nv43AzzOyO/W+56X5KWs1n7TrEp44b55RevU1GtStQ/KBrRZBML8VILC8HA5i5Arl4gLp8O75HGsCgBrzKdRH7KBD4Y5xpnWbwhqGZxtAKxdV/KKVb4ZGxmyg2tv10XvM+9mW6/jLr1uhzZWXWIdQVHLpI4gcNO46VPMlWePn+LzPIHi/DQmPP99eoA6lDJ58lW35WQAa+TdphHKmgQvW3qr',
     name    => 'damien.johnson@rackspace.com',
     user    => 'root'
   }
