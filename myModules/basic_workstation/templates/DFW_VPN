@@ -12,7 +12,7 @@ IPSec secret-flags=1
 xauth-password-type=ask
 Vendor=cisco
 Xauth username=<%= @sso %>
-IPSec gateway=vpn1.dfw1.rackspace.com
+IPSec gateway=vpn.dfw1.rackspace.com
 Xauth password-flags=3
 IPSec ID=rackspace
 Perfect Forward Secrecy=server
