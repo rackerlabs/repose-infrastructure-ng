@@ -34,8 +34,8 @@ class repose_jenkins(
         require  => User["jenkins"],
     }
 
-# this should ensure we've got java on the system at jdk7. Installed via package
-# it will give us JDK7 however.
+# this should ensure we've got java on the system at jdk8. Installed via package
+# it will give us JDK8 however.
 # this is really stupid, for some reason it can't pick up the proper package version
 # and is doing stupid things, so I have to tell it everything basically.
 # the example42 one is more reliable, but I can't use it because it conflicts.
@@ -44,7 +44,7 @@ class repose_jenkins(
 # I'm really only using it at this point because the rtyler/jenkins module wants it :|
     class{ 'java':
         distribution => 'jdk',
-        package      => 'openjdk-7-jdk',
+        package      => 'openjdk-8-jdk',
         version      => 'present',
     }
 
