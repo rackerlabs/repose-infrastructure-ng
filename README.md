@@ -4,13 +4,13 @@ Repose Puppet Setup
 Using Debian wheezy. CentOS is too old :(
 
 # Only manual steps!
-1. Create a Debian Wheezy cloud box
-2. Set up it's local hostname if necessary
+1. Create a Debian Jessie cloud box
+   a. Set up it's local hostname
+2. Update any DNS records to point to your new box
 3. Run the client bootstrap.sh from this repository
 4. Set it's hostname in the site.pp if necessary
 5. Fire up the puppet agent
-6. Update any DNS records to point to your new box
-7. If Jenkins slave, update Jenkins node list
+6. If Jenkins slave, update Jenkins node list
 
 # Manual steps for master
 1. Set hostname

@@ -12,6 +12,10 @@ class cloud_monitoring(
             info("Can support debian")
             include apt
         }
+        ubuntu: {
+            info("Can support ubuntu")
+            include apt
+        }
         default: { fail("Unrecognized OS for cloud_monitoring") }
     }
 
@@ -36,6 +40,21 @@ class cloud_monitoring(
     if( $operatingsystem == "debian") {
         apt::source { 'rackspace_monitoring':
             location   => "${package_url}/debian-wheezy-x86_64",
+            release    => "cloudmonitoring",
+            repos      => "main",
+            key        => "D05AB914",
+            key_source => "${signing_url}/linux.asc"
+        }
+
+        package{ "rackspace-monitoring-agent":
+            ensure  => present,
+            require => Apt::Source["rackspace_monitoring"],
+        }
+    }
+
+    if( $operatingsystem == "ubuntu" ) {
+        apt::source { 'rackspace_monitoring':
+            location   => "${package_url}/ubuntu-15.10-x86_64",
             release    => "cloudmonitoring",
             repos      => "main",
             key        => "D05AB914",

@@ -4,7 +4,7 @@
 # Since the boxes should have a proper hostname of something.openrepose.org
 # they will know how to find the puppet master already (puppet.openrepose.org)
 
-REPODEB="puppetlabs-release-wheezy.deb"
+REPODEB="puppetlabs-release-jessie.deb"
 
 wget -O /tmp/$REPODEB https://apt.puppetlabs.com/$REPODEB &&
 dpkg -i /tmp/$REPODEB &&
