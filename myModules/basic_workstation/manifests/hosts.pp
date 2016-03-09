@@ -16,11 +16,11 @@ class basic_workstation::hosts(
   }
 
   host { 'jenkins-slave-2':
-    ip  => '104.130.134.126',
+    ip  => '104.130.141.56',
   }
 
   host { 'jenkins-slave-3':
-    ip  => '104.130.132.215',
+    ip  => '23.253.76.22',
   }
 
   host { 'jenkins-slave-4':
