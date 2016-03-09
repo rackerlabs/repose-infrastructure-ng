@@ -4,7 +4,9 @@ Repose Puppet Setup
 Using Debian wheezy. CentOS is too old :(
 
 # Only manual steps!
-1. Create a Debian Jessie cloud box
+For additional details, see [Good things to know - Replace Jenkins Slave](https://one.rackspace.com/display/repose/Good+things+to+know#Goodthingstoknow-ReplaceJenkinsSlave).  
+  
+1. Create an Ubuntu 15 cloud box
    a. Set up it's local hostname
 2. Update any DNS records to point to your new box
 3. Run the client bootstrap.sh from this repository
