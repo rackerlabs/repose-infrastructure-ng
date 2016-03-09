@@ -52,21 +52,6 @@ class cloud_monitoring(
         }
     }
 
-    if( $operatingsystem == "ubuntu" ) {
-        apt::source { 'rackspace_monitoring':
-            location   => "${package_url}/ubuntu-15.10-x86_64",
-            release    => "cloudmonitoring",
-            repos      => "main",
-            key        => "D05AB914",
-            key_source => "${signing_url}/linux.asc"
-        }
-
-        package{ "rackspace-monitoring-agent":
-            ensure  => present,
-            require => Apt::Source["rackspace_monitoring"],
-        }
-    }
-
     file{ "/etc/rackspace-monitoring-agent.cfg":
         ensure  => present,
         owner   => root,
