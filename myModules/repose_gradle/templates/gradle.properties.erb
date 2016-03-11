@@ -8,3 +8,7 @@ maven.repo.password=<%= @research_nexus_password %>
 systemProp.sonar.host.url=https://sonar.openrepose.org
 systemProp.sonar.login=<%= @sonar_user %>
 systemProp.sonar.password=<%= @sonar_password %>
+systemProp.sonar.jdbc.url=jdbc:mysql://sonar.openrepose.org/sonar?useUnicode=true&characterEncoding=utf8
+systemProp.sonar.jdbc.driverClassName=com.mysql.jdbc.Driver
+systemProp.sonar.jdbc.username=<%= @sonar_db_user %>
+systemProp.sonar.jdbc.password=<%= @sonar_db_password %>
