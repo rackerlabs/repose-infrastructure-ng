@@ -12,7 +12,7 @@ class basic_workstation::hosts(
   }
 
   host { 'jenkins-slave-1':
-    ip  => '104.130.132.162',
+    ip  => '23.253.107.170',
   }
 
   host { 'jenkins-slave-2':
@@ -24,11 +24,11 @@ class basic_workstation::hosts(
   }
 
   host { 'jenkins-slave-4':
-    ip => '23.253.254.99',
+    ip => '23.253.76.118',
   }
 
   host { 'jenkins-slave-5':
-    ip => '104.130.136.248',
+    ip => '174.143.130.208',
   }
 
   host { 'mumble':
