@@ -2,7 +2,11 @@
 class repose_maven(
   $maven_version = "3.2.2",
   $user = undef,
-  $user_home = "/home/${user}"
+  $user_home = "/home/${user}",
+  $inova_username = undef,
+  $inova_password = undef,
+  $research_nexus_username = undef,
+  $research_nexus_password = undef
 ) {
 
   #Installs maven

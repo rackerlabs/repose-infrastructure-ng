@@ -4,7 +4,13 @@ class repose_gradle(
   $base_url = 'http://downloads.gradle.org/distributions',
   $user = undef,
   $user_home = "/home/${user}",
-  $daemon = true
+  $daemon = true,
+  $research_nexus_username = undef,
+  $research_nexus_password = undef,
+  $sonar_user = undef,
+  $sonar_password = undef,
+  $sonar_db_user = undef,
+  $sonar_db_password = undef
 ) {
 
   #downloads and explodes the given version
