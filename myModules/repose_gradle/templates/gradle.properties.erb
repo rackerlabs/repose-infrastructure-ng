@@ -12,3 +12,7 @@ systemProp.sonar.jdbc.url=jdbc:mysql://sonar.openrepose.org/sonar?useUnicode=tru
 systemProp.sonar.jdbc.driverClassName=com.mysql.jdbc.Driver
 systemProp.sonar.jdbc.username=<%= @sonar_db_user %>
 systemProp.sonar.jdbc.password=<%= @sonar_db_password %>
+
+signing.keyId=E7C89BBB
+signing.password=<%= @signing_passphrase %>
+signing.secretKeyRingFile=<%= @user_home %>/.gnupg/secring.gpg
