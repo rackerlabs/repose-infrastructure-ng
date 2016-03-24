@@ -21,6 +21,10 @@ class basic_workstation(
     username => "${user}",
   }
 
+  class {'basic_workstation::gpgkey':
+    user => "${user}",
+  }
+
   include apt
   apt::ppa { 'ppa:mumble/release': }
 
