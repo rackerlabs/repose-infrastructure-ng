@@ -79,7 +79,7 @@ class repose_jenkins::master(
 # I think this is the only one we need, as it manages all the other configs
 # the base class provides the ssh key for github.com, so it should be good to go
     jenkins::plugin{ 'scm-sync-configuration':
-        version         => '0.0.8',
+        version         => '0.0.9',
         manage_config   => true,
         config_filename => "scm-sync-configuration.xml",
         config_content  => template("repose_jenkins/scm-sync-configuration.xml.erb"),
@@ -116,7 +116,7 @@ class repose_jenkins::master(
         version => '1.24'
     }
     jenkins::plugin{ 'veracode-scanner':
-        version => '1.5'
+        version => '1.6'
     }
     jenkins::plugin{ 'dashboard-view':
         version => '2.9.7'
@@ -170,10 +170,10 @@ class repose_jenkins::master(
         version => '1.0'
     }
     jenkins::plugin{ 'token-macro':
-        version => '1.11'
+        version => '1.12.1'
     }
     jenkins::plugin{ 'scm-api':
-        version => '1.0'
+        version => '1.1'
     }
 # oops, somehow I forgot that sonar needed to exist :(
     jenkins::plugin{ 'sonar':
@@ -190,7 +190,7 @@ class repose_jenkins::master(
     }
 
     jenkins::plugin { 'jenkins-multijob-plugin':
-        version => '1.16'
+        version => '1.21'
     }
 
 
