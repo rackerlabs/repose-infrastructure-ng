@@ -103,13 +103,13 @@ class repose_jenkins::master(
     }
 
     jenkins::plugin{'htmlpublisher':
-        version => '1.9',
+        version => '1.11',
     }
     jenkins::plugin{'instant-messaging':
         version => '1.35',
     }
     jenkins::plugin{'ircbot':
-        version => '2.26',
+        version => '2.27',
     }
 
     jenkins::plugin{ 'gradle':
@@ -119,7 +119,7 @@ class repose_jenkins::master(
         version => '1.5'
     }
     jenkins::plugin{ 'dashboard-view':
-        version => '2.9.6'
+        version => '2.9.7'
     }
     jenkins::plugin{ 'github-api':
         version => '1.72.1'
@@ -161,7 +161,7 @@ class repose_jenkins::master(
         version => '0.3'
     }
     jenkins::plugin{ 'join':
-        version => '1.15'
+        version => '1.19'
     }
     jenkins::plugin{ 'conditional-buildstep':
         version => '1.3.3'
