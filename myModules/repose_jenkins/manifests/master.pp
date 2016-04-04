@@ -122,26 +122,23 @@ class repose_jenkins::master(
         version => '2.9.6'
     }
     jenkins::plugin{ 'github-api':
-        version => '1.71'
+        version => '1.72.1'
     }
     jenkins::plugin{ 'github':
-        version => '1.14.0'
+        version => '1.18.1'
     }
     jenkins::plugin{ 'ssh-agent':
         version => '1.8'
     }
     jenkins::plugin{ 'ghprb':
-        version => '1.29.6'
+        version => '1.31.2'
     }
     jenkins::plugin{ 'git-client':
-        version => '1.19.0'
+        version => '1.19.6'
     }
     jenkins::plugin{ 'git':
-        version => '2.4.0'
+        version => '2.4.4'
     }
-#https://issues.jenkins-ci.org/browse/JENKINS-23426
-# 1.0.15 has failure problems, and it blows up all over the place :(
-# 1.0.16 should be mush batter
     jenkins::plugin{ 'jacoco':
         version => '1.0.18'
     }
