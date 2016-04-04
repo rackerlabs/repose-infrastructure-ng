@@ -128,7 +128,7 @@ class repose_jenkins::master(
         version => '1.18.1'
     }
     jenkins::plugin{ 'ssh-agent':
-        version => '1.8'
+        version => '1.10'
     }
     jenkins::plugin{ 'ghprb':
         version => '1.31.2'
@@ -140,7 +140,7 @@ class repose_jenkins::master(
         version => '2.4.4'
     }
     jenkins::plugin{ 'jacoco':
-        version => '1.0.18'
+        version => '2.0.1'
     }
     jenkins::plugin{ 'jquery':
         version => '1.11.2-0'
@@ -149,13 +149,13 @@ class repose_jenkins::master(
         version => '0.14.0'
     }
     jenkins::plugin{ 'parameterized-trigger':
-        version => '2.26'
+        version => '2.30'
     }
     jenkins::plugin{ 'ssh':
         version => '2.4'
     }
     jenkins::plugin{ 'publish-over-ssh':
-        version => '1.13'
+        version => '1.14'
     }
     jenkins::plugin{ 'simple-theme-plugin':
         version => '0.3'
