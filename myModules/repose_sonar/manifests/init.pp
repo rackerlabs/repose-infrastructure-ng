@@ -18,7 +18,6 @@ class repose_sonar(
         home        => '/opt/sonar-work',
         jdbc        => $sonar_jdbc,
         require     => [
-            Class['maven::maven'],
             Class['repose_sonar::database']
         ],
     }
