@@ -6,7 +6,7 @@ class repose_sonar(
     }
 
     class{ 'apt::backports': }
-    Class['apt::update'] -> Package <| provider == 'apt' |>
+    #Class['apt::update'] -> Package <| provider == 'apt' |>
 
     package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
         ensure => present,
