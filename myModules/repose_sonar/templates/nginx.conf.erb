@@ -4,7 +4,9 @@ upstream app_sonar {
     server 127.0.0.1:9000;
 }
 server {
-    listen [::]:443;
+    # nginx changed the ipv6only default to 'on' in v1.3.4
+    # http://serverfault.com/questions/638367/do-you-need-separate-ipv4-and-ipv6-listen-directives-in-nginx
+    listen [::]:443 ipv6only=off;
 
     # this imports the necessary SSL stuff
     include /etc/nginx/nginx-ssl.conf;
@@ -21,7 +23,8 @@ server {
       proxy_read_timeout 90;
 
       proxy_pass http://app_sonar$request_uri;
-      # Fix the “It appears that your reverse proxy set up is broken" error. This is for jenkins, but probably won't hurt sonar
+      # Fix the “It appears that your reverse proxy set up is broken" error.
+      # This is for jenkins, but probably won't hurt sonar
       proxy_redirect http://app_sonar $scheme://<%= @fqdn %>;
    }
 }
