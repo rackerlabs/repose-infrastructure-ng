@@ -39,7 +39,7 @@ class cloud_monitoring(
 
     if( $operatingsystem == "debian") {
         apt::source { 'rackspace_monitoring':
-            location   => "${package_url}/debian-wheezy-x86_64",
+            location   => "${package_url}/debian-${lsbdistcodename}-x86_64",
             release    => "cloudmonitoring",
             repos      => "main",
             key        => "D05AB914",
