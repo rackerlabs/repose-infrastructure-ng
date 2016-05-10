@@ -17,6 +17,14 @@ class backup_cloud_files{
         ensure => present,
     }
 
+    file{ 'pyrax-backend-dir':
+        path    => '/usr/share/pyshared/duplicity/backends/',
+        ensure  => present,
+        owner   => root,
+        group   => root,
+        require => Package['duplicity'],
+    }
+
     file{ 'pyrax-backend':
         path    => '/usr/share/pyshared/duplicity/backends/pyraxbackend.py',
         ensure  => present,
