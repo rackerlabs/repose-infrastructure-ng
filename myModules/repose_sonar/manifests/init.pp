@@ -8,7 +8,20 @@ class repose_sonar(
         fail("Must have sonar's JDBC configured")
     }
 
-    class{ 'java': }
+    package {['openjdk-7-jre', 'openjdk-7-jdk']:
+        ensure => absent,
+    }
+
+    class{ 'java':
+        distribution => 'jdk',
+        package      => 'openjdk-8-jdk',
+        version      => 'present',
+    }
+
+    class{ "maven::maven":
+        version => "3.2.2",
+    }
+
     class{ 'sonarqube':
         version     => '4.5',
         user        => 'sonar',
