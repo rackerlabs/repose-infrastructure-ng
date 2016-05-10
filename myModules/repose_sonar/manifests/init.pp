@@ -1,25 +1,24 @@
 class repose_sonar(
     $sonar_jdbc = undef
 ) {
+    package {['openjdk-7-jre-headless', 'openjdk-7-jre', 'openjdk-7-jdk']:
+        ensure => absent,
+    }
+
+    class{ 'apt::backports': }
+
+    package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
+        ensure => present,
+    }
+
+    class{ 'maven::maven':
+        version => "3.2.2",
+    }
 
     include repose_sonar::database
 
     if($sonar_jdbc == undef) {
         fail("Must have sonar's JDBC configured")
-    }
-
-    package {['openjdk-7-jre', 'openjdk-7-jdk']:
-        ensure => absent,
-    }
-
-    class{ 'java':
-        distribution => 'jdk',
-        package      => 'openjdk-8-jdk',
-        version      => 'present',
-    }
-
-    class{ "maven::maven":
-        version => "3.2.2",
     }
 
     class{ 'sonarqube':
@@ -82,7 +81,7 @@ class repose_sonar(
         notify  => Service['nginx'],
     }
 
-#Papertrail the sonar logs
+    #Papertrail the sonar logs
     $papertrail_port = hiera("base::papertrail_port", 1)
     class{ 'remotesyslog':
         port    => $papertrail_port,
@@ -92,5 +91,4 @@ class repose_sonar(
         ],
         require => Class['sonarqube'],
     }
-
 }
