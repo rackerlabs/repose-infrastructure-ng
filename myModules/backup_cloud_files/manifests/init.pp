@@ -17,28 +17,13 @@ class backup_cloud_files{
         ensure => present,
     }
 
-    file{ 'pyrax-backend-dir':
-        path    => '/usr/share/pyshared/duplicity/backends/',
-        ensure  => present,
-        owner   => root,
-        group   => root,
-        require => Package['duplicity'],
-    }
-
     file{ 'pyrax-backend':
-        path    => '/usr/share/pyshared/duplicity/backends/pyraxbackend.py',
+        path    => '/usr/lib/python2.7/dist-packages/duplicity/backends/pyraxbackend.py',
         ensure  => present,
         owner   => root,
         group   => root,
         source  => "puppet:///modules/backup_cloud_files/pyraxbackend.py",
         require => Package['duplicity'],
-    }
-
-    file{ 'pyrax-python-link':
-        path    => '/usr/lib/python2.7/dist-packages/duplicity/backends/pyraxbackend.py',
-        ensure  => link,
-        target  => '/usr/share/pyshared/duplicity/backends/pyraxbackend.py',
-        require => File['pyrax-backend'],
     }
 
     exec{ 'backend-compile':
