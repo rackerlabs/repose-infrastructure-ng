@@ -13,7 +13,7 @@ class repose_sonar(
             info("Can support ubuntu")
             include apt
         }
-        default: { fail("Unrecognized OS for cloud_monitoring") }
+        default: { fail("Unrecognized OS for repose_sonar") }
     }
 
     package {['openjdk-7-jre-headless', 'openjdk-7-jre', 'openjdk-7-jdk']:
