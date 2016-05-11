@@ -1,6 +1,10 @@
 class repose_sonar(
     $sonar_jdbc = undef
 ) {
+    package {['aptitude']:
+        ensure => present,
+    }
+
     package {['openjdk-7-jre-headless', 'openjdk-7-jre', 'openjdk-7-jdk']:
         ensure => absent,
     }
