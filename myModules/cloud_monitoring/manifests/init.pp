@@ -46,24 +46,30 @@ class cloud_monitoring(
             key_source => "${signing_url}/linux.asc"
         }
 
-        package{ "rackspace-monitoring-agent":
+        package{ ['rackspace-monitoring-agent', 'aptitude']:
             ensure  => present,
-            require => Apt::Source["rackspace_monitoring"],
+            require => [
+                Apt::Source['rackspace_monitoring'],
+                Exec['apt_update'],
+            ],
         }
     }
 
     if( $operatingsystem == "ubuntu" ) {
         apt::source { 'rackspace_monitoring':
-            location   => "${package_url}/ubuntu-15.10-x86_64",
+            location   => "${package_url}/ubuntu-${lsbdistrelease}-x86_64",
             release    => "cloudmonitoring",
             repos      => "main",
             key        => "D05AB914",
             key_source => "${signing_url}/linux.asc"
         }
 
-        package{ "rackspace-monitoring-agent":
+        package{ ['rackspace-monitoring-agent', 'aptitude']:
             ensure  => present,
-            require => Apt::Source["rackspace_monitoring"],
+            require => [
+                Apt::Source['rackspace_monitoring'],
+                Exec['apt_update'],
+            ],
         }
     }
 

@@ -1,19 +1,16 @@
 class repose_sonar(
     $sonar_jdbc = undef
 ) {
-    package {['aptitude']:
-        ensure => present,
-    }
 
     package {['openjdk-7-jre-headless', 'openjdk-7-jre', 'openjdk-7-jdk']:
         ensure => absent,
     }
 
     class{ 'apt::backports': }
-    #Class['apt::update'] -> Package <| provider == 'apt' |>
 
     package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
         ensure => present,
+        require => Exec['apt_update'],
     }
 
     class{ 'maven::maven':
@@ -35,6 +32,7 @@ class repose_sonar(
         home        => '/opt/sonar-work',
         jdbc        => $sonar_jdbc,
         require     => [
+            Exec['apt_update'],
             Class['repose_sonar::database']
         ],
     }
