@@ -19,14 +19,17 @@ class repose_sonar(
 
     package {['openjdk-7-jre-headless', 'openjdk-7-jre', 'openjdk-7-jdk']:
         ensure => absent,
+        require => Exec['apt_update'],
     }
 
     package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
         ensure => present,
+        require => Exec['apt_update'],
     }
 
     class{ 'maven::maven':
         version => "3.2.2",
+        require => Exec['apt_update'],
     }
 
     include repose_sonar::database
