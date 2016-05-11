@@ -8,13 +8,13 @@ class repose_sonar(
 
     class{ 'apt::backports': }
 
-    package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
-        ensure => present,
+    class{ 'maven::maven':
+        version => "3.2.2",
         require => Exec['apt_update'],
     }
 
-    class{ 'maven::maven':
-        version => "3.2.2",
+    package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
+        ensure => present,
     }
 
     include repose_sonar::database
