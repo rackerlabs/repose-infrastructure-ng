@@ -1,18 +1,27 @@
 class repose_sonar(
     $sonar_jdbc = undef
 ) {
+    case $operatingsystem{
+        debian: {
+            info("Can support debian")
+            include apt
+            class{ 'apt::backports':
+                notify => Exec['apt_update'],
+            }
+        }
+        ubuntu: {
+            info("Can support ubuntu")
+            include apt
+        }
+        default: { fail("Unrecognized OS for cloud_monitoring") }
+    }
 
     package {['openjdk-7-jre-headless', 'openjdk-7-jre', 'openjdk-7-jdk']:
         ensure => absent,
     }
 
-    class{ 'apt::backports':
-        notify => Exec['apt_update'],
-    }
-
     class{ 'maven::maven':
         version => "3.2.2",
-        require => Exec['apt_update'],
     }
 
     package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
@@ -34,7 +43,6 @@ class repose_sonar(
         home        => '/opt/sonar-work',
         jdbc        => $sonar_jdbc,
         require     => [
-            Exec['apt_update'],
             Class['repose_sonar::database']
         ],
     }
