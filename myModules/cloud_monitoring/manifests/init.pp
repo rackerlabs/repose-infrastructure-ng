@@ -11,9 +11,7 @@ class cloud_monitoring(
         debian: {
             info("Can support debian")
             class { 'apt':
-                always_apt_update    => true,
-                update_timeout       => 100,
-                fancy_progress       => true,
+                frequency => always,
             }
         }
         ubuntu: {
