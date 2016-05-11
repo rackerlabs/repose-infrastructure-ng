@@ -5,6 +5,7 @@ class repose_sonar(
         debian: {
             info("Can support debian")
             include apt
+            # This is where Open JDK 8 is located.
             class{ 'apt::backports':
                 notify => Exec['apt_update'],
             }
@@ -20,12 +21,12 @@ class repose_sonar(
         ensure => absent,
     }
 
-    class{ 'maven::maven':
-        version => "3.2.2",
-    }
-
     package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
         ensure => present,
+    }
+
+    class{ 'maven::maven':
+        version => "3.2.2",
     }
 
     include repose_sonar::database
