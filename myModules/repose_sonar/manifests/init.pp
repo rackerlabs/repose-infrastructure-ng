@@ -6,7 +6,9 @@ class repose_sonar(
         ensure => absent,
     }
 
-    class{ 'apt::backports': }
+    class{ 'apt::backports':
+        notify => Exec['apt_update'],
+    }
 
     class{ 'maven::maven':
         version => "3.2.2",
