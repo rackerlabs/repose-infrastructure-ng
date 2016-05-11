@@ -15,7 +15,9 @@ class repose_sonar(
         require => Exec['apt_update'],
     }
 
-    Class['apt::update'] -> Package['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']
+    package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
+        ensure => present,
+    }
 
     include repose_sonar::database
 

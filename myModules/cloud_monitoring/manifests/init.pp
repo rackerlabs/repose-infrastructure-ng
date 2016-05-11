@@ -10,11 +10,19 @@ class cloud_monitoring(
         centos: { info("Can support Centos 6") }
         debian: {
             info("Can support debian")
-            include apt
+            class { 'apt':
+                always_apt_update    => true,
+                update_timeout       => 100,
+                fancy_progress       => true,
+            }
         }
         ubuntu: {
             info("Can support ubuntu")
-            include apt
+            class { 'apt':
+                always_apt_update    => true,
+                update_timeout       => 100,
+                fancy_progress       => true,
+            }
         }
         default: { fail("Unrecognized OS for cloud_monitoring") }
     }
