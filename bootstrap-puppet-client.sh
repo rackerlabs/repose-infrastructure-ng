@@ -1,9 +1,14 @@
 #!/bin/bash
 
 # Applies to debian flavors only now.
+which lsb_release > /dev/null 2>&1
+if [[ $? == 1 ]] ; then
+    echo 'Platform not supported!!!'
+    exit 1
+fi
+
 # Since the boxes should have a proper hostname of something.openrepose.org
 # they will know how to find the puppet master already (puppet.openrepose.org)
-
 REPODEB="puppetlabs-release-$(lsb_release --short --codename).deb"
 
 wget -O /tmp/$REPODEB https://apt.puppetlabs.com/$REPODEB &&
