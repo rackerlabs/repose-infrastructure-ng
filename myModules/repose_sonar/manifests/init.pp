@@ -40,6 +40,7 @@ class repose_sonar(
 
     class{ 'sonarqube':
         version     => '4.5.7',
+        download_url => 'https://sonarsource.bintray.com/Distribution/sonarqube',
         user        => 'sonar',
         group       => 'sonar',
         service     => 'sonar',
