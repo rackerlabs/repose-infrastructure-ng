@@ -39,7 +39,7 @@ class repose_sonar(
     }
 
     class{ 'sonarqube':
-        version     => '4.5',
+        version     => '4.5.7',
         user        => 'sonar',
         group       => 'sonar',
         service     => 'sonar',
