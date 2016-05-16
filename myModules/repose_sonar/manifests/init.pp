@@ -52,9 +52,9 @@ class repose_sonar(
         ],
     }
 
-    sonarqube::plugin{ 'sonar-java':
-        groupid    => 'org.codehaus.sonar.plugins',
-        artifactid => 'sonar-java',
+    sonarqube::plugin{ 'sonar-java-plugin':
+        groupid    => 'org.sonarsource.java',
+        artifactid => 'sonar-java-plugin',
         version    => '3.13.1',
         notify     => Service['sonar'],
     }
