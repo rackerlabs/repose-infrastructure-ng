@@ -52,6 +52,8 @@ class repose_sonar(
         ],
     }
 
+    # Forcing the Java plugin update was the fix to the "java.io.IOException: Incompatible version 1007." issue.
+    # http://stackoverflow.com/questions/30459260/jacoco-sonarqube-incompatible-version-1007/37132563#37132563
     sonarqube::plugin{ 'sonar-java-plugin':
         groupid    => 'org.sonarsource.java',
         artifactid => 'sonar-java-plugin',
