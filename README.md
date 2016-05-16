@@ -1,23 +1,27 @@
 Repose Puppet Setup
 ===================
 
-Using Debian wheezy. CentOS is too old :(
-
 # Only manual steps!
 For additional details, see [Good things to know - Replace Jenkins Slave](https://one.rackspace.com/display/repose/Good+things+to+know#Goodthingstoknow-ReplaceJenkinsSlave).  
   
-1. Create an Ubuntu 15 cloud box
-   a. Set up it's local hostname
-2. Update any DNS records to point to your new box
-3. Run the client bootstrap.sh from this repository
-4. Set it's hostname in the site.pp if necessary
-5. Fire up the puppet agent
-6. If Jenkins slave, update Jenkins node list
+1. Create a Debian 8 (Jessie) cloud box.
+    1. Set up it's local hostname.
+2. Update any DNS records, both IPV4 and IPV6, to point to the new box.
+3. Add it's hostname to the `site.pp` if necessary.
+4. Download and execute the client `bootstrap.sh` from this repository
+    1. `wget https://raw.githubusercontent.com/rackerlabs/repose-infrastructure-ng/master/bootstrap-puppet-client.sh && chmod u+x bootstrap-puppet-client.sh && ./bootstrap-puppet-client.sh`
+5. The last step of the `bootstrap.sh` fires up the puppet agent in test mode.
+    1. There may be some additional steps indicated when the `bootstrap.sh` completes; read them *all* and do in order.
+    2. The client's host certificate will need to be signed on the master:
+        `puppet cert sign <FQHN>`
+    3. Then the puppet agent will need to be executed on the client again:
+        `puppet agent --test`
+6. If the new box is a Jenkins slave, then update the Jenkins' node list.
 
 # Manual steps for master
-1. Set hostname
-2. Set up the eyaml backend key/cert
-3. Run the master bootstrap script
+1. Set hostname.
+2. Set up the eyaml backend key/cert.
+3. Run the master bootstrap script.
 
 # TODO: UPDATE THIS
 

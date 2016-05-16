@@ -1,6 +1,36 @@
 class repose_sonar(
     $sonar_jdbc = undef
 ) {
+    case $operatingsystem{
+        debian: {
+            info("Can support debian")
+            include apt
+            # This is where Open JDK 8 is located.
+            class{ 'apt::backports':
+                notify => Exec['apt_update'],
+            }
+        }
+        ubuntu: {
+            info("Can support ubuntu")
+            include apt
+        }
+        default: { fail("Unrecognized OS for repose_sonar") }
+    }
+
+    package {['openjdk-7-jre-headless', 'openjdk-7-jre', 'openjdk-7-jdk']:
+        ensure => absent,
+        require => Exec['apt_update'],
+    }
+
+    package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
+        ensure => present,
+        require => Exec['apt_update'],
+    }
+
+    class{ 'maven::maven':
+        version => "3.2.2",
+        require => Exec['apt_update'],
+    }
 
     include repose_sonar::database
 
@@ -8,9 +38,9 @@ class repose_sonar(
         fail("Must have sonar's JDBC configured")
     }
 
-    class{ 'java': }
     class{ 'sonarqube':
-        version     => '4.5',
+        version     => '4.5.7',
+        download_url => 'https://sonarsource.bintray.com/Distribution/sonarqube',
         user        => 'sonar',
         group       => 'sonar',
         service     => 'sonar',
@@ -20,6 +50,15 @@ class repose_sonar(
         require     => [
             Class['repose_sonar::database']
         ],
+    }
+
+    # Forcing the Java plugin update was the fix to the "java.io.IOException: Incompatible version 1007." issue.
+    # http://stackoverflow.com/questions/30459260/jacoco-sonarqube-incompatible-version-1007/37132563#37132563
+    sonarqube::plugin{ 'sonar-java-plugin':
+        groupid    => 'org.sonarsource.java',
+        artifactid => 'sonar-java-plugin',
+        version    => '3.13.1',
+        notify     => Service['sonar'],
     }
 
     sonarqube::plugin{ 'sonar-scm-activity':
@@ -69,7 +108,7 @@ class repose_sonar(
         notify  => Service['nginx'],
     }
 
-#Papertrail the sonar logs
+    #Papertrail the sonar logs
     $papertrail_port = hiera("base::papertrail_port", 1)
     class{ 'remotesyslog':
         port    => $papertrail_port,
@@ -79,5 +118,4 @@ class repose_sonar(
         ],
         require => Class['sonarqube'],
     }
-
 }

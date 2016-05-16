@@ -5,66 +5,43 @@ class cloud_monitoring(
     $token = "NOT CONFIGURED"
 ) {
 
-# can do centos6 and debian at this point, I think
+    # package url and where the signature is
+    $package_url = "http://stable.packages.cloudmonitoring.rackspace.com"
+    $signing_url = "https://monitoring.api.rackspacecloud.com/pki/agent"
+
+    # can only support debian flavors at this point.
     case $operatingsystem{
-        centos: { info("Can support Centos 6") }
         debian: {
             info("Can support debian")
             include apt
+            apt::source { 'rackspace_monitoring':
+                location   => "${package_url}/debian-${lsbdistcodename}-x86_64",
+                release    => "cloudmonitoring",
+                repos      => "main",
+                key        => "D05AB914",
+                key_source => "${signing_url}/linux.asc"
+            }
         }
         ubuntu: {
             info("Can support ubuntu")
             include apt
+            apt::source { 'rackspace_monitoring':
+                location   => "${package_url}/ubuntu-${lsbdistrelease}-x86_64",
+                release    => "cloudmonitoring",
+                repos      => "main",
+                key        => "D05AB914",
+                key_source => "${signing_url}/linux.asc"
+            }
         }
         default: { fail("Unrecognized OS for cloud_monitoring") }
     }
 
-# package url and where the signature is
-    $package_url = "http://stable.packages.cloudmonitoring.rackspace.com"
-    $signing_url = "https://monitoring.api.rackspacecloud.com/pki/agent"
-
-    if( $operatingsystem == "centos" ){
-        yumrepo{ "rackspace_monitoring":
-            descr   => "Rackspace Cloud Monitoring",
-            baseurl => "${package_url}/centos-6-x86_64",
-            gpgkey  => "${signing_url}/centos-6.asc",
-            enabled => 1,
-        }
-
-        package{ "rackspace-monitoring-agent":
-            ensure  => present,
-            require => Yumrepo["rackspace_monitoring"],
-        }
-    }
-
-    if( $operatingsystem == "debian") {
-        apt::source { 'rackspace_monitoring':
-            location   => "${package_url}/debian-wheezy-x86_64",
-            release    => "cloudmonitoring",
-            repos      => "main",
-            key        => "D05AB914",
-            key_source => "${signing_url}/linux.asc"
-        }
-
-        package{ "rackspace-monitoring-agent":
-            ensure  => present,
-            require => Apt::Source["rackspace_monitoring"],
-        }
-    }
-
-    if( $operatingsystem == "ubuntu" ) {
-        apt::source { 'rackspace_monitoring':
-            location   => "${package_url}/ubuntu-15.10-x86_64",
-            release    => "cloudmonitoring",
-            repos      => "main",
-            key        => "D05AB914",
-            key_source => "${signing_url}/linux.asc"
-        }
-
-        package{ "rackspace-monitoring-agent":
-            ensure  => present,
-            require => Apt::Source["rackspace_monitoring"],
-        }
+    package{ ['rackspace-monitoring-agent', 'aptitude']:
+        ensure  => present,
+        require => [
+            Apt::Source['rackspace_monitoring'],
+            Exec['apt_update'],
+        ],
     }
 
     file{ "/etc/rackspace-monitoring-agent.cfg":
@@ -83,5 +60,4 @@ class cloud_monitoring(
             Package["rackspace-monitoring-agent"]
         ],
     }
-
 }

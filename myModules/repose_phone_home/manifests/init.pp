@@ -87,7 +87,10 @@ cDYHTOX6dALLiEi+KlaQCi8vBH6L2vlDLu+Me5z+=3vhD
 
   package{ "repose-phone-home":
     ensure  => present,
-    require => Apt::Source['repose'],
+    require => [
+      Apt::Source['repose'],
+      Exec['apt_update'],
+    ],
   }
 
   file{ '/opt/repose-phone-home/application.properties':

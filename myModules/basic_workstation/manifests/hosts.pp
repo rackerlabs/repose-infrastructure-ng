@@ -52,7 +52,7 @@ class basic_workstation::hosts(
   }
 
   host { 'sonar':
-    ip => '23.253.234.86',
+    ip => '23.253.235.84',
   }
 
   host { 'phone-home':
