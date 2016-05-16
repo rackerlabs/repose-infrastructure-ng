@@ -52,6 +52,13 @@ class repose_sonar(
         ],
     }
 
+    sonarqube::plugin{ 'sonar-java':
+        groupid    => 'org.codehaus.sonar.plugins',
+        artifactid => 'sonar-java',
+        version    => '3.13.1',
+        notify     => Service['sonar'],
+    }
+
     sonarqube::plugin{ 'sonar-scm-activity':
         groupid    => 'org.codehaus.sonar-plugins.scm-activity',
         artifactid => 'sonar-scm-activity-plugin',
