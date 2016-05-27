@@ -80,7 +80,7 @@ node "adrian-new-work-laptop.openrepose.org" {
     include adrian_workstation
 }
 
-node "joellaptop.openrepose.org" {
+node "joelrizner-latitude-e7450.openrepose.org" {
     include joel_workstation
 }
 
