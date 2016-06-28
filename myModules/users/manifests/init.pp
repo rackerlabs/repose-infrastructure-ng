@@ -81,4 +81,12 @@ class users {
     name    => 'Mario.Lopez@rackspace.com',
     user    => 'root'
   }
+
+  ssh_authorized_key { 'joelrizner':
+    ensure  => present,
+    type    => 'ssh-rsa',
+    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQDJY7WfQyYhH5RAN4MkmNswgYAoXhCuS1f1jbtH43zcTdy+A3ts0A5ej7WuiLUcIEeSfLbVfrxJnRTVGg1d6nmHdh1lGFsh+khvbTkdtC87pSQSMFMmdZAyY9VSBJwrSm9k/BNUWTX9JzSawA8Qz+rKb6qqRXQvRXEPjkFhv1XaC+lo7oWyiw4LpFj4ddzuhaqotsOYHIwzjPmvVrph4Pfm98a3tiWWi20SC4IhTaWTZpLmjqd5TGkXOjwz/B7I3OJLNC5V3+2mxAhrlrnOucAGSTw9NhCEiS3gdH3VGb8BJecFHqAR7H9WkH4ZQmbp9IBk1UOem3dqc0/FWeNFvLQYrkvVfEnzgRNJwXmsRgWiEm6HH5Lyx5CfdCeasCsUTnP2oxzNSXs2v7AKYV81l9dWZqkql+K4y+c0d1haD+UB2KIJOuvunOE/ERP5oO4QghefFdCg5AKJmBl1mU/Wm7m0HnUER2OfU6hiC5LsMMahn3o5HIH50wR42Hd7KM+79DSGy8vtoM1QemoiZIXSKvnEfgwXoAL/SdgaVIn8wS1niJLZHyt3T3yUSCfBQfpzdo9ttH636F+AkSvXarS4TwLZTt+Cm3dbACz+bDmVAOrnRDLkETWNcAK2+EWeLPFgeJGgmIuS0yZ0Brch9dVvfGoPLVgM5l+sgAtwjbuornMxiQ==',
+    name    => 'Joel.Rizner@rackspace.com',
+    user    => 'root'
+  }
 }
