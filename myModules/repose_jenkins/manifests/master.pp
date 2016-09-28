@@ -122,16 +122,16 @@ class repose_jenkins::master(
         version => '2.9.7'
     }
     jenkins::plugin{ 'github-api':
-        version => '1.72.1'
+        version => '1.77'
     }
     jenkins::plugin{ 'github':
-        version => '1.18.1'
+        version => '1.21.1'
     }
     jenkins::plugin{ 'ssh-agent':
         version => '1.10'
     }
     jenkins::plugin{ 'ghprb':
-        version => '1.31.2'
+        version => '1.33.1'
     }
     jenkins::plugin{ 'git-client':
         version => '1.19.6'
