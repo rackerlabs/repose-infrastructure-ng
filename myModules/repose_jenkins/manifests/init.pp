@@ -68,6 +68,11 @@ class repose_jenkins(
         ensure => present,
     }
 
+    package { 'gcc':
+        # This is needed by API-Checker's use of Nailgun
+        ensure => present,
+    }
+
 #jenkins master needs a git config so that it can talk to the scm plugin
 # Also needed by any of the release builds for when they do a git push
     file{ "${jenkins_home}/.gitconfig":
