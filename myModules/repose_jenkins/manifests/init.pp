@@ -24,6 +24,7 @@ class repose_jenkins(
       version => '5.0'
     }
     include vagrant
+    include docker
 
     $jenkins_home = '/var/lib/jenkins'
 
