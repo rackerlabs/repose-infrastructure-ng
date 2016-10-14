@@ -19,10 +19,7 @@ class repose_jenkins(
     # or set the values in hiera
     include repose_jenkins::gpgkey
 
-    # ensure vagrant and virtualbox are installed to verify releases
-    class{'virtualbox':
-      version => '5.0'
-    }
+    # ensure vagrant and docker are installed to verify releases
     include vagrant
     include docker
 
