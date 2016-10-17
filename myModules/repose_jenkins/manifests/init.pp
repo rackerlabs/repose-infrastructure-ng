@@ -94,9 +94,11 @@ class repose_jenkins(
     user { 'jenkins':
         ensure     => present,
         gid        => 'jenkins',
+        groups     => 'docker',
         home       => $jenkins_home,
         shell      => '/bin/bash',
         managehome => true,
+        require    => Class['docker'],
     }
 
     ssh_authorized_key { 'jenkins':
