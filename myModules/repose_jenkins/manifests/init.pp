@@ -20,7 +20,6 @@ class repose_jenkins(
     include repose_jenkins::gpgkey
 
     # ensure vagrant and docker are installed to verify releases
-    include vagrant
     include docker
 
     $jenkins_home = '/var/lib/jenkins'
