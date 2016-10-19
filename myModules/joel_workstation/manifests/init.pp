@@ -1,7 +1,7 @@
 class joel_workstation {
   class{'basic_workstation':
     user      => 'joelrizner',
-    fullName  => 'Joel Rizner',
+    fullName  => 'Joel "Wild Dog" Rizner',
     email     => 'joel.rizner@rackspace.com',
     sso       => 'joel0111',
   }
