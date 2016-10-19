@@ -97,7 +97,7 @@ class repose_jenkins(
         home       => $jenkins_home,
         shell      => '/bin/bash',
         managehome => true,
-        require    => Class['docker'],
+        require    => Group['docker'],
     }
 
     ssh_authorized_key { 'jenkins':
