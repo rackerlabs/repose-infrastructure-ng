@@ -89,6 +89,10 @@ class repose_jenkins(
     group { 'jenkins':
         ensure => present,
     }
+    
+    group { 'docker':
+        ensure => present,
+    }
 
     user { 'jenkins':
         ensure     => present,
