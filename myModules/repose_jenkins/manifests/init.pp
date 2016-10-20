@@ -19,8 +19,10 @@ class repose_jenkins(
     # or set the values in hiera
     include repose_jenkins::gpgkey
 
-    # ensure vagrant and docker are installed to verify releases
-    include docker
+    # ensure docker is installed to verify releases, and use Google's DNS server to prevent resolution issues
+    class{ 'docker':
+        dns => '8.8.8.8',
+    }
 
     $jenkins_home = '/var/lib/jenkins'
 
