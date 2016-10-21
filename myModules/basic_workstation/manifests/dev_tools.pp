@@ -59,6 +59,11 @@ class basic_workstation::dev_tools(
   }
   include vagrant
 
+  #docker, and use Google's DNS server to prevent resolution issues
+  class{ 'docker':
+    dns => '8.8.8.8',
+  }
+
   #vim
   package {'vim-gnome':
     ensure => present
