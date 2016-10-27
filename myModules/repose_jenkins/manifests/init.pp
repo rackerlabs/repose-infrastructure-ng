@@ -19,6 +19,11 @@ class repose_jenkins(
     # or set the values in hiera
     include repose_jenkins::gpgkey
 
+    # ensure docker is installed to verify releases, and use Google's DNS server to prevent resolution issues
+    class{ 'docker':
+        dns => '8.8.8.8',
+    }
+
     $jenkins_home = '/var/lib/jenkins'
 
     class{"repose_gradle":
@@ -86,13 +91,19 @@ class repose_jenkins(
     group { 'jenkins':
         ensure => present,
     }
+    
+    group { 'docker':
+        ensure => present,
+    }
 
     user { 'jenkins':
         ensure     => present,
         gid        => 'jenkins',
+        groups     => 'docker',
         home       => $jenkins_home,
         shell      => '/bin/bash',
         managehome => true,
+        require    => Group['docker'],
     }
 
     ssh_authorized_key { 'jenkins':
