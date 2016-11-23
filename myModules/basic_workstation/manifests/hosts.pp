@@ -32,7 +32,7 @@ class basic_workstation::hosts(
   }
 
   host { 'mumble':
-    ip => '23.253.107.17',
+    ip => '23.253.107.117',
   }
 
   host { 'nagios':
