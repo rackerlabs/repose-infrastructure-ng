@@ -21,7 +21,7 @@ class repose_jenkins(
 
     # ensure docker is installed to verify releases, and use Google's DNS server to prevent resolution issues
     class{ 'docker':
-        dns => ['72.3.128.241', '72.3.128.240'],
+        dns => ['72.3.128.240', '72.3.128.241', '2001:4800:d::1', '2001:4800:d::2'],
     }
 
     $jenkins_home = '/var/lib/jenkins'
