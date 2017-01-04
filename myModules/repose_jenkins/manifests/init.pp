@@ -19,10 +19,24 @@ class repose_jenkins(
     # or set the values in hiera
     include repose_jenkins::gpgkey
 
-    # ensure docker is installed to verify releases, and use Google's DNS server to prevent resolution issues
-    class{ 'docker':
-        dns => ['72.3.128.240', '72.3.128.241', '2001:4800:d::1', '2001:4800:d::2'],
-    }
+    # ensure docker is installed to verify releases
+    include docker
+
+    # restart the Docker service when iptables rules are updated
+    #
+    # Docker requires certain iptables rules to be setup for containers to
+    # access the internet. Docker will automatically setup these rules when the
+    # service is run. However, the firewall Puppet module will purge the rules
+    # that Docker set up whenever it runs. Restarting the Docker service after
+    # the iptables rules are purged should solve this issue.
+    #
+    # Ideally, the firewall module would be configured to set up the necessary
+    # Docker iptables rules. However, since Docker, by default, picks its own
+    # subnet on the host when it creates a bridge, we don't necessarily know
+    # what the iptables rules will look like when Puppet runs. This can probably
+    # be fixed by customizing the docker0 bridge, but that's a whole new chunk
+    # of work.
+    Class['firewall'] ~> Service['docker']
 
     $jenkins_home = '/var/lib/jenkins'
 
@@ -91,7 +105,7 @@ class repose_jenkins(
     group { 'jenkins':
         ensure => present,
     }
-    
+
     group { 'docker':
         ensure => present,
     }
