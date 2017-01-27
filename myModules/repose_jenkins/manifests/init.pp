@@ -39,6 +39,7 @@ class repose_jenkins(
     Class['firewall'] ~> Service['docker']
 
     $jenkins_home = '/var/lib/jenkins'
+    $github_key_info = hiera_hash("base::github_host_key", { "key" => "DEFAULT", "type" => "ssh-rsa" })
 
     class{"repose_gradle":
         user      => 'jenkins',
@@ -118,6 +119,14 @@ class repose_jenkins(
         shell      => '/bin/bash',
         managehome => true,
         require    => Group['docker'],
+    }
+
+    Sshkey<|title == 'github.com'|> {
+        ensure => present,
+        name   => $github_key_info["name"],
+        key    => $github_key_info["key"],
+        type   => $github_key_info["type"],
+        target => "${jenkins_home}/.ssh/known_hosts"
     }
 
     ssh_authorized_key { 'jenkins':
