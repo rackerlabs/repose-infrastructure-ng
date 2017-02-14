@@ -21,7 +21,7 @@ class repose_jenkins(
 
     # ensure docker is installed to verify releases
     class { 'docker':
-        bip => '172.17.0.0/16'
+        bip => '172.12.0.0/16'
     }
 
     # TODO: v Remove this v
@@ -39,7 +39,7 @@ class repose_jenkins(
     # what the iptables rules will look like when Puppet runs. This can probably
     # be fixed by customizing the docker0 bridge, but that's a whole new chunk
     # of work.
-    Class['firewall'] ~> Service['docker']
+    # Class['firewall'] ~> Service['docker']
 
     $jenkins_home = '/var/lib/jenkins'
     $github_key_info = hiera_hash("base::github_host_key", { "key" => "DEFAULT", "type" => "ssh-rsa" })
