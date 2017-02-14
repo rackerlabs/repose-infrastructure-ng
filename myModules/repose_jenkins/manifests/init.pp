@@ -22,23 +22,12 @@ class repose_jenkins(
     # ensure docker is installed to verify releases
     include docker
 
-    # TODO: v Remove this v
-    # restart the Docker service when iptables rules are updated
-    #
+
     # Docker requires certain iptables rules to be setup for containers to
     # access the internet. Docker will automatically setup these rules when the
     # service is run. However, the firewall Puppet module will purge the rules
-    # that Docker set up whenever it runs. Restarting the Docker service after
-    # the iptables rules are purged should solve this issue.
-    #
-    # Ideally, the firewall module would be configured to set up the necessary
-    # Docker iptables rules. However, since Docker, by default, picks its own
-    # subnet on the host when it creates a bridge, we don't necessarily know
-    # what the iptables rules will look like when Puppet runs. This can probably
-    # be fixed by customizing the docker0 bridge, but that's a whole new chunk
-    # of work.
-    # Class['firewall'] ~> Service['docker']
-
+    # that Docker set up whenever it runs. Setting the iptables rules through
+    # the firewall module should solve this issue.
     firewallchain { 'DOCKER:nat:IPv4':
         ensure => 'present',
         purge  => 'true',
