@@ -20,8 +20,8 @@ class repose_jenkins(
     include repose_jenkins::gpgkey
 
     # ensure docker is installed to verify releases
+    # TODO: Ensure the docker0 bridge matches the firewall rules below.
     include docker
-
 
     # Docker requires certain iptables rules to be setup for containers to
     # access the internet. Docker will automatically setup these rules when the
