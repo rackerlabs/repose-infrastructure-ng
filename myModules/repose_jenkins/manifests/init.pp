@@ -94,26 +94,26 @@ class repose_jenkins(
         chain    => 'FORWARD',
         outiface => 'docker0',
         ctstate  => ['RELATED', 'ESTABLISHED'],
-        jump     => 'ACCEPT',
+        action   => 'accept',
     }->
     firewall { '303 ACCEPT docker0 to not docker0 FORWARD':
         table    => 'filter',
         chain    => 'FORWARD',
         iniface  => 'docker0',
         outiface => '! docker0',
-        jump     => 'ACCEPT',
+        action   => 'accept',
     }->
     firewall { '304 ACCEPT docker0 to docker0 FORWARD':
         table    => 'filter',
         chain    => 'FORWARD',
         iniface  => 'docker0',
         outiface => 'docker0',
-        jump     => 'ACCEPT',
+        action   => 'accept',
     }->
     firewall { '305 RETURN DOCKER-ISOLATION':
-        table    => 'filter',
-        chain    => 'DOCKER-ISOLATION',
-        jump     => 'RETURN',
+        table => 'filter',
+        chain => 'DOCKER-ISOLATION',
+        jump  => 'RETURN',
     }
 
     $jenkins_home = '/var/lib/jenkins'
