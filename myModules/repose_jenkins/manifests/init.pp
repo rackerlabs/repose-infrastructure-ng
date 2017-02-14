@@ -85,17 +85,20 @@ class repose_jenkins(
     firewall { '300 FORWARD to DOCKER-ISOLATION':
         table => 'filter',
         chain => 'FORWARD',
+        proto => 'all',
         jump  => 'DOCKER-ISOLATION',
     }->
     firewall { '301 route to docker0 through DOCKER':
         table    => 'filter',
         chain    => 'FORWARD',
+        proto    => 'all',
         outiface => 'docker0',
         jump     => 'DOCKER',
     }->
     firewall { '302 ACCEPT states to docker0 FORWARD':
         table    => 'filter',
         chain    => 'FORWARD',
+        proto    => 'all',
         outiface => 'docker0',
         ctstate  => ['RELATED', 'ESTABLISHED'],
         action   => 'accept',
@@ -103,6 +106,7 @@ class repose_jenkins(
     firewall { '303 ACCEPT docker0 to not docker0 FORWARD':
         table    => 'filter',
         chain    => 'FORWARD',
+        proto    => 'all',
         iniface  => 'docker0',
         outiface => '! docker0',
         action   => 'accept',
@@ -110,6 +114,7 @@ class repose_jenkins(
     firewall { '304 ACCEPT docker0 to docker0 FORWARD':
         table    => 'filter',
         chain    => 'FORWARD',
+        proto    => 'all',
         iniface  => 'docker0',
         outiface => 'docker0',
         action   => 'accept',
@@ -117,6 +122,7 @@ class repose_jenkins(
     firewall { '305 RETURN DOCKER-ISOLATION':
         table => 'filter',
         chain => 'DOCKER-ISOLATION',
+        proto => 'all',
         jump  => 'RETURN',
     }
 
