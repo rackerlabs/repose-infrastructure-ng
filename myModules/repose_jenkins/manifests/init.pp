@@ -20,9 +20,7 @@ class repose_jenkins(
     include repose_jenkins::gpgkey
 
     # ensure docker is installed to verify releases
-    class { 'docker':
-        bip => '172.12.0.0/16'
-    }
+    include docker
 
     # TODO: v Remove this v
     # restart the Docker service when iptables rules are updated
@@ -40,6 +38,83 @@ class repose_jenkins(
     # be fixed by customizing the docker0 bridge, but that's a whole new chunk
     # of work.
     # Class['firewall'] ~> Service['docker']
+
+    firewallchain { 'DOCKER:nat:IPv4':
+        ensure => 'present',
+        purge  => 'true',
+    }->
+    firewall { '200 route local through DOCKER':
+        table    => 'nat',
+        chain    => 'PREROUTING',
+        dst_type => 'LOCAL',
+        jump     => 'DOCKER',
+    }->
+    firewall { '201 OURPUT LOCAL through DOCKER':
+        table       => 'nat',
+        chain       => 'OUTPUT',
+        destination => '! 127.0.0.0/8',
+        dst_type    => 'LOCAL',
+        jump        => 'DOCKER',
+    }->
+    firewall { '202 MASQUERADE output interface not docker0':
+        table    => 'nat',
+        chain    => 'POSTROUTING',
+        source   => '172.17.0.0/16',
+        outiface => '! docker0',
+        jump     => 'MASQUERADE',
+    }->
+    firewall { '203 RETURN input interface docker0':
+        table   => 'nat',
+        chain   => 'DOCKER',
+        iniface => 'docker0',
+        jump    => 'RETURN',
+    }
+
+    firewallchain { 'DOCKER:filter:IPv4':
+        ensure => 'present',
+        purge  => 'true',
+    }->
+    firewallchain { 'DOCKER-ISOLATION:filter:IPv4':
+        ensure => 'present',
+        purge  => 'true',
+    }->
+    firewall { '300 FORWARD to DOCKER-ISOLATION':
+        table => 'filter',
+        chain => 'FORWARD',
+        jump  => 'DOCKER-ISOLATION',
+    }->
+    firewall { '301 route to docker0 through DOCKER':
+        table    => 'filter',
+        chain    => 'FORWARD',
+        outiface => 'docker0',
+        jump     => 'DOCKER',
+    }->
+    firewall { '302 ACCEPT states to docker0 FORWARD':
+        table    => 'filter',
+        chain    => 'FORWARD',
+        outiface => 'docker0',
+        ctstate  => ['RELATED', 'ESTABLISHED'],
+        jump     => 'ACCEPT',
+    }->
+    firewall { '303 ACCEPT docker0 to not docker0 FORWARD':
+        table    => 'filter',
+        chain    => 'FORWARD',
+        iniface  => 'docker0',
+        outiface => '! docker0',
+        jump     => 'ACCEPT',
+    }->
+    firewall { '304 ACCEPT docker0 to docker0 FORWARD':
+        table    => 'filter',
+        chain    => 'FORWARD',
+        iniface  => 'docker0',
+        outiface => 'docker0',
+        jump     => 'ACCEPT',
+    }->
+    firewall { '305 RETURN DOCKER-ISOLATION':
+        table    => 'filter',
+        chain    => 'DOCKER-ISOLATION',
+        jump     => 'RETURN',
+    }
 
     $jenkins_home = '/var/lib/jenkins'
     $github_key_info = hiera_hash("base::github_host_key", { "key" => "DEFAULT", "type" => "ssh-rsa" })
