@@ -20,8 +20,11 @@ class repose_jenkins(
     include repose_jenkins::gpgkey
 
     # ensure docker is installed to verify releases
-    include docker
+    class { 'docker':
+        bip => '172.17.0.0/16'
+    }
 
+    # TODO: v Remove this v
     # restart the Docker service when iptables rules are updated
     #
     # Docker requires certain iptables rules to be setup for containers to
