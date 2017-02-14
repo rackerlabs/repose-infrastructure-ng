@@ -46,12 +46,14 @@ class repose_jenkins(
     firewall { '200 route local through DOCKER':
         table    => 'nat',
         chain    => 'PREROUTING',
+        proto    => 'all',
         dst_type => 'LOCAL',
         jump     => 'DOCKER',
     }->
-    firewall { '201 OURPUT LOCAL through DOCKER':
+    firewall { '201 OUTPUT LOCAL through DOCKER':
         table       => 'nat',
         chain       => 'OUTPUT',
+        proto       => 'all',
         destination => '! 127.0.0.0/8',
         dst_type    => 'LOCAL',
         jump        => 'DOCKER',
@@ -59,6 +61,7 @@ class repose_jenkins(
     firewall { '202 MASQUERADE output interface not docker0':
         table    => 'nat',
         chain    => 'POSTROUTING',
+        proto    => 'all',
         source   => '172.17.0.0/16',
         outiface => '! docker0',
         jump     => 'MASQUERADE',
@@ -66,6 +69,7 @@ class repose_jenkins(
     firewall { '203 RETURN input interface docker0':
         table   => 'nat',
         chain   => 'DOCKER',
+        proto   => 'all',
         iniface => 'docker0',
         jump    => 'RETURN',
     }
