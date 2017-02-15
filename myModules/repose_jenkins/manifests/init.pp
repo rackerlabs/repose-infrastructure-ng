@@ -20,23 +20,100 @@ class repose_jenkins(
     include repose_jenkins::gpgkey
 
     # ensure docker is installed to verify releases
+    # TODO: Ensure the docker0 bridge matches the firewall rules below.
     include docker
 
-    # restart the Docker service when iptables rules are updated
-    #
     # Docker requires certain iptables rules to be setup for containers to
     # access the internet. Docker will automatically setup these rules when the
     # service is run. However, the firewall Puppet module will purge the rules
-    # that Docker set up whenever it runs. Restarting the Docker service after
-    # the iptables rules are purged should solve this issue.
-    #
-    # Ideally, the firewall module would be configured to set up the necessary
-    # Docker iptables rules. However, since Docker, by default, picks its own
-    # subnet on the host when it creates a bridge, we don't necessarily know
-    # what the iptables rules will look like when Puppet runs. This can probably
-    # be fixed by customizing the docker0 bridge, but that's a whole new chunk
-    # of work.
-    Class['firewall'] ~> Service['docker']
+    # that Docker set up whenever it runs. Setting the iptables rules through
+    # the firewall module should solve this issue.
+    firewallchain { 'DOCKER:nat:IPv4':
+        ensure => 'present',
+        purge  => 'true',
+    }->
+    firewall { '200 route local through DOCKER':
+        table    => 'nat',
+        chain    => 'PREROUTING',
+        proto    => 'all',
+        dst_type => 'LOCAL',
+        jump     => 'DOCKER',
+    }->
+    firewall { '201 OUTPUT LOCAL through DOCKER':
+        table       => 'nat',
+        chain       => 'OUTPUT',
+        proto       => 'all',
+        destination => '! 127.0.0.0/8',
+        dst_type    => 'LOCAL',
+        jump        => 'DOCKER',
+    }->
+    firewall { '202 MASQUERADE output interface not docker0':
+        table    => 'nat',
+        chain    => 'POSTROUTING',
+        proto    => 'all',
+        source   => '172.17.0.0/16',
+        outiface => '! docker0',
+        jump     => 'MASQUERADE',
+    }->
+    firewall { '203 RETURN input interface docker0':
+        table   => 'nat',
+        chain   => 'DOCKER',
+        proto   => 'all',
+        iniface => 'docker0',
+        jump    => 'RETURN',
+    }
+
+    firewallchain { 'DOCKER:filter:IPv4':
+        ensure => 'present',
+        purge  => 'true',
+    }->
+    firewallchain { 'DOCKER-ISOLATION:filter:IPv4':
+        ensure => 'present',
+        purge  => 'true',
+    }->
+    firewall { '300 FORWARD to DOCKER-ISOLATION':
+        table => 'filter',
+        chain => 'FORWARD',
+        proto => 'all',
+        jump  => 'DOCKER-ISOLATION',
+    }->
+    firewall { '301 route to docker0 through DOCKER':
+        table    => 'filter',
+        chain    => 'FORWARD',
+        proto    => 'all',
+        outiface => 'docker0',
+        jump     => 'DOCKER',
+    }->
+    firewall { '302 ACCEPT states to docker0 FORWARD':
+        table    => 'filter',
+        chain    => 'FORWARD',
+        proto    => 'all',
+        outiface => 'docker0',
+        ctstate  => ['RELATED', 'ESTABLISHED'],
+        action   => 'accept',
+    }->
+    firewall { '303 ACCEPT docker0 to not docker0 FORWARD':
+        table    => 'filter',
+        chain    => 'FORWARD',
+        proto    => 'all',
+        iniface  => 'docker0',
+        outiface => '! docker0',
+        action   => 'accept',
+    }->
+    firewall { '304 ACCEPT docker0 to docker0 FORWARD':
+        table    => 'filter',
+        chain    => 'FORWARD',
+        proto    => 'all',
+        iniface  => 'docker0',
+        outiface => 'docker0',
+        action   => 'accept',
+    }->
+    firewall { '305 RETURN DOCKER-ISOLATION':
+        table => 'filter',
+        chain => 'DOCKER-ISOLATION',
+        proto => 'all',
+        jump  => 'RETURN',
+    }
 
     $jenkins_home = '/var/lib/jenkins'
     $github_key_info = hiera_hash("base::github_host_key", { "key" => "DEFAULT", "type" => "ssh-rsa" })
