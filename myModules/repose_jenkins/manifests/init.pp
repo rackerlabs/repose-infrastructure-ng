@@ -19,9 +19,11 @@ class repose_jenkins(
     # or set the values in hiera
     include repose_jenkins::gpgkey
 
-    # ensure docker is installed to verify releases
-    # TODO: Ensure the docker0 bridge matches the firewall rules below.
-    include docker
+    # ensure docker is installed to verify releases, and give the docker0
+    # bridge a static IP to match firewall rules
+    class { 'docker':
+        bip => '172.17.0.1/16',
+    }
 
     # Docker requires certain iptables rules to be setup for containers to
     # access the internet. Docker will automatically setup these rules when the
