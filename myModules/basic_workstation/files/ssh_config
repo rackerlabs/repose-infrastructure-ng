@@ -7,9 +7,6 @@ User root
 Host nagios
 User root
 
-Host performance
-User root
-
 Host phone-home
 User root
 

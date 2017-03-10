@@ -39,10 +39,6 @@ class basic_workstation::hosts(
     ip => '104.239.133.25',
   }
 
-  host { 'performance':
-    ip => '166.78.190.199',
-  }
-
   host { 'puppet-master':
     ip => '23.253.105.35',
   }
