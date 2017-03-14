@@ -13,6 +13,10 @@ class backup_cloud_files{
         pkgname => 'pyrax'
     }
 
+    python::pip{ 'prettytable':
+      pkgname => 'prettytable'
+    }
+
     package{ 'duplicity':
         ensure => present,
     }
