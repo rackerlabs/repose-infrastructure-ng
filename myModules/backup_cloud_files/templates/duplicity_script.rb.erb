@@ -7,7 +7,7 @@ ENV['CLOUDFILES_USERNAME']='<%= @cf_username %>'
 ENV['CLOUDFILES_APIKEY']='<%= @cf_apikey %>'
 ENV['CLOUDFILES_REGION']='<%= @cf_region %>'
 
-url = "cfpyrax+http://#{ENV['CLOUD_CONTAINER']}"
+url = "cf+http://#{ENV['CLOUD_CONTAINER']}"
 
 # local directory for this container to back up
 local_target = '<%= @target %>'
