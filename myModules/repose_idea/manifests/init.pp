@@ -1,6 +1,6 @@
 class repose_idea(
-  $version = '2016.3',
-  $build = '163.7743.44',
+  $version = '2017.1',
+  $build = '171.3780.10744',
   $base_url = 'https://download.jetbrains.com/idea',
 ) {
 
