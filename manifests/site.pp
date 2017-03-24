@@ -71,6 +71,10 @@ node "nagios.openrepose.org" inherits default {
     include repose_nagios::server
 }
 
+node "influxdb.openrepose.org" inherits default {
+    include repose_influxdb
+}
+
 node "adrian-home-desktop-vm.openrepose.org" {
     include adrian_workstation
 }

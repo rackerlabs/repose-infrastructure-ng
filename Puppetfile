@@ -28,6 +28,7 @@ mod 'garethr-docker', '5.3.0'
 #mod 'gini/idea', '0.3.0'
 mod 'jamesnetherton/google_chrome', '0.2.1'
 mod 'camptocamp/archive', '0.8.1'
+mod 'golja-influxdb', '4.0.0'
 
 # dkowis forked this to add debian support. There's a pull request open on the original
 # if/when it gets merged, you can use the original directly.
@@ -94,3 +95,6 @@ mod "repose/repose_groovy",
 
 mod "repose/repose_idea",
     :path => "myModules/repose_idea"
+
+mod "repose/repose_influxdb",
+    :path => "myModules/repose_influxdb"

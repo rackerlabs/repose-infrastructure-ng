@@ -4,6 +4,7 @@ class base::nginx {
 
     package { 'nginx':
         ensure => present,
+        require => Exec['apt_update'],
     }
 
     exec{ 'dhparam-gen':
