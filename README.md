@@ -16,6 +16,8 @@ For additional details, see [Good things to know - Replace Jenkins Slave](https:
         `puppet cert sign <FQHN>`
     3. Then the puppet agent will need to be executed on the client again:
         `puppet agent --test`
+    4. Sometimes the package management system needs updated and the puppet agent ran yet again.
+        `apt-get update && puppet agent --test`
 6. If the new box is a Jenkins slave, then update the Jenkins' node list.
 
 # Manual steps for master
@@ -32,28 +34,7 @@ Run locally with
     sudo puppet apply --modulepath ./modules manifests/jenkins-slave.pp
 
 ## Puppet Forge Modules in use
-### puppetlabs/stdlib
-Providing a standard library and some handy functions. Mostly ones that we're using in our custom modules.
-At some point, we should switch to using a Modulefile in our custom modules, so that they can pull in their dependencies
-themselves.
-
-### puppetlabs/firewall
-A [fantastic firewall module](https://forge.puppetlabs.com/puppetlabs/firewall). Makes it much easier to handle
-moderately complicated firewall rules using puppet.
-
-### puppetlabs/apt
-Provides [support for debian repo management](https://forge.puppetlabs.com/puppetlabs/apt). Enough said there.
-
-### puppetlabs/java
-Provides support for installing multiple javas, and setting them up. The rtyler/jenkins module depends on this guy.
-
-### maestrodev/maven
-[Can install maven](https://forge.puppetlabs.com/maestrodev/maven) or install artifacts using maven. Quite handy.
-
-### rtyler/jenkins
-[Lots of jenkins management](https://forge.puppetlabs.com/rtyler/jenkins). Plugins, slaves, and master, can all
-be configured using this.
-
+Please refer to the [Puppetfile](https://github.com/rackerlabs/repose-infrastructure-ng/blob/master/Puppetfile) for a full list of the modules currently in use.
 
 ## Useful references
 * http://ttboj.wordpress.com/2013/02/20/automatic-hiera-lookups-in-puppet-3-x/
