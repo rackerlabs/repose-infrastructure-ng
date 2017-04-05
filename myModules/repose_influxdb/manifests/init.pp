@@ -56,13 +56,19 @@ class repose_influxdb (
   exec { 'create-influxdb-user':
     path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     command => "curl -iv -G https://influxdb.openrepose.org:8086/query --data-urlencode \"q=CREATE USER $influxdb_admin_username WITH PASSWORD '$influxdb_admin_password' WITH ALL PRIVILEGES\"",
-    require => Class["influxdb::server"],
+    require => [
+      Class["influxdb::server"],
+      Package['curl'],
+    ]
   }
 
   exec { 'create-influxdb-database':
     path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     command => "curl -iv -G https://influxdb.openrepose.org:8086/query --data-urlencode \"q=CREATE DATABASE $influxdb_performance_db\" -u $influxdb_admin_username:$influxdb_admin_password",
-    require => Class["influxdb::server"],
+    require => [
+      Class["influxdb::server"],
+      Package['curl'],
+    ]
   }
 
   include backup_cloud_files
