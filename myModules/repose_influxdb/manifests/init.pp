@@ -104,13 +104,13 @@ class repose_influxdb (
 
   # schedule a clean up of the backups once a month
   cron { 'influxdb_cleanup':
-    ensure  => present,
-    command => "find $influxdb_backups/ -type f -mtime +30 -name " *.gz" -execdir rm -- {} +",
-  user => root,
-  monthday => 1,
-  hour     => 3,
-  minute => 0,
-  require => Backup_cloud_files::Target['performance_influxdb'],
+    ensure   => present,
+    command  => "find $influxdb_backups/ -type f -mtime +30 -name \"*.gz\" -execdir rm -- {} +",
+    user     => root,
+    monthday => 1,
+    hour     => 3,
+    minute   => 0,
+    require  => Backup_cloud_files::Target['performance_influxdb'],
   }
 
   cron { 'duplicity_cleanup':
