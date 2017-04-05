@@ -73,8 +73,9 @@ class repose_influxdb (
 
   include backup_cloud_files
 
+  $influxdb_backups = '/srv/influxdb-backups'
   backup_cloud_files::target { 'performance_influxdb':
-    target            => '/srv/influxdb-backups',
+    target            => $influxdb_backups,
     cf_username       => hiera('rs_cloud_username'),
     cf_apikey         => hiera('rs_cloud_apikey'),
     cf_region         => 'DFW',
@@ -83,7 +84,7 @@ class repose_influxdb (
 
   cron { 'influxdb_backup':
     ensure  => present,
-    command => "influxd backup -database $influxdb_performance_db /srv/influxdb-backups",
+    command => "influxd backup -database $influxdb_performance_db $influxdb_backups",
     user    => 'root',
     hour    => 5,
     minute  => 0,
@@ -102,7 +103,7 @@ class repose_influxdb (
   # schedule a clean up of the backups once a month
   cron { 'influxdb_cleanup':
     ensure   => present,
-    command  => 'find /srv/influxdb-backups/ -type f -mtime +30 -name "*.gz" -execdir rm -- {} +',
+    command  => "find $influxdb_backups/ -type f -mtime +30 -name "*.gz" -execdir rm -- {} +",
     user     => root,
     monthday => 1,
     hour     => 3,
