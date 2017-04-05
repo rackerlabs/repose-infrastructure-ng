@@ -32,18 +32,11 @@ class repose_influxdb (
   }
 
   class { 'influxdb::server':
-    ## admin_https_enabled     => true,
-    ## admin_https_certificate => '/etc/ssl/certs/openrepose.crt',
-    # http_bind_address       => 8086,
     http_auth_enabled       => true,
-    # http_log_enabled        => true,
-    # http_write_tracing      => false,
-    # http_pprof_enabled      => false,
     http_https_enabled      => true,
     http_https_certificate  => '/etc/ssl/certs/openrepose.crt',
     http_https_private_key  => '/etc/ssl/keys/openrepose.key',
     http_max_row_limit      => 10000,
-    # http_realm              => 'InfluxDB',
     require => [
       Package['apt-transport-https'],
       Exec['apt_update'],
