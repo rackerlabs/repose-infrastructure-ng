@@ -1,6 +1,0 @@
-name 'repose-repose_phone_home'
-version '0.0.1'
-
-author 'William Scheidegger'
-
-dependency 'puppetlabs/mongodb'

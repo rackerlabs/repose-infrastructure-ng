@@ -1,9 +1,0 @@
-name 'repose-repose_jenkins'
-version '0.0.1'
-
-author 'David Kowis'
-
-dependency 'puppetlabs/apt'
-dependency 'camptocamp/archive'
-dependency 'rtyler/jenkins', '1.3.0'
-dependency 'golja/gnupg'

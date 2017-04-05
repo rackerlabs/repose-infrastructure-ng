@@ -1,0 +1,8 @@
+{
+  "name": "repose-repose_nagios",
+  "version": "0.0.1",
+  "author": "David Kowis",
+  "dependencies": [
+    { "name": "leinaddm/htpasswd", "version_requirement": ">= 0.0.1" }
+  ]
+}

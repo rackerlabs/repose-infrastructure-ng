@@ -1,0 +1,8 @@
+{
+  "name": "repose-backup_cloud_files",
+  "version": "0.0.1",
+  "author": "David Kowis",
+  "dependencies": [
+    { "name": "stankevich/python", "version_requirement": ">= 0.0.1" }
+  ]
+}
