@@ -1,9 +1,0 @@
-name 'repose-repose_sonar'
-version '0.0.1'
-
-author 'David Kowis'
-
-dependency 'puppetlabs/stdlib'
-dependency 'puppetlabs/mysql'
-dependency 'repose/backup_cloud_files'
-dependency 'puppetlabs/java'

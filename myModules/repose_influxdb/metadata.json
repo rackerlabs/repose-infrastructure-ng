@@ -1,0 +1,9 @@
+{
+  "name": "repose-repose_influxdb",
+  "version": "0.0.1",
+  "author": "William Scheidegger",
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 0.0.1" },
+    { "name": "repose/backup_cloud_files", "version_requirement": ">= 0.0.1" }
+  ]
+}

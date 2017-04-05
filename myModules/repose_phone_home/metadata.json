@@ -1,0 +1,8 @@
+{
+  "name": "repose-repose_phone_home",
+  "version": "0.0.1",
+  "author": "William Scheidegger",
+  "dependencies": [
+    { "name": "puppetlabs/mongodb", "version_requirement": ">= 0.0.1" }
+  ]
+}

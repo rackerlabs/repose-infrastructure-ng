@@ -1,7 +1,0 @@
-name 'repose-repose_influxdb'
-version '0.0.1'
-
-author 'William Scheidegger'
-
-dependency 'puppetlabs/stdlib'
-dependency 'repose/backup_cloud_files'

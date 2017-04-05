@@ -1,0 +1,9 @@
+{
+  "name": "repose-repose_nexus",
+  "version": "0.0.1",
+  "author": "David Kowis",
+  "dependencies": [
+    { "name": "repose/backup_cloud_files", "version_requirement": ">= 0.0.1" },
+    { "name": "maestrodev/wget", "version_requirement": ">= 0.0.1" }
+  ]
+}
