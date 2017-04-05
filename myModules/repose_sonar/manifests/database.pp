@@ -66,8 +66,6 @@ class repose_sonar::database(
         time            => ['5', '0'],
     }
 
-    include backup_cloud_files
-
     backup_cloud_files::target{ 'sonar_mysql':
         target            => '/srv/mysql-backups',
         cf_username       => hiera('rs_cloud_username'),

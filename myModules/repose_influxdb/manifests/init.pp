@@ -73,8 +73,6 @@ class repose_influxdb (
     ]
   }
 
-  include backup_cloud_files
-
   $influxdb_backups = '/srv/influxdb-backups'
   backup_cloud_files::target { 'performance_influxdb':
     target            => $influxdb_backups,
