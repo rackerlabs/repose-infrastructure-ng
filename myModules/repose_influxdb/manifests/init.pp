@@ -22,29 +22,29 @@ class repose_influxdb (
   }
 
   exec { 'apt-get-update':
-    path => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
+    path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
     command => "apt-get update",
   }
 
   package { 'apt-transport-https':
-    ensure => present,
+    ensure  => present,
     require => Exec['apt_update'],
   }
 
   class { 'influxdb::server':
-    http_auth_enabled       => true,
-    http_https_enabled      => true,
-    http_https_certificate  => '/etc/ssl/certs/openrepose.crt',
-    http_https_private_key  => '/etc/ssl/keys/openrepose.key',
-    http_max_row_limit      => 10000,
-    require => [
+    http_auth_enabled      => true,
+    http_https_enabled     => true,
+    http_https_certificate => '/etc/ssl/certs/openrepose.crt',
+    http_https_private_key => '/etc/ssl/keys/openrepose.key',
+    http_max_row_limit     => 10000,
+    require                => [
       Package['apt-transport-https'],
       Exec['apt_update'],
     ]
   }
 
   #make sure the influxdb user is in the ssl-keys group
-  user{ "influxdb":
+  user { "influxdb":
     ensure  => present,
     groups  => ["ssl-keys"],
     require => [
@@ -54,8 +54,9 @@ class repose_influxdb (
   }
 
   exec { 'create-influxdb-user':
-    path => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
-    command => "curl -iv -G https://influxdb.openrepose.org:8086/query --data-urlencode \"q=CREATE USER $influxdb_admin_username WITH PASSWORD '$influxdb_admin_password' WITH ALL PRIVILEGES\"",
+    path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
+    command => "curl -iv -G https://influxdb.openrepose.org:8086/query --data-urlencode \"q=CREATE USER $
+      influxdb_admin_username WITH PASSWORD '$influxdb_admin_password' WITH ALL PRIVILEGES\"",
     require => [
       Class["influxdb::server"],
       Package['curl'],
@@ -63,8 +64,9 @@ class repose_influxdb (
   }
 
   exec { 'create-influxdb-database':
-    path => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
-    command => "curl -iv -G https://influxdb.openrepose.org:8086/query --data-urlencode \"q=CREATE DATABASE $influxdb_performance_db\" -u $influxdb_admin_username:$influxdb_admin_password",
+    path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
+    command => "curl -iv -G https://influxdb.openrepose.org:8086/query --data-urlencode \"q=CREATE DATABASE $
+      influxdb_performance_db\" -u $influxdb_admin_username:$influxdb_admin_password",
     require => [
       Class["influxdb::server"],
       Package['curl'],
@@ -102,13 +104,13 @@ class repose_influxdb (
 
   # schedule a clean up of the backups once a month
   cron { 'influxdb_cleanup':
-    ensure   => present,
-    command  => "find $influxdb_backups/ -type f -mtime +30 -name "*.gz" -execdir rm -- {} +",
-    user     => root,
-    monthday => 1,
-    hour     => 3,
-    minute   => 0,
-    require  => Backup_cloud_files::Target['performance_influxdb'],
+    ensure  => present,
+    command => "find $influxdb_backups/ -type f -mtime +30 -name " *.gz" -execdir rm -- {} +",
+  user => root,
+  monthday => 1,
+  hour     => 3,
+  minute => 0,
+  require => Backup_cloud_files::Target['performance_influxdb'],
   }
 
   cron { 'duplicity_cleanup':
@@ -136,8 +138,8 @@ class repose_influxdb (
   #Papertrail the influxdb logs
   $papertrail_port = hiera("base::papertrail_port", 1)
   class { 'remotesyslog':
-    port    => $papertrail_port,
-    logs    => [
+    port => $papertrail_port,
+    logs => [
       '/var/log/influxdb/influxd.log'
     ],
   }
