@@ -15,8 +15,8 @@ class repose_influxdb (
 
   include ssl_cert
 
-  firewall { '110 InfluxDB access':
-    dport  => [8086],
+  firewall { '100 InfluxDB access':
+    dport  => 8086,
     proto  => tcp,
     action => accept,
   }
