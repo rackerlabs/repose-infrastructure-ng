@@ -37,7 +37,7 @@ class repose_influxdb (
     http_https_certificate => '/etc/ssl/certs/openrepose.crt',
     http_https_private_key => '/etc/ssl/keys/openrepose.key',
     http_max_row_limit     => 10000,
-    graphite_options => {
+    graphite_options       => {
       enabled           => true,
       database          => 'graphite',
       templates         => [
