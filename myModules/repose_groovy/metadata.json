@@ -1,4 +1,11 @@
 {
   "name": "repose-repose_groovy",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "author": "repose",
+  "summary": "",
+  "license": "Apache 2.0",
+  "source": "",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
 }

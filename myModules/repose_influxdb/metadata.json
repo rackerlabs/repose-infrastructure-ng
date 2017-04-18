@@ -2,8 +2,11 @@
   "name": "repose-repose_influxdb",
   "version": "0.0.1",
   "author": "William Scheidegger",
+  "summary": "",
+  "license": "Apache 2.0",
+  "source": "",
   "dependencies": [
-    { "name": "puppetlabs/stdlib", "version_requirement": ">= 0.0.1" },
-    { "name": "repose/backup_cloud_files", "version_requirement": ">= 0.0.1" }
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"repose/backup_cloud_files","version_requirement":">= 0.0.1"}
   ]
 }

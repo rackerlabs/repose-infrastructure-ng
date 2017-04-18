@@ -2,7 +2,11 @@
   "name": "repose-repose_nagios",
   "version": "0.0.1",
   "author": "David Kowis",
+  "summary": "",
+  "license": "Apache 2.0",
+  "source": "",
   "dependencies": [
-    { "name": "leinaddm/htpasswd", "version_requirement": ">= 0.0.1" }
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"leinaddm/htpasswd","version_requirement":">= 0.0.1"}
   ]
 }
