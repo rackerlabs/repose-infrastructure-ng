@@ -21,6 +21,12 @@ class repose_influxdb (
     action => accept,
   }
 
+  firewall { '101 Graphite access':
+    dport  => 2003,
+    proto  => tcp,
+    action => accept,
+  }
+
   exec { 'apt-get-update':
     path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
     command => "apt-get update",
