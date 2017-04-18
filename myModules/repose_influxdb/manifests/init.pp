@@ -38,9 +38,9 @@ class repose_influxdb (
     http_https_private_key => '/etc/ssl/keys/openrepose.key',
     http_max_row_limit     => 10000,
     graphite_options       => {
-      enabled           => true,
-      database          => 'graphite',
-      templates         => [
+      enabled              => true,
+      database             => $influxdb_performance_db,
+      templates            => [
         "gatling.*.*.*.* measurement.simulation.request.status.field",
         "gatling.*.users.*.* measurement.simulation.measurement.request.field",
       ],
