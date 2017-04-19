@@ -2,6 +2,7 @@ class repose_influxdb (
   $influxdb_admin_username = undef,
   $influxdb_admin_password = undef,
   $influxdb_performance_db = undef,
+  $influxdb_graphite_port = undef,
 ) {
   if($influxdb_admin_username == undef) {
     fail("Must have InfluxDB's Admin username configured")
@@ -22,7 +23,7 @@ class repose_influxdb (
   }
 
   firewall { '101 Graphite access':
-    dport  => 2003,
+    dport  => $influxdb_graphite_port,
     proto  => tcp,
     action => accept,
   }
@@ -46,6 +47,7 @@ class repose_influxdb (
     graphite_options       => {
       enabled              => true,
       database             => $influxdb_performance_db,
+      bind-address         => ":$influxdb_graphite_port",
       templates            => [
         "gatling.*.*.*.* measurement.simulation.request.status.field",
         "gatling.*.users.*.* measurement.simulation.measurement.request.field",
