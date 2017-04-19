@@ -48,9 +48,10 @@ class repose_influxdb (
       enabled              => true,
       database             => $influxdb_performance_db,
       bind-address         => ":$influxdb_graphite_port",
+      name-separator       => '_',
       templates            => [
-        "gatling.*.*.*.* measurement.simulation.request.status.field",
-        "gatling.*.users.*.* measurement.simulation.measurement.request.field",
+        "gatling.*.*.*.* .measurement..status.field repose_version=8.5.0.1",
+        "gatling.*.users.*.* .measurement.measurement..field repose_version=8.5.0.1",
       ],
     },
     require                => [
