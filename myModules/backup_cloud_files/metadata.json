@@ -7,6 +7,6 @@
   "source": "",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
-    {"name":"stankevich/python","version_requirement":">= 0.0.1" }
+    {"name":"stankevich/python","version_requirement":">= 0.0.1"}
   ]
 }
