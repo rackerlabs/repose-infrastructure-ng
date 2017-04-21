@@ -47,7 +47,19 @@ node /^slave[1-9]\.openrepose\.org$/ inherits jenkinsSlaves {
 
 node "jenkins-proto.openrepose.org" inherits default {
     include repose_jenkins
-    include repose_jenkins::master
+    include base::nginx::autohttps
+
+    # TODO: Fix the coordination between the repose_jenkins::master class and
+    # the repose_jenkins class.
+    # Note that repose_jenkins::master includes repose_jenkins.
+    # The jenkins resource in repose_jenkins::master attempts to create a user
+    # and group that were already created by the repose_jenkins class,
+    # which fails the application of this manifest for this node.
+    # This resource also attempts to create a number of directories already
+    # created by the repose_jenkins class, which also fails the application of
+    # this manifest for this node.
+    #
+    # include repose_jenkins::master
 }
 
 node "sonar.openrepose.org" inherits default {
@@ -98,4 +110,3 @@ node "phone-home.openrepose.org" inherits default {
 node "work-desktop.openrepose.org" {
     include adrian_workstation
 }
-
