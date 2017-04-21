@@ -17,13 +17,14 @@ class repose_gradle(
 ) {
 
   #downloads and explodes the given version
-  archive{ "gradle-$version":
-    ensure           => present,
-    url              => "${base_url}/gradle-${version}-all.zip",
-    follow_redirects => true,
-    target           => "/opt",
-    extension        => "zip",
-    checksum         => false,
+  archive { "gradle-${version}":
+    ensure          => present,
+    path            => "/tmp/gradle-${version}-all.zip",
+    extract         => true,
+    extract_path    => '/opt',
+    creates         => '/opt/gradle-${version}',
+    source          => "${base_url}/gradle-${version}-all.zip",
+    checksum_verify => false,
   }
 
   file { "${user_home}/.gradle":
