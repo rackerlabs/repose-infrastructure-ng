@@ -51,8 +51,8 @@ class repose_influxdb (
       bind-address         => ":$influxdb_graphite_port",
       name-separator       => '_',
       templates            => [
-        "gatling.*.*.*.* .measurement..status.field",
-        "gatling.*.users.*.* .measurement.measurement..field",
+        "gatling.*.*.*.* .measurement.request.status.field",
+        "gatling.*.users.*.* .measurement.measurement.request.field",
       ],
     },
     require                => [
