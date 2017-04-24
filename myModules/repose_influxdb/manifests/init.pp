@@ -2,7 +2,6 @@ class repose_influxdb (
   $influxdb_admin_username = undef,
   $influxdb_admin_password = undef,
   $influxdb_performance_db = undef,
-  $influxdb_graphite_port = undef,
 ) {
   if($influxdb_admin_username == undef) {
     fail("Must have InfluxDB's Admin username configured")
@@ -13,6 +12,8 @@ class repose_influxdb (
   if($influxdb_performance_db == undef) {
     fail("Must have the name of the Performance DB configured")
   }
+
+  $influxdb_graphite_port = 13002
 
   include ssl_cert
 
