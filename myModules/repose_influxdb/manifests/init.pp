@@ -50,8 +50,8 @@ class repose_influxdb (
       bind-address         => ":$influxdb_graphite_port",
       name-separator       => '_',
       templates            => [
-        "gatling.*.*.*.* .measurement..status.field repose_version=8.5.0.1",
-        "gatling.*.users.*.* .measurement.measurement..field repose_version=8.5.0.1",
+        "gatling.*.*.*.* .measurement..status.field",
+        "gatling.*.users.*.* .measurement.measurement..field",
       ],
     },
     require                => [
