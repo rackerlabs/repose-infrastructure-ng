@@ -13,6 +13,8 @@ class repose_influxdb (
     fail("Must have the name of the Performance DB configured")
   }
 
+  $influxdb_graphite_port = 13002
+
   include ssl_cert
 
   firewall { '100 InfluxDB access':
@@ -20,6 +22,14 @@ class repose_influxdb (
     proto  => tcp,
     action => accept,
   }
+
+  # TODO: If needed, add this firewall exception to support writing data
+  # TODO: to InfluxDB via Graphite
+  # firewall { '101 Graphite access':
+  #   dport  => $influxdb_graphite_port,
+  #   proto  => tcp,
+  #   action => accept,
+  # }
 
   exec { 'apt-get-update':
     path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
@@ -37,6 +47,17 @@ class repose_influxdb (
     http_https_certificate => '/etc/ssl/certs/openrepose.crt',
     http_https_private_key => '/etc/ssl/keys/openrepose.key',
     http_max_row_limit     => 10000,
+    graphite_options       => {
+      # TODO: Set to true to receive InfluxDB data via Graphite
+      enabled              => false,
+      database             => $influxdb_performance_db,
+      bind-address         => ":$influxdb_graphite_port",
+      name-separator       => '_',
+      templates            => [
+        "gatling.*.*.*.* measurement.measurement.request.status.field",
+        "gatling.*.users.*.* measurement.measurement.measurement.request.field",
+      ],
+    },
     require                => [
       Package['apt-transport-https'],
       Exec['apt_update'],
