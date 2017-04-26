@@ -46,7 +46,7 @@ class repose_influxdb (
     http_https_private_key => '/etc/ssl/keys/openrepose.key',
     http_max_row_limit     => 10000,
     graphite_options       => {
-      enabled              => true,
+      enabled              => false,
       database             => $influxdb_performance_db,
       bind-address         => ":$influxdb_graphite_port",
       name-separator       => '_',
