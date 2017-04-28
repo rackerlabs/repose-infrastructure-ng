@@ -93,3 +93,6 @@ mod "repose/repose_idea",
 
 mod "repose/repose_influxdb",
     :path => "myModules/repose_influxdb"
+
+mod "repose/repose_grafana",
+    :path => "myModules/repose_grafana"

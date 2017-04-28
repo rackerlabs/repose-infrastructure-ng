@@ -1,0 +1,3 @@
+class repose_grafana {
+
+}
