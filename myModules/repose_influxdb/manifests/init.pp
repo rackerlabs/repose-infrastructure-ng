@@ -13,8 +13,6 @@ class repose_influxdb (
     fail("Must have the name of the Performance DB configured")
   }
 
-  $influxdb_graphite_port = 13002
-
   include ssl_cert
 
   firewall { '100 InfluxDB access':
@@ -23,10 +21,11 @@ class repose_influxdb (
     action => accept,
   }
 
-  firewall { '101 Graphite access':
-    dport  => $influxdb_graphite_port,
-    proto  => tcp,
-    action => accept,
+  firewall { '101 Graphite listener access':
+    source      => 192.168.3.0/24,
+    destination => 192.168.3.0/24,
+    dport       => 2003,
+    action      => accept,
   }
 
   exec { 'apt-get-update':
@@ -48,7 +47,6 @@ class repose_influxdb (
     graphite_options       => {
       enabled              => true,
       database             => $influxdb_performance_db,
-      bind-address         => ":$influxdb_graphite_port",
       name-separator       => '_',
       templates            => [
         "gatling.*.*.*.* measurement.measurement.request.status.field",
