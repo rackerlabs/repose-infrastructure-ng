@@ -16,16 +16,15 @@ class repose_influxdb (
   include ssl_cert
 
   firewall { '101 InfluxDB access':
-    dport  => 8086,
-    proto  => tcp,
-    action => accept,
+    dport  => '8086',
+    action => 'accept',
   }
 
   firewall { '102 Graphite listener access':
-    source      => 192.168.3.0/24,
-    destination => 192.168.3.0/24,
-    dport       => 2003,
-    action      => accept,
+    source      => '192.168.3.0/24',
+    destination => '192.168.3.0/24',
+    dport       => '2003',
+    action      => 'accept',
   }
 
   exec { 'apt-get-update':
