@@ -79,7 +79,7 @@ class repose_jenkins::master(
 # I think this is the only one we need, as it manages all the other configs
 # the base class provides the ssh key for github.com, so it should be good to go
     jenkins::plugin{ 'scm-sync-configuration':
-        version         => '0.0.9',
+        version         => '0.0.10',
         manage_config   => true,
         config_filename => "scm-sync-configuration.xml",
         config_content  => template("repose_jenkins/scm-sync-configuration.xml.erb"),
@@ -102,45 +102,44 @@ class repose_jenkins::master(
         require => File["${jenkins_home}/log"],
     }
 
-    jenkins::plugin{'htmlpublisher':
-        version => '1.11',
+    jenkins::plugin{ 'htmlpublisher':
+        version => '1.13',
     }
-    jenkins::plugin{'instant-messaging':
+    jenkins::plugin{ 'instant-messaging':
         version => '1.35',
     }
-    jenkins::plugin{'ircbot':
+    jenkins::plugin{ 'ircbot':
         version => '2.27',
     }
-
     jenkins::plugin{ 'gradle':
-        version => '1.24'
+        version => '1.26'
     }
     jenkins::plugin{ 'veracode-scanner':
         version => '1.6'
     }
     jenkins::plugin{ 'dashboard-view':
-        version => '2.9.7'
+        version => '2.9.10'
     }
     jenkins::plugin{ 'github-api':
-        version => '1.77'
+        version => '1.85'
     }
     jenkins::plugin{ 'github':
-        version => '1.21.1'
+        version => '1.27.0'
     }
     jenkins::plugin{ 'ssh-agent':
-        version => '1.10'
+        version => '1.15'
     }
     jenkins::plugin{ 'ghprb':
-        version => '1.33.1'
+        version => '1.36.2'
     }
     jenkins::plugin{ 'git-client':
-        version => '1.19.6'
-    }
-    jenkins::plugin{ 'git':
         version => '2.4.4'
     }
+    jenkins::plugin{ 'git':
+        version => '3.3.0'
+    }
     jenkins::plugin{ 'jacoco':
-        version => '2.0.1'
+        version => '2.2.0'
     }
     jenkins::plugin{ 'jquery':
         version => '1.11.2-0'
@@ -149,59 +148,46 @@ class repose_jenkins::master(
         version => '0.14.0'
     }
     jenkins::plugin{ 'parameterized-trigger':
-        version => '2.30'
+        version => '2.33'
     }
     jenkins::plugin{ 'ssh':
         version => '2.4'
     }
     jenkins::plugin{ 'publish-over-ssh':
-        version => '1.14'
+        version => '1.17'
     }
     jenkins::plugin{ 'simple-theme-plugin':
         version => '0.3'
     }
     jenkins::plugin{ 'join':
-        version => '1.19'
+        version => '1.21'
     }
     jenkins::plugin{ 'conditional-buildstep':
-        version => '1.3.3'
+        version => '1.3.5'
     }
     jenkins::plugin{ 'run-condition':
         version => '1.0'
     }
     jenkins::plugin{ 'token-macro':
-        version => '1.12.1'
+        version => '2.1'
     }
     jenkins::plugin{ 'scm-api':
-        version => '1.1'
+        version => '2.1.1'
     }
-# oops, somehow I forgot that sonar needed to exist :(
-    jenkins::plugin{ 'sonar':
-        version => '2.3'
-    }
-# also forgot that we need the copy-artifact plugin to get artifacts smartly
     jenkins::plugin{ 'copyartifact':
-        version => '1.37'
+        version => '1.38.1'
     }
-
-# adding a plugin to deal with multijob stuff
     jenkins::plugin{ 'envinject':
-        version => '1.92.1'
+        version => '2.0'
     }
 
     jenkins::plugin { 'jenkins-multijob-plugin':
-        version => '1.21'
+        version => '1.24'
     }
-
 
 # to use the slave logic that the jenkins puppet module uses, we need the swarm plugin
     jenkins::plugin{ 'swarm':
-        version => '2.0',
-    }
-
-# Need to have this to be able to mask passwords from the jenkins output
-    jenkins::plugin { 'mask-passwords':
-        version => '2.7.2'
+        version => '3.4',
     }
 
 
