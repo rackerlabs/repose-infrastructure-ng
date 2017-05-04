@@ -21,7 +21,7 @@ git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 
 #Using this to manage our puppet modules
 echo "Installing librarian-puppet and bundler" &&
-gem install bundler librarian-puppet --no-rdoc --no-ri &&
+gem install bundler librarian-puppet hiera-eyaml --no-rdoc --no-ri &&
 
 cd /etc/puppet &&
 mkdir -p ssl &&
