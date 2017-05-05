@@ -87,6 +87,10 @@ node "influxdb.openrepose.org" inherits default {
     include repose_influxdb
 }
 
+node "grafana.openrepose.org" inherits default {
+    include repose_grafana
+}
+
 node "adrian-home-desktop-vm.openrepose.org" {
     include adrian_workstation
 }

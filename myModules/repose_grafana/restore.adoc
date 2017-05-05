@@ -1,0 +1,41 @@
+= Restoring from Backup
+
+. Make a directory for the restore
++
+[source, bash]
+----
+cd /
+mkdir temp-restore
+----
+
+. Restore from cloud files
++
+You'll need to get the cloud files username and apikey from the existing duplicity script (`/usr/local/bin/duplicity_performance_grafana.rb`).
++
+[source, bash]
+----
+CLOUDFILES_USERNAME=fill-in CLOUDFILES_APIKEY=fill-in CLOUDFILES_REGION=DFW duplicity --no-encryption restore cf+http://performance_grafana /temp-restore/
+----
+
+. Stop Grafana
++
+[source, bash]
+----
+service grafana-server stop
+----
+
+. Copy the files
++
+[source, bash]
+----
+/bin/cp -rf /temp-restore/. /var/lib/grafana/
+----
+
+. Start up Grafana
++
+[source, bash]
+----
+service grafana-server start
+----
+
+. Commence Happy Dance
