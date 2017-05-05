@@ -18,3 +18,9 @@ User root
 
 Host sonar
 User root
+
+Host influxdb
+User root
+
+Host grafana
+User root
