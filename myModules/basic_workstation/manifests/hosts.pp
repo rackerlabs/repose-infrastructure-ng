@@ -40,7 +40,7 @@ class basic_workstation::hosts(
   }
 
   host { 'puppet-master':
-    ip => '23.253.105.35',
+    ip => '104.239.240.48',
   }
 
   host { 'nginx':
@@ -53,6 +53,14 @@ class basic_workstation::hosts(
 
   host { 'phone-home':
     ip => '162.209.77.79',
+  }
+
+  host { 'influxdb':
+    ip => '162.242.254.160',
+  }
+
+  host { 'grafana':
+    ip => '104.130.2.85',
   }
 
   #cluster config
