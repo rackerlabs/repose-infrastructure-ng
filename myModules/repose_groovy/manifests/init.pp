@@ -8,7 +8,6 @@ class repose_groovy(
     ensure           => present,
     url              => "${base_url}/apache-groovy-sdk-${version}.zip",
     target           => "/opt",
-    extension        => "zip",
     checksum         => false,
   }
 
