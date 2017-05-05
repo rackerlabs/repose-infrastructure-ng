@@ -13,10 +13,6 @@ class basic_workstation(
     user_home => "${user_home}",
   }
 
-  class {'basic_workstation::personal_networking':
-    sso => "${sso}",
-  }
-
   class {'basic_workstation::hosts':
     username => "${user}",
   }
