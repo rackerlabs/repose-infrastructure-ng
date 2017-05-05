@@ -34,4 +34,6 @@ class basic_workstation(
     owner  => $user,
     group  => $user,
   }
+
+  #todo: figure out a way to get slack, zoom, and vpn in here
 }
