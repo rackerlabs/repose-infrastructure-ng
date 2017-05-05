@@ -13,10 +13,6 @@ class basic_workstation(
     user_home => "${user_home}",
   }
 
-  class {'basic_workstation::personal_networking':
-    sso => "${sso}",
-  }
-
   class {'basic_workstation::hosts':
     username => "${user}",
   }
@@ -38,4 +34,6 @@ class basic_workstation(
     owner  => $user,
     group  => $user,
   }
+
+  #todo: figure out a way to get slack, zoom, and vpn in here
 }
