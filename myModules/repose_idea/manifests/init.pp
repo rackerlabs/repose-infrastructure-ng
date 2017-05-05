@@ -6,10 +6,13 @@ class repose_idea(
 
   #downloads and explodes the given version
   archive{ "idea-$version":
-    ensure           => present,
-    url              => "${base_url}/ideaIU-${version}.tar.gz",
-    target           => "/opt",
-    checksum         => false,
+    ensure          => present,
+    path            => "/tmp/ideaIU-${version}.tar.gz",
+    extract         => true,
+    extract_path    => '/opt',
+    creates         => "/opt/idea-IU-${build}",
+    source          => "${base_url}/ideaIU-${version}.tar.gz",
+    checksum_verify => false,
   }
 
   #links it for conveince

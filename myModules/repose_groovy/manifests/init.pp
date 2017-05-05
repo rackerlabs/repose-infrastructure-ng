@@ -5,10 +5,13 @@ class repose_groovy(
 
   #downloads and explodes the given version
   archive{ "groovy-$version":
-    ensure           => present,
-    url              => "${base_url}/apache-groovy-sdk-${version}.zip",
-    target           => "/opt",
-    checksum         => false,
+    ensure          => present,
+    path            => "/tmp/apache-groovy-sdk-${version}.zip",
+    extract         => true,
+    extract_path    => '/opt',
+    creates         => "/opt/groovy-${version}",
+    source          => "${base_url}/apache-groovy-sdk-${version}.zip",
+    checksum_verify => false,
   }
 
   #links it for conveince
