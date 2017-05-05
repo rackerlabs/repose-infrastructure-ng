@@ -43,3 +43,12 @@ Please refer to the [Puppetfile](https://github.com/rackerlabs/repose-infrastruc
 
 ## Setting up eyaml
 https://github.com/TomPoulton/hiera-eyaml#configuration-file-for-eyaml
+
+## Rebuilding Master
+If you need to rebuild a new master you can run these commands on the clients to hook them up to the new master.
+
+    puppet resource service puppet ensure=stopped
+    # puppet config print ssldir                  this will output the directory for use in the next command, for now all our boxes have it in that directory though
+    rm -rf /var/lib/puppet/ssl
+    puppet resource service puppet ensure=running
+    puppet agent --test
