@@ -7,7 +7,6 @@ class repose_groovy(
   archive{ "groovy-$version":
     ensure           => present,
     url              => "${base_url}/apache-groovy-sdk-${version}.zip",
-    follow_redirects => true,
     target           => "/opt",
     extension        => "zip",
     checksum         => false,

@@ -8,7 +8,6 @@ class repose_idea(
   archive{ "idea-$version":
     ensure           => present,
     url              => "${base_url}/ideaIU-${version}.tar.gz",
-    follow_redirects => true,
     target           => "/opt",
     checksum         => false,
   }
