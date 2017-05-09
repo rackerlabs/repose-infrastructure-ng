@@ -91,26 +91,10 @@ node "grafana.openrepose.org" inherits default {
     include repose_grafana
 }
 
-node "adrian-home-desktop-vm.openrepose.org" {
-    include adrian_workstation
-}
-
-node "adrian-home-laptop-vm.openrepose.org" {
-    include adrian_workstation
-}
-
 node "adrian-new-work-laptop.openrepose.org" {
     include adrian_workstation
 }
 
-node "joelrizner-latitude-e7450.openrepose.org" {
-    include joel_workstation
-}
-
 node "phone-home.openrepose.org" inherits default {
     include repose_phone_home
-}
-
-node "work-desktop.openrepose.org" {
-    include adrian_workstation
 }
