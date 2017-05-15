@@ -31,6 +31,10 @@ class basic_workstation::hosts(
     ip => '174.143.130.208',
   }
 
+  host { 'jenkins-slave-6':
+    ip => '23.253.105.232',
+  }
+
   host { 'mumble':
     ip => '23.253.107.117',
   }
