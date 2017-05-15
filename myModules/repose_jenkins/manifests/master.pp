@@ -7,8 +7,6 @@ class repose_jenkins::master(
 ) {
     include repose_jenkins
 
-    $jenkins_home = '/var/lib/jenkins'
-
 
 # This is kind of nasty hax.
 # The repose-jenkins puppet module gets a little too restart happy, which causes our builds to be terminated
@@ -53,10 +51,10 @@ class repose_jenkins::master(
         repo               => true,
         require            => [
             Class['java'],
-            File["${jenkins_home}/.gitconfig"]
+            File["${repose_jenkins::jenkins_home}/.gitconfig"]
         ],
         config_hash        => {
-            'JENKINS_HOME' => { 'value' => "${jenkins_home}" },
+            'JENKINS_HOME' => { 'value' => "${repose_jenkins::jenkins_home}" },
             'JENKINS_USER' => { 'value' => 'jenkins' },
             'JENKINS_JAVA_OPTIONS' =>
             { 'value' => "-Djava.awt.headless=true -Xms2048m -Xmx4096m -XX:PermSize=512m -XX:MaxPermSize=1024m -XX:-UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled" }
@@ -75,6 +73,14 @@ class repose_jenkins::master(
         notify  => Service['nginx'],
     }
 
+    file { "${repose_jenkins::jenkins_home}/plugins":
+      ensure  => directory,
+      owner   => jenkins,
+      group   => jenkins,
+      mode    => '0755',
+      require => User['jenkins']
+    }
+
 # define our jenkins SCM config sync plugin
 # I think this is the only one we need, as it manages all the other configs
 # the base class provides the ssh key for github.com, so it should be good to go
@@ -85,7 +91,7 @@ class repose_jenkins::master(
         config_content  => template("repose_jenkins/scm-sync-configuration.xml.erb"),
     }
 
-    file{ "${jenkins_home}/log":
+    file{ "${repose_jenkins::jenkins_home}/log":
         ensure  => directory,
         mode    => 0755,
         owner   => jenkins,
@@ -93,13 +99,13 @@ class repose_jenkins::master(
         require => Class['jenkins'],
     }
 
-    file{ "${jenkins_home}/log/scm_sync_configuration.xml":
+    file{ "${repose_jenkins::jenkins_home}/log/scm_sync_configuration.xml":
         ensure  => file,
         mode    => 0644,
         owner   => jenkins,
         group   => jenkins,
         source  => "puppet:///modules/repose_jenkins/scm_sync_configuration.xml",
-        require => File["${jenkins_home}/log"],
+        require => File["${repose_jenkins::jenkins_home}/log"],
     }
 
     jenkins::plugin{ 'htmlpublisher':

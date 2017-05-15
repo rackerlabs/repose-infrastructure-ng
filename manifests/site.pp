@@ -38,7 +38,7 @@ node 'puppet.openrepose.org' inherits default {
 }
 
 node jenkinsSlaves inherits default {
-    include repose_jenkins
+    include repose_jenkins::slave
 }
 
 node /^slave[1-9]\.openrepose\.org$/ inherits jenkinsSlaves {
