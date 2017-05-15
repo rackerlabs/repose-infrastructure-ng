@@ -1,7 +1,9 @@
 # Installs base layer, but no jenkins itself. Perfect for a slave configuration.
 # also used by the master, basically anything that wants to run our jenkins jobs
 # Depends on garethr/remotesyslog to activate remote syslog for things on this host
-class repose_jenkins {
+class repose_jenkins(
+    $java_package = 'openjdk-8-jdk'
+) {
 
     $jenkins_home = '/var/lib/jenkins'
     $github_key_info = hiera_hash("base::github_host_key", { "key" => "DEFAULT", "type" => "ssh-rsa" })
@@ -16,7 +18,7 @@ class repose_jenkins {
 # I'm really only using it at this point because the rtyler/jenkins module wants it :|
     class{ 'java':
         distribution => 'jdk',
-        package      => 'openjdk-8-jdk',
+        package      => $java_package,
         version      => 'present',
     }
 
