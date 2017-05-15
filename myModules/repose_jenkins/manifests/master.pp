@@ -73,6 +73,14 @@ class repose_jenkins::master(
         notify  => Service['nginx'],
     }
 
+    file { "${repose_jenkins::jenkins_home}/plugins":
+      ensure  => directory,
+      owner   => jenkins,
+      group   => jenkins,
+      mode    => '0755',
+      require => User['jenkins']
+    }
+
 # define our jenkins SCM config sync plugin
 # I think this is the only one we need, as it manages all the other configs
 # the base class provides the ssh key for github.com, so it should be good to go

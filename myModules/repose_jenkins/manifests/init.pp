@@ -48,13 +48,4 @@ class repose_jenkins {
         key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDRLK7eHYRbfj/NgIUlc8ECZD9EFwvj4ZvQDrkMX+4HBcpvQr6vVvQlezx7qtCnpZtPYbQvp0udxsfU9+ESlBMGcZBPjnJsKqlomYwaKcxaNKXe4FXGB9fi3si0fEt90pNBqTMjwOzzHj8jqu7PSz5A4tHfdNdJ+IN8IWI4S/YeqVXrdPtsM4Kpi/woSEYUd9Ma4ia/0fHjg4S6/Nb1cFFtx5OQejS6NIpOT3AcSkvOGfDQPHO3GhhZTufbmWeCiT4cOCgCZmlT6eDpl3R8eXWKIn6UGmBSfV1pqs7DFKSGMepV2HVsEtoButIlSfj2BP2mFJ6g1SstDsWCaw+jbtyN',
         user    => 'jenkins'
     }
-
-    #not certain what this is doing? I think this needs to move to the master manifest?
-    file { "${jenkins_home}/plugins":
-        ensure  => directory,
-        owner   => jenkins,
-        group   => jenkins,
-        mode    => '0755',
-        require => User['jenkins']
-    }
 }
