@@ -109,18 +109,16 @@ class repose_jenkins::slave(
     jump  => 'RETURN',
   }
 
-  $jenkins_home = '/var/lib/jenkins'
-
   class{"repose_gradle":
     user      => 'jenkins',
-    user_home => "${jenkins_home}",
+    user_home => "${repose_jenkins::jenkins_home}",
     daemon    => false,
     require  => User["jenkins"],
   }
 
   class{"repose_maven":
     user      => 'jenkins',
-    user_home => "${jenkins_home}",
+    user_home => "${repose_jenkins::jenkins_home}",
     require  => User["jenkins"],
   }
 
@@ -158,7 +156,7 @@ class repose_jenkins::slave(
     ensure     => present,
     gid        => 'jenkins',
     groups     => 'docker',
-    home       => $jenkins_home,
+    home       => $repose_jenkins::jenkins_home,
     shell      => '/bin/bash',
     managehome => true,
     require    => Group['docker'],
@@ -167,47 +165,47 @@ class repose_jenkins::slave(
 
   #all this key stuff may actually need to be moved back up
   #dependening on wether or not master is the guy trying to push the packages to the repo
-  file { "${jenkins_home}/.ssh":
+  file { "${repose_jenkins::jenkins_home}/.ssh":
     ensure  => directory,
     owner   => jenkins,
     group   => jenkins,
     mode    => '0700',
   }
 
-  file{ "${jenkins_home}/.ssh/id_rsa":
+  file{ "${repose_jenkins::jenkins_home}/.ssh/id_rsa":
     ensure  => file,
     mode    => 0600,
     owner   => jenkins,
     group   => jenkins,
     content => "${deploy_key}",
-    require => File["${jenkins_home}/.ssh"],
+    require => File["${repose_jenkins::jenkins_home}/.ssh"],
   }
 
-  file{ "${jenkins_home}/.ssh/id_rsa.pub":
+  file{ "${repose_jenkins::jenkins_home}/.ssh/id_rsa.pub":
     mode    => 0600,
     owner   => jenkins,
     group   => jenkins,
     content => "${deploy_key_pub}",
-    require => File["${jenkins_home}/.ssh"],
+    require => File["${repose_jenkins::jenkins_home}/.ssh"],
   }
 
-  file{ "${jenkins_home}/.ssh/repo_key":
+  file{ "${repose_jenkins::jenkins_home}/.ssh/repo_key":
     mode    => 0600,
     owner   => jenkins,
     group   => jenkins,
     content => "${repo_key}",
-    require => File["${jenkins_home}/.ssh"],
+    require => File["${repose_jenkins::jenkins_home}/.ssh"],
   }
 
-  file{ "${jenkins_home}/.ssh/repo_key.pub":
+  file{ "${repose_jenkins::jenkins_home}/.ssh/repo_key.pub":
     mode    => 0600,
     owner   => jenkins,
     group   => jenkins,
     content => "${repo_key_pub}",
-    require => File["${jenkins_home}/.ssh"],
+    require => File["${repose_jenkins::jenkins_home}/.ssh"],
   }
 
-  file{ "${jenkins_home}/saxon_ee":
+  file{ "${repose_jenkins::jenkins_home}/saxon_ee":
     ensure  => directory,
     owner   => jenkins,
     group   => jenkins,
@@ -215,13 +213,13 @@ class repose_jenkins::slave(
     require => User['jenkins'],
   }
 
-  file { "${jenkins_home}/saxon_ee/saxon-license.lic":
+  file { "${repose_jenkins::jenkins_home}/saxon_ee/saxon-license.lic":
     ensure  => file,
     owner   => jenkins,
     group   => jenkins,
     mode    => 0440,
     content => "${saxon_ee_license}",
-    require => File["${jenkins_home}/saxon_ee"],
+    require => File["${repose_jenkins::jenkins_home}/saxon_ee"],
   }
 
 }
