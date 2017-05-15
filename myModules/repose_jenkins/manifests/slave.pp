@@ -29,8 +29,6 @@ class repose_jenkins::slave(
   }
 
 
-  #all this key stuff may actually need to be moved back up
-  #dependening on wether or not master is the guy trying to push the packages to the repo
   file { "${repose_jenkins::jenkins_home}/.ssh":
     ensure  => directory,
     owner   => jenkins,
