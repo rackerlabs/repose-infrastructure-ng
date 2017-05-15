@@ -38,11 +38,15 @@ node 'puppet.openrepose.org' inherits default {
 }
 
 node /^slave[1-5]\.openrepose\.org$/ inherits default {
-    include repose_jenkins::modern_slave
+    include repose_jenkins::build_slave
 }
 
 node "slave6.openrepose.org" inherits default {
     include repose_jenkins::legacy_slave
+}
+
+node /^slave[7-9]\.openrepose\.org$/ inherits default {
+    include repose_jenkins::performance_slave
 }
 
 node "jenkins-proto.openrepose.org" inherits default {
