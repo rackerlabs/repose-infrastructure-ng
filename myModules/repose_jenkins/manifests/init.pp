@@ -8,6 +8,23 @@ class repose_jenkins(
     $jenkins_home = '/var/lib/jenkins'
     $github_key_info = hiera_hash("base::github_host_key", { "key" => "DEFAULT", "type" => "ssh-rsa" })
 
+    case $operatingsystem{
+        debian: {
+            info("Can support debian")
+            include apt
+            # This is where Open JDK 8 is located.
+            class{ 'apt::backports':
+              pin    => 500,
+              notify => Exec['apt_update'],
+            }
+        }
+        ubuntu: {
+            info("Can support ubuntu")
+            include apt
+        }
+        default: { fail("Unrecognized OS for repose_sonar") }
+    }
+
 # this should ensure we've got java on the system at jdk8. Installed via package
 # it will give us JDK8 however.
 # this is really stupid, for some reason it can't pick up the proper package version
