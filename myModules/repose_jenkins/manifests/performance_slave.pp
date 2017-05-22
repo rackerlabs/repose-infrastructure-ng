@@ -1,4 +1,7 @@
-class repose_jenkins::performance_slave {
+class repose_jenkins::performance_slave(
+  $cloud_username = undef,
+  $cloud_api_key = undef
+) {
 
   include 'repose_jenkins::modern_slave'
 
