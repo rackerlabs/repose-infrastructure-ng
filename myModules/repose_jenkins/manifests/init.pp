@@ -22,7 +22,7 @@ class repose_jenkins(
             info("Can support ubuntu")
             include apt
         }
-        default: { fail("Unrecognized OS for repose_sonar") }
+        default: { fail("Unrecognized OS for repose_jenkins") }
     }
 
 # this should ensure we've got java on the system at jdk8. Installed via package
