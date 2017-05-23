@@ -28,31 +28,6 @@ class repose_jenkins::slave(
     managehome => true,
   }
 
-
-  file { "${repose_jenkins::jenkins_home}/.ssh":
-    ensure  => directory,
-    owner   => jenkins,
-    group   => jenkins,
-    mode    => '0700',
-  }
-
-  file{ "${repose_jenkins::jenkins_home}/.ssh/id_rsa":
-    ensure  => file,
-    mode    => 0600,
-    owner   => jenkins,
-    group   => jenkins,
-    content => "${deploy_key}",
-    require => File["${repose_jenkins::jenkins_home}/.ssh"],
-  }
-
-  file{ "${repose_jenkins::jenkins_home}/.ssh/id_rsa.pub":
-    mode    => 0600,
-    owner   => jenkins,
-    group   => jenkins,
-    content => "${deploy_key_pub}",
-    require => File["${repose_jenkins::jenkins_home}/.ssh"],
-  }
-
   file{ "${repose_jenkins::jenkins_home}/.ssh/repo_key":
     mode    => 0600,
     owner   => jenkins,

@@ -31,6 +31,7 @@ mod 'jamesnetherton/google_chrome', '0.2.1'
 mod 'puppet-archive', '1.1.2'
 mod 'golja-influxdb', '4.0.0'
 mod 'puppet-grafana', '2.6.3'
+mod 'stankevich-python', '1.18.2'
 
 mod "repose/base",
     :path => "myModules/base"
