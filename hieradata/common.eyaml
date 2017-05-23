@@ -215,7 +215,7 @@ repose_jenkins::slave::repo_key_pub: >
   CNgk2F8keBZlQ//7z2jJF7nt9oO2gi1K0RtPrBT0koric4o0T2MXXMSlyoYg
   TJ2gWko25KfR08qpqHdJECMvTBE=]
 
-repose_jenkins::slave::deploy_key: >
+repose_jenkins::deploy_key: >
   ENC[PKCS7,MIIH/QYJKoZIhvcNAQcDoIIH7jCCB+oCAQAxggEhMIIBHQIBADAFMAACAQEw
   DQYJKoZIhvcNAQEBBQAEggEANkW4APth2VaAImkI7bVPBnExvdp9mHNkRaNB
   xO11T3+yA36TPag954aoDwIDeWjjiiHOChwktoyqwyJ7IhS9v7MsnIXkNEo8
@@ -263,7 +263,7 @@ repose_jenkins::slave::deploy_key: >
   RYq9GHNSdZ8/2a30nl5oP4gJ9NfDwH2dLz0Vxhsl5CQN0zkKKXxGokOKYojR
   Y4hXBEgfYlP+s0WCF2paSAJXIfOQ53MR]
 
-repose_jenkins::slave::deploy_key_pub: >
+repose_jenkins::deploy_key_pub: >
   ENC[PKCS7,MIIDDQYJKoZIhvcNAQcDoIIC/jCCAvoCAQAxggEhMIIBHQIBADAFMAACAQEw
   DQYJKoZIhvcNAQEBBQAEggEARtRLNOV6irTYYkHiZ6LsrVJ6+OmMQ/hTG/M1
   sNa2tbBZLKK0f3XeDXMCs+KzB5XnLRRBrmCAvjXxIp5DZa+LVh+V6zkNAE9D
