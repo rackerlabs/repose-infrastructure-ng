@@ -4,6 +4,12 @@ class repose_jenkins::build_slave {
     groups => 'docker'
   }
 
+  class{"repose_maven":
+    user      => 'jenkins',
+    user_home => "${repose_jenkins::jenkins_home}",
+    require   => User["jenkins"],
+  }
+
   # ensure docker is installed to verify releases, and give the docker0
   # bridge a static IP to match firewall rules
   class { 'docker':
