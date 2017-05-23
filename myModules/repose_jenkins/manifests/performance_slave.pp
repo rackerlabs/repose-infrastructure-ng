@@ -28,7 +28,7 @@ class repose_jenkins::performance_slave(
     install_args => '--upgrade',
   }
 
-  file {"${repose_jenkins::jenkins_home}/.raxpub":
+  file { "${repose_jenkins::jenkins_home}/.raxpub":
     content => template("repose_jenkins/.raxpub.erb"),
     owner   => jenkins,
     group   => jenkins,

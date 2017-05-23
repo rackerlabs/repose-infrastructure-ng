@@ -4,7 +4,7 @@ class repose_jenkins::build_slave {
     groups => 'docker'
   }
 
-  class{"repose_maven":
+  class { 'repose_maven':
     user      => 'jenkins',
     user_home => "${repose_jenkins::jenkins_home}",
     require   => User["jenkins"],

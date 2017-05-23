@@ -5,7 +5,7 @@ class repose_jenkins::slave(
   $repo_key = undef,
   $repo_key_pub = undef,
   $saxon_ee_license = undef,
-  $groups = '',
+  $groups = [],
   $java_package = 'openjdk-8-jdk'
 ) {
 

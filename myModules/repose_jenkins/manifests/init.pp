@@ -8,12 +8,12 @@ class repose_jenkins(
     $jenkins_home = '/var/lib/jenkins'
     $github_key_info = hiera_hash("base::github_host_key", { "key" => "DEFAULT", "type" => "ssh-rsa" })
 
-    case $operatingsystem{
+    case $operatingsystem {
         debian: {
             info("Can support debian")
             include apt
             # This is where Open JDK 8 is located.
-            class{ 'apt::backports':
+            class { 'apt::backports':
               pin    => 500,
               notify => Exec['apt_update'],
             }
@@ -33,7 +33,7 @@ class repose_jenkins(
 # this will get us whatever the latest version is at the time
 # I don't know why it doesn't work like it's supposed to :|
 # I'm really only using it at this point because the rtyler/jenkins module wants it :|
-    class{ 'java':
+    class { 'java':
         distribution => 'jdk',
         package      => $java_package,
         version      => 'present',
@@ -45,7 +45,7 @@ class repose_jenkins(
 
 #jenkins master needs a git config so that it can talk to the scm plugin
 # Also needed by any of the release builds for when they do a git push
-    file{ "${jenkins_home}/.gitconfig":
+    file { "${jenkins_home}/.gitconfig":
         ensure => file,
         mode   => 0664,
         owner  => jenkins,
@@ -75,7 +75,7 @@ class repose_jenkins(
       mode    => '0700',
     }
 
-    file{ "${repose_jenkins::jenkins_home}/.ssh/id_rsa":
+    file { "${repose_jenkins::jenkins_home}/.ssh/id_rsa":
       ensure  => file,
       mode    => 0600,
       owner   => jenkins,
@@ -84,7 +84,7 @@ class repose_jenkins(
       require => File["${repose_jenkins::jenkins_home}/.ssh"],
     }
 
-    file{ "${repose_jenkins::jenkins_home}/.ssh/id_rsa.pub":
+    file { "${repose_jenkins::jenkins_home}/.ssh/id_rsa.pub":
       mode    => 0600,
       owner   => jenkins,
       group   => jenkins,

@@ -6,7 +6,7 @@ class repose_jenkins::modern_slave(
     groups => $groups
   }
 
-  class{"repose_gradle":
+  class { 'repose_gradle':
     user      => 'jenkins',
     user_home => "${repose_jenkins::jenkins_home}",
     daemon    => false,
