@@ -1,7 +1,5 @@
 # Actually installs jenkins, rather than waiting for the master to push the JAR
 class repose_jenkins::slave(
-  $deploy_key = undef,
-  $deploy_key_pub = undef,
   $repo_key = undef,
   $repo_key_pub = undef,
   $saxon_ee_license = undef,

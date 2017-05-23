@@ -2,6 +2,8 @@
 # also used by the master, basically anything that wants to run our jenkins jobs
 # Depends on garethr/remotesyslog to activate remote syslog for things on this host
 class repose_jenkins(
+    $deploy_key = undef,
+    $deploy_key_pub = undef,
     $java_package = 'openjdk-8-jdk'
 ) {
 
@@ -68,27 +70,27 @@ class repose_jenkins(
         user    => 'jenkins'
     }
 
-    file { "${repose_jenkins::jenkins_home}/.ssh":
+    file { "${jenkins_home}/.ssh":
       ensure  => directory,
       owner   => jenkins,
       group   => jenkins,
       mode    => '0700',
     }
 
-    file { "${repose_jenkins::jenkins_home}/.ssh/id_rsa":
+    file { "${jenkins_home}/.ssh/id_rsa":
       ensure  => file,
       mode    => 0600,
       owner   => jenkins,
       group   => jenkins,
       content => "${deploy_key}",
-      require => File["${repose_jenkins::jenkins_home}/.ssh"],
+      require => File["${jenkins_home}/.ssh"],
     }
 
-    file { "${repose_jenkins::jenkins_home}/.ssh/id_rsa.pub":
+    file { "${jenkins_home}/.ssh/id_rsa.pub":
       mode    => 0600,
       owner   => jenkins,
       group   => jenkins,
       content => "${deploy_key_pub}",
-      require => File["${repose_jenkins::jenkins_home}/.ssh"],
+      require => File["${jenkins_home}/.ssh"],
     }
 }
