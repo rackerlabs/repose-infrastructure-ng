@@ -67,4 +67,28 @@ class repose_jenkins(
         key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDRLK7eHYRbfj/NgIUlc8ECZD9EFwvj4ZvQDrkMX+4HBcpvQr6vVvQlezx7qtCnpZtPYbQvp0udxsfU9+ESlBMGcZBPjnJsKqlomYwaKcxaNKXe4FXGB9fi3si0fEt90pNBqTMjwOzzHj8jqu7PSz5A4tHfdNdJ+IN8IWI4S/YeqVXrdPtsM4Kpi/woSEYUd9Ma4ia/0fHjg4S6/Nb1cFFtx5OQejS6NIpOT3AcSkvOGfDQPHO3GhhZTufbmWeCiT4cOCgCZmlT6eDpl3R8eXWKIn6UGmBSfV1pqs7DFKSGMepV2HVsEtoButIlSfj2BP2mFJ6g1SstDsWCaw+jbtyN',
         user    => 'jenkins'
     }
+
+    file { "${repose_jenkins::jenkins_home}/.ssh":
+      ensure  => directory,
+      owner   => jenkins,
+      group   => jenkins,
+      mode    => '0700',
+    }
+
+    file{ "${repose_jenkins::jenkins_home}/.ssh/id_rsa":
+      ensure  => file,
+      mode    => 0600,
+      owner   => jenkins,
+      group   => jenkins,
+      content => "${deploy_key}",
+      require => File["${repose_jenkins::jenkins_home}/.ssh"],
+    }
+
+    file{ "${repose_jenkins::jenkins_home}/.ssh/id_rsa.pub":
+      mode    => 0600,
+      owner   => jenkins,
+      group   => jenkins,
+      content => "${deploy_key_pub}",
+      require => File["${repose_jenkins::jenkins_home}/.ssh"],
+    }
 }
