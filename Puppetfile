@@ -14,11 +14,7 @@ mod 'puppetlabs/apt', '2.2.0'
 
 mod 'puppetlabs/postgresql', '4.6.1'
 
-# going to try out this one, which supports both packages and urls
-#mod 'example42/java', '2.0.3' # the jenkins one depends on a conflicting named one :(
-#going to the git version because it supports ubuntu wily, once a released version catches up go back to a hard number
-mod 'puppetlabs/java',
-    :git => "https://github.com/puppetlabs/puppetlabs-java.git"
+mod 'puppetlabs/java', '1.6.0'
 mod 'maestrodev/maven', '1.4.0'
 mod 'maestrodev/sonarqube', '2.6.6'
 mod 'garethr-remotesyslog', '0.1.1'
