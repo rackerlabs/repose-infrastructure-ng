@@ -16,8 +16,15 @@ class repose_jenkins(
             include apt
             # This is where Open JDK 8 is located.
             class { 'apt::backports':
-              pin    => 500,
               notify => Exec['apt_update'],
+            }
+
+            apt::pin { 'backports_java':
+              packages => ['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk'],
+              priority => 500,
+              release  => 'jessie-backports',
+              require  => Class['apt::backports'],
+              notify   => Exec['apt_update'],
             }
         }
         ubuntu: {
