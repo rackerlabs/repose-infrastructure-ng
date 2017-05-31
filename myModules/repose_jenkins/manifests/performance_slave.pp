@@ -34,14 +34,6 @@ class repose_jenkins::performance_slave(
     group   => jenkins,
   }
 
-  file { "${repose_jenkins::jenkins_home}/.ssh/authorized_keys":
-    mode    => 0600,
-    owner   => jenkins,
-    group   => jenkins,
-    content => "${repose_jenkins::slave::deploy_key_pub}",
-    require => File["${repose_jenkins::jenkins_home}/.ssh"],
-  }
-
   file { "${repose_jenkins::jenkins_home}/.ssh/config":
     owner   => jenkins,
     group   => jenkins,
