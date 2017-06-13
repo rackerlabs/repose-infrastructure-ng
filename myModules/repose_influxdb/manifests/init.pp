@@ -28,6 +28,7 @@ class repose_influxdb (
   }
 
   firewall { '103 UDP listener access':
+    proto       => 'udp',
     source      => '192.168.3.0/24',
     destination => '192.168.3.0/24',
     dport       => '8089',
