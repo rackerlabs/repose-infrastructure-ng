@@ -27,6 +27,13 @@ class repose_influxdb (
     action      => 'accept',
   }
 
+  firewall { '103 UDP listener access':
+    source      => '192.168.3.0/24',
+    destination => '192.168.3.0/24',
+    dport       => '8089',
+    action      => 'accept',
+  }
+
   exec { 'apt-get-update':
     path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
     command => "apt-get update",
@@ -51,6 +58,10 @@ class repose_influxdb (
         "gatling.*.*.*.* measurement.measurement.request.status.field",
         "gatling.*.users.*.* measurement.measurement.measurement.request.field",
       ],
+    },
+    udp_options            => {
+      enabled              => true,
+      database             => $influxdb_performance_db,
     },
     require                => [
       Package['apt-transport-https'],
