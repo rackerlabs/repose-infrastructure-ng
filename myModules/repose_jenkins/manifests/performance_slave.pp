@@ -29,7 +29,7 @@ class repose_jenkins::performance_slave(
   }
 
   exec { 'Install Ansible Telegraf role':
-    command => 'ansible-galaxy install rossmcdonald.telegraf',
+    command => '/usr/local/bin/ansible-galaxy install rossmcdonald.telegraf',
   }
 
   file { "${repose_jenkins::jenkins_home}/.raxpub":
