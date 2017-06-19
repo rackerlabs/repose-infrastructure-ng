@@ -28,6 +28,10 @@ class repose_jenkins::performance_slave(
     install_args => '--upgrade',
   }
 
+  exec { 'Install Ansible Telegraf role':
+    command => 'ansible-galaxy install rossmcdonald.telegraf',
+  }
+
   file { "${repose_jenkins::jenkins_home}/.raxpub":
     content => template("repose_jenkins/.raxpub.erb"),
     owner   => jenkins,
