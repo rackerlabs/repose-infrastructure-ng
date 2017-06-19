@@ -196,6 +196,9 @@ class repose_jenkins::master(
         version => '3.4',
     }
 
+    jenkins::plugin { 'pipeline-utility-steps':
+        version => '1.3.0',
+    }
 
 #lets add back in my hax
 # Explicitly not including the jenkins access logs, because they're chatty.
