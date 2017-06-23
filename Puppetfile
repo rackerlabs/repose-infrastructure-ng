@@ -7,7 +7,7 @@ forge "https://forgeapi.puppetlabs.com"
 #modulefile
 
 # pulling in standard lib, and I can use it now
-mod 'puppetlabs/stdlib', '4.10.0'
+mod 'puppetlabs/stdlib', '4.13.1'
 
 mod 'puppetlabs/firewall', '1.7.2'
 mod 'puppetlabs/apt', '2.2.0'

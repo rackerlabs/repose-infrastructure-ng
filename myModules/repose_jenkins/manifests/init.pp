@@ -20,7 +20,7 @@ class repose_jenkins(
             }
 
             apt::pin { 'backports_java':
-              packages => ['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk'],
+              packages => ['ca-certificates-java', 'openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk'],
               priority => 500,
               release  => 'jessie-backports',
               require  => Class['apt::backports'],
