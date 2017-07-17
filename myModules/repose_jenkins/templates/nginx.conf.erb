@@ -3,12 +3,13 @@
 upstream app_jenkins {
     server 127.0.0.1:8080;
 }
+
 server {
-    listen [::]:443;
+    listen [::]:443 ipv6only=off;
 
     include /etc/nginx/nginx-ssl.conf;
 
-    server_name <%= @fqdn %>>;
+    server_name <%= @fqdn %>;
 
     location / {
       proxy_set_header X-Real-IP $remote_addr;

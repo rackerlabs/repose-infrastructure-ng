@@ -1,0 +1,20 @@
+= Restoring from Backup
+
+== Jenkins Master
+
+. Create a new Debian 8 (Jessie) host.
+  . The hostname must be `jenkins.openrepose.org`.
+. Add Cloud DNS entries to point to the new host.
+  . A and AAAA records should be added.
+  . The domain name must be `jenkins.openrepose.org`.
+. Apply the `repose_jenkins::master` manifest to the host.
+  See the README at the root of this repository to find out how.
+. Navigate to Jenkins in your browser, then unlock Jenkins using the initial admin password.
+  Skip the customization step.
+. Add credentials from PasswordSafe to Jenkins.
+  These credentials should find their way into the `$JENKINS_HOME/credentials.xml` file.
+. Restart the Jenkins service to load plugins.
+  This can be done either from the Jenkins UI or through `service` or `systemctl`.
+. Manually sync (from the Jenkins UI) the Jenkins configuration using the Jenkins SCM sync plugin.
+  The option to do so is under `Manage Jenkins` -> `Configure System` -> `SCM Sync configuration`.
+. Reload configuration from disk (from "Manage Jenkins").
