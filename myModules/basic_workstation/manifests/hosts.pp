@@ -8,7 +8,7 @@ class basic_workstation::hosts(
 
   #hosts
   host { 'jenkins-master':
-    ip  => '23.253.73.121',
+    ip  => '104.130.136.216',
   }
 
   host { 'jenkins-slave-1':
