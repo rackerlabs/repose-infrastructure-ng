@@ -14,4 +14,6 @@ class repose_nagios {
         source  => "puppet:///modules/repose_nagios/check_debian_packages",
         require => Package['nagios-plugins'],
     }
+
+    # todo: download and install the check_ssl_cert plugin
 }
