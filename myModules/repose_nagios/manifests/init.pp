@@ -15,5 +15,12 @@ class repose_nagios {
         require => Package['nagios-plugins'],
     }
 
-    # todo: download and install the check_ssl_cert plugin
+    file { '/usr/lib/nagios/plugins/check_ssl_cert':
+        ensure  => file,
+        owner   => root,
+        group   => root,
+        mode    => 0755,
+        source  => "puppet:///modules/repose_nagios/check_ssl_cert",
+        require => Package['nagios-plugins'],
+    }
 }
