@@ -18,3 +18,7 @@
 . Manually sync (from the Jenkins UI) the Jenkins configuration using the Jenkins SCM sync plugin.
   The option to do so is under `Manage Jenkins` -> `Configure System` -> `SCM Sync configuration`.
 . Reload configuration from disk (from "Manage Jenkins").
+. Update shared secrets if broken
+  . GitHub webhook secret for the pull request builder
+  . Access token for the repose-bot GitHub account
+  . Publish over ssh plugin SSH passphrase
