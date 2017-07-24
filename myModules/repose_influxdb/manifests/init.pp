@@ -13,6 +13,7 @@ class repose_influxdb (
     fail("Must have the name of the Performance DB configured")
   }
 
+  # todo: redundant include -- base::nginx::autohttps already provides this
   include ssl_cert
 
   firewall { '101 InfluxDB access':

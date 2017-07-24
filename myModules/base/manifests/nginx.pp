@@ -12,6 +12,7 @@ class base::nginx {
         path    => ['/bin', '/usr/bin'],
         cwd     => "/etc/nginx",
         creates => "/etc/nginx/dhparam.pem",
+        require => Package['nginx'],
     }
 
 # Don't want the default site running.

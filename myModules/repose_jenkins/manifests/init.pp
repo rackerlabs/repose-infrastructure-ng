@@ -34,14 +34,8 @@ class repose_jenkins(
         default: { fail("Unrecognized OS for repose_jenkins") }
     }
 
-# this should ensure we've got java on the system at jdk8. Installed via package
-# it will give us JDK8 however.
-# this is really stupid, for some reason it can't pick up the proper package version
-# and is doing stupid things, so I have to tell it everything basically.
-# the example42 one is more reliable, but I can't use it because it conflicts.
-# this will get us whatever the latest version is at the time
-# I don't know why it doesn't work like it's supposed to :|
-# I'm really only using it at this point because the rtyler/jenkins module wants it :|
+    # todo: on first run, the Java 8 package is not available
+    # By installing via package, we ensure that Java 8 can be installed.
     class { 'java':
         distribution => 'jdk',
         package      => $java_package,
@@ -52,8 +46,8 @@ class repose_jenkins(
         ensure => present,
     }
 
-#jenkins master needs a git config so that it can talk to the scm plugin
-# Also needed by any of the release builds for when they do a git push
+    # Jenkins master needs a git config so that it can talk to the scm plugin
+    # Also needed by any of the release builds for when they do a git push
     file { "${jenkins_home}/.gitconfig":
         ensure => file,
         mode   => 0664,
@@ -73,7 +67,7 @@ class repose_jenkins(
     ssh_authorized_key { 'jenkins':
         ensure  => present,
         type    => 'ssh-rsa',
-        key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDRLK7eHYRbfj/NgIUlc8ECZD9EFwvj4ZvQDrkMX+4HBcpvQr6vVvQlezx7qtCnpZtPYbQvp0udxsfU9+ESlBMGcZBPjnJsKqlomYwaKcxaNKXe4FXGB9fi3si0fEt90pNBqTMjwOzzHj8jqu7PSz5A4tHfdNdJ+IN8IWI4S/YeqVXrdPtsM4Kpi/woSEYUd9Ma4ia/0fHjg4S6/Nb1cFFtx5OQejS6NIpOT3AcSkvOGfDQPHO3GhhZTufbmWeCiT4cOCgCZmlT6eDpl3R8eXWKIn6UGmBSfV1pqs7DFKSGMepV2HVsEtoButIlSfj2BP2mFJ6g1SstDsWCaw+jbtyN',
+        key     => $deploy_key_pub,
         user    => 'jenkins'
     }
 
@@ -94,10 +88,11 @@ class repose_jenkins(
     }
 
     file { "${jenkins_home}/.ssh/id_rsa.pub":
+      ensure  => file,
       mode    => 0600,
       owner   => jenkins,
       group   => jenkins,
-      content => "${deploy_key_pub}",
+      content => "ssh-rsa ${deploy_key_pub} Jenkins Key",
       require => File["${jenkins_home}/.ssh"],
     }
 }
