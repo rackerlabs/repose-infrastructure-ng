@@ -32,6 +32,11 @@ class repose_jenkins::master(
       'JENKINS_HOME'         => {
         'value' => $repose_jenkins::jenkins_home
       },
+      # Both JAVA_ARGS and JENKINS_JAVA_OPTIONS serve the same purpose, but for
+      # different configuration files. JAVA_ARGS controls the /etc/default
+      # configuration file used on Debian based distributions while
+      # JENKINS_JAVA_OPTIONS controls the /etc/sysconfig configuration file
+      # used on RedHat Linux based distributions.
       'JAVA_ARGS'            => {
         'value' => '-Djava.awt.headless=true -Xms2048m -Xmx4096m -XX:PermSize=512m -XX:MaxPermSize=1024m -XX:-UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled'
       },
