@@ -106,9 +106,17 @@ class repose_influxdb (
     duplicity_options => '--full-if-older-than 15D --volsize 250 --exclude-other-filesystems --no-encryption',
   }
 
+  file{ "/usr/local/bin/influxdb-backup-compress.sh":
+    ensure => file,
+    owner  => root,
+    group  => root,
+    mode   => 0754,
+    source => "puppet:///modules/repose_influxdb/influxdb-backup-compress.sh",
+  }
+
   cron { 'influxdb_backup':
     ensure  => present,
-    command => "influxd backup -database $influxdb_performance_db $influxdb_backups",
+    command => "influxdb-backup-compress.sh $influxdb_performance_db $influxdb_backups",
     user    => 'root',
     hour    => 5,
     minute  => 0,
