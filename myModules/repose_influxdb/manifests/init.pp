@@ -132,12 +132,10 @@ class repose_influxdb (
     require => Backup_cloud_files::Target['performance_influxdb'],
   }
 
-  # schedule a clean up of the backups once a month
   cron { 'influxdb_cleanup':
     ensure   => present,
     command  => "find $influxdb_backups/ -type f -mtime +30 -name \"*.gz\" -execdir rm -- {} +",
     user     => root,
-    monthday => 1,
     hour     => 3,
     minute   => 0,
     require  => Backup_cloud_files::Target['performance_influxdb'],
@@ -145,9 +143,8 @@ class repose_influxdb (
 
   cron { 'duplicity_cleanup':
     ensure   => present,
-    command  => '/usr/local/bin/duplicity_performance_influxdb.rb remove-older-than 1M --force \$url',
+    command  => '/usr/local/bin/duplicity_performance_influxdb.rb remove-older-than 30D --extra-clean --force \$url',
     user     => root,
-    monthday => 1,
     hour     => 3,
     minute   => 0,
     require  => Backup_cloud_files::Target['performance_influxdb'],
