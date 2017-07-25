@@ -116,7 +116,7 @@ class repose_influxdb (
 
   cron { 'influxdb_backup':
     ensure  => present,
-    command => "influxdb-backup-compress.sh $influxdb_performance_db $influxdb_backups",
+    command => "/usr/local/bin/influxdb-backup-compress.sh $influxdb_performance_db $influxdb_backups",
     user    => 'root',
     hour    => 5,
     minute  => 0,
