@@ -8,13 +8,16 @@ cd /
 mkdir temp-restore
 ----
 
-. Restore from cloud files
+. Restore from Cloud Files
 +
-You'll need to get the cloud files username and apikey from the existing duplicity script (`/usr/local/bin/duplicity_performance_grafana.rb`).
+You'll need to get the Cloud Files `username` and `apikey` from the existing Duplicity script (`/usr/local/bin/duplicity_performance_grafana.rb`).
 +
 [source, bash]
 ----
-CLOUDFILES_USERNAME=fill-in CLOUDFILES_APIKEY=fill-in CLOUDFILES_REGION=DFW duplicity --no-encryption restore cf+http://performance_grafana /temp-restore/
+export CLOUDFILES_USERNAME=fill-in
+export CLOUDFILES_APIKEY=fill-in
+export CLOUDFILES_REGION=DFW
+duplicity --no-encryption restore cf+http://performance_grafana /temp-restore/
 ----
 
 . Stop Grafana
