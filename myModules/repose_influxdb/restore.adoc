@@ -1,0 +1,49 @@
+= Restoring from Backup
+
+. Make a directory for the restore
++
+[source, bash]
+----
+mkdir /tmp/restore
+----
+
+. Restore from Cloud Files
++
+You'll need to get the Cloud Files `username` and `apikey` from the existing Duplicity script (`/usr/local/bin/duplicity_performance_influxdb.rb`).
++
+[source, bash]
+----
+export CLOUDFILES_USERNAME=<FIX_ME>
+export CLOUDFILES_APIKEY=<FIX_ME>
+export CLOUDFILES_REGION=DFW
+duplicity --no-encryption restore cf+http://performance_influxdb /tmp/restore/
+----
+
+. Remove all the other backups and Decompress the restored files
++
+[source, bash]
+----
+DATE_STAMP=??? # Value produced by $(date +%Y%m%d%H%M%S) for the desired backup
+find /tmp/restore/ -type f ! -name "*.00_${DATE_STAMP}.gz" -delete
+for file in /tmp/restore/*.00_${DATE_STAMP}.gz ; do
+    gzip -d $file
+    mv ${file%.gz} ${file%_$DATE_STAMP.gz}
+done
+----
+
+. Restore the Metadata and the Performance database
++
+[source, bash]
+----
+influxd restore -metadir /var/lib/influxdb/meta /tmp/restore
+influxd restore -database performance -datadir /var/lib/influxdb/data /tmp/restore
+----
+
+. Delete the tmp files
++
+[source, bash]
+----
+rm -rf /tmp/restore
+----
+
+. Do a Jig
