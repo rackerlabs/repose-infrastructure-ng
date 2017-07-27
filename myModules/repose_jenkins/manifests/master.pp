@@ -3,6 +3,7 @@ class repose_jenkins::master(
     $jenkins_version = '2.46.3'
 ) {
 
+  include apt
   include base::nginx::autohttps
   include repose_jenkins
 
@@ -18,10 +19,18 @@ class repose_jenkins::master(
     restart    => '/bin/echo Not restarting the jenkins service',
   }
 
+  # Hold the Jenkins package at the desired version so that Nagios does not
+  # alert us of updates that we cannot consume.
+  apt::pin { 'jenkins_package':
+    before   => Package['jenkins'],
+    packages => 'jenkins',
+    version  => $jenkins_version,
+    priority => 1001,
+  }
+
   class { 'jenkins':
     require            => Class['java'],
     before             => Sshkey['github.com'],
-    version            => $jenkins_version,
     cli                => false,
     # If used to manage Java, verifies that Java is installed,
     # but does not verify the version of Java.
