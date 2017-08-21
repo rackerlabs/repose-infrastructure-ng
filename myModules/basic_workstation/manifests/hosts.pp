@@ -28,7 +28,7 @@ class basic_workstation::hosts(
   }
 
   host { 'jenkins-slave-5':
-    ip => '174.143.130.208',
+    ip => '23.253.245.21',
   }
 
   host { 'jenkins-slave-6':
