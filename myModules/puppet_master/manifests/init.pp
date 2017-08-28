@@ -106,4 +106,14 @@ class puppet_master {
         minute  => "*/15",
         require => File["/usr/local/bin/puppet-repo-sync.sh"]
     }
+
+    $puppet_reports = '/var/lib/puppet/reports'
+    cron { 'reports_cleanup':
+      ensure   => present,
+      command  => "find $puppet_reports/ -type f -mtime +90 -name \"*.yaml\" -execdir rm -- {} +",
+      user     => root,
+      hour     => 3,
+      minute   => 0,
+      require => File["$puppet_reports"]
+    }
 }
