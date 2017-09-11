@@ -8,6 +8,7 @@
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
     {"name":"puppetlabs/mysql","version_requirement":"3.x"},
+    {"name":"maestrodev-wget","version_requirement":">= 0.0.1"},
     {"name":"repose/backup_cloud_files","version_requirement":">= 0.0.1"},
     {"name":"puppetlabs/java","version_requirement":">= 0.0.1"}
   ]

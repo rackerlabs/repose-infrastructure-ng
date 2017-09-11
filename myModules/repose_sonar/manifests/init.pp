@@ -1,6 +1,8 @@
 class repose_sonar(
     $sonar_jdbc = undef
 ) {
+    include wget
+
     case $operatingsystem{
         debian: {
             info("Can support debian")
@@ -52,6 +54,13 @@ class repose_sonar(
         ],
     }
 
+    # Download the Sonar Scoverage plugin from GitHub since it is not published to a Maven repository
+    wget::fetch { 'Sonar Scoverage Plugin':
+        source      => 'https://github.com/RadoBuransky/sonar-scoverage-plugin/releases/download/v4.5.0/sonar-scoverage-plugin-4.5.0.jar',
+        destination => '/opt/sonar/extensions/plugins/',
+        notify      => Service['sonar'],
+    }
+
     # Forcing the Java plugin update was the fix to the "java.io.IOException: Incompatible version 1007." issue.
     # http://stackoverflow.com/questions/30459260/jacoco-sonarqube-incompatible-version-1007/37132563#37132563
     sonarqube::plugin{ 'sonar-java-plugin':
@@ -93,13 +102,6 @@ class repose_sonar(
         groupid    => 'org.codehaus.sonar.plugins',
         artifactid => 'sonar-findbugs-plugin',
         version    => '3.3.2',
-        notify     => Service['sonar'],
-    }
-
-    sonarqube::plugin { 'sonar-scoverage-plugin':
-        groupid    => 'org.codehaus.sonar-plugins',
-        artifactid => 'sonar-scoverage-plugin',
-        version    => '4.5.0',
         notify     => Service['sonar'],
     }
 
