@@ -96,6 +96,13 @@ class repose_sonar(
         notify     => Service['sonar'],
     }
 
+    sonarqube::plugin { 'sonar-scoverage-plugin':
+        groupid    => 'org.codehaus.sonar-plugins',
+        artifactid => 'sonar-scoverage-plugin',
+        version    => '4.5.0',
+        notify     => Service['sonar'],
+    }
+
     include base::nginx::autohttps
 
     file{ "/etc/nginx/conf.d/sonar.conf":
