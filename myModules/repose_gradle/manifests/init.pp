@@ -1,6 +1,6 @@
 #Installs gradle
 class repose_gradle(
-  $version = '3.1',
+  $version = '3.4',
   $base_url = 'http://downloads.gradle.org/distributions',
   $user = undef,
   $user_home = "/home/${user}",
