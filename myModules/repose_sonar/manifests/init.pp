@@ -1,6 +1,8 @@
 class repose_sonar(
     $sonar_jdbc = undef
 ) {
+    include wget
+
     case $operatingsystem{
         debian: {
             info("Can support debian")
@@ -50,6 +52,13 @@ class repose_sonar(
         require     => [
             Class['repose_sonar::database']
         ],
+    }
+
+    # Download the Sonar Scoverage plugin from GitHub since it is not published to a Maven repository
+    wget::fetch { 'Sonar Scoverage Plugin':
+        source      => 'https://github.com/RadoBuransky/sonar-scoverage-plugin/releases/download/v4.5.0/sonar-scoverage-plugin-4.5.0.jar',
+        destination => '/opt/sonar/extensions/plugins/',
+        notify      => Service['sonar'],
     }
 
     # Forcing the Java plugin update was the fix to the "java.io.IOException: Incompatible version 1007." issue.

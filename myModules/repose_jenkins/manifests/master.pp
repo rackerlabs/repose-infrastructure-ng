@@ -283,6 +283,9 @@ class repose_jenkins::master(
         config_filename => 'scm-sync-configuration.xml',
         config_content  => template('repose_jenkins/scm-sync-configuration.xml.erb'),
       },
+      'scoverage'                        => {
+        version => '1.3.3',
+      },
       'script-security'                  => {
         version => '1.29.1',
       },
