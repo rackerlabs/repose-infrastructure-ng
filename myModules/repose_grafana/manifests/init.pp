@@ -5,7 +5,7 @@ class repose_grafana {
 
   class { 'grafana':
     install_method => 'repo',
-    version        => '4.5.0',
+    version        => '4.5.1',
     cfg            => {
       app_mode => 'production',
       users    => {
