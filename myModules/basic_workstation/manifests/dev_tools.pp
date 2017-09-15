@@ -32,7 +32,7 @@ class basic_workstation::dev_tools(
   include 'repose_idea'
 
   #network tools
-  package {['stunnel4', 'wireshark']:
+  package {'wireshark':
     ensure => present,
   }
 
@@ -52,12 +52,6 @@ class basic_workstation::dev_tools(
   package {'visualvm':
     ensure => present
   }
-
-  #VMs for testing
-  class{'virtualbox':
-    version => '5.0'
-  }
-  include vagrant
 
   #docker, and use Google's DNS server to prevent resolution issues
   class{ 'docker':

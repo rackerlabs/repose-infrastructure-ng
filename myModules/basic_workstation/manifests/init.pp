@@ -21,14 +21,6 @@ class basic_workstation(
     user => "${user}",
   }
 
-  include apt
-  apt::ppa { 'ppa:mumble/release': }
-
-  package { 'mumble':
-    ensure  => present,
-    require => Apt::Ppa['ppa:mumble/release'],
-  }
-
   file {"$user_home/.bash_aliases":
     source => 'puppet:///modules/basic_workstation/bash_aliases',
     owner  => $user,

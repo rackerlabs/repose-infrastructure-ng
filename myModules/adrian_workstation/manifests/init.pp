@@ -8,7 +8,7 @@ class adrian_workstation {
 
   include google_chrome
 
-  package { ['hexchat', 'nautilus-dropbox', 'quicksynergy']:
+  package { ['hexchat', 'nautilus-dropbox']:
     ensure  => present,
   }
 }
