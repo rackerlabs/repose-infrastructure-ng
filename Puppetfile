@@ -79,9 +79,6 @@ mod "repose/basic_workstation",
 mod "repose/adrian_workstation",
     :path => "myModules/adrian_workstation"
 
-mod "repose/joel_workstation",
-    :path => "myModules/joel_workstation"
-
 mod "repose/repose_phone_home",
     :path => "myModules/repose_phone_home"
 
