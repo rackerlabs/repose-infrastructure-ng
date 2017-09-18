@@ -146,6 +146,8 @@ class repose_influxdb (
 
   cron { 'duplicity_cleanup':
     ensure   => present,
+    # escape the `\` and `$` characters so that neither Puppet nor the shell interpolate
+    # we literally want to pass `$url` as an argument to the Duplicity script
     command  => "$duplicityScript remove-older-than 30D --extra-clean --force \\\$url",
     user     => root,
     hour     => 3,

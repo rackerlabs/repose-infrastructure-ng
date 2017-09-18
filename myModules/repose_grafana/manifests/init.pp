@@ -63,6 +63,8 @@ class repose_grafana {
   # schedule a clean up of the backups once a month
   cron { 'duplicity_cleanup':
     ensure   => present,
+    # escape the `\` and `$` characters so that neither Puppet nor the shell interpolate
+    # we literally want to pass `$url` as an argument to the Duplicity script
     command  => "$duplicityScript remove-older-than 1M --force \\\$url",
     user     => root,
     monthday => 1,
