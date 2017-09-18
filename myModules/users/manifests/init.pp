@@ -2,22 +2,6 @@
 
 class users {
 
-  ssh_authorized_key { 'fsargent':
-    ensure  => absent,
-    type    => 'ssh-rsa',
-    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC4pL+84UzYmNVLRkEr4TYFbT65TVBh8/SAoNwZML0wRB7COr7q3v5E6xnAp31x9Ihw0p6DFOV7/BRd067FrCkrkxNrn/U0y+iuNll2ab3gG8n/6Aw2ehzAuJwlHGf0GUDMnLoNeFHGXwwTiLM2qm3zlxe++lO1WRmBGPybBGG/DG4wyidLHJUZ8l7UFO29y7/K9X/Q77Ln5587qpZwWkAyQoH21rRO/goSOTtYzs40IWFZcxOiN9pL7aZQ0/k7dnepP62spCT7xhJcbKEYVyZtM62zFYI7jWH6pJSzVKvEu0bPrGeuGgE8aKJQvHEwVO/gFtupb7DsXblXSkdkjV0Z',
-    name    => 'fsargent@-fsargent-mbp.local.-',
-    user    => 'root'
-  }
-  
-  ssh_authorized_key { 'mknocke':
-    ensure  => absent,
-    type    => 'ssh-rsa',
-    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yMjwIkV3i3IsmXIf4mJg3UlcRX0epZQw5hEpnDrZRAUe7SU42lB5nt/Q9GtyuZNXZuqnPLKBvm87cluvgtE6OK1ZBDxaUavofJlWIpsNhNzWZpDBeETFR3BnOL4yklBnEHqdf6zlfzX02J1GvYdNK3ZDHx2lpHPdvUQkLx1DUcCdCqzRCJcTX55N3k5HMzcnaFgcCJr8URK6Lo0LX34y3RLY4opmuhh5Dn+sdnxja3JRzAuEuD4kXWRd2HSSUMYNCOoTUNTH20yldHvpKETGT7bmWI7am60waS6pbIfJPaOpD5opGQHVpuh3y3RdKgvIXNozpBR8gGgMJO5/aeDEwuG+s8uSQdizsE9naoTDEsNPkwsJU2avLNr9L9VFTPnGotyJQcEiGKLQJl/vi/+Rps3B+55rhYAOMHsXK4MYR2WTkexFSL84XX6gFqNStXT4L3rwiOaNbtOr4Dyt9sp9JPYoQm3aJ/MHDETP4Ta6YGTgCYyVw+S6VSysq2IEfKoP7FNdlvLIfjullMdnNO1BbVW84XGRTouPc146qx/Vw5u8sNaLvhkxoUMy8WVvLQ1d8sV2COLoNrWU9J5GQ+DVQ+noK46d8/g4dhUsgIfhPlE/qCNndvPE7JyqSzcEev4pp6Y7JRyid2mCuQf56UyDQSS8kJPM7aK7oh/ubAAxpQ==',
-    name    => 'megan.knocke@rackspace.com',
-    user    => 'root'
-  }
-
   ssh_authorized_key { 'ageorge':
     ensure  => present,
     type    => 'ssh-rsa',
@@ -27,18 +11,10 @@ class users {
   }
 
   ssh_authorized_key { 'also-ageorge':
-    ensure  => present,
+    ensure  => absent,
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC6fxFsPwiURedznpuhCTHC3wsJAU5OxgFgD//wtWSJm5ePCJ1KvYD8eXZt79sIK+B17rAmLwGhkeS1YR3LQYnxuSdA9IQ6ioZP4XX5tsotMKo696ZtDVfsl/APtUSUyXcTqPy3tCSiq8MFVT1DYwaChJzLUZx8uan2Hoaq+vLx+aXpMRHUvOkEkqyQryHJFRTOXKQVDzN/9FV6rEo5wqC+7SUrOV0pvzOH4SGotHW/COoPdxJzqs1oFg7AAoVLqCo/SkChGgTeiLZMLwe1Z/KorBYzpsECprEZBe6B4dRxTjTooCgLl8O+5/CPgpjksRzeLlbgW1IGwIsPa02YJ7Xr',
     name    => 'adrian@work-desktop',
-    user    => 'root'
-  }
-
-  ssh_authorized_key { 'dkowis':
-    ensure  => absent,
-    type    => 'ssh-rsa',
-    key     => 'AAAAB3NzaC1yc2EAAAABIwAAAQEA9NcNiDKjl/K5R4Qk3F6IaF9dx2ZrUGlr5tdhwiqmfOWq6eZ+I60ZL0tKzhuE37tF9VMN8U89nHgQa/wOWkfDmLX20TuT3XHMXxc+3WS2g/iocS7JdBacayhgmcYDdDlUwHgvWvKk0wPO2/6UjmO4EXNwZHsdFR0JA40tAScuY9/Mf5ECB/dgxgNtVRfbjLNTFBF5ExAjoI15w1GhqONCOmAXH9CqlBokARqm8kPPuYKM6iCwmPeerhsVD5oR3DrEqHebCNVSevN2j21Nzoz8C1y1m7UMZ55VaQC8AM3f90mo4Tqw9ZTJbp4ctGYdhI/DyFS2APgvEua94aPwLjPLSQ==',
-    name    => 'dkowis@dkowis-desktop',
     user    => 'root'
   }
 
@@ -58,16 +34,8 @@ class users {
     user    => 'root'
   }
 
-  ssh_authorized_key { 'troyal':
-    ensure  => absent,
-    type    => 'ssh-rsa',
-    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDgcUdZ2PvIMbX/7hnsLCWLuOrLD75uWKxoFxJZqlcjx789SjyticqMuDydK5z9f82BCtTs8sFdH3+nm9O4v3JdGeYYIKNaYxXcG/IIEZZ7bs99rTzBsexkGHODYb8/PcAqMcivSeYqfoy3qqgDwP49S/K6Vbv+/yEQVCUL1E/fUpTjd6ZDt8nS3ohfcmf8dOLKHKety+jumrQwoHsAwYhVjAGrF+DmGhlCCTd7twtbd5L7nQRjwAhW8A7EZDXTIdrWh4rM2vmNYDbzgoSPVGkwAG8GlQk3QgA2/CN0epEr179SP3ArZhQ96n3KhEooifoRD/ACTDbjK8MsCwTagmB9',
-    name    => 'tyler@tyler-laptop',
-    user    => 'root'
-  }
-  
   ssh_authorized_key { 'dimi5963':
-    ensure  => present,
+    ensure  => absent,
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCmzYB+v6yjDaoAgPgcStdydVpaajj8Qz7M6NDFQGo6TZOfT6+R/ERcw3sVUE3e36IZTE1HhclYfmEPpy6G7DxezLTIaYLdJ41nWavl+SUs+QpIH+ww4RDWgStDS9eN2Ytpfo4/HAREz+JYO/CDG++KkufD63A4rg0ZLJWs4QNffdMvTllNvIr/3aNuL5udJ7UI+kk3aPVWMHi6yHcu7jwFNia8yrEdCxBSoZjU5Obp4sQdVR7Cp98LgBSTYBY2ysL0qkRAqqN/NM5DAW51IIrffp1u7Wb1atFpHqN6XyrrT/Juz+pLYyMYsiLmJkcQyM7kACywDqQlb5IgLw9dlFRR',
     name    => 'dimitry.ushakov@rackspace.com',
@@ -83,7 +51,7 @@ class users {
   }
 
   ssh_authorized_key { 'joelrizner':
-    ensure  => present,
+    ensure  => absent,
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQDJY7WfQyYhH5RAN4MkmNswgYAoXhCuS1f1jbtH43zcTdy+A3ts0A5ej7WuiLUcIEeSfLbVfrxJnRTVGg1d6nmHdh1lGFsh+khvbTkdtC87pSQSMFMmdZAyY9VSBJwrSm9k/BNUWTX9JzSawA8Qz+rKb6qqRXQvRXEPjkFhv1XaC+lo7oWyiw4LpFj4ddzuhaqotsOYHIwzjPmvVrph4Pfm98a3tiWWi20SC4IhTaWTZpLmjqd5TGkXOjwz/B7I3OJLNC5V3+2mxAhrlrnOucAGSTw9NhCEiS3gdH3VGb8BJecFHqAR7H9WkH4ZQmbp9IBk1UOem3dqc0/FWeNFvLQYrkvVfEnzgRNJwXmsRgWiEm6HH5Lyx5CfdCeasCsUTnP2oxzNSXs2v7AKYV81l9dWZqkql+K4y+c0d1haD+UB2KIJOuvunOE/ERP5oO4QghefFdCg5AKJmBl1mU/Wm7m0HnUER2OfU6hiC5LsMMahn3o5HIH50wR42Hd7KM+79DSGy8vtoM1QemoiZIXSKvnEfgwXoAL/SdgaVIn8wS1niJLZHyt3T3yUSCfBQfpzdo9ttH636F+AkSvXarS4TwLZTt+Cm3dbACz+bDmVAOrnRDLkETWNcAK2+EWeLPFgeJGgmIuS0yZ0Brch9dVvfGoPLVgM5l+sgAtwjbuornMxiQ==',
     name    => 'Joel.Rizner@rackspace.com',
