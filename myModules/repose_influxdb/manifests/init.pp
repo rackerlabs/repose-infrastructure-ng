@@ -98,7 +98,10 @@ class repose_influxdb (
   }
 
   $influxdb_backups = '/srv/influxdb-backups'
-  backup_cloud_files::target { 'performance_influxdb':
+  $targetName = 'performance_influxdb'
+  $duplicityScript = "/usr/local/bin/duplicity_$targetName.rb"
+
+  backup_cloud_files::target { $targetName:
     target            => $influxdb_backups,
     cf_username       => hiera('rs_cloud_username'),
     cf_apikey         => hiera('rs_cloud_apikey'),
@@ -125,11 +128,11 @@ class repose_influxdb (
 
   cron { 'duplicity_backup':
     ensure  => present,
-    command => '/usr/local/bin/duplicity_performance_influxdb.rb',
+    command => $duplicityScript,
     user    => root,
     hour    => 6,
     minute  => 0,
-    require => Backup_cloud_files::Target['performance_influxdb'],
+    require => Backup_cloud_files::Target[$targetName],
   }
 
   cron { 'influxdb_cleanup':
@@ -138,16 +141,16 @@ class repose_influxdb (
     user     => root,
     hour     => 3,
     minute   => 0,
-    require  => Backup_cloud_files::Target['performance_influxdb'],
+    require  => Backup_cloud_files::Target[$targetName],
   }
 
   cron { 'duplicity_cleanup':
     ensure   => present,
-    command  => '/usr/local/bin/duplicity_performance_influxdb.rb remove-older-than 30D --extra-clean --force \$url',
+    command  => "$duplicityScript remove-older-than 30D --extra-clean --force \$url"f,
     user     => root,
     hour     => 3,
     minute   => 0,
-    require  => Backup_cloud_files::Target['performance_influxdb'],
+    require  => Backup_cloud_files::Target[$targetName],
   }
 
   include base::nginx::autohttps

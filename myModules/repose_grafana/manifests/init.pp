@@ -31,7 +31,10 @@ class repose_grafana {
   }
 
   $grafana_backups = '/srv/grafana-backups'
-  backup_cloud_files::target { 'performance_grafana':
+  $targetName = 'performance_grafana'
+  $duplicityScript = "/usr/local/bin/duplicity_$targetName.rb"
+
+  backup_cloud_files::target { $targetName :
     target            => $grafana_backups,
     cf_username       => hiera('rs_cloud_username'),
     cf_apikey         => hiera('rs_cloud_apikey'),
@@ -50,22 +53,22 @@ class repose_grafana {
 
   cron { 'duplicity_backup':
     ensure  => present,
-    command => '/usr/local/bin/duplicity_performance_grafana.rb',
+    command => $duplicityScript,
     user    => root,
     hour    => 13,
     minute  => 0,
-    require => Backup_cloud_files::Target['performance_grafana'],
+    require => Backup_cloud_files::Target[$targetName],
   }
 
   # schedule a clean up of the backups once a month
   cron { 'duplicity_cleanup':
     ensure   => present,
-    command  => '/usr/local/bin/duplicity_performance_grafana.rb remove-older-than 1M --force \$url',
+    command  => "$duplicityScript remove-older-than 1M --force \$url",
     user     => root,
     monthday => 1,
     hour     => 3,
     minute   => 0,
-    require  => Backup_cloud_files::Target['performance_grafana'],
+    require  => Backup_cloud_files::Target[$targetName],
   }
 
   #Papertrail the grafana logs
