@@ -63,7 +63,7 @@ class repose_grafana {
   # schedule a clean up of the backups once a month
   cron { 'duplicity_cleanup':
     ensure   => present,
-    command  => "$duplicityScript remove-older-than 1M --force \$url",
+    command  => "$duplicityScript remove-older-than 1M --force \\\$url",
     user     => root,
     monthday => 1,
     hour     => 3,

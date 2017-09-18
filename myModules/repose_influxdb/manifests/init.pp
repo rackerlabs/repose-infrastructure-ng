@@ -146,7 +146,7 @@ class repose_influxdb (
 
   cron { 'duplicity_cleanup':
     ensure   => present,
-    command  => "$duplicityScript remove-older-than 30D --extra-clean --force \$url",
+    command  => "$duplicityScript remove-older-than 30D --extra-clean --force \\\$url",
     user     => root,
     hour     => 3,
     minute   => 0,
