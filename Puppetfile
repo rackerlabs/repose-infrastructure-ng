@@ -28,6 +28,8 @@ mod 'puppet-archive', '1.1.2'
 mod 'golja-influxdb', '4.0.0'
 mod 'puppet-grafana', '2.6.3'
 mod 'stankevich-python', '1.18.2'
+#for slack
+mod 'computology-packagecloud', '0.3.2'
 
 mod "repose/base",
     :path => "myModules/base"

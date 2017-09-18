@@ -27,5 +27,5 @@ class basic_workstation(
     group  => $user,
   }
 
-  #todo: figure out a way to get slack, zoom, and vpn in here
+  #todo: figure out a way to get zoom and vpn in here
 }

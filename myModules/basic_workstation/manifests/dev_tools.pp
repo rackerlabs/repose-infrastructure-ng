@@ -67,4 +67,14 @@ class basic_workstation::dev_tools(
   package {'xdot':
     ensure => present
   }
+
+  #slack
+  include packagecloud
+  packagecloud::repo { 'slacktechnologies/slack':
+    type => 'deb',
+  }
+  package { 'slack-desktop':
+    ensure  => present,
+    require => Packagecloud::Repo['slacktechnologies/slack'],
+  }
 }
