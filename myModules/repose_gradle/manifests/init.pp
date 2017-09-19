@@ -13,7 +13,9 @@ class repose_gradle(
   $sonar_password = undef,
   $sonar_db_user = undef,
   $sonar_db_password = undef,
-  $signing_passphrase = undef
+  $signing_passphrase = undef,
+  $publish_key = undef,
+  $publish_secret = undef,
 ) {
 
   #downloads and explodes the given version
