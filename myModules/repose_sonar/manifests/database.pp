@@ -66,7 +66,10 @@ class repose_sonar::database(
         time            => ['5', '0'],
     }
 
-    backup_cloud_files::target{ 'sonar_mysql':
+    $targetName = 'sonar_mysql'
+    $duplicityScript = "/usr/local/bin/duplicity_$targetName.rb"
+
+    backup_cloud_files::target{ $targetName :
         target            => '/srv/mysql-backups',
         cf_username       => hiera('rs_cloud_username'),
         cf_apikey         => hiera('rs_cloud_apikey'),
@@ -77,21 +80,23 @@ class repose_sonar::database(
 
     cron{ 'duplicity_backup':
         ensure  => present,
-        command => '/usr/local/bin/duplicity_sonar_mysql.rb',
+        command => $duplicityScript,
         user    => root,
         hour    => 6,
         minute  => 0,
-        require => Backup_cloud_files::Target['sonar_mysql'],
+        require => Backup_cloud_files::Target[$targetName],
     }
 
 # schedule a clean up of the backups once a month
     cron{ 'duplicity_cleanup':
         ensure   => present,
-        command  => '/usr/local/bin/duplicity_sonar_mysql.rb remove-older-than 1M --force \$url',
+        # escape the `\` and `$` characters so that neither Puppet nor the shell interpolate
+        # we literally want to pass `$url` as an argument to the Duplicity script
+        command  => "$duplicityScript remove-older-than 1M --force \\\$url",
         user     => root,
         monthday => 1,
         hour     => 3,
         minute   => 0,
-        require  => Backup_cloud_files::Target['sonar_mysql'],
+        require  => Backup_cloud_files::Target[$targetName],
     }
 }
