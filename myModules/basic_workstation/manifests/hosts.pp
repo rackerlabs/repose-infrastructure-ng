@@ -47,10 +47,6 @@ class basic_workstation::hosts(
     ip => '23.253.242.9',
   }
 
-  host { 'mumble':
-    ip => '23.253.107.117',
-  }
-
   host { 'nagios':
     ip => '104.239.133.25',
   }

@@ -1,9 +1,6 @@
 Host jenkins-*
 User root
 
-Host mumble
-User root
-
 Host nagios
 User root
 
