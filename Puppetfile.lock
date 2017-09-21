@@ -63,12 +63,6 @@ PATH
     repose/cloud_monitoring (0.0.1)
 
 PATH
-  remote: myModules/mumble_server
-  specs:
-    repose/mumble_server (0.0.1)
-      repose/backup_cloud_files (>= 0)
-
-PATH
   remote: myModules/puppet_master
   specs:
     repose/puppet_master (0.0.1)
@@ -131,7 +125,6 @@ DEPENDENCIES
   repose/backup_cloud_files (>= 0)
   repose/base (>= 0)
   repose/cloud_monitoring (>= 0)
-  repose/mumble_server (>= 0)
   repose/puppet_master (>= 0)
   repose/repose_jenkins (>= 0)
   repose/repose_nagios (>= 0)

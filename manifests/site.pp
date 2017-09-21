@@ -57,10 +57,6 @@ node "sonar.openrepose.org" inherits default {
     include repose_sonar
 }
 
-node "mumble.openrepose.org" inherits default {
-    include mumble_server
-}
-
 # this server has been deleted
 node "nexus.openrepose.org" inherits default {
     include repose_nexus
