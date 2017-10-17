@@ -125,7 +125,7 @@ class repose_jenkins::build_slave {
     gunicorn   => 'absent',
   }
 
-  python::pip { 'doc-utils':
-    pkgname => 'doc-utils',
+  python::pip { 'docutils':
+    pkgname => 'docutils',
   }
 }
