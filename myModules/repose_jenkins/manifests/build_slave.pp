@@ -112,12 +112,17 @@ class repose_jenkins::build_slave {
     ensure => present,
   }
 
-  package { [
-    'gcc', # This is needed by API-Checker's use of Nailgun
-    'python-pip', # This is for the Attribute Mapping library documentation
-    'python2.7-dev', # This is for the Attribute Mapping library documentation
-  ]:
+  package { 'gcc':
+    # This is needed by API-Checker's use of Nailgun
     ensure => present,
+  }
+
+  class { 'python' :
+    version    => 'python27',
+    pip        => 'present',
+    dev        => 'present',
+    virtualenv => 'absent',
+    gunicorn   => 'absent',
   }
 
   python::pip { 'docutils':
