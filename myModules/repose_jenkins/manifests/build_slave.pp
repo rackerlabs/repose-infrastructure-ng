@@ -117,4 +117,15 @@ class repose_jenkins::build_slave {
     ensure => present,
   }
 
+  class { 'python' :
+    version    => '2.7',
+    pip        => 'present',
+    dev        => 'present',
+    virtualenv => 'absent',
+    gunicorn   => 'absent',
+  }
+
+  python::pip { 'doc-utils':
+    pkgname => 'doc-utils',
+  }
 }
