@@ -118,7 +118,7 @@ class repose_jenkins::build_slave {
   }
 
   class { 'python' :
-    version    => 'python27',
+    version    => "2.7",
     pip        => 'present',
     dev        => 'present',
     virtualenv => 'absent',
