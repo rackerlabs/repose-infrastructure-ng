@@ -1,8 +1,6 @@
 class repose_jenkins::legacy_slave {
 
-  class { 'repose_jenkins::slave':
-    java_package => 'openjdk-7-jdk'
-  }
+  include repose_jenkins::slave
 
   class{"repose_maven":
     user      => 'jenkins',

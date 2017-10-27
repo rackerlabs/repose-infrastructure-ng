@@ -4,13 +4,9 @@ class repose_jenkins::slave(
   $repo_key_pub = undef,
   $saxon_ee_license = undef,
   $groups = [],
-  $java_package = 'openjdk-8-jdk'
 ) {
 
-  class { 'repose_jenkins':
-    java_package => $java_package
-  }
-
+  include repose_jenkins
   include repose_jenkins::gpgkey
 
   group { 'jenkins':
