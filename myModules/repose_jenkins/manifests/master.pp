@@ -86,6 +86,9 @@ class repose_jenkins::master(
       'built-on-column'                  => {
         version => '1.1',
       },
+      'checkmarx'                        => {
+        version => '8.42.0',
+      },
       'cloudbees-folder'                 => {
         version => '6.1.0',
       },
