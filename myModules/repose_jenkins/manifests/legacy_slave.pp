@@ -2,6 +2,10 @@ class repose_jenkins::legacy_slave {
 
   include repose_jenkins::slave
 
+  package { 'openjdk-7-jdk':
+      ensure => latest,
+  }
+
   class{"repose_maven":
     user      => 'jenkins',
     user_home => "${repose_jenkins::jenkins_home}",
