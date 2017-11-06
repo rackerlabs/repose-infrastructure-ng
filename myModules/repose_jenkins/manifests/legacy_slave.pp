@@ -1,7 +1,9 @@
 class repose_jenkins::legacy_slave {
 
-  class { 'repose_jenkins::slave':
-    java_package => 'openjdk-7-jdk'
+  include repose_jenkins::slave
+
+  package { 'openjdk-7-jdk':
+      ensure => latest,
   }
 
   class{"repose_maven":

@@ -4,7 +4,6 @@
 class repose_jenkins(
     $deploy_key = undef,
     $deploy_key_pub = undef,
-    $java_package = 'openjdk-8-jdk'
 ) {
 
     $jenkins_home = '/var/lib/jenkins'
@@ -38,8 +37,8 @@ class repose_jenkins(
     # By installing via package, we ensure that Java 8 can be installed.
     class { 'java':
         distribution => 'jdk',
-        package      => $java_package,
-        version      => 'present',
+        package      => 'openjdk-8-jdk',
+        version      => 'latest',
     }
 
     package { 'git':
