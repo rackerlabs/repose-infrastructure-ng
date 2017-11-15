@@ -137,7 +137,7 @@ class repose_influxdb (
 
   cron { 'influxdb_cleanup':
     ensure   => present,
-    command  => "find $influxdb_backups/ -type f -mtime +14 -name \"*.gz\" -execdir rm -- {} +",
+    command  => "find $influxdb_backups/ -type f -mtime +7 -name \"*.gz\" -execdir rm -- {} +",
     user     => root,
     hour     => 3,
     minute   => 0,
