@@ -68,13 +68,14 @@ class basic_workstation::dev_tools(
     ensure => present
   }
 
-  #slack
-  include packagecloud
-  packagecloud::repo { 'slacktechnologies/slack':
-    type => 'deb',
-  }
-  package { 'slack-desktop':
-    ensure  => present,
-    require => Packagecloud::Repo['slacktechnologies/slack'],
-  }
+  # this didn't work, look into it later
+  # #slack
+  # include packagecloud
+  # packagecloud::repo { 'slacktechnologies/slack':
+  #   type => 'deb',
+  # }
+  # package { 'slack-desktop':
+  #   ensure  => present,
+  #   require => Packagecloud::Repo['slacktechnologies/slack'],
+  # }
 }
