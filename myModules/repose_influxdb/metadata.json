@@ -7,6 +7,7 @@
   "source": "",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"golja-influxdb","version_requirement":"4.x"},
     {"name":"repose/backup_cloud_files","version_requirement":">= 0.0.1"}
   ]
 }

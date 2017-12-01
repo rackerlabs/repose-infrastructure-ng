@@ -46,12 +46,17 @@ class repose_influxdb (
     require => Exec['apt_update'],
   }
 
+  $cbs_mount_point = '/mnt/cbs'
+
   class { 'influxdb::server':
     http_auth_enabled      => true,
     http_https_enabled     => true,
     http_https_certificate => '/etc/ssl/certs/openrepose.crt',
     http_https_private_key => '/etc/ssl/keys/openrepose.key',
     http_max_row_limit     => 10000,
+    meta_dir               => "$cbs_mount_point/influxdb/meta",
+    data_dir               => "$cbs_mount_point/influxdb/data",
+    wal_dir                => "$cbs_mount_point/influxdb/wal",
     graphite_options       => {
       enabled              => true,
       database             => $influxdb_performance_db,
@@ -97,7 +102,7 @@ class repose_influxdb (
     require => Class["influxdb::server"],
   }
 
-  $influxdb_backups = '/srv/influxdb-backups'
+  $influxdb_backups = "$cbs_mount_point/backups"
   $targetName = 'performance_influxdb'
   $duplicityScript = "/usr/local/bin/duplicity_$targetName.rb"
 

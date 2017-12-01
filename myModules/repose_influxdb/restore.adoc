@@ -47,3 +47,23 @@ rm -rf /tmp/restore
 ----
 
 . Do a Jig
+
+= Restoring the Server
+
+. Build a Debian Cloud Server
+.. The "1 GB General Purpose v1" flavor is currently used
+.. The hostname should be `influxdb.openrepose.org` (which can be set by naming the server the same) so that the Puppet master will apply the desired manifest
+. Create a Cloud Block Storage volume
+. Attach the new Cloud Block Storage volume to the new server
+. Partition the new disk on the new server
+.. Using `fdisk` is recommended
+. Format the new partition on the new disk
+.. Using `mkfs` is recommended
+. Persist the volume mount
+.. Edit the `/etc/fstab` file
+. Mount the new volume
+.. The volume should be mounted at the mount point referenced in the manifest (currently `/mnt/cbs`)
+.. Using `mount -a` is recommended
+. Connect the new server to the "ServiceNet" network
+. Update the `influxdb.openrepose.org` DNS record to point to the IP address of the new server
+. Run the Puppet agent on the new server after following the normal Puppet setup steps
