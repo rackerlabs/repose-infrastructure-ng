@@ -106,16 +106,17 @@ class repose_jenkins::master(
         version => '2.9.11',
       },
       'display-url-api'                  => {
-        version => '2.1.0',
+        version => '2.2.0',
       },
       'docker-commons'                   => {
         version => '1.9',
       },
+      # This is the "Docker Pipeline".
       'docker-workflow'                  => {
-        version => '1.13',
+        version => '1.14',
       },
       'durable-task'                     => {
-        version => '1.15',
+        version => '1.17',
       },
       'dynamic-axis'                     => {
         version => '1.0.3',
@@ -133,7 +134,7 @@ class repose_jenkins::master(
         version => '1.39.0',
       },
       'git'                              => {
-        version => '3.6.3',
+        version => '3.6.4',
       },
       'git-client'                       => {
         version => '2.6.0',
@@ -145,7 +146,7 @@ class repose_jenkins::master(
         version => '1.28.1',
       },
       'github-api'                       => {
-        version => '1.89',
+        version => '1.90',
       },
       'gradle'                           => {
         version => '1.28',
@@ -190,10 +191,10 @@ class repose_jenkins::master(
         version => '0.1.54.1',
       },
       'junit'                            => {
-        version => '1.21',
+        version => '1.23',
       },
       'ldap'                             => {
-        version => '1.17',
+        version => '1.18',
       },
       'm2release'                        => {
         version => '0.14.0',
@@ -205,7 +206,7 @@ class repose_jenkins::master(
         version => '1.0.9.0',
       },
       'matrix-auth'                      => {
-        version => '2.1',
+        version => '2.2',
       },
       'matrix-project'                   => {
         version => '1.12',
@@ -253,10 +254,10 @@ class repose_jenkins::master(
         version => '2.9',
       },
       'pipeline-stage-step'              => {
-        version => '2.2',
+        version => '2.3',
       },
       'pipeline-stage-tags-metadata'     => {
-        version => '1.2.2',
+        version => '1.2.5',
       },
       'pipeline-stage-view'              => {
         version => '2.9',
@@ -274,7 +275,7 @@ class repose_jenkins::master(
         version => '1.0',
       },
       'scm-api'                          => {
-        version => '2.2.3',
+        version => '2.2.5',
       },
       # Requires the ssh key for github.com, which is provided by the base module
       'scm-sync-configuration'           => {
@@ -287,7 +288,7 @@ class repose_jenkins::master(
         version => '1.3.3',
       },
       'script-security'                  => {
-        version => '1.34',
+        version => '1.36',
       },
       'simple-theme-plugin'              => {
         version => '0.3',
@@ -349,8 +350,9 @@ class repose_jenkins::master(
       'workflow-scm-step'                => {
         version => '2.6',
       },
+      # This is "Pipeline: Step API".
       'workflow-step-api'                => {
-        version => '2.13',
+        version => '2.14',
       },
       'workflow-support'                 => {
         version => '2.16',
