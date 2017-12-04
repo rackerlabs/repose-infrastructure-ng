@@ -239,7 +239,7 @@ class repose_jenkins::master(
         version => '1.3.1',
       },
       'pipeline-model-api'               => {
-        version => '1.2.2',
+        version => '1.2.5',
       },
       'pipeline-model-declarative-agent' => {
         version => '1.1.1',
@@ -332,8 +332,9 @@ class repose_jenkins::master(
       'workflow-basic-steps'             => {
         version => '2.6',
       },
+      # This is "Pipeline: Groovy".
       'workflow-cps'                     => {
-        version => '2.41',
+        version => '2.42',
       },
       'workflow-cps-global-lib'          => {
         version => '2.9',
