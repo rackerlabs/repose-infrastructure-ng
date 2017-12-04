@@ -244,11 +244,13 @@ class repose_jenkins::master(
       'pipeline-model-declarative-agent' => {
         version => '1.1.1',
       },
+      # This is "Pipeline: Declarative".
       'pipeline-model-definition'        => {
-        version => '1.2.2',
+        version => '1.2.5',
       },
+      # This is "Pipeline: Declarative Extension Points API".
       'pipeline-model-extensions'        => {
-        version => '1.2.2',
+        version => '1.2.5',
       },
       'pipeline-rest-api'                => {
         version => '2.9',
