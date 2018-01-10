@@ -11,6 +11,14 @@ class repose_sonar(
             class{ 'apt::backports':
                 notify => Exec['apt_update'],
             }
+
+            apt::pin { 'backports_java':
+              packages => ['ca-certificates-java', 'openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk'],
+              priority => 500,
+              release  => 'jessie-backports',
+              require  => Class['apt::backports'],
+              notify   => Exec['apt_update'],
+            }
         }
         ubuntu: {
             info("Can support ubuntu")
