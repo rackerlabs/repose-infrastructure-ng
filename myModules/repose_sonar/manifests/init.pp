@@ -24,7 +24,7 @@ class repose_sonar(
         require => Exec['apt_update'],
     }
 
-    package {['openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
+    package {['ca-certificates-java', 'openjdk-8-jre-headless', 'openjdk-8-jre', 'openjdk-8-jdk']:
         ensure => present,
         require => Exec['apt_update'],
     }
