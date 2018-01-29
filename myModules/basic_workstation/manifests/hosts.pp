@@ -64,7 +64,7 @@ class basic_workstation::hosts(
   }
 
   host { 'phone-home':
-    ip => '162.209.77.79',
+    ip => '162.209.78.12',
   }
 
   host { 'influxdb':
