@@ -103,7 +103,7 @@ class repose_jenkins::master(
         version => '1.39',
       },
       'credentials-binding'              => {
-        version => '1.14',
+        version => '1.15',
       },
       # todo: uncomment this when the jenkins module does not manage this plugin itself
       # 'credentials' => {
@@ -198,7 +198,7 @@ class repose_jenkins::master(
         version => '0.1.54.1',
       },
       'junit'                            => {
-        version => '1.23',
+        version => '1.24',
       },
       'ldap'                             => {
         version => '1.19',
@@ -315,7 +315,7 @@ class repose_jenkins::master(
         version => '1.25.1',
       },
       'structs'                          => {
-        version => '1.12',
+        version => '1.13',
       },
       'subversion'                       => {
         version => '2.10.2',
@@ -366,7 +366,7 @@ class repose_jenkins::master(
         version => '2.14',
       },
       'workflow-support'                 => {
-        version => '2.17',
+        version => '2.18',
       },
     },
   }
