@@ -35,7 +35,7 @@ class users {
   }
 
   ssh_authorized_key { 'dimi5963':
-    ensure  => absent,
+    ensure  => present,
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCmzYB+v6yjDaoAgPgcStdydVpaajj8Qz7M6NDFQGo6TZOfT6+R/ERcw3sVUE3e36IZTE1HhclYfmEPpy6G7DxezLTIaYLdJ41nWavl+SUs+QpIH+ww4RDWgStDS9eN2Ytpfo4/HAREz+JYO/CDG++KkufD63A4rg0ZLJWs4QNffdMvTllNvIr/3aNuL5udJ7UI+kk3aPVWMHi6yHcu7jwFNia8yrEdCxBSoZjU5Obp4sQdVR7Cp98LgBSTYBY2ysL0qkRAqqN/NM5DAW51IIrffp1u7Wb1atFpHqN6XyrrT/Juz+pLYyMYsiLmJkcQyM7kACywDqQlb5IgLw9dlFRR',
     name    => 'dimitry.ushakov@rackspace.com',
