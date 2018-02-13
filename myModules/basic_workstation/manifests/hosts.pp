@@ -47,6 +47,22 @@ class basic_workstation::hosts(
     ip => '23.253.242.9',
   }
 
+  host { 'jenkins-slave-10':
+    ip => '23.253.99.94',
+  }
+
+  host { 'jenkins-slave-11':
+    ip => '23.253.99.171',
+  }
+
+  host { 'jenkins-slave-12':
+    ip => '23.253.94.140',
+  }
+
+  host { 'jenkins-slave-13':
+    ip => '23.253.99.251',
+  }
+
   host { 'nagios':
     ip => '104.239.133.25',
   }
