@@ -49,6 +49,10 @@ node /^slave[7-9]\.openrepose\.org$/ inherits default {
     include repose_jenkins::performance_slave
 }
 
+node /^slave1[0-9]\.openrepose\.org$/ inherits default {
+    include repose_jenkins::build_slave
+}
+
 node "jenkins.openrepose.org" inherits default {
     include repose_jenkins::master
 }
