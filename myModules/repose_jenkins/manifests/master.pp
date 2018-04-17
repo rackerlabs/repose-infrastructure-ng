@@ -300,7 +300,7 @@ class repose_jenkins::master(
         version => '1.3.3',
       },
       'script-security'                  => {
-        version => '1.43',
+        version => '1.44',
       },
       'simple-theme-plugin'              => {
         version => '0.4',
