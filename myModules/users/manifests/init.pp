@@ -11,10 +11,10 @@ class users {
   }
 
   ssh_authorized_key { 'also-ageorge':
-    ensure  => absent,
+    ensure  => present,
     type    => 'ssh-rsa',
-    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC6fxFsPwiURedznpuhCTHC3wsJAU5OxgFgD//wtWSJm5ePCJ1KvYD8eXZt79sIK+B17rAmLwGhkeS1YR3LQYnxuSdA9IQ6ioZP4XX5tsotMKo696ZtDVfsl/APtUSUyXcTqPy3tCSiq8MFVT1DYwaChJzLUZx8uan2Hoaq+vLx+aXpMRHUvOkEkqyQryHJFRTOXKQVDzN/9FV6rEo5wqC+7SUrOV0pvzOH4SGotHW/COoPdxJzqs1oFg7AAoVLqCo/SkChGgTeiLZMLwe1Z/KorBYzpsECprEZBe6B4dRxTjTooCgLl8O+5/CPgpjksRzeLlbgW1IGwIsPa02YJ7Xr',
-    name    => 'adrian@work-desktop',
+    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQDCfEUA4mKVU9pFqfVZ1b32r3TJ64LnvtSUItUz8OL5qe8wqh0jLK5ei+xONYSG1C1+SC6WozEHlwfdW6VafWtGvGGkQ3U5DqlWdLFYsilIBN575kE/6QR1BXA/AoGXuZze6pouy/N3duLf/HB8Ct841XS++lI6xMjYOKZ2YXHs+9d8SfxEk+XtPj+ulwTIE4FX4zrpLqER1VdyNmBr0bn7ae5hxCNBPNc4pWdzEZG6oeXAIs4aSuuUAXwV+BkOw6ePlb+fQIcEzMufsiSETajLUM/hSTDzBYhMXeX7fBimJ2N14t59hdo4667RyD96a301RvZRsMO3rPjkLB99X9HbZVT1DOtpYGj8eDOALgzogm5NhJjeu6tSKrWAzeGJQzrDGFqxr6vbW9+646R4V0b6JuYCzTNZkJ9127pYQGcik/nKeh6ARJMWcL25f+/eDzTM0FiZAs71K6PfeBWmR074Qc3JUNhSh3rgHpAy1VZjBWh+FBO9HRLXRloe9h8saNX+g2X+kGl8BD3Bo81ZZ9poKcTdhAlhtGQc4SGZIkXg5sGeYyvliCeLx3bm6ZOAXUV17s5CPStuEXqg9OekHCr/lNqFqzixUdRz8Yz8g9zDHHEO6dQVCnHT84XTMSLNzoO7gWMltZ3xSJ09Q+O2DDy56VYCsHuQf3Y7HLfgXTwQAQ==',
+    name    => 'adrian@adrian-new-work-laptop',
     user    => 'root'
   }
 
