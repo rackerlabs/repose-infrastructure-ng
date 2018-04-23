@@ -81,7 +81,7 @@ class repose_jenkins::master(
         version => '2.16.2',
       },
       'branch-api'                       => {
-        version => '2.0.19',
+        version => '2.0.20',
       },
       'build-name-setter'                => {
         version => '1.6.9',
@@ -246,18 +246,18 @@ class repose_jenkins::master(
         version => '1.3.1',
       },
       'pipeline-model-api'               => {
-        version => '1.2.8',
+        version => '1.2.9',
       },
       'pipeline-model-declarative-agent' => {
         version => '1.1.1',
       },
       # This is "Pipeline: Declarative".
       'pipeline-model-definition'        => {
-        version => '1.2.8',
+        version => '1.2.9',
       },
       # This is "Pipeline: Declarative Extension Points API".
       'pipeline-model-extensions'        => {
-        version => '1.2.8',
+        version => '1.2.9',
       },
       'pipeline-rest-api'                => {
         version => '2.10',
@@ -266,7 +266,7 @@ class repose_jenkins::master(
         version => '2.3',
       },
       'pipeline-stage-tags-metadata'     => {
-        version => '1.2.8',
+        version => '1.2.9',
       },
       'pipeline-stage-view'              => {
         version => '2.10',
@@ -287,7 +287,7 @@ class repose_jenkins::master(
         version => '1.0',
       },
       'scm-api'                          => {
-        version => '2.2.6',
+        version => '2.2.7',
       },
       # Requires the ssh key for github.com, which is provided by the base module
       'scm-sync-configuration'           => {
@@ -343,11 +343,11 @@ class repose_jenkins::master(
         version => '2.5',
       },
       'workflow-basic-steps'             => {
-        version => '2.6',
+        version => '2.7',
       },
       # This is "Pipeline: Groovy".
       'workflow-cps'                     => {
-        version => '2.48',
+        version => '2.49',
       },
       'workflow-cps-global-lib'          => {
         version => '2.9',
@@ -356,10 +356,10 @@ class repose_jenkins::master(
         version => '2.19',
       },
       'workflow-job'                     => {
-        version => '2.19',
+        version => '2.20',
       },
       'workflow-multibranch'             => {
-        version => '2.17',
+        version => '2.18',
       },
       'workflow-scm-step'                => {
         version => '2.6',
