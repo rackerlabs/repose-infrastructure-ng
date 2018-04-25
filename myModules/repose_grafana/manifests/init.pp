@@ -7,9 +7,12 @@ class repose_grafana {
     install_method => 'repo',
     version        => '5.0.4',
     cfg            => {
-      app_mode => 'production',
-      users    => {
-        allow_sign_up => false,
+      app_mode         => 'production',
+      users            => {
+        allow_sign_up  => false,
+      },
+      'auth.anonymous' => {
+        enabled        => true,
       },
     },
     require => Package['apt-transport-https'],
