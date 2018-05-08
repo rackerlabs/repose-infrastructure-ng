@@ -174,7 +174,7 @@ class repose_jenkins::master(
         version => '2.30',
       },
       'jacoco'                           => {
-        version => '2.2.1',
+        version => '3.0.1',
       },
       'jackson2-api'                     => {
         version => '2.8.11.1',
