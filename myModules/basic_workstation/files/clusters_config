@@ -1,5 +1,5 @@
 jenkins-build-slaves jenkins-slave-10 jenkins-slave-11 jenkins-slave-12 jenkins-slave-13 jenkins-build-slave-01 jenkins-build-slave-02 jenkins-build-slave-03 jenkins-build-slave-04 jenkins-build-slave-05
 jenkins-legacy-slaves jenkins-legacy-slave-01
-jenkins-performance-slaves jenkins-slave-7 jenkins-slave-8 jenkins-slave-9
+jenkins-performance-slaves jenkins-performance-slave-01 jenkins-performance-slave-02 jenkins-performance-slave-03
 jenkins jenkins-master jenkins-build-slaves jenkins-legacy-slaves jenkins-performance-slaves
 all jenkins nagios phone-home puppet-master nginx sonar grafana influxdb

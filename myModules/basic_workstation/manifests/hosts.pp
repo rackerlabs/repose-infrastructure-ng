@@ -35,16 +35,16 @@ class basic_workstation::hosts(
     ip => '166.78.135.180',
   }
 
-  host { 'jenkins-slave-7':
-    ip => '23.253.242.98',
+  host { 'jenkins-performance-slave-01':
+    ip => '104.239.140.74',
   }
 
-  host { 'jenkins-slave-8':
-    ip => '23.253.102.99',
+  host { 'jenkins-performance-slave-02':
+    ip => '174.143.130.100',
   }
 
-  host { 'jenkins-slave-9':
-    ip => '23.253.242.9',
+  host { 'jenkins-performance-slave-03':
+    ip => '23.253.109.45',
   }
 
   host { 'jenkins-slave-10':
