@@ -11,24 +11,24 @@ class basic_workstation::hosts(
     ip  => '104.130.136.216',
   }
 
-  host { 'jenkins-slave-1':
-    ip  => '23.253.107.170',
+  host { 'jenkins-build-slave-01':
+    ip  => '192.237.202.250',
   }
 
-  host { 'jenkins-slave-2':
-    ip  => '104.130.141.56',
+  host { 'jenkins-build-slave-02':
+    ip  => '192.237.213.179',
   }
 
-  host { 'jenkins-slave-3':
-    ip  => '23.253.76.22',
+  host { 'jenkins-build-slave-03':
+    ip  => '192.237.202.214',
   }
 
-  host { 'jenkins-slave-4':
-    ip => '23.253.76.118',
+  host { 'jenkins-build-slave-04':
+    ip  => '166.78.186.17',
   }
 
-  host { 'jenkins-slave-5':
-    ip => '23.253.245.21',
+  host { 'jenkins-build-slave-05':
+    ip  => '198.101.238.138',
   }
 
   host { 'jenkins-slave-6':
