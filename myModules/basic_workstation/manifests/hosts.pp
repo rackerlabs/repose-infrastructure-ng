@@ -31,6 +31,26 @@ class basic_workstation::hosts(
     ip  => '198.101.238.138',
   }
 
+  host { 'jenkins-build-slave-06':
+    ip  => '198.101.238.12',
+  }
+
+  host { 'jenkins-build-slave-07':
+    ip  => '198.101.238.96',
+  }
+
+  host { 'jenkins-build-slave-08':
+    ip  => '198.101.238.109',
+  }
+
+  host { 'jenkins-build-slave-09':
+    ip  => '192.237.213.178',
+  }
+
+  host { 'jenkins-build-slave-10':
+    ip  => '198.101.238.112',
+  }
+
   host { 'jenkins-legacy-slave-01':
     ip => '166.78.135.180',
   }
@@ -45,22 +65,6 @@ class basic_workstation::hosts(
 
   host { 'jenkins-performance-slave-03':
     ip => '23.253.109.45',
-  }
-
-  host { 'jenkins-slave-10':
-    ip => '23.253.99.94',
-  }
-
-  host { 'jenkins-slave-11':
-    ip => '23.253.99.171',
-  }
-
-  host { 'jenkins-slave-12':
-    ip => '23.253.94.140',
-  }
-
-  host { 'jenkins-slave-13':
-    ip => '23.253.99.251',
   }
 
   host { 'nagios':

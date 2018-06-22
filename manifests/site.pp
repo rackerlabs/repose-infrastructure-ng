@@ -37,14 +37,6 @@ node 'puppet.openrepose.org' inherits default {
     include puppet_master
 }
 
-node /^slave[1-5]\.openrepose\.org$/ inherits default {
-    include repose_jenkins::build_slave
-}
-
-node /^slave1[0-9]\.openrepose\.org$/ inherits default {
-    include repose_jenkins::build_slave
-}
-
 node /^build-slave-[0-9]*\.openrepose\.org$/ inherits default {
     include repose_jenkins::build_slave
 }
