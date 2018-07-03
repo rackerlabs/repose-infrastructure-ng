@@ -1,6 +1,6 @@
 # Installs and configures a Jenkins master host.
 class repose_jenkins::master(
-    $jenkins_version = '2.107.2'
+    $jenkins_version = '2.121.1'
 ) {
 
   include apt
@@ -72,13 +72,13 @@ class repose_jenkins::master(
         version => '1.5',
       },
       'apache-httpcomponents-client-4-api' => {
-        version => '4.5.3-2.1',
+        version => '4.5.5-3.0',
       },
       'authentication-tokens'            => {
         version => '1.3',
       },
       'bouncycastle-api'                 => {
-        version => '2.16.2',
+        version => '2.16.3',
       },
       'branch-api'                       => {
         version => '2.0.20',
@@ -91,7 +91,7 @@ class repose_jenkins::master(
       },
       # This is "Folders"
       'cloudbees-folder'                 => {
-        version => '6.4',
+        version => '6.5.1',
       },
       'command-launcher'                 => {
         version => '1.2',
@@ -100,14 +100,14 @@ class repose_jenkins::master(
         version => '1.3.6',
       },
       'copyartifact'                     => {
-        version => '1.39.1',
+        version => '1.41',
       },
       'credentials-binding'              => {
         version => '1.16',
       },
       # todo: uncomment this when the jenkins module does not manage this plugin itself
       # 'credentials' => {
-      #   version => '2.1.16',
+      #   version => '2.1.17',
       # },
       'dashboard-view'                   => {
         version => '2.9.11',
@@ -116,11 +116,11 @@ class repose_jenkins::master(
         version => '2.2.0',
       },
       'docker-commons'                   => {
-        version => '1.11',
+        version => '1.13',
       },
       # This is the "Docker Pipeline".
       'docker-workflow'                  => {
-        version => '1.15.1',
+        version => '1.17',
       },
       'durable-task'                     => {
         version => '1.22',
@@ -138,22 +138,22 @@ class repose_jenkins::master(
         version => '1.7',
       },
       'ghprb'                            => {
-        version => '1.40.0',
+        version => '1.42.0',
       },
       'git'                              => {
-        version => '3.8.0',
+        version => '3.9.1',
       },
       'git-client'                       => {
-        version => '2.7.1',
+        version => '2.7.2',
       },
       'git-server'                       => {
         version => '1.7',
       },
       'github'                           => {
-        version => '1.29.0',
+        version => '1.29.2',
       },
       'github-api'                       => {
-        version => '1.90',
+        version => '1.92',
       },
       'gradle'                           => {
         version => '1.28',
@@ -177,13 +177,13 @@ class repose_jenkins::master(
         version => '3.0.1',
       },
       'jackson2-api'                     => {
-        version => '2.8.11.1',
+        version => '2.8.11.3',
       },
       'javadoc'                          => {
         version => '1.4',
       },
       'jenkins-multijob-plugin'          => {
-        version => '1.29',
+        version => '1.30',
       },
       'join'                             => {
         version => '1.21',
@@ -237,7 +237,7 @@ class repose_jenkins::master(
         version => '2.7',
       },
       'pipeline-graph-analysis'          => {
-        version => '1.6',
+        version => '1.7',
       },
       'pipeline-input-step'              => {
         version => '2.8',
@@ -246,18 +246,18 @@ class repose_jenkins::master(
         version => '1.3.1',
       },
       'pipeline-model-api'               => {
-        version => '1.2.9',
+        version => '1.3.1',
       },
       'pipeline-model-declarative-agent' => {
         version => '1.1.1',
       },
       # This is "Pipeline: Declarative".
       'pipeline-model-definition'        => {
-        version => '1.2.9',
+        version => '1.3.1',
       },
       # This is "Pipeline: Declarative Extension Points API".
       'pipeline-model-extensions'        => {
-        version => '1.2.9',
+        version => '1.3.1',
       },
       'pipeline-rest-api'                => {
         version => '2.10',
@@ -266,13 +266,13 @@ class repose_jenkins::master(
         version => '2.3',
       },
       'pipeline-stage-tags-metadata'     => {
-        version => '1.2.9',
+        version => '1.3.1',
       },
       'pipeline-stage-view'              => {
         version => '2.10',
       },
       'pipeline-utility-steps'           => {
-        version => '2.0.2',
+        version => '2.1.0',
       },
       'plain-credentials'                => {
         version => '1.4',
@@ -312,7 +312,7 @@ class repose_jenkins::master(
         version => '1.15',
       },
       'ssh-credentials'                  => {
-        version => '1.13',
+        version => '1.14',
       },
       'ssh-slaves'                       => {
         version => '1.26',
@@ -321,10 +321,10 @@ class repose_jenkins::master(
         version => '1.14',
       },
       'subversion'                       => {
-        version => '2.10.5',
+        version => '2.11.0',
       },
       'swarm'                            => {
-        version => '3.12',
+        version => '3.13',
       },
       'token-macro'                      => {
         version => '2.5',
@@ -337,17 +337,17 @@ class repose_jenkins::master(
       },
       # This is "Pipeline: API".
       'workflow-api'                     => {
-        version => '2.27',
+        version => '2.28',
       },
       'workflow-aggregator'              => {
         version => '2.5',
       },
       'workflow-basic-steps'             => {
-        version => '2.7',
+        version => '2.9',
       },
       # This is "Pipeline: Groovy".
       'workflow-cps'                     => {
-        version => '2.49',
+        version => '2.54',
       },
       'workflow-cps-global-lib'          => {
         version => '2.9',
@@ -356,20 +356,20 @@ class repose_jenkins::master(
         version => '2.19',
       },
       'workflow-job'                     => {
-        version => '2.20',
+        version => '2.22',
       },
       'workflow-multibranch'             => {
-        version => '2.18',
+        version => '2.19',
       },
       'workflow-scm-step'                => {
         version => '2.6',
       },
       # This is "Pipeline: Step API".
       'workflow-step-api'                => {
-        version => '2.14',
+        version => '2.16',
       },
       'workflow-support'                 => {
-        version => '2.18',
+        version => '2.19',
       },
     },
   }
