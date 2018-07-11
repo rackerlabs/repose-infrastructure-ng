@@ -51,6 +51,14 @@ class basic_workstation::hosts(
     ip  => '198.101.238.112',
   }
 
+  host { 'jenkins-intense-slave-01':
+    ip  => '166.78.135.218',
+  }
+
+  host { 'jenkins-intense-slave-02':
+    ip  => '166.78.135.228',
+  }
+
   host { 'jenkins-legacy-slave-01':
     ip => '166.78.135.180',
   }
