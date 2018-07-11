@@ -41,6 +41,10 @@ node /^build-slave-[0-9]*\.openrepose\.org$/ inherits default {
     include repose_jenkins::build_slave
 }
 
+node /^intense-slave-[0-9]*\.openrepose\.org$/ inherits default {
+    include repose_jenkins::build_slave
+}
+
 node /^legacy-slave-[0-9]*\.openrepose\.org$/ inherits default {
     include repose_jenkins::legacy_slave
 }
