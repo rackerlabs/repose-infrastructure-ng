@@ -109,7 +109,7 @@ class puppet_master {
 
     cron { 'reports_cleanup':
       ensure   => present,
-      command  => "find /var/lib/puppet/reports/ -type f -mtime +90 -name \"*.yaml\" -execdir rm -- {} +",
+      command  => "find /var/lib/puppet/reports/ -type f -mtime +60 -name \"*.yaml\" -execdir rm -- {} +",
       user     => root,
       hour     => 3,
       minute   => 0,
