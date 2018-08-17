@@ -107,7 +107,7 @@ class repose_jenkins::master(
       },
       # todo: uncomment this when the jenkins module does not manage this plugin itself
       # 'credentials' => {
-      #   version => '2.1.17',
+      #   version => '2.1.18',
       # },
       'dashboard-view'                   => {
         version => '2.9.11',
@@ -123,7 +123,7 @@ class repose_jenkins::master(
         version => '1.17',
       },
       'durable-task'                     => {
-        version => '1.22',
+        version => '1.25',
       },
       'dynamic-axis'                     => {
         version => '1.0.3',
@@ -144,7 +144,7 @@ class repose_jenkins::master(
         version => '3.9.1',
       },
       'git-client'                       => {
-        version => '2.7.2',
+        version => '2.7.3',
       },
       'git-server'                       => {
         version => '1.7',
@@ -156,7 +156,7 @@ class repose_jenkins::master(
         version => '1.92',
       },
       'gradle'                           => {
-        version => '1.28',
+        version => '1.29',
       },
       'handlebars'                       => {
         version => '1.1.1',
@@ -173,17 +173,18 @@ class repose_jenkins::master(
       'ircbot'                           => {
         version => '2.30',
       },
-      'jacoco'                           => {
-        version => '3.0.1',
-      },
       'jackson2-api'                     => {
         version => '2.8.11.3',
+      },
+      'jacoco'                           => {
+        version => '3.0.1',
       },
       'javadoc'                          => {
         version => '1.4',
       },
+      # This is "Multijob".
       'jenkins-multijob-plugin'          => {
-        version => '1.30',
+        version => '1.31',
       },
       'join'                             => {
         version => '1.21',
@@ -191,6 +192,7 @@ class repose_jenkins::master(
       'jquery'                           => {
         version => '1.12.4-0',
       },
+      # This is "JavaScript GUI Lib: jQuery bundles (jQuery and jQuery UI)".
       'jquery-detached'                  => {
         version => '1.2.1',
       },
@@ -203,6 +205,7 @@ class repose_jenkins::master(
       'ldap'                             => {
         version => '1.20',
       },
+      # This is "Maven Release Plug-in Plug-in".
       'm2release'                        => {
         version => '0.14.0',
       },
@@ -213,7 +216,7 @@ class repose_jenkins::master(
         version => '1.0.9.0',
       },
       'matrix-auth'                      => {
-        version => '2.2',
+        version => '2.3',
       },
       'matrix-project'                   => {
         version => '1.13',
@@ -221,6 +224,7 @@ class repose_jenkins::master(
       'maven-plugin'                     => {
         version => '3.1.2',
       },
+      # This is "JavaScript GUI Lib: Moment.js bundle".
       'momentjs'                         => {
         version => '1.1.1',
       },
@@ -268,6 +272,7 @@ class repose_jenkins::master(
       'pipeline-stage-tags-metadata'     => {
         version => '1.3.1',
       },
+      # This is "Pipeline: REST API".
       'pipeline-stage-view'              => {
         version => '2.10',
       },
@@ -277,7 +282,7 @@ class repose_jenkins::master(
       'plain-credentials'                => {
         version => '1.4',
       },
-      'publish-over'                 => {
+      'publish-over'                     => {
         version => '0.22',
       },
       'publish-over-ssh'                 => {
@@ -309,7 +314,7 @@ class repose_jenkins::master(
         version => '2.6.1',
       },
       'ssh-agent'                        => {
-        version => '1.15',
+        version => '1.16',
       },
       'ssh-credentials'                  => {
         version => '1.14',
@@ -321,8 +326,9 @@ class repose_jenkins::master(
         version => '1.14',
       },
       'subversion'                       => {
-        version => '2.11.0',
+        version => '2.11.1',
       },
+      # This is "Self-Organizing Swarm Plug-in Modules"
       'swarm'                            => {
         version => '3.13',
       },
@@ -337,8 +343,9 @@ class repose_jenkins::master(
       },
       # This is "Pipeline: API".
       'workflow-api'                     => {
-        version => '2.28',
+        version => '2.29',
       },
+      # This is "Pipeline".
       'workflow-aggregator'              => {
         version => '2.5',
       },
@@ -349,17 +356,19 @@ class repose_jenkins::master(
       'workflow-cps'                     => {
         version => '2.54',
       },
+      # This is "Pipeline: Shared Groovy Libraries".
       'workflow-cps-global-lib'          => {
         version => '2.9',
       },
+      # This is "Pipeline: Nodes and Processes".
       'workflow-durable-task-step'       => {
-        version => '2.19',
+        version => '2.20',
       },
       'workflow-job'                     => {
-        version => '2.22',
+        version => '2.24',
       },
       'workflow-multibranch'             => {
-        version => '2.19',
+        version => '2.20',
       },
       'workflow-scm-step'                => {
         version => '2.6',
@@ -369,7 +378,7 @@ class repose_jenkins::master(
         version => '2.16',
       },
       'workflow-support'                 => {
-        version => '2.19',
+        version => '2.20',
       },
     },
   }
