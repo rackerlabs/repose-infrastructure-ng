@@ -1,6 +1,6 @@
 # Installs and configures a Jenkins master host.
 class repose_jenkins::master(
-    $jenkins_version = '2.121.1'
+    $jenkins_version = '2.121.3'
 ) {
 
   include apt
