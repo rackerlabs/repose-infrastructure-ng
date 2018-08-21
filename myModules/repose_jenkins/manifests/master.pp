@@ -129,7 +129,7 @@ class repose_jenkins::master(
         version => '1.0.3',
       },
       'envinject'                        => {
-        version => '2.1.3',
+        version => '2.1.6',
       },
       'envinject-api'                    => {
         version => '1.5',
