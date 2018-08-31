@@ -1,6 +1,6 @@
 #Installs maven and settings for uploading to our repo
 class repose_maven(
-  $maven_version = "3.2.2",
+  $maven_version = "3.5.4",
   $user = undef,
   $user_home = "/home/${user}",
   $inova_username = undef,

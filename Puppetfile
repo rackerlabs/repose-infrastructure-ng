@@ -22,14 +22,12 @@ mod 'garethr/scala', '0.1.2'
 mod 'puppet-virtualbox', '1.8.0'
 mod 'mjanser/vagrant', '1.1.0'
 mod 'garethr-docker', '5.3.0'
-#mod 'gini/idea', '0.3.0'
 mod 'jamesnetherton/google_chrome', '0.2.1'
 mod 'puppet-archive', '1.1.2'
 mod 'golja-influxdb', '4.0.0'
 mod 'puppet-grafana', '2.6.3'
 mod 'stankevich-python', '1.18.2'
-#for slack
-mod 'computology-packagecloud', '0.3.2'
+mod 'paulosuzart-sdkman', '1.0.2'
 
 mod "repose/base",
     :path => "myModules/base"

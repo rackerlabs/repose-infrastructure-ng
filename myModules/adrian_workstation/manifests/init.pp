@@ -8,7 +8,7 @@ class adrian_workstation {
 
   include google_chrome
 
-  package { ['hexchat', 'nautilus-dropbox']:
+  package { 'nautilus-dropbox':
     ensure  => present,
   }
 
@@ -18,7 +18,7 @@ class adrian_workstation {
     release  => 'stable',
     repos    => 'main',
     key      => {
-      'id'     => 'ED18652D86E25D422EA7CE132CC26F777B8B44A1',
+      'id'     => '68AEAE71F9FA158703C1CBBC8D04CE49EFB20B23',
     },
 
     notify => Exec['apt_update'],

@@ -68,14 +68,13 @@ class basic_workstation::dev_tools(
     ensure => present
   }
 
-  # this didn't work, look into it later
-  # #slack
-  # include packagecloud
-  # packagecloud::repo { 'slacktechnologies/slack':
-  #   type => 'deb',
-  # }
-  # package { 'slack-desktop':
-  #   ensure  => present,
-  #   require => Packagecloud::Repo['slacktechnologies/slack'],
-  # }
+  #sdkman
+  class { 'sdkman' :
+    owner   => $user,
+    homedir => $user_home,
+  }
+
+  #todo: figure out how to get slack
+
+  #todo: figure out a way to get zoom and vpn in here
 }
