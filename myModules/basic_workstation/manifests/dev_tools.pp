@@ -69,6 +69,9 @@ class basic_workstation::dev_tools(
   }
 
   #sdkman
+  package {'unzip':
+    ensure => present
+  }
   class { 'sdkman' :
     owner   => $user,
     homedir => $user_home,
