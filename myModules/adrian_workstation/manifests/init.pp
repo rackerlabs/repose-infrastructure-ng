@@ -18,7 +18,7 @@ class adrian_workstation {
     release  => 'stable',
     repos    => 'main',
     key      => {
-      'id'     => '68AEAE71F9FA158703C1CBBC8D04CE49EFB20B23',
+      'id'   => '68AEAE71F9FA158703C1CBBC8D04CE49EFB20B23',
     },
 
     notify => Exec['apt_update'],
@@ -26,5 +26,19 @@ class adrian_workstation {
   package { 'vivaldi-stable':
     ensure  => present,
     require => Apt::Source['vivaldi'],
+  }
+
+  apt::source { 'sublime-text':
+    location => 'https://download.sublimetext.com/',
+    release  => 'apt/stable/',
+    key      => {
+      'id'   => '1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A',
+    },
+
+    notify => Exec['apt_update'],
+  }
+  package { 'sublime-text':
+    ensure  => present,
+    require => Apt::Source['sublime-text'],
   }
 }
