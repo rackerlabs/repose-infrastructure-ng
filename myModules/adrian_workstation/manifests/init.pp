@@ -31,6 +31,7 @@ class adrian_workstation {
   apt::source { 'sublime-text':
     location => 'https://download.sublimetext.com/',
     release  => 'apt/stable/',
+    repos    => '',
     key      => {
       'id'   => '1EDDE2CDFC025D17F6DA9EC0ADAE6AD28A8F901A',
     },
