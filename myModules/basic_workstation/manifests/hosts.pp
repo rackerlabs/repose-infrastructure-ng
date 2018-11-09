@@ -12,51 +12,51 @@ class basic_workstation::hosts(
   }
 
   host { 'jenkins-build-slave-01':
-    ip  => '192.237.202.250',
+    ip  => '166.78.135.177',
   }
 
   host { 'jenkins-build-slave-02':
-    ip  => '192.237.213.179',
+    ip  => '166.78.135.188',
   }
 
   host { 'jenkins-build-slave-03':
-    ip  => '192.237.202.214',
+    ip  => '166.78.135.191',
   }
 
   host { 'jenkins-build-slave-04':
-    ip  => '166.78.186.17',
+    ip  => '166.78.135.193',
   }
 
   host { 'jenkins-build-slave-05':
-    ip  => '198.101.238.138',
+    ip  => '166.78.135.194',
   }
 
   host { 'jenkins-build-slave-06':
-    ip  => '198.101.238.12',
+    ip  => '166.78.135.196',
   }
 
   host { 'jenkins-build-slave-07':
-    ip  => '198.101.238.96',
+    ip  => '166.78.135.200',
   }
 
   host { 'jenkins-build-slave-08':
-    ip  => '198.101.238.109',
+    ip  => '166.78.135.214',
   }
 
   host { 'jenkins-build-slave-09':
-    ip  => '192.237.213.178',
+    ip  => '166.78.135.220',
   }
 
   host { 'jenkins-build-slave-10':
-    ip  => '198.101.238.112',
+    ip  => '166.78.151.210',
   }
 
   host { 'jenkins-intense-slave-01':
-    ip  => '166.78.135.218',
+    ip  => '166.78.145.70',
   }
 
   host { 'jenkins-intense-slave-02':
-    ip  => '166.78.135.228',
+    ip  => '166.78.145.86',
   }
 
   host { 'jenkins-legacy-slave-01':
