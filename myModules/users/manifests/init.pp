@@ -35,7 +35,7 @@ class users {
   }
 
   ssh_authorized_key { 'dimi5963':
-    ensure  => present,
+    ensure  => absent,
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCmzYB+v6yjDaoAgPgcStdydVpaajj8Qz7M6NDFQGo6TZOfT6+R/ERcw3sVUE3e36IZTE1HhclYfmEPpy6G7DxezLTIaYLdJ41nWavl+SUs+QpIH+ww4RDWgStDS9eN2Ytpfo4/HAREz+JYO/CDG++KkufD63A4rg0ZLJWs4QNffdMvTllNvIr/3aNuL5udJ7UI+kk3aPVWMHi6yHcu7jwFNia8yrEdCxBSoZjU5Obp4sQdVR7Cp98LgBSTYBY2ysL0qkRAqqN/NM5DAW51IIrffp1u7Wb1atFpHqN6XyrrT/Juz+pLYyMYsiLmJkcQyM7kACywDqQlb5IgLw9dlFRR',
     name    => 'dimitry.ushakov@rackspace.com',
@@ -47,14 +47,6 @@ class users {
     type    => 'ssh-rsa',
     key     => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQC7WTU/1utwo99vNlhF2zji5vk66eaXtc96CQipDuVzO8t3kiB9zOCai65hT1etgaDYaDqUVKYS3daiAJ6gtiqpuIqMxFWXSCLQfK01Zn0mJbmx1+8X+ZTMuxNN6FuTxUeBmC7ISc8ziloMCVbQTQ62uJxal/2RZekTcABXc2kLen7O9HynQOIvxmw9cVhiIYJUPm7WIoGfSEcXuHyhHYbnQCa6Kdk4Kw/kjJSeCxq1ak8ZlkeLuRqcdlAyS5jgGnKOkxuLnUW1IBzB98wR5E6ZkAM5RXEQIqhmuK+FKZvQkM08fDm6u7aOIUER0/z+WTI8q6ya3Ms5ML6bxPI/p5+KEIfFivHre4SpLOZp7fiB/qL0PEfWjLmvLSJJfA97nDj6TJSZSWT3iCQW9qlYTnBxb5IQAV5qaUjj1jBgJY7NVlc+bqt+onGd2T2JqtUyWbSSQhIeCRZ8TejRNVggRaTi113ZMyjI9k9QlrUoKpazRLaA3j+QjTu7tUszPmLb157e7V1/MkUl7mpnpdTLrz+3gyVWBbOPacQtgdORvsMTOzvjivmrCbvWhS9mcjLE39ADHJwS0tOfEKYaCFI6lB90VBcRdNXuyJXtNEOsM/XX1aZeFrJy1YRcBRxlv0nk3VmDSs9rE5WSUcXMXpUvzLMr2jcCCcQ7TOhl4Xza32P5YQ==',
     name    => 'Mario.Lopez@rackspace.com',
-    user    => 'root'
-  }
-
-  ssh_authorized_key { 'joelrizner':
-    ensure  => absent,
-    type    => 'ssh-rsa',
-    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQDJY7WfQyYhH5RAN4MkmNswgYAoXhCuS1f1jbtH43zcTdy+A3ts0A5ej7WuiLUcIEeSfLbVfrxJnRTVGg1d6nmHdh1lGFsh+khvbTkdtC87pSQSMFMmdZAyY9VSBJwrSm9k/BNUWTX9JzSawA8Qz+rKb6qqRXQvRXEPjkFhv1XaC+lo7oWyiw4LpFj4ddzuhaqotsOYHIwzjPmvVrph4Pfm98a3tiWWi20SC4IhTaWTZpLmjqd5TGkXOjwz/B7I3OJLNC5V3+2mxAhrlrnOucAGSTw9NhCEiS3gdH3VGb8BJecFHqAR7H9WkH4ZQmbp9IBk1UOem3dqc0/FWeNFvLQYrkvVfEnzgRNJwXmsRgWiEm6HH5Lyx5CfdCeasCsUTnP2oxzNSXs2v7AKYV81l9dWZqkql+K4y+c0d1haD+UB2KIJOuvunOE/ERP5oO4QghefFdCg5AKJmBl1mU/Wm7m0HnUER2OfU6hiC5LsMMahn3o5HIH50wR42Hd7KM+79DSGy8vtoM1QemoiZIXSKvnEfgwXoAL/SdgaVIn8wS1niJLZHyt3T3yUSCfBQfpzdo9ttH636F+AkSvXarS4TwLZTt+Cm3dbACz+bDmVAOrnRDLkETWNcAK2+EWeLPFgeJGgmIuS0yZ0Brch9dVvfGoPLVgM5l+sgAtwjbuornMxiQ==',
-    name    => 'Joel.Rizner@rackspace.com',
     user    => 'root'
   }
 }
