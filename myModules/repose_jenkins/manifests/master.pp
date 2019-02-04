@@ -177,7 +177,7 @@ class repose_jenkins::master(
         version => '2.8.11.3',
       },
       'jacoco'                           => {
-        version => '3.0.1',
+        version => '3.0.4',
       },
       'javadoc'                          => {
         version => '1.4',
