@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # set it up to work with debians now
-wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb &&
-dpkg -i puppetlabs-release-wheezy.deb &&
-apt-get update &&
+wget https://apt.puppetlabs.com/puppet6-release-$(lsb_release -cs).deb &&
+dpkg -i puppet6-release-$(lsb_release -cs).deb &&
+apt update &&
 
 # install needed things
-aptitude install -y git puppet ruby1.9.1-dev make &&
+apt install -y git puppet ruby-full make &&
 
 if [[ "$(facter fqdn)" == "" ]]; then
   echo "UNABLE TO PROCEED, puppet cannot find a hostname, ensure `facter fqdn` returns a hostname"
@@ -25,6 +25,7 @@ gem install bundler librarian-puppet hiera-eyaml --no-rdoc --no-ri &&
 
 cd /etc/puppet &&
 mkdir -p ssl &&
+
 #ensure links are clean
 rm -rf /etc/puppet/modules     &&
 rm -rf /etc/puppet/hiera.yaml  &&
@@ -33,7 +34,6 @@ rm -rf /etc/puppet/manifests   &&
 rm -rf /etc/puppet/puppet.conf &&
 
 # create symlinks to the git repo
-
 ln -s /srv/puppet/modules     &&
 ln -s /srv/puppet/hiera.yaml  &&
 ln -s /srv/puppet/hieradata   &&
@@ -43,7 +43,7 @@ ln -s /srv/puppet/puppet.conf &&
 # actually install the modules onto the server
 # if you ever want to use different modules, you have to update the modules, and run the install again
 cd /srv/puppet &&
-librarian-puppet install &&
+librarian-puppet install --no-use-v1-api &&
 
 # I think also it uses /etc/hiera.yaml
 ln -sf /srv/puppet/hiera.yaml /etc/hiera.yaml &&
