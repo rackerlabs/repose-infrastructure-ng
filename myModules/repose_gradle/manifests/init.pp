@@ -7,6 +7,8 @@ class repose_gradle(
   $daemon = true,
   $research_nexus_username = undef,
   $research_nexus_password = undef,
+  $openrepose_nexus_username = undef,
+  $openrepose_nexus_password = undef,
   $docker_hub_username = undef,
   $docker_hub_password = undef,
   $sonar_user = undef,
