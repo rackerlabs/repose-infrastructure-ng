@@ -119,7 +119,7 @@ class repose_influxdb (
     ensure => file,
     owner  => root,
     group  => root,
-    mode   => 0754,
+    mode   => '0754',
     source => "puppet:///modules/repose_influxdb/influxdb-backup-compress.sh",
   }
 
@@ -165,7 +165,7 @@ class repose_influxdb (
 
   file { "/etc/nginx/conf.d/influxdb.conf":
     ensure  => file,
-    mode    => 0644,
+    mode    => '0644',
     owner   => root,
     group   => root,
     content => template("repose_influxdb/nginx.conf.erb"),

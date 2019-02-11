@@ -5,7 +5,7 @@ class repose_redirects {
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
         source  => "puppet:///modules/repose_redirects/nginx_redirects.conf",
         require => Package['nginx'],
         notify  => Service['nginx'],

@@ -35,7 +35,7 @@ define backup_cloud_files::target(
         ensure  => present,
         owner   => root,
         group   => root,
-        mode    => 0770,
+        mode    => '0770',
         content => template("backup_cloud_files/duplicity_script.rb.erb"),
         require => Class[Backup_cloud_files],
     }

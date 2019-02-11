@@ -97,7 +97,7 @@ cDYHTOX6dALLiEi+KlaQCi8vBH6L2vlDLu+Me5z+=3vhD
     ensure  => file,
     owner   => $daemon_user,
     group   => $daemon_group,
-    mode    => 0600,
+    mode    => '0600',
     content => template('repose_phone_home/application.properties.erb'),
     require => [
       Package['repose-phone-home']

@@ -17,7 +17,7 @@ class base::nginx::php {
 
     file{ '/etc/nginx/conf.d/20-php5-fpm.conf':
         ensure  => file,
-        mode    => 0644,
+        mode    => '0644',
         owner   => root,
         group   => root,
         source  => 'puppet:///modules/base/nginx/php5-fpm-sock.conf',

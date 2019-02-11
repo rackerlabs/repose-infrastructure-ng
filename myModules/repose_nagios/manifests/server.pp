@@ -13,7 +13,7 @@ class repose_nagios::server(
 
     file{ '/etc/nginx/conf.d/nagios.conf':
         ensure  => file,
-        mode    => 0644,
+        mode    => '0644',
         owner   => root,
         group   => root,
         content => template('repose_nagios/nginx.conf.erb'),
@@ -27,7 +27,7 @@ class repose_nagios::server(
 
     file{ '/etc/nginx/conf.d/nagios_htpasswd':
         ensure  => file,
-        mode    => 0640,
+        mode    => '0640',
         owner   => root,
         group   => 'www-data',
         require => [
@@ -47,7 +47,7 @@ class repose_nagios::server(
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
         content => template('repose_nagios/cgi.cfg.erb'),
         require => [
             Package['nagios3']
@@ -81,7 +81,7 @@ class repose_nagios::server(
 
     file{ '/etc/nagios3/conf.d':
         ensure       => directory,
-        mode         => 0755,
+        mode         => '0755',
         owner        => root,
         group        => root,
         recurse      => true,
@@ -96,7 +96,7 @@ class repose_nagios::server(
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
         source  => "puppet:///modules/repose_nagios/nagios.cfg",
         require => Package['nagios3'],
         notify  => Service['nagios3'],
@@ -115,7 +115,7 @@ class repose_nagios::server(
         ensure  => directory,
         owner   => nagios,
         group   => nagios,
-        mode    => 0751,
+        mode    => '0751',
         require => Package['nagios3'],
     }
 

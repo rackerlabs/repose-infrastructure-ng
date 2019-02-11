@@ -5,7 +5,7 @@ class repose_nexus::work_directory {
         ensure  => directory,
         owner   => 'nexus',
         group   => 'nexus',
-        mode    => 0755,
+        mode    => '0755',
         require => Class['repose_nexus::user'],
     }
 
@@ -13,7 +13,7 @@ class repose_nexus::work_directory {
         ensure  => directory,
         owner   => 'nexus',
         group   => 'nexus',
-        mode    => 0755,
+        mode    => '0755',
         require => File['/srv/sonatype-work'],
     }
 
@@ -21,7 +21,7 @@ class repose_nexus::work_directory {
         ensure => directory,
         owner => "nexus",
         group => "nexus",
-        mode => 0755,
+        mode => '0755',
         require => File['/srv/sonatype-work/nexus'],
     }
 }

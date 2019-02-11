@@ -38,14 +38,14 @@ class puppet_master {
         ensure => directory,
         owner  => root,
         group  => root,
-        mode   => "0755",
+        mode   => '0755',
     }
 
     file{ "/srv/puppetmaster/public":
         ensure  => directory,
         owner   => root,
         group   => root,
-        mode    => "0755",
+        mode    => '0755',
         require => File['/srv/puppetmaster']
     }
 
@@ -53,7 +53,7 @@ class puppet_master {
         ensure  => file,
         owner   => puppet,
         group   => puppet,
-        mode    => "0644",
+        mode    => '0644',
         source  => "puppet:///modules/puppet_master/config.ru",
         require => File['/srv/puppetmaster'],
         notify  => Service['apache2'],
@@ -66,7 +66,7 @@ class puppet_master {
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0664,
+        mode    => '0664',
         content => template("puppet_master/puppetmaster-vhost.conf.erb"),
         require => Package['libapache2-mod-passenger'],
         notify  => Service['apache2'],
@@ -96,7 +96,7 @@ class puppet_master {
         ensure => file,
         owner  => root,
         group  => root,
-        mode   => 0754,
+        mode   => '0754',
         source => "puppet:///modules/puppet_master/puppet-repo-sync.sh",
     }
 

@@ -38,7 +38,7 @@ class repose_gradle(
     content => template("repose_gradle/gradle.properties.erb"),
     owner   => $user,
     group   => $user,
-    mode    => 0600,
+    mode    => '0600',
     require => File["${user_home}/.gradle"]
   }
 

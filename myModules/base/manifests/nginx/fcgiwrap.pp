@@ -15,7 +15,7 @@ class base::nginx::fcgiwrap {
 
     file{ '/etc/nginx/conf.d/10-fcgiwrap.conf':
         ensure  => file,
-        mode    => 0644,
+        mode    => '0644',
         owner   => root,
         group   => root,
         source  => 'puppet:///modules/base/nginx/fcgiwrap.conf',

@@ -31,7 +31,7 @@ class base::nginx {
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
         source  => "puppet:///modules/base/nginx/ssl-config.conf",
         require => [
             Class['ssl_cert'],

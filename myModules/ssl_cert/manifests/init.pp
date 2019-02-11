@@ -4,7 +4,7 @@ class ssl_cert(
 ){
     file{ "/etc/ssl/certs/openrepose.crt":
         ensure  => file,
-        mode    => 0444,
+        mode    => '0444',
         owner   => root,
         group   => root,
         content => $ssl_cert,
@@ -14,7 +14,7 @@ class ssl_cert(
 #use instead the /etc/ssl/keys/openrepose.key and make sure your user is in the ssl-keys group
     file{ "/etc/ssl/private/openrepose.key":
         ensure  => file,
-        mode    => 0440,
+        mode    => '0440',
         owner   => root,
         group   => root,
         content => $ssl_key,
@@ -30,13 +30,13 @@ class ssl_cert(
         ensure  => directory,
         owner   => root,
         group   => "ssl-keys",
-        mode    => 0750,
+        mode    => '0750',
         require => Group["ssl-keys"],
     }
 
     file{ "/etc/ssl/keys/openrepose.key":
         ensure  => file,
-        mode    => 0440,
+        mode    => '0440',
         owner   => root,
         group   => "ssl-keys",
         content => $ssl_key,

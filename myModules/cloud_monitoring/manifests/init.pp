@@ -48,7 +48,7 @@ class cloud_monitoring(
         ensure  => present,
         owner   => root,
         group   => root,
-        mode    => 0600,
+        mode    => '0600',
         content => template("cloud_monitoring/rackspace-monitoring-agent.cfg.erb"),
     }
 
