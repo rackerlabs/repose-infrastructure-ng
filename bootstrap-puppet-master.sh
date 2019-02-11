@@ -9,9 +9,10 @@ apt update &&
 
 # install needed things
 apt install -y git puppetserver ruby-full make &&
+source /etc/profile.d/puppet-agent.sh
 
-if [[ "$(/opt/puppetlabs/bin/facter fqdn)" == "" ]]; then
-  echo "UNABLE TO PROCEED, puppet cannot find a hostname, ensure `/opt/puppetlabs/bin/facter fqdn` returns a hostname"
+if [[ "$(facter fqdn)" == "" ]]; then
+  echo "UNABLE TO PROCEED, puppet cannot find a hostname, ensure `facter fqdn` returns a hostname"
   echo "CentOS Reference: http://www.rackspace.com/knowledge_center/article/centos-hostname-change"
   echo "Debian Reference: https://wiki.debian.org/HowTo/ChangeHostname"
   exit 1
