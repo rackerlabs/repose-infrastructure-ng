@@ -23,19 +23,20 @@ cd /srv &&
 git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 
 #Using this to manage our puppet modules
-echo "Installing librarian-puppet and bundler" &&
+echo "Installing librarian-puppet and bundler..." &&
 gem install bundler librarian-puppet hiera-eyaml --no-rdoc --no-ri &&
 
 # ensure links are clean
-rm -rf /etc/puppetlabs/puppet/modules     &&
+rm -rf /etc/puppetlabs/code/environments/production/modules/ &&
 rm -rf /etc/puppetlabs/puppet/hiera.yaml  &&
 rm -rf /etc/puppetlabs/puppet/hieradata   &&
 rm -rf /etc/puppetlabs/puppet/manifests   &&
 rm -rf /etc/puppetlabs/puppet/puppet.conf &&
 
 # create symlinks to the git repo
-cd /etc/puppetlabs/puppet     &&
+cd /etc/puppetlabs/code/environments/production &&
 ln -s /srv/puppet/modules     &&
+cd /etc/puppetlabs/puppet     &&
 ln -s /srv/puppet/hiera.yaml  &&
 ln -s /srv/puppet/hieradata   &&
 ln -s /srv/puppet/manifests   &&
@@ -44,12 +45,19 @@ ln -s /srv/puppet/puppet.conf &&
 # actually install the modules onto the server
 # if you ever want to use different modules, you have to update the modules, and run the install again
 cd /srv/puppet &&
-librarian-puppet install --no-use-v1-api
+echo "Installing modules with librarian-puppet..." &&
+librarian-puppet install --no-use-v1-api &&
+echo "Generating SSL CA certs..." &&
+puppetserver ca setup
 
-echo -e "\n\nPREP DONE! Last steps:"
-echo "Put the eyaml backend cert and key onto this system"
-echo "at  /etc/puppetlabs/puppet/ssl/private_key.pkcs7.pem"
-echo "and /etc/puppetlabs/puppet/ssl/public_key.pkcs7.pem"
-echo "run puppet master --no-daemonize --verbose one time to generate the SSL certs it needs"
-echo "kill it after a few moments, so it's generated the ssl certs"
-echo "then run puppet apply /etc/puppetlabs/puppet/manifests/puppet_master.pp"
+mkdir -p /etc/puppetlabs/puppet/eyaml
+FILES=(
+    /etc/puppetlabs/puppet/eyaml/private_key.pkcs7.pem
+    /etc/puppetlabs/puppet/eyaml/public_key.pkcs7.pem
+)
+for file in ${FILES[*]} ; do
+    while [ ! -f ${file} ]; do
+        read -rsp "$(echo -e "\nWaiting for required eyaml certs/keys: ${file}\n - Press any key to continue...\n\n ")" -t5 -n1 key
+    done
+done
+puppet apply /etc/puppetlabs/puppet/manifests/puppet_master.pp
