@@ -18,6 +18,9 @@ if [[ "$(facter fqdn)" == "" ]]; then
   exit 1
 fi
 
+# set the JVM Initial and Max memory
+sed -i -r 's/-Xm([xs])[0-9]+[kmgKMG]/-Xm\1512m/g' /etc/default/puppetserver
+
 cd /srv &&
 # once we get the stuff encrypted, we can public this repo!
 git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
@@ -60,4 +63,6 @@ for file in ${FILES[*]} ; do
         read -rsp "$(echo -e "\nWaiting for required eyaml certs/keys: ${file}\n - Press any key to continue...\n\n ")" -t5 -n1 key
     done
 done
-puppet apply /etc/puppetlabs/puppet/manifests/puppet_master.pp
+
+echo "Applying the master manifest..." &&
+puppet apply --detailed-exitcodes /etc/puppetlabs/puppet/manifests/puppet_master.pp
