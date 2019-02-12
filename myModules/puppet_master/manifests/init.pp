@@ -1,5 +1,15 @@
-class puppet_master {
+class puppet_master(
+$puppet_version = '6.2.0-1${lsbdistcodename}'
+) {
+
     # puppet master class for debian
+    # Hold the Puppet Server and Agent packages at the desired version so that Nagios does not
+    # alert us of updates that we don't want to consume.
+    apt::pin { 'puppet_packages':
+        packages => 'puppetserver, puppet-agent',
+        version  => $puppet_version,
+        priority => 1001,
+    }
 
     # using https://github.com/TomPoulton/hiera-eyaml
     # need our eyaml backend

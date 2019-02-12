@@ -8,12 +8,12 @@ dpkg -i puppet${MAJ_VER}-release-${CODENAME}.deb &&
 apt update &&
 
 # install needed things
-apt install -y git puppetserver ruby-full make &&
+PUPPET_VERSION=6.2.0-1${CODENAME}
+apt install -y git puppetserver=${PUPPET_VERSION} ruby-full make &&
 source /etc/profile.d/puppet-agent.sh
 
 if [[ "$(facter fqdn)" == "" ]]; then
   echo "UNABLE TO PROCEED, puppet cannot find a hostname, ensure `facter fqdn` returns a hostname"
-  echo "CentOS Reference: http://www.rackspace.com/knowledge_center/article/centos-hostname-change"
   echo "Debian Reference: https://wiki.debian.org/HowTo/ChangeHostname"
   exit 1
 fi
