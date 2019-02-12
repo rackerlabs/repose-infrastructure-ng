@@ -11,6 +11,7 @@ mod 'puppetlabs-stdlib', '4.25.1'
 
 mod 'puppetlabs-firewall', '1.7.2'
 mod 'puppetlabs-apt', '6.3.0'
+mod 'puppetlabs-translate', '1.2.0'
 
 mod 'puppetlabs-postgresql', '4.6.1'
 
