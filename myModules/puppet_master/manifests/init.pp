@@ -18,7 +18,7 @@ $puppet_version = '6.2.0-1${lsbdistcodename}'
         provider => 'gem',
     }
 
-    # Since the keys provided by puppetmaster when it installs to sign the puppet agents' keys,
+    # Since the keys created by puppetmaster when it installs are used to sign the puppet agents' keys,
     # a rebuild from zero will require resigning all the keys from each of the puppet agents.
     firewall{ '100 puppetmaster port':
         dport  => 8140,
