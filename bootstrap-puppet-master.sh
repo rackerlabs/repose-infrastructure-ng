@@ -6,6 +6,9 @@ CODENAME=$(lsb_release -cs)
 wget https://apt.puppetlabs.com/puppet${MAJ_VER}-release-${CODENAME}.deb &&
 dpkg -i puppet${MAJ_VER}-release-${CODENAME}.deb &&
 apt update &&
+apt upgrade -y &&
+apt autoclean -y &&
+apt autoremove -y &&
 
 # install needed things
 PUPPET_VERSION=6.2.0-1${CODENAME}
@@ -45,6 +48,10 @@ ln -s /srv/puppet/hieradata   &&
 ln -s /srv/puppet/manifests   &&
 ln -s /srv/puppet/puppet.conf &&
 
+echo -e "\n\n\nCreating the eyaml key directory..." &&
+mkdir -p /etc/puppetlabs/puppet/eyaml &&
+echo -e "You can copy the keys over now.\n\n\n" &&
+
 # actually install the modules onto the server
 # if you ever want to use different modules, you have to update the modules, and run the install again
 cd /srv/puppet &&
@@ -53,7 +60,6 @@ librarian-puppet install --no-use-v1-api &&
 echo "Generating SSL CA certs..." &&
 puppetserver ca setup
 
-mkdir -p /etc/puppetlabs/puppet/eyaml
 FILES=(
     /etc/puppetlabs/puppet/eyaml/private_key.pkcs7.pem
     /etc/puppetlabs/puppet/eyaml/public_key.pkcs7.pem
@@ -65,4 +71,10 @@ for file in ${FILES[*]} ; do
 done
 
 echo "Applying the master manifest..." &&
-puppet apply --detailed-exitcodes /etc/puppetlabs/puppet/manifests/puppet_master.pp
+puppet apply /etc/puppetlabs/puppet/manifests/puppet_master.pp && \
+echo -e '\n\nSuccess!!! Woot!!!\n\n' || \
+echo -e "\n\nSomething went wrong ($?). :(\nHopefully it is just a Warning.\n\n"
+
+test -f /var/run/reboot-required && \
+echo "Reboot Required..." || \
+echo "System is ready."
