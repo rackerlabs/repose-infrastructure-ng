@@ -3,31 +3,25 @@
 
 forge "https://forgeapi.puppetlabs.com"
 
-# use dependencies defined in Modulefile
-#modulefile
-
-# pulling in standard lib, and I can use it now
 mod 'puppetlabs-stdlib', '4.25.1'
 
-mod 'puppetlabs-firewall', '1.7.2'
-mod 'puppetlabs-apt', '6.3.0'
-mod 'puppetlabs-translate', '1.2.0'
-
-mod 'puppetlabs-postgresql', '4.6.1'
-
+mod 'puppetlabs-apt', '2.4.0'
+mod 'puppetlabs-firewall', '1.15.1'
 mod 'puppetlabs-java', '1.6.0'
-mod 'maestrodev-maven', '1.4.0'
+mod 'puppetlabs-postgresql', '5.12.0'
+mod 'puppet-archive', '1.3.0'
+mod 'puppet-grafana', '5.0.0'
+mod 'puppet-virtualbox', '2.3.0'
+
+mod 'jamesnetherton-google_chrome', '0.3.0'
 mod 'garethr-remotesyslog', '0.1.1'
 mod 'garethr-scala', '0.1.2'
-mod 'puppet-virtualbox', '1.8.0'
-mod 'mjanser-vagrant', '1.1.0'
 mod 'garethr-docker', '5.3.0'
-mod 'jamesnetherton-google_chrome', '0.2.1'
-mod 'puppet-archive', '1.1.2'
 mod 'golja-influxdb', '4.0.0'
-mod 'puppet-grafana', '2.6.3'
-mod 'stankevich-python', '1.18.2'
+mod 'maestrodev-maven', '1.4.0'
+mod 'mjanser-vagrant', '1.1.0'
 mod 'paulosuzart-sdkman', '1.0.2'
+mod 'stankevich-python', '1.19.0'
 
 mod "repose/base",
     :path => "myModules/base"
