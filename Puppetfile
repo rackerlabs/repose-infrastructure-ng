@@ -29,6 +29,9 @@ mod "repose/base",
 mod "repose/cloud_monitoring",
     :path => "myModules/cloud_monitoring"
 
+mod "repose/default_node",
+    :path => "myModules/default_node"
+
 mod "repose/repose_jenkins",
     :path => "myModules/repose_jenkins"
 

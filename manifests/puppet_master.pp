@@ -1,3 +1,2 @@
-include base
-include users
+include default_node
 include puppet_master
