@@ -1,10 +1,18 @@
 #!/bin/bash
 
-# set it up to work with debians now
+# Applies to debian flavors only now.
+which lsb_release > /dev/null 2>&1
+if [[ $? == 1 ]] ; then
+    echo "Unrecognized OS for Repose infrastructure ; platform not supported!!!"
+    exit 1
+fi
+
 MAJ_VER="6"
-CODENAME=$(lsb_release -cs)
-wget https://apt.puppetlabs.com/puppet${MAJ_VER}-release-${CODENAME}.deb &&
-dpkg -i puppet${MAJ_VER}-release-${CODENAME}.deb &&
+CODENAME=$(lsb_release --short --codename)
+REPODEB="puppet${MAJ_VER}-release-${CODENAME}.deb"
+wget -O /tmp/$REPODEB https://apt.puppetlabs.com/$REPODEB &&
+dpkg -i /tmp/$REPODEB &&
+rm -f /tmp/$REPODEB &&
 apt update &&
 apt upgrade -y &&
 apt autoclean -y &&
@@ -32,21 +40,16 @@ git clone https://github.com/rackerlabs/repose-infrastructure-ng.git puppet &&
 echo "Installing librarian-puppet and bundler..." &&
 gem install bundler librarian-puppet hiera-eyaml --no-rdoc --no-ri &&
 
-# ensure links are clean
-rm -rf /etc/puppetlabs/code/environments/production/modules/ &&
-rm -rf /etc/puppetlabs/puppet/hiera.yaml  &&
-rm -rf /etc/puppetlabs/puppet/hieradata   &&
-rm -rf /etc/puppetlabs/puppet/manifests   &&
-rm -rf /etc/puppetlabs/puppet/puppet.conf &&
-
-# create symlinks to the git repo
+# clean and create symlinks to the git repo
 cd /etc/puppetlabs/code/environments/production &&
-ln -s /srv/puppet/modules     &&
-cd /etc/puppetlabs/puppet     &&
-ln -s /srv/puppet/hiera.yaml  &&
-ln -s /srv/puppet/hieradata   &&
-ln -s /srv/puppet/manifests   &&
-ln -s /srv/puppet/puppet.conf &&
+rm -rf modules                                  &&
+rm -rf manifests                                &&
+rm -rf hiera.yaml                               &&
+rm -rf hieradata                                &&
+ln -s /srv/puppet/modules                       &&
+ln -s /srv/puppet/manifests                     &&
+ln -s /srv/puppet/hiera.yaml                    &&
+ln -s /srv/puppet/hieradata                     &&
 
 echo -e "\n\n\nCreating the eyaml key directory..." &&
 mkdir -p /etc/puppetlabs/puppet/eyaml &&
@@ -71,10 +74,10 @@ for file in ${FILES[*]} ; do
 done
 
 echo "Applying the master manifest..." &&
-puppet apply /etc/puppetlabs/puppet/manifests/puppet_master.pp && \
+puppet apply /srv/puppet/puppet_apply/puppet_master.pp && \
 echo -e '\n\nSuccess!!! Woot!!!\n\n' || \
 echo -e "\n\nSomething went wrong ($?). :(\nHopefully it is just a Warning.\n\n"
 
 test -f /var/run/reboot-required && \
-echo "Reboot Required..." || \
-echo "System is ready."
+echo -e "Reboot Required...\n\n" || \
+echo -e "System is ready.\n\n"
