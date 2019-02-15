@@ -1,4 +1,5 @@
 class repose_nexus {
+# TODO: Update this manifest.
 
     include repose_nexus::nexus
     include repose_nexus::user
