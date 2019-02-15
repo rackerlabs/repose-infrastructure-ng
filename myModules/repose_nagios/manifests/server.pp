@@ -107,7 +107,7 @@ class repose_nagios::server(
         ensure  => directory,
         owner   => nagios,
         group   => www-data,
-        mode    => 2710,
+        mode    => '2710',
         require => Package['nagios3'],
     }
 
