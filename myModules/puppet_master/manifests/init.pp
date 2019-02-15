@@ -44,6 +44,15 @@ $puppet_version = '6.2.0-1${lsbdistcodename}'
         require => Package["puppetserver"],
     }
 
+    file{ '/etc/puppetlabs/puppet/eyaml':
+        owner  => puppet,
+        group  => puppet,
+        mode    => '0750',
+        require => Package["puppetserver"],
+        recurse => true,
+        purge => false,
+    }
+
     file{ "/usr/local/bin/puppet-repo-sync.sh":
         ensure => file,
         owner  => root,
