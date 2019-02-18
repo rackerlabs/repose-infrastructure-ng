@@ -150,7 +150,7 @@ class repose_jenkins::master(
         version => '1.7',
       },
       'github'                           => {
-        version => '1.29.3',
+        version => '1.29.4',
       },
       'github-api'                       => {
         version => '1.95',
