@@ -1,5 +1,19 @@
 class default_node {
   class { 'users': }
+  # we want all firewall resources purged, so only the puppet ones apply
+  resources { "firewall":
+      purge => true
+  }
+  # resources { 'firewallchain':
+  #     purge => true,
+  # }
+
+  Firewall {
+      before  => Class['base::fw_post'],
+      require => Class['base::fw_pre'],
+  }
+
+  class { ['base::fw_pre', 'base::fw_post']: }
   class { 'base': }
   class { 'cloud_monitoring': }
 
