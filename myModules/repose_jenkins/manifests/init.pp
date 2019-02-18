@@ -1,6 +1,6 @@
 # Installs base layer, but no jenkins itself. Perfect for a slave configuration.
 # also used by the master, basically anything that wants to run our jenkins jobs
-# Depends on garethr/remotesyslog to activate remote syslog for things on this host
+# Depends on papertrail/papertrail to activate remote syslog for things on this host
 class repose_jenkins(
     $deploy_key = undef,
     $deploy_key_pub = undef,

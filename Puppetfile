@@ -14,12 +14,12 @@ mod 'puppet-grafana', '5.0.0'
 mod 'puppet-virtualbox', '2.3.0'
 
 mod 'jamesnetherton-google_chrome', '0.3.0'
-mod 'garethr-remotesyslog', '0.1.1'
 mod 'garethr-scala', '0.1.2'
 mod 'garethr-docker', '5.3.0'
 mod 'golja-influxdb', '4.0.0'
 mod 'maestrodev-maven', '1.4.0'
 mod 'mjanser-vagrant', '1.1.0'
+mod 'papertrail-papertrail', '1.1.2'
 mod 'paulosuzart-sdkman', '1.0.2'
 mod 'stankevich-python', '1.19.0'
 

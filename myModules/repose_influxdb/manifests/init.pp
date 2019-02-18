@@ -175,9 +175,10 @@ class repose_influxdb (
 
   #Papertrail the influxdb logs
   $papertrail_port = hiera("base::papertrail_port", 1)
-  class { 'remotesyslog':
-    port => $papertrail_port,
-    logs => [
+  class {'papertrail':
+    destination_host => 'logs.papertrailapp.com',
+    destination_port => 0 + $papertrail_port,
+    files            => [
       '/var/log/influxdb/influxd.log'
     ],
   }
