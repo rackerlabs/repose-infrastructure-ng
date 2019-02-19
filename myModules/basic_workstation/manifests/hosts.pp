@@ -79,12 +79,12 @@ class basic_workstation::hosts(
     ip => '104.239.133.25',
   }
 
-  host { 'puppet-master':
-    ip => '104.239.240.48',
+  host { 'puppet':
+    ip => '162.209.77.69',
   }
 
-  host { 'nginx':
-    ip => '23.253.237.132',
+  host { 'redirects':
+    ip => '104.239.240.195',
   }
 
   host { 'phone-home':
