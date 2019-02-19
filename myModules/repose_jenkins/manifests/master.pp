@@ -310,6 +310,9 @@ class repose_jenkins::master(
       'simple-theme-plugin'              => {
         version => '0.5.1',
       },
+      'slack'                            => {
+        version => '2.18',
+      },
       'ssh'                              => {
         version => '2.6.1',
       },
