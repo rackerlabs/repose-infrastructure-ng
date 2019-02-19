@@ -99,7 +99,11 @@ class basic_workstation::hosts(
     ip => '104.130.2.85',
   }
 
-  #cluster config
+  host { 'nexus':
+    ip => '162.209.78.219',
+  }
+
+#cluster config
   file { '/etc/clusters':
     source  => 'puppet:///modules/basic_workstation/clusters_config',
   }
