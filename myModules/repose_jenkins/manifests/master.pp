@@ -174,7 +174,7 @@ class repose_jenkins::master(
         version => '2.30',
       },
       'jackson2-api'                     => {
-        version => '2.8.11.3',
+        version => '2.9.8',
       },
       'jacoco'                           => {
         version => '3.0.4',
@@ -257,7 +257,7 @@ class repose_jenkins::master(
       },
       # This is "Pipeline: Declarative".
       'pipeline-model-definition'        => {
-        version => '1.3.1',
+        version => '1.3.4.1',
       },
       # This is "Pipeline: Declarative Extension Points API".
       'pipeline-model-extensions'        => {
