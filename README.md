@@ -46,7 +46,28 @@ Please refer to the [Puppetfile](https://github.com/rackerlabs/repose-infrastruc
 * https://forge.puppetlabs.com/puppetlabs/firewall
 
 ## Setting up eyaml
-https://github.com/TomPoulton/hiera-eyaml#configuration-file-for-eyaml
+In order to edit the eyaml file in our infastructure repo [common.eyaml](https://github.com/rackerlabs/repose-infrastructure-ng/blob/master/hieradata/common.eyaml), you'll need to set up eyaml on your workstation.
+
+1. Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/) if needed.
+2. Install Hiera-eyaml.
+    * `gem install hiera-eyaml`
+3. Download the public and private keys from PasswordSafe.
+    * The files are under the "Puppet" tab in PasswordSafe.
+    * Use the "Edit" page to view the file with line breaks (as they are important).
+    * Typical names for these files are:
+        * `public_key.pkcs7.pem`
+        * `private_key.pkcs7.pem`
+    * Make sure they are locked down to only your user:
+        * `chmod 600 *.pem`
+4. Create/edit your eyaml config file named `~/.eyaml/config.yaml` with the following contents:
+```
+---
+pkcs7_public_key: '/YOUR/FULL/PATH/public_key.pkcs7.pem'
+pkcs7_private_key: '/YOUR/FULL/PATH/private_key.pkcs7.pem'
+```
+
+5. Edit the eyaml file by running:
+    * `eyaml edit common.eyaml`
 
 ## Rebuilding Master
 If you need to rebuild a new master you can run these commands on the clients to hook them up to the new master.
