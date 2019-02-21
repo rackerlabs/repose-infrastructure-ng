@@ -24,7 +24,7 @@ server {
 
       proxy_pass http://app_sonar$request_uri;
       # Fix the “It appears that your reverse proxy set up is broken" error.
-      # This is for jenkins, but probably won't hurt sonar
+      # This is for jenkins
       proxy_redirect http://app_sonar $scheme://<%= @fqdn %>;
    }
 }

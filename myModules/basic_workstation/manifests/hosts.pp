@@ -87,10 +87,6 @@ class basic_workstation::hosts(
     ip => '23.253.237.132',
   }
 
-  host { 'sonar':
-    ip => '23.253.235.84',
-  }
-
   host { 'phone-home':
     ip => '162.209.78.12',
   }

@@ -42,4 +42,5 @@ class adrian_workstation {
     ensure  => present,
     require => Apt::Source['sublime-text'],
   }
+  #todo: add eyaml setup https://one.rackspace.com/pages/viewpage.action?spaceKey=repose&title=Good+things+to+know#Goodthingstoknow-EYAML
 }

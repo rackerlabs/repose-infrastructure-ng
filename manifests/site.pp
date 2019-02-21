@@ -57,10 +57,6 @@ node "jenkins.openrepose.org" inherits default {
     include repose_jenkins::master
 }
 
-node "sonar.openrepose.org" inherits default {
-    include repose_sonar
-}
-
 # this server has been deleted
 node "nexus.openrepose.org" inherits default {
     include repose_nexus
