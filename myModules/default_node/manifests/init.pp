@@ -1,4 +1,14 @@
-class default_node {
+class default_node (
+  $puppet_version = "6.2.0-1${lsbdistcodename}"
+) {
+    # Hold the Puppet Agent package at the desired version so that Nagios does not
+    # alert us of updates that we don't want to consume.
+    apt::pin { 'puppet_agent':
+        packages => 'puppet-agent',
+        version  => $puppet_version,
+        priority => 1001,
+    }
+
   class { 'users': }
   # we want all firewall resources purged, so only the puppet ones apply
   resources { "firewall":
