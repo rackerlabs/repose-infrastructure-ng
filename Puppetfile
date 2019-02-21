@@ -16,7 +16,6 @@ mod 'puppetlabs/postgresql', '4.6.1'
 
 mod 'puppetlabs/java', '1.6.0'
 mod 'maestrodev/maven', '1.4.0'
-mod 'maestrodev/sonarqube', '2.6.6'
 mod 'garethr-remotesyslog', '0.1.1'
 mod 'garethr/scala', '0.1.2'
 mod 'puppet-virtualbox', '1.8.0'
@@ -46,9 +45,6 @@ mod "repose/users",
 
 mod "repose/ssl_cert",
     :path => "myModules/ssl_cert"
-
-mod "repose/repose_sonar",
-    :path => "myModules/repose_sonar"
 
 mod "repose/backup_cloud_files",
     :path => "myModules/backup_cloud_files"

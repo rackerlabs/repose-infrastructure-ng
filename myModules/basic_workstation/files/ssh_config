@@ -13,9 +13,6 @@ User root
 Host nginx
 User root
 
-Host sonar
-User root
-
 Host influxdb
 User root
 
