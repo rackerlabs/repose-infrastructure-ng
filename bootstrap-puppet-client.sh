@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Applies to debian flavors only now.
-which lsb_release > /dev/null 2>&1
+command -v lsb_release > /dev/null 2>&1
 if [[ $? == 1 ]] ; then
     echo "Unrecognized OS for Repose infrastructure ; platform not supported!!!"
     exit 1
