@@ -11,14 +11,18 @@ mod 'puppetlabs-java', '1.6.0'
 mod 'puppetlabs-postgresql', '5.12.0'
 mod 'puppet-archive', '1.3.0'
 mod 'puppet-grafana', '5.0.0'
+mod 'puppet-mongodb', '2.4.1'
 
 mod 'jamesnetherton-google_chrome', '0.3.0'
 mod 'garethr-scala', '0.1.2'
 mod 'garethr-docker', '5.3.0'
+mod 'golja-gnupg', '1.2.3'
 mod 'golja-influxdb', '4.0.0'
+mod 'leinaddm-htpasswd', '0.0.3'
 mod 'maestrodev-maven', '1.4.0'
 mod 'papertrail-papertrail', '1.1.2'
 mod 'paulosuzart-sdkman', '1.0.2'
+mod 'rtyler-jenkins', '1.7.0'
 mod 'stankevich-python', '1.19.0'
 
 mod "repose/base",
