@@ -1,12 +1,13 @@
 {
   "name": "repose-backup_cloud_files",
   "version": "0.0.1",
-  "author": "David Kowis",
+  "author": "repose",
   "summary": "",
   "license": "Apache 2.0",
-  "source": "",
+  "source": "git://github.com/rackerlabs/repose-infrastructure-ng.git",
+  "project_page": "https://github.com/rackerlabs/repose-infrastructure-ng",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
-    {"name":"stankevich/python","version_requirement":">= 0.0.1"}
+    {"name":"stankevich-python","version_requirement":">= 0.0.1"}
   ]
 }

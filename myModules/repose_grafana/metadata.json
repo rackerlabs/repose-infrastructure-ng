@@ -1,10 +1,11 @@
 {
   "name": "repose-repose_grafana",
   "version": "0.0.1",
-  "author": "Adrian george",
+  "author": "repose",
   "summary": "",
   "license": "Apache 2.0",
-  "source": "",
+  "source": "git://github.com/rackerlabs/repose-infrastructure-ng.git",
+  "project_page": "https://github.com/rackerlabs/repose-infrastructure-ng",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
     {"name":"puppet-grafana", "version_requirement":">= 2.6.3"}
