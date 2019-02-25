@@ -2,11 +2,10 @@
   "name": "repose-users",
   "version": "0.0.1",
   "author": "repose",
-  "summary": "Sets up Repose team users.",
+  "summary": "",
   "license": "Apache 2.0",
   "source": "git://github.com/rackerlabs/repose-infrastructure-ng.git",
   "project_page": "https://github.com/rackerlabs/repose-infrastructure-ng",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ]
 }

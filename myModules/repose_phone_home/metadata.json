@@ -7,7 +7,5 @@
   "source": "git://github.com/rackerlabs/repose-infrastructure-ng.git",
   "project_page": "https://github.com/rackerlabs/repose-infrastructure-ng",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
-    {"name":"puppetlabs-mongodb","version_requirement":">= 0.0.1"}
   ]
 }
