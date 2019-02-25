@@ -43,12 +43,12 @@ class puppet_master(
     }
 
     file{ '/etc/puppetlabs/puppet/eyaml':
-        owner  => puppet,
-        group  => puppet,
+        owner   => puppet,
+        group   => puppet,
         mode    => '0750',
         require => Package["puppetserver"],
         recurse => true,
-        purge => false,
+        purge   => false,
     }
 
     file{ "/usr/local/bin/puppet-repo-sync.sh":
