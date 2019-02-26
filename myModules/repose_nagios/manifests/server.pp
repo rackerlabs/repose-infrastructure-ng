@@ -11,6 +11,21 @@ class repose_nagios::server(
 
     include base::mail_sender
 
+    $accounts = {
+        $nagios_admin_user => $nagios_admin_pass,
+    }
+    file{ '/etc/nginx/conf.d/nagios_htpasswd':
+        ensure  => file,
+        mode    => '0640',
+        owner   => root,
+        group   => 'www-data',
+        require => [
+            Package['nginx']
+        ],
+        content => template('repose_nagios/htpasswd.erb'),
+        notify      => Service['nginx'],
+    }
+
     file{ '/etc/nginx/conf.d/nagios.conf':
         ensure  => file,
         mode    => '0644',
@@ -19,28 +34,9 @@ class repose_nagios::server(
         content => template('repose_nagios/nginx.conf.erb'),
         require => [
             Package['nginx', 'nagios3', 'fcgiwrap', 'php5-fpm'],
-            Htpasswd[$nagios_admin_user],
             File['/etc/nginx/conf.d/nagios_htpasswd']
         ],
         notify  => Service['nginx'],
-    }
-
-    file{ '/etc/nginx/conf.d/nagios_htpasswd':
-        ensure  => file,
-        mode    => '0640',
-        owner   => root,
-        group   => 'www-data',
-        require => [
-            Package['nginx'],
-            Htpasswd[$nagios_admin_user]
-        ],
-    }
-
-    htpasswd { $nagios_admin_user:
-        cryptpasswd => ht_crypt($nagios_admin_pass, $nagios_ht_salt),
-        target      => '/etc/nginx/conf.d/nagios_htpasswd',
-        require     => Package['nginx'],
-        notify      => Service['nginx'],
     }
 
     file{ '/etc/nagios3/cgi.cfg':

@@ -5,6 +5,7 @@ forge "https://forgeapi.puppetlabs.com"
 
 mod 'puppetlabs-stdlib', '4.25.1'
 
+mod 'puppetlabs-apache', '4.0.0'
 mod 'puppetlabs-apt', '2.4.0'
 mod 'puppetlabs-firewall', '1.15.1'
 mod 'puppetlabs-java', '1.6.0'
@@ -18,7 +19,6 @@ mod 'garethr-scala', '0.1.2'
 mod 'garethr-docker', '5.3.0'
 mod 'golja-gnupg', '1.2.3'
 mod 'golja-influxdb', '4.0.0'
-mod 'leinaddm-htpasswd', '0.0.3'
 mod 'maestrodev-maven', '1.4.0'
 mod 'papertrail-papertrail', '1.1.2'
 mod 'paulosuzart-sdkman', '1.0.2'
