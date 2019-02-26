@@ -19,11 +19,9 @@ class repose_nagios::server(
         mode    => '0640',
         owner   => root,
         group   => 'www-data',
-        require => [
-            Package['nginx']
-        ],
+        require => Package['nginx'],
         content => template('repose_nagios/htpasswd.erb'),
-        notify      => Service['nginx'],
+        notify  => Service['nginx'],
     }
 
     file{ '/etc/nginx/conf.d/nagios.conf':
@@ -45,9 +43,7 @@ class repose_nagios::server(
         group   => root,
         mode    => '0644',
         content => template('repose_nagios/cgi.cfg.erb'),
-        require => [
-            Package['nagios3']
-        ],
+        require => Package['nagios3'],
         notify  => Service['nagios3'],
     }
 
@@ -66,8 +62,8 @@ class repose_nagios::server(
         ensure => present,
     }
 
-#nagios3 is going to bring along a pile of apache dependencies I don't want.
-# but it also makes dependency hell. Disk space is cheap, we just won't run apache2 at all
+    # nagios3 is going to bring along a pile of apache dependencies I don't want.
+    # but it also makes dependency hell. Disk space is cheap, we just won't run apache2 at all
     service{ 'apache2':
         ensure  => stopped,
         enable  => false,
@@ -98,7 +94,7 @@ class repose_nagios::server(
         notify  => Service['nagios3'],
     }
 
-#these guys are needed to enable external commands
+    #these guys are needed to enable external commands
     file{ '/var/lib/nagios3/rw':
         ensure  => directory,
         owner   => nagios,
@@ -115,13 +111,13 @@ class repose_nagios::server(
         require => Package['nagios3'],
     }
 
-# set up ruby-nagios, because I can aggregate stuff and have less noise!
+    # set up ruby-nagios, because I can aggregate stuff and have less noise!
     package{ 'ruby-nagios':
         ensure   => present,
         provider => 'gem',
         before   => File['/etc/nagios3/conf.d'],
     }
 
-#TODO: papertrail logs, beyond default syslog stuff
+    #TODO: papertrail logs, beyond default syslog stuff
 
 }
