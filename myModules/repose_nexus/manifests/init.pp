@@ -1,4 +1,5 @@
 class repose_nexus {
+# TODO: Update this manifest.
 
     include repose_nexus::nexus
     include repose_nexus::user
@@ -10,7 +11,7 @@ class repose_nexus {
         ensure  => file,
         owner   => 'nexus',
         group   => 'nexus',
-        mode    => 0444,
+        mode    => '0444',
         source  => "puppet:///modules/repose_nexus/nexus-apt-plugin-1.0.1-bundle.zip",
         require => Class['repose_nexus::user', 'repose_nexus::work_directory'];
     }

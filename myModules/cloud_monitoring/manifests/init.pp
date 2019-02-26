@@ -18,7 +18,7 @@ class cloud_monitoring(
                 location   => "${package_url}/debian-${lsbdistcodename}-x86_64",
                 release    => "cloudmonitoring",
                 repos      => "main",
-                key        => "D05AB914",
+                key        => "84971191C39CAE2CC0E4C9B1A086F077D05AB914",
                 key_source => "${signing_url}/linux.asc"
             }
         }
@@ -29,7 +29,7 @@ class cloud_monitoring(
                 location   => "${package_url}/ubuntu-${lsbdistrelease}-x86_64",
                 release    => "cloudmonitoring",
                 repos      => "main",
-                key        => "D05AB914",
+                key        => "84971191C39CAE2CC0E4C9B1A086F077D05AB914",
                 key_source => "${signing_url}/linux.asc"
             }
         }
@@ -48,7 +48,7 @@ class cloud_monitoring(
         ensure  => present,
         owner   => root,
         group   => root,
-        mode    => 0600,
+        mode    => '0600',
         content => template("cloud_monitoring/rackspace-monitoring-agent.cfg.erb"),
     }
 

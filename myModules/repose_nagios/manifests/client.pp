@@ -18,7 +18,7 @@ class repose_nagios::client {
         path    => '/etc/nagios/nrpe_local.cfg',
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
         source  => 'puppet:///modules/repose_nagios/client_nrpe.conf',
         require => Package['nagios-nrpe-server'],
         notify  => Service['nagios-nrpe-server'],

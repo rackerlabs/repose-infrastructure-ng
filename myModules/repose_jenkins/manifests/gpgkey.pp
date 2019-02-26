@@ -21,7 +21,7 @@ class repose_jenkins::gpgkey(
         key_id      => 'E7C89BBB',
         user        => jenkins,
         key_content => $repose_signing_privkey,
-        key_type    => private,
+        key_type    => 'private',
         require     => User['jenkins'],
     }
 }

@@ -38,7 +38,7 @@ class repose_gradle(
     content => template("repose_gradle/gradle.properties.erb"),
     owner   => $user,
     group   => $user,
-    mode    => 0600,
+    mode    => '0600',
     require => File["${user_home}/.gradle"]
   }
 
@@ -52,7 +52,7 @@ class repose_gradle(
 
   #adds it to the path
   file {'/etc/profile.d/append-gradle-path.sh':
-    mode    => 644,
+    mode    => '0644',
     content => 'PATH=$PATH:/opt/gradle/bin',
     require => File['gradle-symlink'],
   }

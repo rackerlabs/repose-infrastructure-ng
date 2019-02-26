@@ -1,18 +1,18 @@
 ---
-:backends:
-  - eyaml
-  - yaml
+version: 5
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
 
-:hierarchy:
-  - "%{::clientcert}"
-  - "%{::osfamily}"
-  - common
+hierarchy:
+  - name: "Common data"
+    path: "common.yaml"
+    # Omitting datadir and data_hash to use defaults.
 
-:yaml:
-  :datadir: /etc/puppet/hieradata
-:eyaml:
-  :datadir: /etc/puppet/hieradata
-
-  # using the PKCS7 encryptor -- THESE HAVE TO BE PLACED MANUALLY because secrets!
-  :pkcs7_private_key: /etc/puppet/ssl/private_key.pkcs7.pem
-  :pkcs7_public_key: /etc/puppet/ssl/public_key.pkcs7.pem
+  - name: "Common secret data"
+    path: "common.eyaml"
+    lookup_key: eyaml_lookup_key
+    options:
+      # using the PKCS7 encryptor -- THESE HAVE TO BE PLACED MANUALLY because secrets!
+      pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/private_key.pkcs7.pem
+      pkcs7_public_key:  /etc/puppetlabs/puppet/eyaml/public_key.pkcs7.pem

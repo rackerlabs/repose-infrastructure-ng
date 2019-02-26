@@ -24,7 +24,7 @@ class repose_groovy(
 
   #adds it to the path
   file {'/etc/profile.d/append-groovy-path.sh':
-    mode    => 644,
+    mode    => '0644',
     content => 'PATH=$PATH:/opt/groovy/bin',
     require => File['groovy-symlink'],
   }

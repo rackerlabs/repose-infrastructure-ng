@@ -51,14 +51,14 @@ class repose_nexus::nexus(
         source => "puppet:///modules/repose_nexus/nexus",
         owner  => root,
         group  => root,
-        mode   => 0755,
+        mode   => '0755',
     }
 
     file{ '/opt/nexus/conf/nexus.properties':
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
         source  => "puppet:///modules/repose_nexus/nexus.properties",
         require => File['nexus-symlink'],
         notify  => Service['nexus'],
@@ -79,7 +79,7 @@ class repose_nexus::nexus(
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
         content => template('repose_nexus/nginx.conf.erb'),
         require => Package['nginx'],
         notify  => Service['nginx'],

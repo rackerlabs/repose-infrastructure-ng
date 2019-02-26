@@ -78,10 +78,12 @@ class repose_grafana {
 
   #Papertrail the grafana logs
   $papertrail_port = hiera("base::papertrail_port", 1)
-  class { 'remotesyslog':
-    port => $papertrail_port,
-    logs => [
-      '/var/log/grafana/grafana.log'
+  class {'papertrail':
+    destination_host => 'logs.papertrailapp.com',
+    destination_port => 0 + $papertrail_port,
+    files            => [
+      '/var/log/grafana/grafana.log',
+      '/var/log/nginx/error.log'
     ],
   }
 }

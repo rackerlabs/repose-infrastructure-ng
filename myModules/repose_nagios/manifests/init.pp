@@ -10,7 +10,7 @@ class repose_nagios {
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0755,
+        mode    => '0755',
         source  => "puppet:///modules/repose_nagios/check_debian_packages",
         require => Package['nagios-plugins'],
     }
@@ -19,7 +19,7 @@ class repose_nagios {
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0755,
+        mode    => '0755',
         source  => "puppet:///modules/repose_nagios/check_ssl_cert",
         require => Package['nagios-plugins'],
     }

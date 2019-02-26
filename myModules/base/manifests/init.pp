@@ -18,7 +18,7 @@ class base(
     file { '/etc/profile.d/ls.sh':
         ensure => present,
         source => 'puppet:///modules/base/profile-ls.sh',
-        mode   => "0755",
+        mode   => '0755',
         owner  => root,
         group  => root,
     }
@@ -30,7 +30,7 @@ class base(
     file{ "/etc/tmux.conf":
         ensure  => present,
         source  => "puppet:///modules/base/tmux.conf",
-        mode    => "0664",
+        mode    => '0664',
         owner   => root,
         group   => root,
         require => Package['tmux'],
@@ -73,7 +73,7 @@ class base(
         ensure  => present,
         path    => "/etc/chrony.conf",
         source  => "puppet:///modules/base/chrony-client.conf",
-        mode    => "0660",
+        mode    => '0660',
         owner   => root,
         group   => root,
         require => Package["chrony"],
@@ -100,7 +100,7 @@ class base(
         ensure => file,
         owner  => root,
         group  => root,
-        mode   => "0644",
+        mode   => '0644',
         source => "puppet:///modules/base/puppet-agent",
         notify => Service['puppet'],
     }
@@ -119,7 +119,7 @@ class base(
         ensure  => file,
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
         content => template("base/rsyslog.conf.erb"),
         require => Package['rsyslog'],
         notify  => Service['rsyslog'],
@@ -146,7 +146,7 @@ class base(
     }
     file{ '/etc/motd':
         ensure  => file,
-        mode    => 0644,
+        mode    => '0644',
         owner   => root,
         group   => root,
         content => template("base/motd.erb"),
@@ -156,7 +156,7 @@ class base(
 
     file{ '/etc/ssh/sshd_config':
         ensure  => file,
-        mode    => 0600,
+        mode    => '0600',
         owner   => root,
         group   => root,
         source  => "puppet:///modules/base/sshd_config",
@@ -166,7 +166,7 @@ class base(
 
     file{ '/etc/ssh/ssh_config':
         ensure  => file,
-        mode    => 0644,
+        mode    => '0644',
         owner   => root,
         group   => root,
         source  => "puppet:///modules/base/ssh_config",
@@ -181,7 +181,7 @@ class base(
 
     file{ '/etc/tmpreaper.conf':
         ensure  => file,
-        mode    => 0640,
+        mode    => '0640',
         owner   => root,
         group   => root,
         source  => "puppet:///modules/base/tmpreaper.conf",
@@ -211,7 +211,7 @@ class base(
 # turns out puppet creates this file rather stupidly.
     file{ "/etc/ssh/ssh_known_hosts":
         ensure  => file,
-        mode    => 0644,
+        mode    => '0644',
         owner   => root,
         group   => root,
         require => Sshkey["github.com", "repo.openrepose.org"],

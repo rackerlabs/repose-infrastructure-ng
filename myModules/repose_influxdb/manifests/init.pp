@@ -94,13 +94,13 @@ class repose_influxdb (
   exec { 'create-influxdb-user':
     path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
     command => "curl -iv -G https://influxdb.openrepose.org:8086/query --data-urlencode \"q=CREATE USER $influxdb_admin_username WITH PASSWORD '$influxdb_admin_password' WITH ALL PRIVILEGES\"",
-    require => Class["influxdb::server"],
+    require => Class['influxdb::server'],
   }
 
   exec { 'create-influxdb-database':
     path    => ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin'],
     command => "curl -iv -G https://influxdb.openrepose.org:8086/query --data-urlencode \"q=CREATE DATABASE $influxdb_performance_db\" -u $influxdb_admin_username:$influxdb_admin_password",
-    require => Class["influxdb::server"],
+    require => Class['influxdb::server'],
   }
 
   $influxdb_backups = "$cbs_mount_point/backups"
@@ -119,7 +119,7 @@ class repose_influxdb (
     ensure => file,
     owner  => root,
     group  => root,
-    mode   => 0754,
+    mode   => '0754',
     source => "puppet:///modules/repose_influxdb/influxdb-backup-compress.sh",
   }
 
@@ -165,7 +165,7 @@ class repose_influxdb (
 
   file { "/etc/nginx/conf.d/influxdb.conf":
     ensure  => file,
-    mode    => 0644,
+    mode    => '0644',
     owner   => root,
     group   => root,
     content => template("repose_influxdb/nginx.conf.erb"),
@@ -175,9 +175,10 @@ class repose_influxdb (
 
   #Papertrail the influxdb logs
   $papertrail_port = hiera("base::papertrail_port", 1)
-  class { 'remotesyslog':
-    port => $papertrail_port,
-    logs => [
+  class {'papertrail':
+    destination_host => 'logs.papertrailapp.com',
+    destination_port => 0 + $papertrail_port,
+    files            => [
       '/var/log/influxdb/influxd.log'
     ],
   }

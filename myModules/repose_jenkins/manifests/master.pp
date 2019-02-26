@@ -177,7 +177,7 @@ class repose_jenkins::master(
         version => '2.9.8',
       },
       'jacoco'                           => {
-        version => '3.0.4',
+        version => '2.2.1',
       },
       'javadoc'                          => {
         version => '1.4',
@@ -310,6 +310,9 @@ class repose_jenkins::master(
       'simple-theme-plugin'              => {
         version => '0.5.1',
       },
+      'slack'                            => {
+        version => '2.18',
+      },
       'ssh'                              => {
         version => '2.6.1',
       },
@@ -413,9 +416,10 @@ class repose_jenkins::master(
 
   # Papertailing the Jenkins logs
   $papertrail_port = hiera('base::papertrail_port', 1)
-  class { 'remotesyslog':
-    port => $papertrail_port,
-    logs => [
+  class {'papertrail':
+    destination_host => 'logs.papertrailapp.com',
+    destination_port => 0 + $papertrail_port,
+    files            => [
       '/var/log/jenkins/jenkins.log',
       '/var/log/nginx/error.log'
     ],

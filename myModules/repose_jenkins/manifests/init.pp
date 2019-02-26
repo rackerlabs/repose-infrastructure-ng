@@ -1,6 +1,6 @@
 # Installs base layer, but no jenkins itself. Perfect for a slave configuration.
 # also used by the master, basically anything that wants to run our jenkins jobs
-# Depends on garethr/remotesyslog to activate remote syslog for things on this host
+# Depends on papertrail/papertrail to activate remote syslog for things on this host
 class repose_jenkins(
     $deploy_key = undef,
     $deploy_key_pub = undef,
@@ -49,7 +49,7 @@ class repose_jenkins(
     # Also needed by any of the release builds for when they do a git push
     file { "${jenkins_home}/.gitconfig":
         ensure => file,
-        mode   => 0664,
+        mode   => '0664',
         owner  => jenkins,
         group  => jenkins,
         source => "puppet:///modules/repose_jenkins/jenkins-gitconfig",
@@ -79,7 +79,7 @@ class repose_jenkins(
 
     file { "${jenkins_home}/.ssh/id_rsa":
       ensure  => file,
-      mode    => 0600,
+      mode    => '0600',
       owner   => jenkins,
       group   => jenkins,
       content => "${deploy_key}",
@@ -88,7 +88,7 @@ class repose_jenkins(
 
     file { "${jenkins_home}/.ssh/id_rsa.pub":
       ensure  => file,
-      mode    => 0600,
+      mode    => '0600',
       owner   => jenkins,
       group   => jenkins,
       content => "ssh-rsa ${deploy_key_pub} Jenkins Key",

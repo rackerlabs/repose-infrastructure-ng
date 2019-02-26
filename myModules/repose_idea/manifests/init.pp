@@ -25,7 +25,7 @@ class repose_idea(
 
   #adds it to the path
   file {'/etc/profile.d/append-idea-path.sh':
-    mode    => 644,
+    mode    => '0644',
     content => 'PATH=$PATH:/opt/idea/bin',
     require => File['idea-symlink'],
   }

@@ -37,7 +37,7 @@ class repose_maven(
   }
 
   file{ "${user_home}/.m2/settings.xml":
-      mode    => 0600,
+      mode    => '0600',
       owner   => $user,
       group   => $user,
       content => template("repose_maven/m2settings.xml.erb"),

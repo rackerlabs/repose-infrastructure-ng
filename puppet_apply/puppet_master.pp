@@ -1,0 +1,2 @@
+include default_node
+include puppet_master
