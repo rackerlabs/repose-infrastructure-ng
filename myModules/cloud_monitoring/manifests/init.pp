@@ -6,7 +6,7 @@ class cloud_monitoring(
 ) {
 
     # package url and where the signature is
-    $package_url = "http://stable.packages.cloudmonitoring.rackspace.com"
+    $package_url = "https://stable.packages.cloudmonitoring.rackspace.com"
     $signing_url = "https://monitoring.api.rackspacecloud.com/pki/agent"
 
     # can only support debian flavors at this point.
@@ -14,7 +14,7 @@ class cloud_monitoring(
         debian: {
             info("Can support debian")
             include apt
-            apt::source { 'rackspace_monitoring':
+            apt::source { 'rackspace-monitoring-agent':
                 location   => "${package_url}/debian-${lsbdistcodename}-x86_64",
                 release    => "cloudmonitoring",
                 repos      => "main",
@@ -25,7 +25,7 @@ class cloud_monitoring(
         ubuntu: {
             info("Can support ubuntu")
             include apt
-            apt::source { 'rackspace_monitoring':
+            apt::source { 'rackspace-monitoring-agent':
                 location   => "${package_url}/ubuntu-${lsbdistrelease}-x86_64",
                 release    => "cloudmonitoring",
                 repos      => "main",
@@ -36,10 +36,14 @@ class cloud_monitoring(
         default: { fail("Unrecognized OS for cloud_monitoring") }
     }
 
+    file{ "/etc/apt/sources.list.d/rackspace_monitoring.list":
+        ensure  => absent,
+    }
+
     package{ ['rackspace-monitoring-agent', 'aptitude']:
         ensure  => present,
         require => [
-            Apt::Source['rackspace_monitoring'],
+            Apt::Source['rackspace-monitoring-agent'],
             Exec['apt_update'],
         ],
     }
