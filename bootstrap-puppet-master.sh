@@ -7,10 +7,13 @@ if [[ $? == 1 ]] ; then
     exit 1
 fi
 
-MAJ_VER="6"
 CODENAME=$(lsb_release --short --codename)
+PUPPET_VERSION=6.2.0
+MAJ_VER=$(echo $PUPPET_VERSION | cut -d. -f1)
 REPODEB="puppet${MAJ_VER}-release-${CODENAME}.deb"
-wget -O /tmp/$REPODEB https://apt.puppetlabs.com/$REPODEB &&
+if [ ! -f "/tmp/$REPODEB" ] ; then
+    wget "https://apt.puppetlabs.com/$REPODEB" -O "/tmp/$REPODEB"
+fi
 dpkg -i /tmp/$REPODEB &&
 rm -f /tmp/$REPODEB &&
 apt update &&
@@ -19,8 +22,7 @@ apt autoclean -y &&
 apt autoremove -y &&
 
 # install needed things
-PUPPET_VERSION=6.2.0-1${CODENAME}
-apt install -y git puppetserver=${PUPPET_VERSION} ruby-full make &&
+apt install -y git puppetserver=${PUPPET_VERSION}-1${CODENAME} ruby-full make &&
 source /etc/profile.d/puppet-agent.sh
 
 if [[ "$(facter fqdn)" == "" ]]; then
