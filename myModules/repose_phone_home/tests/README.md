@@ -46,16 +46,6 @@ puppet apply \
    /etc/puppet/modules/repose_phone_home/tests/init.pp
 ```
 
-### Until the new repose-phone-home-service is published copy it over and install it
-```
-cd <REPOSE_PHONE_HOME_SERVICE_DIR>
-ssh root@phone-home.openrepose.org.bast 'rm -f /root/repose-phone-home_*_all.deb'
-scp -p build/distributions/repose-phone-home_*_all.deb root@phone-home.openrepose.org.bast:/root/
-ssh root@phone-home.openrepose.org.bast 'dpkg -i /root/repose-phone-home_*_all.deb'
-ssh root@phone-home.openrepose.org.bast 'service repose-phone-home start'
-ssh root@phone-home.openrepose.org.bast 'service repose-phone-home status'
-```
-
 ### Send some test data
 ```
 curl -d '{"serviceId":null,"createdAt":"1970-01-01T00:00:00.000Z","createdAtMillis":0,"jreVersion":"0.0.0_00","jvmName":"Java Test VM","contactEmail":null,"reposeVersion":"0.0.0.0-SNAPSHOT","clusters":[{"filters":["fake-filter-one","fake-filter-two"],"services":["dist-datastore"]}]}' -H 'Content-Type: application/json' http://phone-home.openrepose.org
