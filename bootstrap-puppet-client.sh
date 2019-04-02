@@ -23,6 +23,9 @@ apt-get update &&
 apt-get upgrade -y &&
 apt-get autoclean -y &&
 apt-get autoremove -y &&
+# since Debian doesn't support HTTPS with Apt by default:
+apt install -y apt-transport-https ca-certificates &&
+# install needed things
 apt install -y puppet-agent=${PUPPET_VERSION}-1${CODENAME} &&
 
 echo -e "\n\nExecuting puppet agent for the first time.\n" &&

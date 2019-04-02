@@ -40,6 +40,14 @@ class cloud_monitoring(
         default: { fail("Unrecognized OS for cloud_monitoring") }
     }
 
+    # Since Debian doesn't support HTTPS with Apt by default, a couple of packages need to be installed:
+    package { 'apt-transport-https':
+      ensure  => present,
+    }
+    package { 'ca-certificates':
+      ensure  => present,
+    }
+
     file{ "/etc/apt/sources.list.d/rackspace_monitoring.list":
         ensure  => absent,
     }

@@ -41,11 +41,6 @@ class repose_influxdb (
     command => "apt-get update",
   }
 
-  package { 'apt-transport-https':
-    ensure  => present,
-    require => Exec['apt_update'],
-  }
-
   $cbs_mount_point = '/mnt/cbs'
 
   class { 'influxdb::server':

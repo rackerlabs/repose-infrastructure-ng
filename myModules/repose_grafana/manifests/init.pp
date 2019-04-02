@@ -1,8 +1,4 @@
 class repose_grafana {
-  package { 'apt-transport-https':
-    ensure  => present,
-  }
-
   class { 'grafana':
     install_method => 'repo',
     version        => '5.4.2',
@@ -15,7 +11,6 @@ class repose_grafana {
         enabled        => true,
       },
     },
-    require => Package['apt-transport-https'],
   }
 
   firewall { '101 http access':

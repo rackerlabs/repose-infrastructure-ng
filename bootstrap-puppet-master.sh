@@ -20,7 +20,8 @@ apt update &&
 apt upgrade -y &&
 apt autoclean -y &&
 apt autoremove -y &&
-
+# since Debian doesn't support HTTPS with Apt by default:
+apt install -y apt-transport-https ca-certificates &&
 # install needed things
 apt install -y git puppetserver=${PUPPET_VERSION}-1${CODENAME} ruby-full make &&
 source /etc/profile.d/puppet-agent.sh
