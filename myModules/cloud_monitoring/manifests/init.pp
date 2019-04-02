@@ -18,8 +18,10 @@ class cloud_monitoring(
                 location   => "${package_url}/debian-${lsbdistcodename}-x86_64",
                 release    => "cloudmonitoring",
                 repos      => "main",
-                key        => "84971191C39CAE2CC0E4C9B1A086F077D05AB914",
-                key_source => "${signing_url}/linux.asc"
+                key        => {
+                    id     => '84971191C39CAE2CC0E4C9B1A086F077D05AB914',
+                    source => "${signing_url}/linux.asc"
+                }
             }
         }
         ubuntu: {
@@ -29,8 +31,10 @@ class cloud_monitoring(
                 location   => "${package_url}/ubuntu-${lsbdistrelease}-x86_64",
                 release    => "cloudmonitoring",
                 repos      => "main",
-                key        => "84971191C39CAE2CC0E4C9B1A086F077D05AB914",
-                key_source => "${signing_url}/linux.asc"
+                key        => {
+                    id     => '84971191C39CAE2CC0E4C9B1A086F077D05AB914',
+                    source => "${signing_url}/linux.asc"
+                }
             }
         }
         default: { fail("Unrecognized OS for cloud_monitoring") }
