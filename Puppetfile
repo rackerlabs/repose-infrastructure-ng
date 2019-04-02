@@ -11,7 +11,7 @@ mod 'puppetlabs-firewall', '1.15.1'
 mod 'puppetlabs-java', '1.6.0'
 mod 'puppetlabs-postgresql', '5.12.0'
 mod 'puppet-archive', '1.3.0'
-mod 'puppet-grafana', '5.0.0'
+mod 'puppet-grafana', '6.0.0'
 mod 'puppet-mongodb', '2.4.1'
 
 mod 'jamesnetherton-google_chrome', '0.3.0'
