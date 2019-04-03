@@ -6,7 +6,10 @@ class adrian_workstation {
     sso       => 'adrian.george',
   }
 
-  include google_chrome
+  ################################################################################
+  # REMOVED until a release is made supporting Puppet 6.
+  #include google_chrome
+  ################################################################################
 
   package { 'nautilus-dropbox':
     ensure  => present,

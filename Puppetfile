@@ -22,7 +22,11 @@ mod 'puppet-grafana', '6.0.0'
 mod 'puppet-mongodb', '2.4.1'
 mod 'puppet-wget', '2.0.1'
 
-mod 'jamesnetherton-google_chrome', '0.3.0'
+################################################################################
+# REMOVED until a release is made supporting Puppet 6.
+# https://github.com/jamesnetherton/puppet-google-chrome
+#mod 'jamesnetherton-google_chrome', '0.5.0'
+################################################################################
 mod 'garethr-scala', '0.1.2'
 mod 'golja-gnupg', '1.2.3'
 ################################################################################
