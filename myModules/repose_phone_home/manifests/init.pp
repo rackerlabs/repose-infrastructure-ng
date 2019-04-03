@@ -9,17 +9,6 @@ class repose_phone_home(
 ) {
 
   include apt
-  class { 'apt::backports':
-    notify => Exec['apt_update'],
-  }
-
-  apt::pin { 'backports_java':
-    packages => ['ca-certificates-java', 'openjdk-7-jre-headless', 'openjdk-7-jre', 'openjdk-7-jdk'],
-    priority => 500,
-    release  => "${lsbdistcodename}-backports",
-    require  => Class['apt::backports'],
-    notify   => Exec['apt_update'],
-  }
 
   class {'::mongodb::globals':
     manage_package_repo => true,
@@ -54,8 +43,7 @@ class repose_phone_home(
   package{ "repose-phone-home":
     ensure  => present,
     require => [
-      Apt::Source['repose'],
-      Apt::Pin['backports_java']
+      Apt::Source['repose']
     ],
   }
 
