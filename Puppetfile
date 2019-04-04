@@ -3,7 +3,7 @@
 
 forge "https://forgeapi.puppetlabs.com"
 
-mod 'puppetlabs-stdlib', '5.1.0'
+mod 'puppetlabs-stdlib', '5.2.0'
 
 mod 'puppetlabs-apache', '4.0.0'
 ################################################################################
@@ -13,14 +13,18 @@ mod 'puppetlabs-apache', '4.0.0'
 mod 'puppetlabs-apt', '6.0.0'
 ################################################################################
 mod 'puppetlabs-docker', '3.5.0'
-mod 'puppetlabs-firewall', '1.15.1'
+mod 'puppetlabs-firewall', '1.15.2'
 mod 'puppetlabs-java', '3.3.0'
-mod 'puppetlabs-postgresql', '5.12.0'
+mod 'puppetlabs-postgresql', '5.12.1'
 mod 'puppetlabs-yumrepo_core', '1.0.3'
 mod 'puppet-archive', '3.2.1'
 mod 'puppet-grafana', '6.0.0'
 mod 'puppet-mongodb', '2.4.1'
+################################################################################
+# This module has been deprecated by its author since February 27, 2019.
+# The author has suggested puppet-archive as its replacement.
 mod 'puppet-wget', '2.0.1'
+################################################################################
 
 ################################################################################
 # REMOVED until a release is made supporting Puppet 6.
@@ -37,7 +41,7 @@ mod 'golja-influxdb',
   :git => "https://github.com/dgolja/golja-influxdb.git",
   :ref => '5c5f74dfbda434562d31369b7f8c447895b06a1c'
 ################################################################################
-mod 'icinga-icinga2', '2.0.1'
+mod 'icinga-icinga2', '2.0.2'
 ################################################################################
 # Until my PR is merged and a release is made, we can use my fork with the fix.
 # https://github.com/Icinga/puppet-icingaweb2/pull/226
@@ -57,7 +61,11 @@ mod 'puppet-jenkins',
   :git => "https://github.com/voxpupuli/puppet-jenkins.git",
   :ref => '697876955a3a57fcff6fe3ef95e4a2b978a43bf0'
 ################################################################################
+################################################################################
+# This module has been deprecated by its author since June 27, 2018.
+# The author has suggested puppet-python as its replacement.
 mod 'stankevich-python', '1.19.0'
+################################################################################
 
 mod "repose/base",
     :path => "myModules/base"
