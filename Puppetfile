@@ -28,6 +28,7 @@ mod 'puppet-jenkins',
   :ref => '697876955a3a57fcff6fe3ef95e4a2b978a43bf0'
 ################################################################################
 mod 'puppet-mongodb', '2.4.1'
+mod 'puppet-nginx', '0.16.0'
 ################################################################################
 # This module has been deprecated by its author since February 27, 2019.
 # The author has suggested puppet-archive as its replacement.
@@ -61,6 +62,7 @@ mod 'icinga-icingaweb2',
 mod 'maestrodev-maven', '1.4.0'
 mod 'papertrail-papertrail', '1.1.2'
 mod 'paulosuzart-sdkman', '1.0.2'
+mod 'Slashbunny-phpfpm', '0.0.18'
 ################################################################################
 # This module has been deprecated by its author since June 27, 2018.
 # The author has suggested puppet-python as its replacement.
