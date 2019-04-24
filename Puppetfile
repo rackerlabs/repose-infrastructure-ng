@@ -5,7 +5,7 @@ forge "https://forgeapi.puppetlabs.com"
 
 mod 'puppetlabs-stdlib', '5.2.0'
 
-mod 'puppetlabs-apache', '4.0.0'
+mod 'puppetlabs-apache', '4.1.0'
 ################################################################################
 # There is a bug that was supposedly fixed, but still causes issues with >6.0.0
 # on Puppet v6.x
@@ -13,12 +13,20 @@ mod 'puppetlabs-apache', '4.0.0'
 mod 'puppetlabs-apt', '6.0.0'
 ################################################################################
 mod 'puppetlabs-docker', '3.5.0'
-mod 'puppetlabs-firewall', '1.15.2'
+mod 'puppetlabs-firewall', '1.15.3'
 mod 'puppetlabs-java', '3.3.0'
 mod 'puppetlabs-postgresql', '5.12.1'
 mod 'puppetlabs-yumrepo_core', '1.0.3'
 mod 'puppet-archive', '3.2.1'
 mod 'puppet-grafana', '6.0.0'
+################################################################################
+# Until a release is made, we can use a known good commit on the master branch.
+# https://github.com/voxpupuli/puppet-jenkins/issues/891
+#mod 'puppet-jenkins', '1.7.0'
+mod 'puppet-jenkins',
+  :git => "https://github.com/voxpupuli/puppet-jenkins.git",
+  :ref => '697876955a3a57fcff6fe3ef95e4a2b978a43bf0'
+################################################################################
 mod 'puppet-mongodb', '2.4.1'
 ################################################################################
 # This module has been deprecated by its author since February 27, 2019.
@@ -53,14 +61,6 @@ mod 'icinga-icingaweb2',
 mod 'maestrodev-maven', '1.4.0'
 mod 'papertrail-papertrail', '1.1.2'
 mod 'paulosuzart-sdkman', '1.0.2'
-################################################################################
-# Until a release is made, we can use a known good commit on the master branch.
-# https://github.com/voxpupuli/puppet-jenkins/issues/891
-#mod 'rtyler-jenkins', '1.7.0'
-mod 'puppet-jenkins',
-  :git => "https://github.com/voxpupuli/puppet-jenkins.git",
-  :ref => '697876955a3a57fcff6fe3ef95e4a2b978a43bf0'
-################################################################################
 ################################################################################
 # This module has been deprecated by its author since June 27, 2018.
 # The author has suggested puppet-python as its replacement.
