@@ -56,4 +56,4 @@ Host *
 # Disables checking IPs against known_hosts to support a static known_hosts
 # file managed by Puppet.
 Host github.com
-	CheckHostIP no
+    CheckHostIP no
