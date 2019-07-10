@@ -133,11 +133,13 @@ class repose_icinga::server (
         }
     }
 
-    # WIP: Something like this is needed to automagically update the default password.
-    #$icinga2admin_hash = generate("/usr/bin/php", "-r", "'echo password_hash(\"$icinga2admin_pass\", PASSWORD_DEFAULT);'")
-    #exec { 'Update default admin password':
-    #    environment => ["PGPASSWORD=$icingaweb2_pass"],
-    #    command     => "/usr/bin/psql -h 'localhost' -p '5432' -U '$icingaweb2_user' -d '$icingaweb2_db' -w -c \"UPDATE icingaweb_user set password_hash = \'$icinga2admin_hash\' WHERE name = \'$icinga2admin_user\'\"",
-    #    require     => Class['::icingaweb2'],
-    #}
+    # Updates the password for the icingaweb2 admin user
+    # icinga2admin_hash was generated using: php -r 'echo password_hash("$icinga2admin_pass", PASSWORD_DEFAULT);'
+    exec { 'Update default admin password':
+       environment => ["PGPASSWORD=$icingaweb2_pass"],
+       # The '\"'\"' pattern is used to insert a single-quote character within a single-quoted string;
+       # this will escaped the double-quote for Puppet manifest processing, prevent interpolation when running the command, and pass quoted strings to psql.
+       command     => "/usr/bin/psql -h 'localhost' -p '5432' -U '$icingaweb2_user' -d '$icingaweb2_db' -w -c 'UPDATE icingaweb_user SET password_hash = '\"'\"'$icinga2admin_hash'\"'\"' WHERE name = '\"'\"'$icinga2admin_user'\"'\"''",
+       require     => Class['::icingaweb2'],
+    }
 }
