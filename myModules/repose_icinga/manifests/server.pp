@@ -14,7 +14,6 @@ class repose_icinga::server (
 
     class { '::icinga2':
         manage_repo => true,
-        confd       => false,
         features    => [
             'checker',
             'mainlog',
@@ -123,6 +122,8 @@ class repose_icinga::server (
 
     class { 'icingaweb2::module::monitoring':
         ido_host          => 'localhost',
+        ido_type          => 'pgsql',
+        ido_port          => 5432,
         ido_db_name       => "$icinga2_db",
         ido_db_username   => "$icinga2_user",
         ido_db_password   => "$icinga2_pass",
