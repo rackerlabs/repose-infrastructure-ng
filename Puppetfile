@@ -50,8 +50,6 @@ mod 'golja-influxdb',
   :git => "https://github.com/dgolja/golja-influxdb.git",
   :ref => '5c5f74dfbda434562d31369b7f8c447895b06a1c'
 ################################################################################
-mod 'icinga-icinga2', '2.1.1'
-mod 'icinga-icingaweb2', '2.3.1'
 mod 'maestrodev-maven', '1.4.0'
 mod 'papertrail-papertrail', '1.1.2'
 mod 'paulosuzart-sdkman', '1.0.2'
@@ -94,9 +92,6 @@ mod "repose/repose_redirects",
 
 mod "repose/repose_nagios",
     :path => "myModules/repose_nagios"
-
-mod "repose/repose_icinga",
-    :path => "myModules/repose_icinga"
 
 mod "repose/repose_maven",
     :path => "myModules/repose_maven"
