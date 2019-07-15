@@ -34,6 +34,7 @@ mod 'puppet-nginx', '0.16.0'
 # The author has suggested puppet-archive as its replacement.
 mod 'puppet-wget', '2.0.1'
 ################################################################################
+mod 'puppet-prometheus', '6.4.0'
 
 ################################################################################
 # REMOVED until a release is made supporting Puppet 6.
@@ -92,6 +93,9 @@ mod "repose/repose_redirects",
 
 mod "repose/repose_nagios",
     :path => "myModules/repose_nagios"
+
+mod "repose/repose_prometheus",
+    :path => "myModules/repose_prometheus"
 
 mod "repose/repose_maven",
     :path => "myModules/repose_maven"

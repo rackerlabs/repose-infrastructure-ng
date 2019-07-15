@@ -1,0 +1,11 @@
+{
+  "name": "repose-repose_prometheus",
+  "version": "0.0.1",
+  "author": "repose",
+  "summary": "",
+  "license": "Apache 2.0",
+  "source": "git://github.com/rackerlabs/repose-infrastructure-ng.git",
+  "project_page": "https://github.com/rackerlabs/repose-infrastructure-ng",
+  "dependencies": [
+  ]
+}

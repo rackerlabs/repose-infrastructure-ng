@@ -1,0 +1,12 @@
+#MANAGED BY PUPPET
+
+server {
+    listen      443 ssl;
+    server_name prometheus.openrepose.org;
+
+    include /etc/nginx/nginx-ssl.conf;
+
+    location / {
+        proxy_pass http://localhost:9090/;
+    }
+}
