@@ -46,10 +46,11 @@ mod 'golja-gnupg', '1.2.3'
 ################################################################################
 # Until a release is made following my PR, we can use merged SHA.
 # https://github.com/dgolja/golja-influxdb/pull/76
+# After release, updates to how we use the module will need to be made.
 #mod 'golja-influxdb', '4.0.0'
 mod 'golja-influxdb',
-  :git => "https://github.com/dgolja/golja-influxdb.git",
-  :ref => '5c5f74dfbda434562d31369b7f8c447895b06a1c'
+  :git => "https://github.com/rackerlabs/golja-influxdb.git",
+  :ref => '54629f575e2b6ba1a2a7c677105fe93e8efa4f30'
 ################################################################################
 mod 'maestrodev-maven', '1.4.0'
 mod 'papertrail-papertrail', '1.1.2'
