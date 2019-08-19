@@ -11,9 +11,34 @@ class repose_prometheus {
   $textfile_directories = ['/var/lib/node_exporter', $textfile_directory]
   $textfile_scripts_directories = ['/opt/node_exporter', $textfile_scripts_directory]
 
-  firewall { '800 Node Exporter':
-    dport  => '9100',
+  # Set up Nginx to handle basic authentication
+  include base::nginx::basic_auth
+
+  firewall { '800 Nginx proxy to Node Exporter':
+    dport  => '19100',
     action => 'accept',
+  }
+
+  # Terminate SSL using Nginx, enforce basic auth, and proxy to Prometheus
+  file { '/etc/nginx/sites-available/node_exporter':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    source  => "puppet:///modules/repose_prometheus/nginx/sites-available/node_exporter",
+    require => [
+      Package['nginx'],
+      File['/etc/nginx/nginx-ssl.conf'],
+    ],
+  }
+
+  file { '/etc/nginx/sites-enabled/node_exporter':
+    ensure  => link,
+    target  => '/etc/nginx/sites-available/node_exporter',
+    require => [
+      File['/etc/nginx/sites-available/node_exporter'],
+    ],
+    notify  => Service['nginx'],
   }
 
   class { 'prometheus::node_exporter':

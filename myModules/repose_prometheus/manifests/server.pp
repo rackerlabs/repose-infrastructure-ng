@@ -28,15 +28,24 @@ class repose_prometheus::server {
   }
 
   # Terminate SSL using Nginx and proxy to Prometheus
-  file { '/etc/nginx/sites-enabled/prometheus.openrepose.org':
+  file { '/etc/nginx/sites-available/prometheus.openrepose.org':
     ensure  => file,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    source  => "puppet:///modules/repose_prometheus/nginx/sites-enabled/prometheus.openrepose.org",
+    source  => "puppet:///modules/repose_prometheus/nginx/sites-available/prometheus.openrepose.org",
     require => [
       Package['nginx'],
       File['/etc/nginx/nginx-ssl.conf'],
+    ],
+    notify  => Service['nginx'],
+  }
+
+  file { '/etc/nginx/sites-enabled/prometheus.openrepose.org':
+    ensure  => link,
+    target  => '/etc/nginx/sites-available/prometheus.openrepose.org',
+    require => [
+      File['/etc/nginx/sites-available/prometheus.openrepose.org'],
     ],
     notify  => Service['nginx'],
   }
