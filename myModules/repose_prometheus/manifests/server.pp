@@ -1,29 +1,15 @@
 class repose_prometheus::server {
 
-  # While it would be nice to re-use the autohttps class, we want to expose multiple
-  # endpoints on this host (Prometheus and Alertmanager, at least) which means
-  # proxying from port 443 to the correct endpoint becomes a challenge.
-  # Particularly because Prometheus and Alertmanager link to themselves in some
-  # way and there is not always an easy way to update that link to point to
-  # nginx instead.
-  # While we could separate our services across multiple hosts to address this
-  # issue, we only want to maintain a single host for Prometheus for now.
-  #
-  # Redirect HTTP traffic to HTTPS
-  # include base::nginx::autohttps
-  include base::nginx
+  # Redirect HTTP traffic to HTTPS and handle basic authentication
+  include base::nginx::autohttps
+  include base::nginx::basic_auth
 
   # Set up Postfix to enable sending email alerts
   include base::mail_sender
 
-  # Allow connections to Alertmanager (so that email links work)
+  # Allow connections to Alertmanager
   firewall { '200 Alertmanager':
-    dport  => '9093',
-    action => 'accept',
-  }
-
-  firewall { '201 Blackbox Exporter':
-    dport  => '9115',
+    dport  => '19093',
     action => 'accept',
   }
 
@@ -63,6 +49,7 @@ class repose_prometheus::server {
         ],
       },
     ],
+    extra_options  => '--web.external-url=\'https://prometheus.openrepose.org\' --web.route-prefix=\'/\'',
   }
 
   class { 'prometheus::alertmanager':
@@ -91,6 +78,7 @@ class repose_prometheus::server {
         ],
       },
     ],
+    extra_options  => '--web.external-url=\'https://prometheus.openrepose.org:19093\' --web.route-prefix=\'/\'',
   }
 
   class { 'prometheus::blackbox_exporter':
