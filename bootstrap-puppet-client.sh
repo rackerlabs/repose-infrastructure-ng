@@ -9,28 +9,41 @@ fi
 
 # Since the boxes should have a proper hostname of something.openrepose.org
 # they will know how to find the puppet master already (puppet.openrepose.org)
-MAJ_VER="6"
 CODENAME=$(lsb_release --short --codename)
+PUPPET_VERSION=6.2.0
+MAJ_VER=$(echo $PUPPET_VERSION | cut -d. -f1)
 REPODEB="puppet${MAJ_VER}-release-${CODENAME}.deb"
-wget -O /tmp/$REPODEB https://apt.puppetlabs.com/$REPODEB &&
+if [ ! -f "/tmp/$REPODEB" ] ; then
+    wget "https://apt.puppetlabs.com/$REPODEB" -O "/tmp/$REPODEB"
+fi
+AGENT_TEST_STATUS=99
 dpkg -i /tmp/$REPODEB &&
 rm -f /tmp/$REPODEB &&
 apt-get update &&
 apt-get upgrade -y &&
 apt-get autoclean -y &&
 apt-get autoremove -y &&
-PUPPET_VERSION=6.2.0-1${CODENAME}
-apt install -y puppet-agent=${PUPPET_VERSION} &&
+# since Debian doesn't support HTTPS with Apt by default:
+apt install -y apt-transport-https ca-certificates &&
+# install needed things
+apt install -y puppet-agent=${PUPPET_VERSION}-1${CODENAME} &&
 
-echo "Executing puppet agent for the first time." &&
+echo -e "\n\nExecuting puppet agent for the first time.\n" &&
 source /etc/profile.d/puppet-agent.sh &&
 puppet agent --enable &&
-puppet agent --test
+puppet agent --test ; AGENT_TEST_STATUS=$?
 
-echo -e "\n\nThe cert needs to be signed on the puppet master before setup can continue." &&
-echo -e "\n\tpuppetserver ca sign --certname $(facter fqdn)"
-echo -en "\n\nExecute the following when the cert is signed"
-test -f /var/run/reboot-required && echo -en " and the server rebooted"
-echo -e " to complete setup:\n"
-echo -e "\tsource /etc/profile.d/puppet-agent.sh &&"
-echo -e "\tpuppet agent --test\n\n"
+if [[ $AGENT_TEST_STATUS == 1 ]] ; then
+    echo -e "\n\nThe cert needs to be signed on the puppet master before setup can continue."
+    echo -e "\n\tpuppetserver ca sign --certname $(facter fqdn)"
+    echo -en "\n\nExecute the following when the cert is signed"
+    test -f /var/run/reboot-required && echo -en " and the server rebooted"
+    echo -e " to complete setup:\n"
+    echo -e "\tsource /etc/profile.d/puppet-agent.sh &&"
+    echo -e "\tpuppet agent --test\n\n"
+    exit 0
+else
+    echo -e "\n\nInitial puppet agent execution exited with: $AGENT_TEST_STATUS\n"
+    echo -e "\n\nAn error has occurred. See output above for more details.\n"
+    exit 1
+fi

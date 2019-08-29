@@ -45,6 +45,11 @@ node "nagios.openrepose.org" {
     include repose_nagios::server
 }
 
+node "prometheus.openrepose.org" {
+    include default_node
+    include repose_prometheus::server
+}
+
 node "influxdb.openrepose.org" {
     include default_node
     include repose_influxdb

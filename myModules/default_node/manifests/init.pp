@@ -39,4 +39,7 @@ class default_node (
 
   # have to actually include it!
   class { 'repose_nagios::client': }
+
+  # Installs exporters which enable Prometheus to collect system metrics for monitoring.
+  include repose_prometheus
 }

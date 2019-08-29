@@ -325,9 +325,10 @@ class repose_jenkins::master(
       'ssh-slaves'                       => {
         version => '1.29.4',
       },
-      'structs'                          => {
-        version => '1.17',
-      },
+      # todo: uncomment this when the jenkins module does not manage this plugin itself
+      #'structs'                          => {
+      #  version => '1.17',
+      #},
       'subversion'                       => {
         version => '2.12.1',
       },

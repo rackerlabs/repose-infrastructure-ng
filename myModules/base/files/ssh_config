@@ -52,3 +52,8 @@ Host *
     HashKnownHosts no
     GSSAPIAuthentication yes
     GSSAPIDelegateCredentials no
+
+# Disables checking IPs against known_hosts to support a static known_hosts
+# file managed by Puppet.
+Host github.com
+    CheckHostIP no
