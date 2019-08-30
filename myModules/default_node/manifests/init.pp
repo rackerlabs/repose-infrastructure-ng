@@ -3,7 +3,7 @@ class default_node (
 ) {
   include base
 
-  # Hold the Puppet Agent package at the desired version so that Nagios does not
+  # Hold the Puppet Agent package at the desired version so that Prometheus does not
   # alert us of updates that we don't want to consume.
   apt::pin { 'puppet_agent':
       packages => 'puppet-agent',
@@ -36,9 +36,6 @@ class default_node (
       swapfile => '/swapfile',
       swapsize => 4096,
   }
-
-  # have to actually include it!
-  class { 'repose_nagios::client': }
 
   # Installs exporters which enable Prometheus to collect system metrics for monitoring.
   include repose_prometheus

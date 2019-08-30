@@ -3,4 +3,4 @@ jenkins-intense-slaves jenkins-intense-slave-01 jenkins-intense-slave-02
 jenkins-legacy-slaves jenkins-legacy-slave-01
 jenkins-performance-slaves jenkins-performance-slave-01 jenkins-performance-slave-02 jenkins-performance-slave-03
 jenkins jenkins-master jenkins-build-slaves jenkins-intense-slaves jenkins-legacy-slaves jenkins-performance-slaves
-all jenkins nagios phone-home puppet-master nginx grafana influxdb
+all jenkins prometheus phone-home puppet-master nginx grafana influxdb

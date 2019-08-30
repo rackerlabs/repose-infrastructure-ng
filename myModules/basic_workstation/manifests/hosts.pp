@@ -75,8 +75,8 @@ class basic_workstation::hosts(
     ip => '23.253.109.45',
   }
 
-  host { 'nagios':
-    ip => '104.239.133.25',
+  host { 'prometheus':
+    ip => '104.130.132.138',
   }
 
   host { 'puppet':

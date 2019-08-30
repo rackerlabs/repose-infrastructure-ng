@@ -40,11 +40,6 @@ node "redirects.openrepose.org" {
     include repose_redirects
 }
 
-node "nagios.openrepose.org" {
-    include default_node
-    include repose_nagios::server
-}
-
 node "prometheus.openrepose.org" {
     include default_node
     include repose_prometheus::server
