@@ -19,8 +19,8 @@ For additional details, see [Good things to know - Replace Jenkins Slave](https:
     4. Sometimes the package management system needs updated and the puppet agent ran yet again.
         `apt-get update && puppet agent --test`
 6. If the new box is a Jenkins slave, then update the Jenkins' node list.
-7. Add it to Nagios
-    1. Add a host config to the nagios module
+7. Add it to Prometheus
+    1. Add a host config to the prometheus module
     2. Add it to any relevant host groups
     3. Add any specific host checks
 

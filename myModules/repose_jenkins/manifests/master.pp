@@ -19,7 +19,7 @@ class repose_jenkins::master(
     restart    => '/bin/echo Not restarting the jenkins service',
   }
 
-  # Hold the Jenkins package at the desired version so that Nagios does not
+  # Hold the Jenkins package at the desired version so that Prometheus does not
   # alert us of updates that we cannot consume.
   apt::pin { 'jenkins_package':
     before   => Package['jenkins'],

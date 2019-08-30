@@ -1,7 +1,7 @@
 Host jenkins-*
 User root
 
-Host nagios
+Host prometheus
 User root
 
 Host phone-home

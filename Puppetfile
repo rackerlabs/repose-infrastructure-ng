@@ -92,9 +92,6 @@ mod "repose/repose_nexus",
 mod "repose/repose_redirects",
     :path => "myModules/repose_redirects"
 
-mod "repose/repose_nagios",
-    :path => "myModules/repose_nagios"
-
 mod "repose/repose_prometheus",
     :path => "myModules/repose_prometheus"
 

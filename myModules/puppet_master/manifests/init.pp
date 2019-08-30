@@ -1,7 +1,7 @@
 class puppet_master(
     $puppet_version = "6.2.0-1${lsbdistcodename}"
 ) {
-    # Hold the Puppet Server package at the desired version so that Nagios does not
+    # Hold the Puppet Server package at the desired version so that Prometheus does not
     # alert us of updates that we don't want to consume.
     apt::pin { 'puppet_server':
         packages => 'puppetserver',
