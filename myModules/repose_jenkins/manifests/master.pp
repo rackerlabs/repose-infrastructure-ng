@@ -91,7 +91,7 @@ class repose_jenkins::master(
       },
       # This is "Folders"
       'cloudbees-folder'                 => {
-        version => '6.7',
+        version => '6.9',
       },
       'command-launcher'                 => {
         version => '1.3',
@@ -129,7 +129,7 @@ class repose_jenkins::master(
         version => '1.0.3',
       },
       'envinject'                        => {
-        version => '2.1.6',
+        version => '2.2.1',
       },
       'envinject-api'                    => {
         version => '1.6',
@@ -264,7 +264,7 @@ class repose_jenkins::master(
         version => '1.3.9',
       },
       'pipeline-rest-api'                => {
-        version => '2.10',
+        version => '2.12',
       },
       'pipeline-stage-step'              => {
         version => '2.3',
