@@ -120,7 +120,7 @@ class repose_jenkins::master(
       },
       # This is the "Docker Pipeline".
       'docker-workflow'                  => {
-        version => '1.17',
+        version => '1.19',
       },
       'durable-task'                     => {
         version => '1.30',
