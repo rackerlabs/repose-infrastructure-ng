@@ -1,6 +1,6 @@
 # Installs and configures a Jenkins master host.
 class repose_jenkins::master(
-    $jenkins_version = '2.176.3'
+    $jenkins_version = '2.190.1'
 ) {
 
   include apt
@@ -84,7 +84,7 @@ class repose_jenkins::master(
         version => '2.5.4',
       },
       'build-name-setter'                => {
-        version => '1.7.0',
+        version => '2.0.3',
       },
       'built-on-column'                  => {
         version => '1.1',
@@ -141,7 +141,7 @@ class repose_jenkins::master(
         version => '1.42.0',
       },
       'git'                              => {
-        version => '3.9.3',
+        version => '3.12.1',
       },
       'git-client'                       => {
         version => '2.8.6',
@@ -311,7 +311,7 @@ class repose_jenkins::master(
         version => '0.5.1',
       },
       'slack'                            => {
-        version => '2.29',
+        version => '2.34',
       },
       'ssh'                              => {
         version => '2.6.1',
@@ -366,7 +366,7 @@ class repose_jenkins::master(
       },
       # This is "Pipeline: Nodes and Processes".
       'workflow-durable-task-step'       => {
-        version => '2.31',
+        version => '2.34',
       },
       'workflow-job'                     => {
         version => '2.35',
