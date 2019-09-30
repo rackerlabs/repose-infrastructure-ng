@@ -8,15 +8,15 @@ class basic_workstation::hosts(
 
   #hosts
   host { 'jenkins-master':
-    ip  => '104.130.124.20',
+    ip  => '104.130.139.139',
   }
 
   host { 'jenkins-build-slave-01':
-    ip  => '166.78.186.146',
+    ip  => '166.78.135.67',
   }
 
   host { 'jenkins-build-slave-02':
-    ip  => '166.78.186.175',
+    ip  => '166.78.135.61',
   }
 
   host { 'jenkins-build-slave-03':
