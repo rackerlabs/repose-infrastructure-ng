@@ -2,6 +2,14 @@
 
 class users {
 
+  ssh_authorized_key { 'wmendizabal':
+    ensure  => present,
+    type    => 'ssh-rsa',
+    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDAwUPaRzOm9w+j9S4QkggkZpaiUUBLemV+Bme1aMkZ5UpnIkaZWcFtXcrS8Uwcn++ZQaQylECz9Rg5IM3IR8WjpGkFP3pR/mmFT0SvurbEG1pUrCp/ULNVcVPP6QloI5yO/fyzHpjJebEVhR1lPlyp2+vx6ox87mcHFz6uaOxWHRbOqSBrEe7oggpWoVTK3chyBxRB7GQlU8QqWO+2scYdKPtgOfaF5u3+chYK7dYrYn23lvBH6E1Gp1DunFB7hOn3FLkRZXHSurWp52eIBNRih7UxquqUH1R/9AHQTPqnsEwc6T7nl/xBY36MfdL3zzzLNPuMcupaoVqCXpG1cImB',
+    name    => 'werner@pro',
+    user    => 'root'
+  }
+
   ssh_authorized_key { 'ageorge':
     ensure  => present,
     type    => 'ssh-rsa',
