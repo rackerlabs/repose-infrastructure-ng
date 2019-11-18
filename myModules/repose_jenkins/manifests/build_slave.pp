@@ -123,4 +123,14 @@ class repose_jenkins::build_slave {
   python::pip { 'docutils':
     pkgname => 'docutils',
   }
+
+  file{ "/etc/docker/daemon.json":
+    ensure  => file,
+    mode    => '0644',
+    owner   => root,
+    group   => root,
+    source  => "puppet:///modules/repose_jenkins/docker/daemon.json",
+    notify => Service['docker'],
+  }
+
 }
